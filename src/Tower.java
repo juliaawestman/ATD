@@ -16,9 +16,9 @@ public abstract class Tower {
     private boolean ground;
     private boolean air;
     private Unit target;
+    private Position pos;
     private int timeOfLastAttack;
 
-    /*TODO testar todo grejen*/
     public boolean withinRange(Unit newTarget){
         return false;
     }
