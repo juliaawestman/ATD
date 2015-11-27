@@ -1,25 +1,39 @@
+/*
+ * Default
+ * 
+ * Date 27/11- 2015
+ * @author id12jwn
+ */
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 
+/**
+ * Default a class that extends the PathTile class. The class
+ * have a own image that will be used in the user interface.   
+ */
 public class Default extends PathTile {
     
-  
-   // private static final String IMG_URL = "https://www.dropbox.com/s/t43fclbqlb19dwv/default.jpg?dl=0";
-    private static String PATH ="/users/juliawestman/documents/ATD/default.jpg"; 
+    private static String PATH ="default.jpg"; 
     
     private BufferedImage img = null;
-    
+    /**
+     * Default is the constructor that will read in the image when 
+     * the program will create a object of the class Default
+     */
     public Default() {
 	readInImg();
     }
     
-    public void readInImg(){
+    /**
+     * ReadInImg is a method that will read in a image that 
+     * will be used in the user interface
+     */
+    public void readInImg() {
 	try {
-	    
-	    System.out.println("inne i read");
 	   // URL url = new URL(IMG_URL);
 	    File file = new File(PATH);
 	    img = ImageIO.read(file);
@@ -29,7 +43,12 @@ public class Default extends PathTile {
 	}
     }
     
-    public BufferedImage getImg(){
+    /**
+     * getImage is method that will get the image
+     * 
+     * @return a BufferedImage
+     */
+    public BufferedImage getImg() {
 	return img;
     }
 
