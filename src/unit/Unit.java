@@ -1,4 +1,4 @@
-
+package src.unit;
 /**
  * Class: Unit
  *
@@ -68,6 +68,7 @@ public abstract class Unit {
         }
         timeLived++;
     }
+    /*TODO need a "isFlying" method     //erik */
 
     public Position getPosition() {
         return pos;

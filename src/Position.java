@@ -1,5 +1,7 @@
 package src;
 
+import static java.lang.Math.sqrt;
+
 /**
  * A class for holding the coordinates (x, y) of a position in a matrix.
  * The matrix should have (0, 0) in the upper left corner.
@@ -34,6 +36,32 @@ public class Position {
 	 */
 	public int getY(){
 		return y;
+	}
+
+	/**
+	 * Method for calculating the distance between this position and another.
+	 * Will return the distance as an integer, it will be rounded up.
+	 *
+	 * @param p the Position to calculate the distance to.
+	 * @return the distance rounded up to the closest int.
+	 */
+	public int getDistance(Position p){
+		/*TODO see if there is a better way of calculating the distance*/
+
+		int xDistance = p.getX() - x;
+		if (xDistance < 0){
+			xDistance = xDistance * -1;
+		}
+
+		int yDistance = p.getY() - y;
+		if(yDistance < 0){
+			yDistance = yDistance * -1;
+		}
+
+		double tmp = sqrt(xDistance*xDistance + yDistance*yDistance);
+		return (int) Math.ceil(tmp);
+
+
 	}
 
 	/**
