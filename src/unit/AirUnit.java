@@ -1,5 +1,5 @@
+package src.unit;
 
-import src.Position;
 
 /*
  * Class: AirUnit
@@ -10,12 +10,17 @@ import src.Position;
 
  * Date: 2015-11-26
  */
+import src.Position;
 
-public class AirUnit extends Unit{
+public class AirUnit extends Unit {
 
     public AirUnit(Position pos, Direction d) {
         super(pos, d);
-        super.
+        super.health = 20;
+        super.price = 30;
+        super.speed = 45;
+        super.name = "AirUnuit";
+        super.pos = pos;
+        super.flying = true;
     }
-    
 }

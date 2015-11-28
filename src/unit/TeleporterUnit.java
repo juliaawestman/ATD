@@ -1,3 +1,5 @@
+package src.unit;
+
 /*
  * Class: TeleporterUnit
  *
@@ -7,7 +9,17 @@
  *
  * Date: 2015-11-26
  */
+import src.Position;
 
-public class TeleporterUnit {
-    
+public class TeleporterUnit extends Unit {
+
+    public TeleporterUnit(Position pos, Direction d) {
+        super(pos, d);
+        super.health = 20;
+        super.price = 50;
+        super.speed = 50;
+        super.name = "GroundUnit";
+        super.pos = pos;
+        super.flying = false;
+    }
 }

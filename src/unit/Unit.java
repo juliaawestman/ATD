@@ -1,4 +1,5 @@
 package src.unit;
+
 /**
  * Class: Unit
  *
@@ -20,9 +21,9 @@ public abstract class Unit {
     protected int health;
     protected int price;
     protected int speed;
-    private int income;
-    private int timeLived = 0;
-    private Boolean flying;
+    protected int income;
+    protected Boolean flying;
+    private int timeLived = 0; 
 
     public enum Direction {
 
@@ -69,6 +70,10 @@ public abstract class Unit {
         timeLived++;
     }
     /*TODO need a "isFlying" method     //erik */
+
+    public boolean isFlying() {
+        return flying;
+    }
 
     public Position getPosition() {
         return pos;
