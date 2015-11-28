@@ -13,13 +13,13 @@ import src.Position;
 
 public abstract class Unit {
 
-    private static final int MAXSPEED = 50;
-    private String name;
-    private Position pos;
-    private BufferedImage img;
-    private int health;
-    private int price;
-    private int speed;
+    protected static final int MAXSPEED = 50;
+    protected String name;
+    protected Position pos;
+    protected BufferedImage img;
+    protected int health;
+    protected int price;
+    protected int speed;
     private int income;
     private int timeLived = 0;
     private Boolean flying;
