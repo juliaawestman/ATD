@@ -45,7 +45,7 @@ public abstract class Unit {
 
     public void move() {
         /*Move more frequently depending on the speed*/
-        if ((((timeLived) % (MAXSPEED + 1) - speed)) == 0) {
+        if (((timeLived) % ((MAXSPEED + 1) - speed)) == 0) {
             Position newPos = null;
             switch (this.direction) {
                 case NORTH:
@@ -76,7 +76,7 @@ public abstract class Unit {
     }
 
     public Position getPosition() {
-        return pos;
+        return this.pos;
     }
 
     protected void setCurrentPosition(Position pos) {
