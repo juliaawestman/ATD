@@ -8,7 +8,6 @@
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import javax.imageio.ImageIO;
 
 /**
@@ -34,7 +33,6 @@ public class Default extends PathTile {
      */
     public void readInImg() {
 	try {
-	   // URL url = new URL(IMG_URL);
 	    File file = new File(PATH);
 	    img = ImageIO.read(file);
 	    

@@ -1,7 +1,7 @@
 /*
- * TCross
+ * Straight
  * 
- * Date 27/11- 2015
+ * Date 29/11- 2015
  * @author id12jwn
  */
 
@@ -11,38 +11,39 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- * TCross a class that extends the PathTile class. The class
- * have a own image that will be used in the user interface.   
+ * Straight is a class that extends the PathTile class. The class
+ * have a own image that will be used in the user interface. 
+ *
  */
-public class TCross extends PathTile {
-    
-    private static String PATH ="TCross.jpg"; 
-    
+public class Straight extends PathTile {
+ // TODO: change img
+    private static String PATH ="default.jpg"; 
+
     private BufferedImage img = null;
     
     /**
-     * TCross is the constructor that will read in the image when 
+     * RightTurn is the constructor that will read in the image when 
      * the program will create a object of the class Default
      */
-    public TCross() {
+    public Straight() {
 	readInImg();
     }
-    
+
     /**
      * ReadInImg is a method that will read in a image that 
      * will be used in the user interface
      */
     public void readInImg(){
 	try {
-	   // URL url = new URL(IMG_URL);
+	    // URL url = new URL(IMG_URL);
 	    File file = new File(PATH);
 	    img = ImageIO.read(file);
-	    
+
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}
     }
-    
+
     /**
      * getImage is method that will get the image
      * @return a BufferedImage
@@ -50,5 +51,6 @@ public class TCross extends PathTile {
     public BufferedImage getImg(){
 	return img;
     }
+
 
 }
