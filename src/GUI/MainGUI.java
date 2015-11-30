@@ -1,4 +1,4 @@
-package src;
+package src.GUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,9 +10,9 @@ public class MainGUI extends JFrame {
 
     //private JFrame frame;
 
-    private JPanel menuCard, gameCard, highScoreCard, levelCard, endGameCard;
+    private JFrame menuCard, gameCard, highScoreCard, levelCard, endGameCard;
 
-    private JLabel menuLabel, gameLabel;
+    //private JLabel menuLabel, gameLabel;
 
     private CardLayout cardLayout = new CardLayout();
 

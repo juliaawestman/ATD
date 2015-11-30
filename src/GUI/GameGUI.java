@@ -1,4 +1,4 @@
-package src;
+package src.GUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -74,17 +74,17 @@ public class GameGUI {
         middlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         blackButton = new JButton("Svart");
-        blackButton.addActionListener(new ButtonListener(textField, Color.black));
+        //blackButton.addActionListener(new NewGameListener());
 
         middlePanel.add(blackButton);
 
         redButton = new JButton("RÃ¶tt");
-        redButton.addActionListener(new ButtonListener(textField, Color.red));
+        //redButton.addActionListener(new NewGameListener());
 
         middlePanel.add(redButton);
 
         greenButton = new JButton("GrÃ¶nt");
-        greenButton.addActionListener(new ButtonListener(textField, Color.green));
+        //greenButton.addActionListener(new NewGameListener());
 
         middlePanel.add(greenButton);
         return middlePanel;

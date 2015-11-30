@@ -1,4 +1,4 @@
-package src;
+package src.GUI;
 
 /**
  * Created by Zacke on 2015-11-26.
