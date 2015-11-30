@@ -41,6 +41,17 @@ public abstract class Unit {
     public Unit(Position pos, Direction d) {
         this.pos = pos;
         this.direction = d;
+
+        //added by erik
+        this.flying = false;
+    }
+
+    public void setHealth(int health){
+        this.health = health;
+    }
+
+    public void setFlying(boolean flying){
+        this.flying = flying;
     }
 
     public void move() {

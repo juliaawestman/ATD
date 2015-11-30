@@ -54,16 +54,13 @@ public abstract class Tower {
      * @return true if the unit is within range, else false.
      */
     public boolean withinRange(Unit newTarget){
-        //TODO remove or uncomment (waiting for fix in src.unit.Unit)
-        //TODO add tests for this part
-        /* Commented away since unit has no method isFlying*/
-        /*if(newTarget.isFlying() && !air){
+        if(newTarget.isFlying() && !air){
             return false;
-        } else if (!newTarget.isFlying && !ground){
+        } else if (!newTarget.isFlying() && !ground){
             return false;
-        }*/
+        }
 
-        return pos.getDistance(newTarget.getPosition()) <= range;
+        return (pos.getDistance(newTarget.getPosition()) <= range);
     }
 
     /**
@@ -75,7 +72,29 @@ public abstract class Tower {
         target = newTarget;
     }
 
+    /**
+     * The tower will attempt to shoot at its target. If the tower can shoot at
+     * the target true will be returned. If for some reason it cannot, i.e. the
+     * target is dead or to far away, false will be returned to indicate that
+     * the tower could not attack.
+     *
+     * @return false if attack did not succeed, otherwise true.
+     */
     public boolean attack() {
+        if (target.isAlive() && withinRange(target)){
+            target.takeDamage(damage);
+            return true;
+        }
+
         return false;
+    }
+
+    /**
+     * Returns the position of the tower.
+     *
+     * @return the position of the tower.
+     */
+    public Position getPosition() {
+        return pos;
     }
 }
