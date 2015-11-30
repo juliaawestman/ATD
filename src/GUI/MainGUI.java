@@ -9,6 +9,7 @@ import java.awt.*;
 public class MainGUI extends JFrame {
 
     //private JFrame frame;
+    // hej
 
     private JFrame menuCard, gameCard, highScoreCard, levelCard, endGameCard;
 
