@@ -4,23 +4,21 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import src.Position;
-import src.unit.AirUnit;
-import src.unit.AirUnit;
-import src.unit.Unit;
-import src.unit.Unit;
 import src.unit.Unit.Direction;
+
 /**
  *
  * @author Isak Hjelt
  */
 public class UnitTest {
+
     Unit instance;
 
     @Before
     public void setUp() {
-        Position pos = new Position(11,22);
+        Position pos = new Position(11, 22);
         this.instance = new AirUnit(pos, Direction.SOUTH);
-        
+
     }
 
     /**
@@ -28,30 +26,41 @@ public class UnitTest {
      */
     @Test
     public void testMove() {
-        Position tempPos = new Position(11,23);
+        Position tempPos = new Position(11, 23);
         System.out.println("move");
-        
+
         instance.move();
         instance.move();
-        
+
         boolean expResult = true;
         boolean result = instance.getPosition().equals(tempPos);
-             
+
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of isFlying method, of class Unit.
+     * Test of isFlying method with flying unit, of class Unit.
      */
     @Test
-    public void testIsFlying() {
-        System.out.println("isFlying");
-        Unit instance = null;
-        boolean expResult = false;
+    public void testIsFlyingTrue() {
+        System.out.println("isFlyingTrue");
+        boolean expResult = true;
         boolean result = instance.isFlying();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of isFlying method with flying unit, of class Unit.
+     */
+    @Test
+    public void testIsFlyingFalse() {
+        System.out.println("isFlyingFalse");
+        Position pos = new Position(1, 1);
+        Unit instanceGround = new GroundUnit(pos, Direction.SOUTH);
+
+        boolean expResult = false;
+        boolean result = instanceGround.isFlying();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -60,12 +69,9 @@ public class UnitTest {
     @Test
     public void testGetPosition() {
         System.out.println("getPosition");
-        Unit instance = null;
-        Position expResult = null;
+        Position expResult = new Position(11, 22);
         Position result = instance.getPosition();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -74,11 +80,11 @@ public class UnitTest {
     @Test
     public void testSetCurrentPosition() {
         System.out.println("setCurrentPosition");
-        Position pos = null;
-        Unit instance = null;
+        Position pos = new Position(33, 33);
         instance.setCurrentPosition(pos);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expResult = true;
+        boolean result = instance.getPosition().equals(new Position(33, 33));
+        assertEquals(expResult, result);
     }
 
     /**
@@ -87,45 +93,42 @@ public class UnitTest {
     @Test
     public void testSetDirection() {
         System.out.println("setDirection");
-        Unit.Direction direction = null;
-        Unit instance = null;
+        Position tempPos = new Position(10, 22);
+        Unit.Direction direction = Direction.WEST;
         instance.setDirection(direction);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        instance.move();
+
+        boolean expResult = true;
+        boolean result = instance.getPosition().equals(tempPos);
+        assertEquals(expResult, result);
     }
 
     /**
      * Test of takeDamage method, of class Unit.
      */
     @Test
-    public void testTakeDamage() {
-        System.out.println("takeDamage");
+    public void testTakeDamageZero() {
+        System.out.println("takeDamageZero");
+        Position pos = new Position(11, 22);
+        Unit testUnit = new UnitForTesting(pos, Direction.SOUTH);
         int dmg = 0;
-        Unit instance = null;
-        instance.takeDamage(dmg);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        testUnit.takeDamage(dmg);
+        /*Should be alive after 0 dmg dealt*/
+        assertTrue(testUnit.isAlive());
     }
-
     /**
-     * Test of isAlive method, of class Unit.
+     * Test of takeDamage method, of class Unit.
      */
     @Test
-    public void testIsAlive() {
-        System.out.println("isAlive");
-        Unit instance = null;
-        boolean expResult = false;
-        boolean result = instance.isAlive();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    public void testTakeDamageOne() {
+        System.out.println("takeDamageOne");
+        Position pos = new Position(11, 22);
+        Unit testUnit = new UnitForTesting(pos, Direction.SOUTH);
 
-    public class UnitImpl extends Unit {
-
-        public UnitImpl() {
-            super(null, null);
-        }
+        int dmg = 1;
+        testUnit.takeDamage(dmg);
+        /*Should be dead after 1 dmg dealt since UnitForTesting only got 1 hp*/
+        assertFalse(testUnit.isAlive());
     }
-    
 }

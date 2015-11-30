@@ -42,7 +42,10 @@ public abstract class Unit {
         this.pos = pos;
         this.direction = d;
 
-        //added by erik
+        this.health = 10;
+        this.price = 10;
+        this.speed = 10;
+        this.name = "UnNamed";
         this.flying = false;
     }
 
@@ -80,7 +83,6 @@ public abstract class Unit {
         }
         timeLived++;
     }
-    /*TODO need a "isFlying" method     //erik */
 
     public boolean isFlying() {
         return flying;
