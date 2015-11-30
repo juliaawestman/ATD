@@ -52,7 +52,7 @@ public class Telepoter extends PathTile {
 	return img;
     }
     
-    landOn()
+    //landOn();
     	
 
 }
