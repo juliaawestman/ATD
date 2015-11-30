@@ -51,5 +51,8 @@ public class Telepoter extends PathTile {
     public BufferedImage getImg(){
 	return img;
     }
+    
+    landOn()
+    	
 
 }
