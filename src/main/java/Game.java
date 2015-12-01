@@ -19,7 +19,7 @@ public class Game {
 
     private int timeOfGame = 0;
     //----------------------------private User user;
-    private tileMap map;
+    private TileMap map;
     private final int waveNr = 1;
     private final List<Unit> units = new LinkedList();
     private final List<Tower> towers = new LinkedList();
@@ -93,6 +93,6 @@ public class Game {
     }
 
     public void readMap(String mapName) {
-        this.map = new tileMap(mapName);
+        this.map = new TileMap(mapName);
     }
 }
