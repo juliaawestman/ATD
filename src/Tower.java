@@ -73,20 +73,20 @@ public abstract class Tower {
     }
 
     /**
-     * The tower will attempt to shoot at its target. If the tower can shoot at
-     * the target true will be returned. If for some reason it cannot, i.e. the
-     * target is dead or to far away, false will be returned to indicate that
-     * the tower could not attack.
-     *
-     * @return false if attack did not succeed, otherwise true.
+     * Will deal the towers damage to the towers current target.
      */
-    public boolean attack() {
-        if (target.isAlive() && withinRange(target)){
-            target.takeDamage(damage);
-            return true;
-        }
+    public void attack() {
+        target.takeDamage(damage);
+    }
 
-        return false;
+    /**
+     * Will check if the towers current target is valid. If the target is dead
+     * or out of range the target is invalid since the tower cannot shoot at it.
+     *
+     * @return true if current target is valid, else false.
+     */
+    public boolean hasValidTarget(){
+        return target.isAlive() && withinRange(target);
     }
 
     /**

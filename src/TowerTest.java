@@ -64,35 +64,8 @@ public class TowerTest {
     }
     /* ****************************************** */
 
+
     /* ********** TESTS FOR: attack() ********** */
-    @Test
-    public void shouldReturnTrueForLivingTargetWithinRange() throws Exception {
-        unitWithHealthAndTower(new Position(10, 15), 25, new Position(10, 10));
-        t.setTarget(u);
-        assertTrue(t.attack());
-    }
-
-    @Test
-    public void shouldReturnFalseForDeadTargetWithinRange() throws Exception {
-        unitWithHealthAndTower(new Position(12, 12), 0, new Position(10, 10));
-        t.setTarget(u);
-        assertFalse(t.attack());
-    }
-
-    @Test
-    public void shouldReturnFalseForLivingTargetOutOfRange() throws Exception {
-        unitWithHealthAndTower(new Position(20, 20),10, new Position(10, 10));
-        t.setTarget(u);
-        assertFalse(t.attack());
-    }
-
-    @Test
-    public void shouldReturnFalseForDeadTargetOutOfRange() throws Exception {
-        unitWithHealthAndTower(new Position(20, 20), 0, new Position(10, 10));
-        t.setTarget(u);
-        assertFalse(t.attack());
-    }
-
     @Test
     public void shouldKillTargetWithFirstShot() throws Exception {
         unitWithHealthAndTower(new Position(12, 12), 10, new Position(10, 10));
@@ -109,6 +82,37 @@ public class TowerTest {
         assertTrue(u.isAlive());
     }
 
+    /* ***************************************** */
+
+
+    /* ********** TESTS FOR: hasValidTarget() ********** */
+    @Test
+    public void shouldReturnTrueForLivingTargetWithinRange() throws Exception {
+        unitWithHealthAndTower(new Position(10, 15), 25, new Position(10, 10));
+        t.setTarget(u);
+        assertTrue(t.hasValidTarget());
+    }
+
+    @Test
+    public void shouldReturnFalseForDeadTargetWithinRange() throws Exception {
+        unitWithHealthAndTower(new Position(12, 12), 0, new Position(10, 10));
+        t.setTarget(u);
+        assertFalse(t.hasValidTarget());
+    }
+
+    @Test
+    public void shouldReturnFalseForLivingTargetOutOfRange() throws Exception {
+        unitWithHealthAndTower(new Position(20, 20),10, new Position(10, 10));
+        t.setTarget(u);
+        assertFalse(t.hasValidTarget());
+    }
+
+    @Test
+    public void shouldReturnFalseForDeadTargetOutOfRange() throws Exception {
+        unitWithHealthAndTower(new Position(20, 20), 0, new Position(10, 10));
+        t.setTarget(u);
+        assertFalse(t.hasValidTarget());
+    }
     /* ***************************************** */
 
 
