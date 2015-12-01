@@ -15,42 +15,25 @@ import javax.imageio.ImageIO;
  * have a own image that will be used in the user interface. 
  *
  */
-public class RightTurn extends PathTile {
-    
-    // TODO: change img
-    private static String PATH ="default.jpg"; 
+public class RightTurn extends PathTile implements TileAction {
 
+    private static String PATH ; 
+    private Position pos;
     private BufferedImage img = null;
-    
+
     /**
      * RightTurn is the constructor that will read in the image when 
      * the program will create a object of the class Default
      */
-    public RightTurn() {
-	readInImg();
+    protected RightTurn(Position p, String imgPath) {
+	super(p, imgPath);
+	pos = p;
+	PATH = imgPath;
     }
 
-    /**
-     * ReadInImg is a method that will read in a image that 
-     * will be used in the user interface
-     */
-    public void readInImg(){
-	try {
-	    // URL url = new URL(IMG_URL);
-	    File file = new File(PATH);
-	    img = ImageIO.read(file);
+    @Override
+    public void landOn(Unit unit) {
 
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}
-    }
-
-    /**
-     * getImage is method that will get the image
-     * @return a BufferedImage
-     */
-    public BufferedImage getImg(){
-	return img;
     }
 
 }
