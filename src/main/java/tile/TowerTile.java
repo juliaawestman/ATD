@@ -1,21 +1,21 @@
-/*
- * TowerTile
+package src.main.java.tile;/*
+ * src.main.java.tile.TowerTile
  * 
  * Date 29/11- 2015
  * @author id12jwn
  */
 
+import src.main.java.Position;
+import src.main.java.tile.Tile;
+
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 
 /**
- * TowerTile is a class that extends the PathTile class. The class
+ * src.main.java.tile.TowerTile is a class that extends the src.main.java.tile.tile.PathTile class. The class
  * have a own image that will be used in the user interface. 
  *
  */
-public class TowerTile extends Tile{
+public class TowerTile extends Tile {
  
      private static String PATH; 
      private BufferedImage img = null;

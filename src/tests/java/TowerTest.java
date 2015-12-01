@@ -1,7 +1,9 @@
-package src;
+package src.tests.java;
 
 import org.junit.Test;
-import src.unit.Unit;
+import src.main.java.Position;
+import src.main.java.tower.Tower;
+import src.main.java.unit.Unit;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

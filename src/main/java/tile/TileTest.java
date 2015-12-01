@@ -1,4 +1,4 @@
-/*
+package src.main.java.tile;/*
  * TileTest
  * 
  * Date 27/11- 2015
@@ -7,11 +7,11 @@
 
 import java.awt.image.BufferedImage;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
+
 import org.junit.Test;
 
 /**
- * TileTest is a TestClass that will test that the different
+ * src.main.java.tile.TileTest is a TestClass that will test that the different
  * TileClasses is working as it should. 
  */
 public class TileTest {
@@ -28,7 +28,7 @@ public class TileTest {
      }
     
    /**
-    * Test that the method getImg in the class Default 
+    * Test that the method getImg in the class src.main.java.tile.tile.Default
     */
     @Test
     public void readInDefualtImg(){
@@ -39,7 +39,7 @@ public class TileTest {
     }
     
     /**
-     * Test that the method getImg in the class TCross
+     * Test that the method getImg in the class src.main.java.tile.tile.TCross
      */
      @Test
      public void readInTCrossImg(){
@@ -50,7 +50,7 @@ public class TileTest {
      }
      
      /**
-      * Test that the method getImg in the class Start
+      * Test that the method getImg in the class src.main.java.tile.tile.Start
       */
       @Test
       public void readInStartImg(){
@@ -61,7 +61,7 @@ public class TileTest {
       }
       
       /**
-       * Test that the method getImg in the class End
+       * Test that the method getImg in the class src.main.java.tile.tile.End
        */
        @Test
        public void readInEndImg(){
@@ -72,7 +72,7 @@ public class TileTest {
        }
        
        /**
-        * Test that the method getImg in the class RightTurn
+        * Test that the method getImg in the class src.main.java.tile.tile.RightTurn
         */
         @Test
         public void readInRightTurnImg(){
@@ -83,7 +83,7 @@ public class TileTest {
         }
         
         /**
-         * Test that the method getImg in the class LeftTurn
+         * Test that the method getImg in the class src.main.java.tile.tile.LeftTurn
         */
         @Test
         public void readInLeftTurnImg(){
@@ -105,7 +105,7 @@ public class TileTest {
          }
         
         /**
-         * Test that the method getImg in the class Straight
+         * Test that the method getImg in the class src.main.java.tile.tile.Straight
         */
         @Test
         public void readInStraightImg(){
