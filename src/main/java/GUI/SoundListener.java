@@ -16,12 +16,18 @@ class SoundListener implements MouseListener {
         }
 
     public void mouseClicked(MouseEvent e) {
-        button.setIcon(new ImageIcon("src/main/resources/soundOff.png"));
+
+        if(button.getIcon().toString().contains("Off")) {
+            button.setIcon(new ImageIcon("src/main/resources/sound.png"));
+        }
+        else {
+            button.setIcon(new ImageIcon("src/main/resources/soundOff.png"));
+        }
 
     }
 
     public void mousePressed(MouseEvent e) {
-        button.setIcon(new ImageIcon("src/main/resources/soundOff.png"));
+        //button.setIcon(new ImageIcon("src/main/resources/soundOff.png"));
 
     }
 

@@ -9,6 +9,7 @@ import java.awt.*;
 public class MenuGUI {
 
     private JFrame frame;
+    private JPanel panel;
     private JButton newGame;
     private JButton highScore;
     private JButton quit;
@@ -24,6 +25,8 @@ public class MenuGUI {
     private JPanel lowerPanel;
 
     public MenuGUI() {
+
+        panel = new JPanel();
 
         frame = new JFrame(gameTitle);
 /*
@@ -58,9 +61,9 @@ public class MenuGUI {
         lowerPanel = buildLowerPanel();
 
         //Add panels to the frame
-        frame.add(upperPanel, BorderLayout.NORTH);
-        frame.add(middlePanel, BorderLayout.CENTER);
-        frame.add(lowerPanel, BorderLayout.SOUTH);
+        panel.add(upperPanel, BorderLayout.NORTH);
+        panel.add(middlePanel, BorderLayout.CENTER);
+        panel.add(lowerPanel, BorderLayout.SOUTH);
 
         frame.setSize(600, 600);
         frame.setLocationRelativeTo(null);
