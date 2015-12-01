@@ -9,26 +9,20 @@ import java.awt.*;
 public class MenuGUI {
 
     private JFrame frame;
-    private JPanel panel;
+    private JPanel panel = new JPanel();
     private JButton newGame;
     private JButton highScore;
     private JButton quit;
     private JButton sound;
-    private CardLayout cardLayout = new CardLayout();
     private String gameTitle = "Anti tower Defence";
-    private String newGameTitle = "New Game";
-    private String highScoreTitle = "High Score";
-    private String quitTitle = "Quit";
-    private String soundTitle = "Sound";
     private JPanel upperPanel = null;
     private JPanel middlePanel;
     private JPanel lowerPanel;
 
-    public MenuGUI() {
+    public void MenuGUI() {
 
-        panel = new JPanel();
 
-        frame = new JFrame(gameTitle);
+        //frame = new JFrame(gameTitle);
 /*
         try {
             frame.setContentPane(new ImagePanel(ImageIO.read(new File("startBack.png"))));
@@ -53,9 +47,12 @@ public class MenuGUI {
 
 
 
-
+/*
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        */
+
+/*
         upperPanel = buildUpperPanel();
         middlePanel = buildMiddlePanel();
         lowerPanel = buildLowerPanel();
@@ -65,10 +62,16 @@ public class MenuGUI {
         panel.add(middlePanel, BorderLayout.CENTER);
         panel.add(lowerPanel, BorderLayout.SOUTH);
 
+        */
+
+
+
+        /*
         frame.setSize(600, 600);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
+        */
 
     }
 
@@ -99,7 +102,7 @@ public class MenuGUI {
         highScore.setContentAreaFilled(false);
         highScore.setFocusPainted(false);
 
-        quit = new JButton(new ImageIcon("quitButton.png"));
+        quit = new JButton(new ImageIcon("src/main/resources/quitButton.png"));
         quit.addMouseListener(new QuitListener(quit));
         quit.setBorderPainted(false);
         quit.setContentAreaFilled(false);
@@ -132,6 +135,22 @@ public class MenuGUI {
 
     public void show() {
         frame.setVisible(true);
+    }
+
+    public JPanel getPanel() {
+
+        upperPanel = buildUpperPanel();
+        middlePanel = buildMiddlePanel();
+        lowerPanel = buildLowerPanel();
+
+        panel.setLayout(new BorderLayout());
+
+        //Add panels to the frame
+        panel.add(upperPanel, BorderLayout.NORTH);
+        panel.add(middlePanel, BorderLayout.CENTER);
+        panel.add(lowerPanel, BorderLayout.SOUTH);
+
+        return panel;
     }
 }
 /*
