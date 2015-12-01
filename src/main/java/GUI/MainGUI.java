@@ -8,14 +8,21 @@ import java.awt.*;
  */
 public class MainGUI extends JFrame {
 
-    //private JFrame frame;
+    private JFrame frame;
     // hej
 
-    private JFrame menuCard, gameCard, highScoreCard, levelCard, endGameCard;
+    private JPanel menuCard, gameCard, highScoreCard, levelCard, endGameCard;
 
     //private JLabel menuLabel, gameLabel;
 
     private CardLayout cardLayout = new CardLayout();
 
+
+    public MainGUI() {
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+    }
 
 }
