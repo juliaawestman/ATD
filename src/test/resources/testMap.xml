@@ -1,0 +1,12 @@
+<mapList>
+  <!--1 or more repetitions:-->
+  <map>
+    <name>string</name>
+    <waves>3</waves>
+    <winScore>3</winScore>
+    <startingGold>3</startingGold>
+
+    <!--1 or more repetitions:-->
+    <tile tileType="TowerTile" xAxis="1" yAxis="1"/>
+  </map>
+</mapList>

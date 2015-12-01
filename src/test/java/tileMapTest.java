@@ -1,4 +1,4 @@
-package src.tests.java;
+package src.test.java;
 
 import org.junit.Test;
 import src.main.java.tileMap;
@@ -9,7 +9,8 @@ public class tileMapTest {
     @Test
     public void shouldFailReadBecauseMapFileIncorrect() throws Exception {
         map = new tileMap();
-        map.readMap("../testMap.xml");
+        map.readMap("./src/test/resources/testMap.xml");
+
     }
 
 }

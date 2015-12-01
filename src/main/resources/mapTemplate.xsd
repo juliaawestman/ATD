@@ -21,7 +21,7 @@
 	</xsd:complexType>
 
 	<xsd:complexType name="tileType" >
-			<xsd:attribute name="tileName" type="xsd:string" />
+			<xsd:attribute name="tileType" type="xsd:string" />
 			<xsd:attribute name="xAxis" type="xsd:int" />
 			<xsd:attribute name="yAxis" type="xsd:int" />
 	</xsd:complexType>
