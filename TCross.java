@@ -14,41 +14,28 @@ import javax.imageio.ImageIO;
  * TCross a class that extends the PathTile class. The class
  * have a own image that will be used in the user interface.   
  */
-public class TCross extends PathTile {
+public class TCross extends PathTile implements TileAction {
     
-    private static String PATH ="TCross.jpg"; 
-    
+    private static String PATH; 
+    private Position pos;
     private BufferedImage img = null;
     
     /**
      * TCross is the constructor that will read in the image when 
      * the program will create a object of the class Default
      */
-    public TCross() {
-	readInImg();
+    protected TCross(Position p, String imgPath) {
+	super(p, imgPath);
+	
+	PATH = imgPath;
+	pos = p;
     }
-    
     /**
-     * ReadInImg is a method that will read in a image that 
-     * will be used in the user interface
+     * 
      */
-    public void readInImg(){
-	try {
-	   // URL url = new URL(IMG_URL);
-	    File file = new File(PATH);
-	    img = ImageIO.read(file);
-	    
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}
-    }
-    
-    /**
-     * getImage is method that will get the image
-     * @return a BufferedImage
-     */
-    public BufferedImage getImg(){
-	return img;
+    @Override
+    public void landOn(Unit unit) {
+	
     }
 
 }

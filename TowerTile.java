@@ -15,43 +15,20 @@ import javax.imageio.ImageIO;
  * have a own image that will be used in the user interface. 
  *
  */
-public class TowerTile {
- // TODO: change img
-    private static String PATH ="default.jpg"; 
-
-    private BufferedImage img = null;
-    
+public class TowerTile extends Tile{
+ 
+     private static String PATH; 
+     private BufferedImage img = null;
+     private Position pos;
+     
     /**
-     * RightTurn is the constructor that will read in the image when 
-     * the program will create a object of the class Default
+     *  
+     * @param p
+     * @param imgPath
      */
-    public TowerTile() {
-	readInImg();
+    protected TowerTile(Position p, String imgPath) {
+	super(p, imgPath);
+	PATH =imgPath;
+	pos = p;
     }
-
-    /**
-     * ReadInImg is a method that will read in a image that 
-     * will be used in the user interface
-     */
-    public void readInImg(){
-	try {
-	    // URL url = new URL(IMG_URL);
-	    File file = new File(PATH);
-	    img = ImageIO.read(file);
-
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}
-    }
-
-    /**
-     * getImage is method that will get the image
-     * @return a BufferedImage
-     */
-    public BufferedImage getImg(){
-	return img;
-    }
-
-
-
 }

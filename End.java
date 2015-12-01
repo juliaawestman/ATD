@@ -15,41 +15,27 @@ import javax.imageio.ImageIO;
  * have a own image that will be used in the user interface. 
  *
  */
-public class End extends PathTile{
+public class End extends PathTile implements TileAction{
+
 
     //TODO: change img
-    private static String PATH ="default.jpg"; 
-
+    private static String PATH; 
+    private Position pos;
     private BufferedImage img = null;
 
     /**
      * End is the constructor that will read in the image when 
      * the program will create a object of the class Default
      */
-    public End() {
-	readInImg();
-    }
+    protected End(Position p, String imgPath) {
+   	super(p, imgPath);
+   	pos = p;
+   	PATH = imgPath;
+       }
 
-    /**
-     * ReadInImg is a method that will read in a image that 
-     * will be used in the user interface
-     */
-    public void readInImg(){
-	try {
-	    // URL url = new URL(IMG_URL);
-	    File file = new File(PATH);
-	    img = ImageIO.read(file);
-
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}
-    }
-
-    /**
-     * getImage is method that will get the image
-     * @return a BufferedImage
-     */
-    public BufferedImage getImg(){
-	return img;
+    @Override
+    public void landOn(Unit unit) {
+	// TODO Auto-generated method stub
+	
     }
 }
