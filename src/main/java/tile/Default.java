@@ -13,16 +13,12 @@ import src.main.java.Position;
  */
 public class Default extends PathTile {
 
-    private static String PATH; 
-    private Position pos;
     /**
      * src.main.java.tile.tile.Default is the constructor that will read in the image when
      * the program will create a object of the class src.main.java.tile.tile.Default
      */
     protected Default(Position p, String imgPath) {
   	super(p, imgPath);
-  	PATH = imgPath;
-  	pos =p;
       }
     
 }

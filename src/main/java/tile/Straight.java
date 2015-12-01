@@ -28,8 +28,6 @@ public class Straight extends PathTile implements TileAction {
     */
     protected Straight(Position p, String imgPath) {
    	super(p, imgPath);
-   	pos = p;
-   	PATH = imgPath;
    	
     }
 

@@ -11,8 +11,10 @@ import src.main.java.unit.Unit;
 import java.awt.image.BufferedImage;
 
 /**
- * src.main.java.tile.tile.Telepoter is a class that extends the src.main.java.tile.tile.PathTile class. The class
- * have a own image that will be used in the user interface. 
+ * src.main.java.tile.tile.
+ * Telepoter is a class that extends the 
+ * src.main.java.tile.tile.PathTile class. The class have a own
+ * image that will be used in the user interface. 
  *
  */
 public class Telepoter extends PathTile implements TileAction {
@@ -24,8 +26,9 @@ public class Telepoter extends PathTile implements TileAction {
     private BufferedImage img = null;
     
     /**
-     * src.main.java.tile.tile.RightTurn is the constructor that will read in the image when
-     * the program will create a object of the class src.main.java.tile.tile.Default
+     * src.main.java.tile.tile. Teleporter is the constructor that 
+     * will read in the image when the program will create a object
+     * of the class src.main.java.tile.tile.Default
      */
     protected Telepoter(Position p, String imgPath) {
 	super(p, imgPath);

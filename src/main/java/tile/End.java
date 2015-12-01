@@ -17,20 +17,12 @@ import java.awt.image.BufferedImage;
  */
 public class End extends PathTile implements TileAction{
 
-
-    //TODO: change img
-    private static String PATH; 
-    private Position pos;
-    private BufferedImage img = null;
-
     /**
      * src.main.java.tile.tile.End is the constructor that will read in the image when
      * the program will create a object of the class src.main.java.tile.tile.Default
      */
     protected End(Position p, String imgPath) {
    	super(p, imgPath);
-   	pos = p;
-   	PATH = imgPath;
        }
 
     @Override

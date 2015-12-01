@@ -16,11 +16,7 @@ import java.awt.image.BufferedImage;
  *
  */
 public class TowerTile extends Tile {
- 
-     private static String PATH; 
-     private BufferedImage img = null;
-     private Position pos;
-     
+
     /**
      *  
      * @param p
@@ -28,7 +24,5 @@ public class TowerTile extends Tile {
      */
     protected TowerTile(Position p, String imgPath) {
 	super(p, imgPath);
-	PATH =imgPath;
-	pos = p;
     }
 }

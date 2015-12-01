@@ -16,9 +16,6 @@ import java.awt.image.BufferedImage;
  */
 public class TCross extends PathTile implements TileAction {
     
-    private static String PATH; 
-    private Position pos;
-    private BufferedImage img = null;
     
     /**
      * src.main.java.tile.tile.TCross is the constructor that will read in the image when
@@ -26,9 +23,6 @@ public class TCross extends PathTile implements TileAction {
      */
     protected TCross(Position p, String imgPath) {
 	super(p, imgPath);
-	
-	PATH = imgPath;
-	pos = p;
     }
     /**
      * 

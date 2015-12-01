@@ -15,18 +15,13 @@ import java.awt.image.BufferedImage;
  */
 public class Start extends PathTile implements TileAction {
 
-    private static String PATH; 
-    private Position pos;
-    private BufferedImage img = null;
-
     /**
      * src.main.java.tile.tile.Start is the constructor that will read in the image when
      * the program will create a object of the class src.main.java.tile.tile.Default
     */
     protected Start(Position p, String imgPath) {
 	super(p, imgPath);
-	pos = p;
-	PATH = imgPath;
+
     }
 
     @Override

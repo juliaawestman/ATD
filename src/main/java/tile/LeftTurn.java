@@ -16,11 +16,6 @@ import java.awt.image.BufferedImage;
  *
  */
 public class LeftTurn extends PathTile implements TileAction {
-
-    // TODO: change img
-    private static String PATH = "src/main/resources/default.jpg";
-    private Position pos;
-    private BufferedImage img = null;
     
     /**
      * src.main.java.tile.tile.LeftTurn is the constructor that will read in the image when
@@ -28,8 +23,7 @@ public class LeftTurn extends PathTile implements TileAction {
      */
     protected LeftTurn(Position p, String imgPath) {
 	super(p, imgPath);
-	pos = p;
-	PATH = imgPath;
+
     }
 
     @Override
