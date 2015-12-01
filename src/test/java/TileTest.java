@@ -1,4 +1,4 @@
-package src.main.java.tile;/*
+package src.test.java;/*
  * TileTest
  * 
  * Date 27/11- 2015
