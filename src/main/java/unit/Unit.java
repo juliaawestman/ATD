@@ -92,7 +92,7 @@ public abstract class Unit {
         return this.pos;
     }
 
-    protected void setCurrentPosition(Position pos) {
+    public void setCurrentPosition(Position pos) {
         this.pos = pos;
     }
 
