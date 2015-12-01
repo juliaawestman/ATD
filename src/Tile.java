@@ -1,6 +1,6 @@
-
+package src;
 /*
- * Tile
+ * src.Tile
  * 
  * Date 1/12- 2015
  * @author id12jwn
@@ -11,7 +11,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- * Tile is a class is a abctact class...
+ * src.Tile is a class is a abctact class...
  */
 public abstract class Tile {
     

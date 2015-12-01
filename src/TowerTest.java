@@ -70,7 +70,7 @@ public class TowerTest {
     public void shouldKillTargetWithFirstShot() throws Exception {
         unitWithHealthAndTower(new Position(12, 12), 10, new Position(10, 10));
         t.setTarget(u);
-        t.attack();
+        t.attack(10);
         assertFalse(u.isAlive());
     }
 
@@ -78,7 +78,14 @@ public class TowerTest {
     public void shouldNotKillTargetWithFirstShot() throws Exception {
         unitWithHealthAndTower(new Position(12, 12), 11, new Position(10, 10));
         t.setTarget(u);
-        t.attack();
+        t.attack(10);
+        assertTrue(u.isAlive());
+    }
+    @Test
+    public void shouldNotAttackIfToSoon() throws Exception {
+        unitWithHealthAndTower(new Position(12, 12), 10, new Position(10, 10));
+        t.setTarget(u);
+        t.attack(5);
         assertTrue(u.isAlive());
     }
 

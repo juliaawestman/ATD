@@ -75,8 +75,11 @@ public abstract class Tower {
     /**
      * Will deal the towers damage to the towers current target.
      */
-    public void attack() {
-        target.takeDamage(damage);
+    public void attack(int time) {
+        if(time - timeOfLastAttack >= speed){
+            target.takeDamage(damage);
+            timeOfLastAttack = time;
+        }
     }
 
     /**
