@@ -25,7 +25,6 @@ public class RightTurn extends PathTile implements TileAction {
 
     @Override
     public void landOn(Unit unit) {
-        unit.setDirection(Unit.Direction.EAST);
     }
 
 }
