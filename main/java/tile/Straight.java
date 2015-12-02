@@ -17,10 +17,6 @@ import java.awt.image.BufferedImage;
  */
 public class Straight extends PathTile implements TileAction {
 
-
-    private static String PATH; 
-    private Position pos;
-    private BufferedImage img = null;
     
     /**
      * main.java.tile.tile.RightTurn is the constructor that will read in the image when
