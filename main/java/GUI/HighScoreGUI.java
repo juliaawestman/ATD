@@ -25,7 +25,7 @@ public class HighScoreGUI {
         JPanel upperPanel = new JPanel();
 
         //BufferedImage myPicture = ImageIO.read(new File("loggo.png"));
-        JLabel picLabel = new JLabel(new ImageIcon("src/main/resources/loggo.png"));
+        JLabel picLabel = new JLabel(new ImageIcon("main/resources/loggo.png"));
         upperPanel.add(picLabel);
 
         upperPanel.setOpaque(false);
