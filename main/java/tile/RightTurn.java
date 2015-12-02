@@ -14,17 +14,22 @@ import main.java.unit.Unit;
  */
 public class RightTurn extends PathTile implements TileAction {
 
+    private Position nextPos;
     /**
      * main.java.tile.tile.RightTurn is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
      */
-    protected RightTurn(Position p, String imgPath, Position nextPos) {
+    protected RightTurn(Position p, String imgPath, Position nextPositon) {
 
-        super(p, imgPath, nextPos);
+        super(p, imgPath, nextPositon);
+
+        nextPos = nextPositon;
+
     }
 
     @Override
     public void landOn(Unit unit) {
+        unit.setNextPos(nextPos);
     }
 
 }
