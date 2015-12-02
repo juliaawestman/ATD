@@ -13,8 +13,8 @@ import main.java.*;
 
 public class TeleporterUnit extends Unit {
 
-    public TeleporterUnit(Position pos, Direction d) {
-        super(pos, d);
+    public TeleporterUnit(Position pos) {
+        super(pos);
         super.health = 20;
         super.price = 50;
         super.speed = 50;

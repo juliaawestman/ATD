@@ -10,13 +10,17 @@ package main.java.unit;
  * Date: 2015-11-26
  */
 import java.awt.image.BufferedImage;
+import main.java.Map;
 import main.java.Position;
+import main.java.tile.PathTile;
+import main.java.tile.TileAction;
 
 public abstract class Unit {
 
     protected static final int MAXSPEED = 50;
     protected String name;
     protected Position pos;
+    private Position nextPos;
     protected BufferedImage img;
     protected int health;
     protected int price;
@@ -25,11 +29,6 @@ public abstract class Unit {
     protected Boolean flying;
     private int timeLived = 0; 
 
-    public enum Direction {
-
-        NORTH, EAST, SOUTH, WEST
-    }
-    Direction direction;
 
     /**
      * Initializes a new {@code Unit} which is being put on specified position.
@@ -38,9 +37,9 @@ public abstract class Unit {
      * @param d the direction wich the unit will be facing
      *
      */
-    public Unit(Position pos, Direction d) {
+    public Unit(Position pos) {
         this.pos = pos;
-        this.direction = d;
+        /*MAKE TILE SET NEXT POS HERE!---------------------------------------------------------------*/
 
         this.health = 10;
         this.price = 10;
@@ -57,29 +56,13 @@ public abstract class Unit {
         this.flying = flying;
     }
 
-    public void move() {
+    public void move(Map m){
         /*Move more frequently depending on the speed*/
         if (((timeLived) % ((MAXSPEED + 1) - speed)) == 0) {
-            Position newPos = null;
-            switch (this.direction) {
-                case NORTH:
-                    newPos = this.pos.getPosToNorth();
-                    break;
-                case EAST:
-                    newPos = this.pos.getPosToEast();
-                    break;
-                case SOUTH:
-                    newPos = this.pos.getPosToSouth();
-                    break;
-                case WEST:
-                    newPos = this.pos.getPosToWest();
-                    break;
-            }
-            if (newPos == null) {
-                throw new NullPointerException("The unit is not facing "
-                        + "any direction");
-            }
-            setCurrentPosition(newPos);
+            TileAction currentTile;
+            this.pos = this.nextPos;
+            currentTile = (TileAction) m.getTileAt(pos);
+            currentTile.landOn(this);
         }
         timeLived++;
     }
@@ -96,8 +79,8 @@ public abstract class Unit {
         this.pos = pos;
     }
 
-    public void setDirection(Direction direction) {
-        this.direction = direction;
+    public void setNextPos(Position nextPos) {
+        this.nextPos = nextPos;
     }
 
     public void takeDamage(int dmg) {
