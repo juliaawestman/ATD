@@ -31,6 +31,8 @@ public abstract class Tile {
 	path = imgPath;
 	
     }
+
+    //next tile
     
     /**
      * readInImg will read in the img that is given of the path

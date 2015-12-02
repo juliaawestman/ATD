@@ -16,21 +16,17 @@ import java.awt.image.BufferedImage;
  *
  */
 public class Straight extends PathTile implements TileAction {
-
-    
     /**
      * main.java.tile.tile.RightTurn is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
     */
-    protected Straight(Position p, String imgPath) {
-   	super(p, imgPath);
-   	
+    protected Straight(Position p, String imgPath, Position nextPos) {
+        super(p, imgPath, nextPos);
     }
 
     @Override
     public void landOn(Unit unit) {
-	// TODO Auto-generated method stub
-	
+        unit.setDirection(Unit.Direction.NORTH);
     }
 
 }

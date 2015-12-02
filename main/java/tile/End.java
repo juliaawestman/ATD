@@ -10,22 +10,21 @@ import main.java.unit.Unit;
 
 /**
  * main.java.tile.tile.End is a class that extends the main.java.tile.tile.PathTile class. The class
- * have a own image that will be used in the user interface. 
- *
+ * have a own image that will be used in the user interface.
  */
-public class End extends PathTile implements TileAction{
+public class End extends PathTile implements TileAction {
 
     /**
      * main.java.tile.tile.End is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
      */
-    protected End(Position p, String imgPath) {
-   	super(p, imgPath);
-       }
+    protected End(Position p, String imgPath, Position nextPos) {
+        super(p, imgPath, nextPos);
+    }
 
     @Override
     public void landOn(Unit unit) {
-	// TODO Auto-generated method stub
-	
+        // TODO Auto-generated method stub
+
     }
 }

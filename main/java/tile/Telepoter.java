@@ -30,8 +30,8 @@ public class Telepoter extends PathTile implements TileAction {
      * will read in the image when the program will create a object
      * of the class main.java.tile.tile.Default
      */
-    protected Telepoter(Position p, String imgPath) {
-	super(p, imgPath);
+    protected Telepoter(Position p, String imgPath, Position nextPos) {
+	super(p, imgPath, nextPos);
 	pos = p;
 	PATH = imgPath;
     }
