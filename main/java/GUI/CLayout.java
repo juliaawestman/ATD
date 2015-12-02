@@ -28,9 +28,11 @@ public class CLayout {
                 //MenuGUI gui = new MenuGUI();
 
         MenuGUI menu = new MenuGUI();
+        HighScoreGUI highScore = new HighScoreGUI();
 
 
         panelCont.add(menu.getPanel(), "menu");
+        panelCont.add(highScore.getPanel(), "highscore");
 
         cl.show(panelCont, "menu");
 
@@ -57,5 +59,9 @@ public class CLayout {
 
         */
 
+    }
+
+    public void showCard(String s) {
+        cl.show(panelCont, s);
     }
 }

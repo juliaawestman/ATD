@@ -18,6 +18,7 @@ public class HighScoreListener implements MouseListener{
 
         public void mouseClicked(MouseEvent e) {
             button.setIcon(new ImageIcon("main/resources/highScorePressed.png"));
+            new CLayout().showCard("highscore");
 
         }
 
