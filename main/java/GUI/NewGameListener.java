@@ -16,6 +16,7 @@ class NewGameListener implements MouseListener {
 
     public void mouseClicked(MouseEvent e) {
         button.setIcon(new ImageIcon("main/resources/newGameButtonPress.png"));
+        new CLayout().showCard("newGame");
 
     }
 
