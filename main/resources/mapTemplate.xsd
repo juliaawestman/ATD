@@ -20,9 +20,26 @@
 		</xsd:sequence>
 	</xsd:complexType>
 
-	<xsd:complexType name="tileType" >
+	<xsd:complexType name="tileType2" >
+		<xsd:simpleContent>
 			<xsd:attribute name="tileType" type="xsd:string" />
-			<xsd:attribute name="xAxis" type="xsd:int" />
-			<xsd:attribute name="yAxis" type="xsd:int" />
+			<xsd:attribute name="tilePos" type="xsd:int" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:simpleType name="timeValueType">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="\d{2}:\d{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="tileType">
+		<xsd:attribute name="format">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:token">
+					<xsd:pattern value="\d,\d"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
 	</xsd:complexType>
 </xsd:schema>

@@ -1,0 +1,16 @@
+<mapList>
+    <!--1 or more repetitions:-->
+    <map>
+        <name>MyMap</name>
+        <waves>3</waves>
+        <winScore>3</winScore>
+        <startingGold>3</startingGold>
+
+        <!--1 or more repetitions:-->
+        <tile tileType="TowerTile" tilePos="1,1"/>
+        <tile tileType="TCross" tilePos="1,2">
+            <sendToPos pos="1,3" />
+            <sendToPos pos="2,2" />
+        </tile>
+    </map>
+</mapList>
