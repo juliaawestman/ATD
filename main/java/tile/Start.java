@@ -14,18 +14,19 @@ import main.java.unit.Unit;
  */
 public class Start extends PathTile implements TileAction {
 
+    private Position nextPos;
     /**
      * main.java.tile.tile.Start is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
      */
-    protected Start(Position p, String imgPath, Position nextPos) {
-        super(p, imgPath, nextPos);
-
+    protected Start(Position p, String imgPath, Position nextPosition) {
+        super(p, imgPath, nextPosition);
+        nextPos = nextPosition;
     }
 
     @Override
     public void landOn(Unit unit) {
-
+        unit.setNextPos(nextPos);
 
     }
 
