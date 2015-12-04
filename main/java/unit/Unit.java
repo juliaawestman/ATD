@@ -28,6 +28,7 @@ public abstract class Unit {
     protected int income;
     protected Boolean flying;
     private int timeLived = 0; 
+    private boolean hasReachedGoal = false;
 
 
     /**
@@ -89,5 +90,13 @@ public abstract class Unit {
 
     public boolean isAlive() {
         return (this.health > 0);
+    }
+    
+    public void setHasReachedGoal(boolean b){
+        this.hasReachedGoal = b;
+    }
+    
+    public boolean hasReachedGoal(){
+        return this.hasReachedGoal;
     }
 }
