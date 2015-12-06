@@ -13,9 +13,9 @@ package main.java.unit;
 import main.java.*;
 
 public class AirUnit extends main.java.unit.Unit {
-
-    public AirUnit(Position pos) {
-        super(pos);
+    
+    public AirUnit(Position pos, Map m) {
+        super(pos,m);
         super.health = 20;
         super.price = 30;
         super.speed = 45;
