@@ -20,7 +20,7 @@ public class TCross extends PathTile implements TileAction {
      * main.java.tile.tile.TCross is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
      */
-    protected TCross(Position p) {
+    public TCross(Position p) {
 	    super(p, "");
     }
 

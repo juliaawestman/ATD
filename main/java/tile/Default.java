@@ -17,7 +17,7 @@ public class Default extends PathTile {
      * main.java.tile.tile.Default is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
      */
-    protected Default(Position p) {
+    public Default(Position p) {
         super(p,"hej");
     }
 

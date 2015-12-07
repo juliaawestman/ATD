@@ -21,7 +21,8 @@ public class Straight extends PathTile implements TileAction {
      * the program will create a object of the class main.java.tile.tile.Default
     */
     private Position nextPos;
-    protected Straight(Position p) {
+
+    public Straight(Position p) {
         super(p, "");
     }
 

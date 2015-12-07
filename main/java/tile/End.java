@@ -18,7 +18,7 @@ public class End extends PathTile implements TileAction {
      * main.java.tile.tile.End is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
      */
-    protected End(Position p) {
+    public End(Position p) {
 
         super(p, "hejhej");
     }

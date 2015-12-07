@@ -21,7 +21,7 @@ public class Turn extends PathTile implements TileAction {
      * the program will create a object of the class main.java.tile.tile.Default
      */
 
-    protected Turn(Position p){
+    public Turn(Position p){
         super(p, "");;
     }
 
