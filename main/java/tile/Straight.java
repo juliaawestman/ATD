@@ -20,13 +20,16 @@ public class Straight extends PathTile implements TileAction {
      * main.java.tile.tile.RightTurn is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
     */
-    protected Straight(Position p, String imgPath, Position nextPos) {
-        super(p, imgPath, nextPos);
+    private Position nextPos;
+    protected Straight(Position p, String imgPath, Position nextPosition) {
+        super(p, imgPath, nextPosition);
+        nextPos = nextPosition;
     }
 
     @Override
     public void landOn(Unit unit) {
 
+        unit.setNextPos(nextPos);
     }
 
 }

@@ -25,6 +25,5 @@ public class End extends PathTile implements TileAction {
     @Override
     public void landOn(Unit unit) {
         // TODO Auto-generated method stub
-
     }
 }

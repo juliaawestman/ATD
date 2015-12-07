@@ -9,17 +9,22 @@
  */
 package main.java;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.java.tower.Tower;
 import main.java.unit.Unit;
+import org.xml.sax.SAXException;
 
 public class Game {
 
     private int timeOfGame = 0;
     //----------------------------private User user;
-    private MapFactory map;
+    private MapFactory mapFactory;
+    private Map map;
     private final int waveNr = 1;
     private final List<Unit> units = new LinkedList();
     private final List<Tower> towers = new LinkedList();
@@ -30,6 +35,13 @@ public class Game {
     public Game(int nrOfWaves, int winCondition) {
         this.nrOfWaves = nrOfWaves;
         this.winCondition = winCondition;
+        try {
+            mapFactory = new MapFactory("somepaththatidontknow");
+        } catch (IOException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SAXException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void update() {
@@ -93,6 +105,6 @@ public class Game {
     }
 
     public void readMap(String mapName) {
-        //this.map = new TileMap(mapName);
+        this.map = mapFactory.makeMap(mapName);
     }
 }

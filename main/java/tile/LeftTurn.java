@@ -5,6 +5,7 @@ package main.java.tile;/*
  * @author id12jwn
  */
 
+import javafx.geometry.Pos;
 import main.java.Position;
 import main.java.unit.Unit;
 
@@ -14,18 +15,19 @@ import main.java.unit.Unit;
  */
 public class LeftTurn extends PathTile implements TileAction {
 
+    private Position nextPos;
     /**
      * main.java.tile.tile.LeftTurn is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
      */
-    protected LeftTurn(Position p, String imgPath, Position nextPos) {
-        super(p, imgPath, nextPos);
-
+    protected LeftTurn(Position p, String imgPath, Position nextPosition) {
+        super(p, imgPath, nextPosition);
+        nextPos = nextPosition;
     }
 
     @Override
     public void landOn(Unit unit) {
-        // TODO Auto-generated method stub
+        unit.setNextPos(nextPos);
 
     }
 

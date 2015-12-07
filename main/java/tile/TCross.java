@@ -15,18 +15,29 @@ import main.java.unit.Unit;
 public class TCross extends PathTile implements TileAction {
     
 
+    private Position defaultPos;
+    private Position nextPos;
     /**
      * main.java.tile.tile.TCross is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
      */
-    protected TCross(Position p, String imgPath, Position nextPos ) {
-	    super(p, imgPath, nextPos);
+    protected TCross(Position p, String imgPath, Position defaultNextPos, Position nextPositon) {
+	    super(p, imgPath, nextPositon);
+
+        defaultPos = defaultNextPos;
+        nextPos = nextPositon;
     }
     /**
      * 
      */
     @Override
     public void landOn(Unit unit) {
+        if (nextPos.equals(null)){
+            unit.setNextPos(defaultPos);
+        }
+        else {
+            unit.setNextPos(nextPos);
+        }
 	
     }
 

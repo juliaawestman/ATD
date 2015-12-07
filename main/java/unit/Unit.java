@@ -12,7 +12,6 @@ package main.java.unit;
 import java.awt.image.BufferedImage;
 import main.java.Map;
 import main.java.Position;
-import main.java.tile.PathTile;
 import main.java.tile.TileAction;
 
 public abstract class Unit {
@@ -28,19 +27,20 @@ public abstract class Unit {
     protected int income;
     protected Boolean flying;
     private int timeLived = 0; 
-
+    private boolean hasReachedGoal = false;
+    private Map map;
 
     /**
      * Initializes a new {@code Unit} which is being put on specified position.
      *
      * @param pos the position
-     * @param d the direction wich the unit will be facing
+     * @param map the map where the unit is
      *
      */
-    public Unit(Position pos) {
+    public Unit(Position pos, Map map) {
+        this.map = map;
         this.pos = pos;
-        /*MAKE TILE SET NEXT POS HERE!---------------------------------------------------------------*/
-
+        this.nextPos = pos;
         this.health = 10;
         this.price = 10;
         this.speed = 10;
@@ -56,12 +56,12 @@ public abstract class Unit {
         this.flying = flying;
     }
 
-    public void move(Map m){
+    public void move(){
         /*Move more frequently depending on the speed*/
         if (((timeLived) % ((MAXSPEED + 1) - speed)) == 0) {
             TileAction currentTile;
             this.pos = this.nextPos;
-            currentTile = (TileAction) m.getTileAt(pos);
+            currentTile = (TileAction) map.getTileAt(pos);
             currentTile.landOn(this);
         }
         timeLived++;
@@ -89,5 +89,13 @@ public abstract class Unit {
 
     public boolean isAlive() {
         return (this.health > 0);
+    }
+    
+    public void setHasReachedGoal(boolean b){
+        this.hasReachedGoal = b;
+    }
+    
+    public boolean hasReachedGoal(){
+        return this.hasReachedGoal;
     }
 }
