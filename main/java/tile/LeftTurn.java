@@ -20,7 +20,7 @@ public class LeftTurn extends PathTile implements TileAction {
      * main.java.tile.tile.LeftTurn is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
      */
-    protected LeftTurn(Position p, String imgPath, Position nextPosition) {
+    protected LeftTurn(Position p, Position nextPosition) {
         super(p, imgPath, nextPosition);
         nextPos = nextPosition;
     }
