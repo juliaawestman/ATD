@@ -2,7 +2,7 @@ package main.java.tile;
 
 import main.java.Position;
 
-abstract class PathTile extends Tile {
+public abstract class PathTile extends Tile {
 
     private Position nextPos;
     protected PathTile(Position p, String imgPath) {
