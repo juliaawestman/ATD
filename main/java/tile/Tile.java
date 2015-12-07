@@ -27,8 +27,9 @@ public abstract class Tile {
      * @param imgPath
      */
     protected Tile(Position p, String imgPath) {
-	pos = p;
-	path = imgPath;
+	    pos = p;
+	    path = imgPath;
+        readInImg();
 	
     }
 

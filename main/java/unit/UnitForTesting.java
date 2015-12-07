@@ -14,9 +14,9 @@ import main.java.*;
 
 public class UnitForTesting extends main.java.unit.Unit {
 
-    public UnitForTesting(Position pos,Map m) {
+    public UnitForTesting(Position pos) {
 
-        super(pos, m);
+        super(pos);
         super.health = 1;
         super.price = 30;
         super.speed = 50;

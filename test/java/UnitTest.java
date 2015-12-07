@@ -7,7 +7,6 @@ import main.java.*;
 import main.java.unit.AirUnit;
 import main.java.unit.GroundUnit;
 import main.java.unit.Unit;
-import main.java.unit.Unit.Direction;
 import main.java.unit.UnitForTesting;
 
 /**
@@ -21,7 +20,7 @@ public class UnitTest {
     @Before
     public void setUp() {
         Position pos = new Position(11, 22);
-        this.instance = new AirUnit(pos, Direction.SOUTH);
+        this.instance = new AirUnit(pos);
 
     }
 
@@ -60,7 +59,7 @@ public class UnitTest {
     public void testIsFlyingFalse() {
         System.out.println("isFlyingFalse");
         Position pos = new Position(1, 1);
-        Unit instanceGround = new GroundUnit(pos, Direction.SOUTH);
+        Unit instanceGround = new GroundUnit(pos);
 
         boolean expResult = false;
         boolean result = instanceGround.isFlying();
@@ -92,14 +91,13 @@ public class UnitTest {
     }
 
     /**
-     * Test of setDirection method, of class Unit.
+     * Test of setNextPos method, of class Unit.
      */
     @Test
     public void testSetDirection() {
         System.out.println("setDirection");
         Position tempPos = new Position(10, 22);
-        Direction direction = Direction.WEST;
-        instance.setDirection(direction);
+        instance.setNextPos(tempPos);
 
         instance.move();
 
@@ -115,7 +113,7 @@ public class UnitTest {
     public void testTakeDamageZero() {
         System.out.println("takeDamageZero");
         Position pos = new Position(11, 22);
-        Unit testUnit = new UnitForTesting(pos, Direction.SOUTH);
+        Unit testUnit = new UnitForTesting(pos);
         int dmg = 0;
         testUnit.takeDamage(dmg);
         /*Should be alive after 0 dmg dealt*/
@@ -128,7 +126,7 @@ public class UnitTest {
     public void testTakeDamageOne() {
         System.out.println("takeDamageOne");
         Position pos = new Position(11, 22);
-        Unit testUnit = new UnitForTesting(pos, Direction.SOUTH);
+        Unit testUnit = new UnitForTesting(pos);
 
         int dmg = 1;
         testUnit.takeDamage(dmg);

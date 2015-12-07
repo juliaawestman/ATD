@@ -18,7 +18,7 @@ public class TowerTile extends Tile {
      *  
      * @param p
      */
-    protected TowerTile(Position p) {
+    public TowerTile(Position p) {
 	    super(p, "");
     }
 }

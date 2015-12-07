@@ -17,6 +17,7 @@ public class User {
 
     public boolean useIncome(int useIncome){
         if(income >= useIncome){
+            lessIncome(useIncome);
             return true;
         }
         else {
@@ -28,12 +29,10 @@ public class User {
         return credits;
     }
 
-    // vad ska denna göra?
     public void income(int incomeToAdd){
         income = income + incomeToAdd;
     }
 
-    //vad ska denna göra?
     public int getScore(){
         return  points;
     }
@@ -42,8 +41,8 @@ public class User {
         points = points + pointsToAdd;
     }
 
-    public void increaseIncome(int incomeToIncreasse){
-        income = income - incomeToIncreasse;
+    public void lessIncome(int incomeToUse){
+        income = income - incomeToUse;
     }
 
     public int getIncome(){

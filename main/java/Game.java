@@ -18,11 +18,12 @@ import java.util.logging.Logger;
 import main.java.tower.Tower;
 import main.java.unit.Unit;
 import org.xml.sax.SAXException;
+import main.java.tile.TileAction;
 
 public class Game {
 
     private int timeOfGame = 0;
-    //----------------------------private User user;
+    private User user;
     private MapFactory mapFactory;
     private Map map;
     private final int waveNr = 1;
@@ -56,6 +57,7 @@ public class Game {
     private void updateUnits() {
         ListIterator itrUnits = units.listIterator();
         Unit currentUnit;
+        TileAction currentTile;
 
         while (itrUnits.hasNext()) {
             currentUnit = (Unit) itrUnits.next();
@@ -63,7 +65,10 @@ public class Game {
             if (!currentUnit.isAlive()) {
                 itrUnits.remove();
             }
-            currentUnit.move();
+            if (currentUnit.move()){
+                currentTile = (TileAction) map.getTileAt(currentUnit.getPosition());
+                currentTile.landOn(currentUnit);
+            }
         }
     }
 
