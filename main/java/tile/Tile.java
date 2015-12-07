@@ -29,7 +29,7 @@ public abstract class Tile {
     protected Tile(Position p, String imgPath) {
 	    pos = p;
 	    path = imgPath;
-        readInImg();
+        //readInImg();
 	
     }
 

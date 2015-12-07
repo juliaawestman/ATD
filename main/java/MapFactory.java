@@ -1,6 +1,6 @@
 package main.java;
 
-import main.java.tile.Tile;
+import main.java.tile.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -16,6 +16,8 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -23,7 +25,7 @@ import java.util.Hashtable;
 
 /**
  * Class:       TileMap
- *
+ * <p/>
  * Author:      Erik Moström
  * cs-user:     dv14emm
  * Date:        2015-12-01
@@ -47,7 +49,7 @@ public class MapFactory {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(maps);
-            Element data=doc.getDocumentElement();
+            Element data = doc.getDocumentElement();
             data.normalize();
             return doc.getElementsByTagName("map");
         } catch (ParserConfigurationException e) {
@@ -63,13 +65,13 @@ public class MapFactory {
      * @param mapName the name of the desired map
      * @return the map asked for, if it doesn't exist null will be returned
      */
-    public Map makeMap(String mapName){
+    public Map makeMap(String mapName) {
         Map map = null;
-        for (int i = 0; i < mapList.getLength(); i++){
+        for (int i = 0; i < mapList.getLength(); i++) {
             Node node = mapList.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element element = (Element) node;
-                if (mapName.compareTo(getTagValue("name", element)) == 0){
+                if (mapName.compareTo(getTagValue("name", element)) == 0) {
                     map = loadMap(element);
                 }
             }
@@ -91,7 +93,7 @@ public class MapFactory {
         System.out.println(Integer.parseInt(getTagValue("winScore", e)));
         map.setWinScore(Integer.parseInt(getTagValue("winScore", e)));
 
-        for (int i = 0; i < mapInfo.getLength(); i++){
+        for (int i = 0; i < mapInfo.getLength(); i++) {
             Node node = mapInfo.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 String nodeName = node.getNodeName();
@@ -113,7 +115,7 @@ public class MapFactory {
     /**
      * Will return the value held by a tag in the xml document.
      *
-     * @param tag the name of the tag
+     * @param tag     the name of the tag
      * @param element the element holding the tag
      * @return a string representing the value
      */
@@ -123,6 +125,11 @@ public class MapFactory {
         return nValue.getNodeValue();
     }
 
+    /**
+     * @param node
+     * @return
+     * @throws WrongClassTypeException
+     */
     private Tile constructTile(Node node) throws WrongClassTypeException {
         Node tileTypeNode = node.getAttributes().getNamedItem("tileType");
 
@@ -131,21 +138,44 @@ public class MapFactory {
         String type = "main.java.tile." + tileTypeNode.getNodeValue();
         Class<?> tileType = tileTypes.get(type);
 
-        if (tileType == null){
+        if (tileType == null) {
             tileType = readClass(type);
         }
 
+        /*Gets the position of the tile*/
+        NodeList positionList = ((Element)node).getElementsByTagName("sendToPos");
+        /*for (int i = 1; i <= positionList.getLength()-3; i++){
+            System.out.println(positionList.item(i).getNodeName() + " : " + positionList.item(i).getNodeValue());
+        }*/
+        Node tilePos = ((Element)node).getElementsByTagName("tilePos").item(0);
+        Position p = extractPosition(tilePos);
+
         Tile tile = null;
 
-        //WOEKING HERE
-        //tileType.getConstructor()
-
         try {
-            tile = (Tile) tileType.newInstance();
+            Constructor constructor;
+            constructor = tileType.getConstructor(Position.class);
+            //tile = (Tile) tileType.newInstance();
+            tile = (Tile) constructor.newInstance(p);
+            System.out.println("x: " + p.getX() + ", y: " + p.getY());
+
+            /* If the tile is a PathTile:
+             * Add position(s) to which the tile will send units.
+             */
+            if (PathTile.class.isAssignableFrom(tile.getClass())) {
+                PathTile pTile = (PathTile) tile;
+                for (int i = 0; i < positionList.getLength(); i++) {
+                    pTile.sendToPos(extractPosition(positionList.item(i)));
+                }
+            }
         } catch (InstantiationException e) {
             //TODO exception handling
             e.printStackTrace();
         } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
 
@@ -153,8 +183,21 @@ public class MapFactory {
     }
 
     /**
+     * Will extract the position from a position element int the .xml file
+     *
+     * @param pos the node containing the information
+     * @return an instance of Position.
+     */
+    private Position extractPosition(Node pos) {
+        int x = Integer.parseInt(pos.getAttributes().getNamedItem("xAxis").getNodeValue());
+        int y = Integer.parseInt(pos.getAttributes().getNamedItem("yAxis").getNodeValue());
+        return new Position(x, y);
+    }
+
+    /**
      * Loads a tile class into the program, if the
      * TODO better description
+     *
      * @param className
      * @return
      */
@@ -178,7 +221,7 @@ public class MapFactory {
         }
 
         /*Check if the class loaded actually is a subclass of Tile*/
-        if(!Tile.class.isAssignableFrom(c)){
+        if (!Tile.class.isAssignableFrom(c)) {
             throw new WrongClassTypeException();
         }
 

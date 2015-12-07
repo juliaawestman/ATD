@@ -55,8 +55,8 @@ public class Map {
     }
 
     public void printMap(){
-        String line = "";
         for (int row = 1; row <= 10; row++){
+            String line = "";
             for (int col = 1; col <= 10; col++){
                 if(getTileAt(new Position(row, col)) != null){
                     line = line + "*";
