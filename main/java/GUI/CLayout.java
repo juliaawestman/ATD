@@ -11,7 +11,8 @@ public class CLayout {
     JFrame frame = new JFrame("Anti Tower Defence");
 
     JPanel panelCont = new JPanel();
-    JPanel menuCard, newGameCard, highScoreCard, endGameCard;
+    //JPanel gamePanel = new JPanel();
+    //JPanel menuCard, newGameCard, highScoreCard, endGameCard;
 
     CardLayout cl = new CardLayout();
 
@@ -30,11 +31,14 @@ public class CLayout {
         MenuGUI menu = new MenuGUI();
         NewGameGUI newGame = new NewGameGUI();
         HighScoreGUI highScore = new HighScoreGUI();
+        //GameGUI game = new GameGUI();
 
 
         panelCont.add(menu.getPanel(), "menu");
         panelCont.add(highScore.getPanel(), "highScore");
-        panelCont.add(newGame.getPanel(), "newGame");
+        //panelCont.add(newGame.getPanel(), "newGame");
+        panelCont.add(new GameGUI().getPanel(), "game");
+
 
         cl.show(panelCont, "menu");
 
@@ -64,6 +68,12 @@ public class CLayout {
     }
 
     public void showCard(String s) {
+
+        if(s.equals("game")) {
+            frame.setSize(900, 900);
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        }
         cl.show(panelCont, s);
     }
 }
