@@ -13,32 +13,29 @@ import main.java.unit.Unit;
  * have a own image that will be used in the user interface.   
  */
 public class TCross extends PathTile implements TileAction {
-    
 
-    private Position defaultPos;
     private Position nextPos;
     /**
      * main.java.tile.tile.TCross is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
      */
-    protected TCross(Position p, String imgPath, Position defaultNextPos, Position nextPositon) {
-	    super(p, imgPath, nextPositon);
-
-        defaultPos = defaultNextPos;
-        nextPos = nextPositon;
+    protected TCross(Position p) {
+	    super(p, "");
     }
+
+
+    @Override
+    public void sendToPos(Position posToSend) {
+
+    }
+
+
     /**
      * 
      */
     @Override
     public void landOn(Unit unit) {
-        if (nextPos.equals(null)){
-            unit.setNextPos(defaultPos);
-        }
-        else {
-            unit.setNextPos(nextPos);
-        }
-	
+        unit.setNextPos(nextPos);
     }
 
 }

@@ -19,15 +19,22 @@ public class Start extends PathTile implements TileAction {
      * main.java.tile.tile.Start is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
      */
-    protected Start(Position p, String imgPath, Position nextPosition) {
-        super(p, imgPath, nextPosition);
-        nextPos = nextPosition;
+    protected Start(Position p) {
+        super(p, "hej");
     }
 
     @Override
     public void landOn(Unit unit) {
         unit.setNextPos(nextPos);
 
+    }
+    @Override
+    public void sendToPos(Position posToSend) {
+
+    }
+
+    public void setNextPos(Position posToSet){
+        nextPos = posToSet;
     }
 
 }

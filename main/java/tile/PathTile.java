@@ -2,15 +2,18 @@ package main.java.tile;
 
 import main.java.Position;
 
-public class PathTile extends Tile {
+abstract class PathTile extends Tile {
 
-    private Position nextTile;
-    protected PathTile(Position p, String imgPath, Position nextPos) {
+    private Position nextPos;
+    protected PathTile(Position p, String imgPath) {
 	super(p, imgPath);
 
-        nextTile = nextPos;
     }
 
+    protected void setNextPos(Position posToSet){
+        nextPos = posToSet;
+    }
 
-    // korsningen behöver egen varibael en tile som alternativ så den kan  byta till next tile
+    public abstract void sendToPos(Position posToSend);
+
 }

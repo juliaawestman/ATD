@@ -18,10 +18,15 @@ public class End extends PathTile implements TileAction {
      * main.java.tile.tile.End is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
      */
-    protected End(Position p, String imgPath, Position nextPos) {
-        super(p, imgPath, nextPos);
+    protected End(Position p) {
+
+        super(p, "hejhej");
     }
 
+    @Override
+    public void sendToPos(Position posToSend) {
+
+    }
     @Override
     public void landOn(Unit unit) {
         // TODO Auto-generated method stub
