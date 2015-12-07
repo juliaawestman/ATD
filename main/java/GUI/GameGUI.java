@@ -1,104 +1,68 @@
 package main.java.GUI;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.Random;
 
 /**
  * Created by Zacke on 2015-11-26.
  */
-public class GameGUI {
+public class GameGUI extends JPanel implements Runnable {
+    //JPanel gamePanel = new JPanel();
 
-    private JFrame frame;
+    JPanel gamePanel = new JPanel();
+    public Thread thread = new Thread(this);
+    public static boolean isFirst =true;
+    public static int myWidth, myHeight;
+    public static Board gameBoard;
 
-    private JButton blackButton;
-    private JButton redButton;
-    private JButton greenButton;
+    public void paintComponent(Graphics g) {
+        if(isFirst) {
+            myWidth = getWidth();
+            myHeight = getHeight();
+            define();
+            isFirst = false;
 
-    private JCheckBox disableCheckBox;
 
-    private JTextField textField;
-
-
-    //Should only be called on EDT
-    public GameGUI(String title) {
-        frame=new JFrame(title);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Build panels
-        JPanel upperPanel = buildUpperPanel();
-        JPanel middlePanel = buildMiddlePanel();
-        JPanel lowerPanel = buildLowerPanel();
-
-        //Add panels to the frame
-        frame.add(upperPanel, BorderLayout.NORTH);
-        frame.add(middlePanel, BorderLayout.CENTER);
-        frame.add(lowerPanel, BorderLayout.SOUTH);
-
-        frame.pack();
+        }
+        g.clearRect(0, 0, getWidth(), getHeight());
+        gameBoard.draw(g);
 
     }
 
-    //Should only be called on EDT
-    public void show() {
-        frame.setVisible(true);
+    public void define() {
+        gameBoard = new Board();
+
+
     }
 
-    private JPanel buildLowerPanel() {
-        JPanel lowerPanel = new JPanel();
-        lowerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+    public static int fpsFrame = 0, fps = 120;
+    public void run() {
+        while(true) {
+            if(!isFirst) {
+                repaint();
+            }
 
-        disableCheckBox = new JCheckBox("Inga fÃ¶rÃ¤ndringar");
-        disableCheckBox.addItemListener(new ItemListener() {
+            try {
+                Thread.sleep(1);
+            } catch(Exception e) {
 
-                                            public void itemStateChanged(ItemEvent e) {
-                                                boolean enabled =
-                                                        e.getStateChange() == ItemEvent.DESELECTED;
-                                                blackButton.setEnabled( enabled );
-                                                redButton.setEnabled( enabled );
-                                                greenButton.setEnabled( enabled );
-                                            }
+            }
 
-                                        }
-
-        );
-
-        lowerPanel.add(disableCheckBox);
-        return lowerPanel;
+        }
     }
 
-    private JPanel buildMiddlePanel() {
-        JPanel middlePanel = new JPanel();
-        middlePanel.setBorder(BorderFactory.createTitledBorder("TextfÃ¤rgskontroll"));
-        middlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+    public JPanel getPanel() {
 
-        blackButton = new JButton("Svart");
-        //blackButton.addActionListener(new NewGameListener());
+        gamePanel.setLayout(new GridLayout(1, 1, 0, 0));
+        gamePanel.add(new GameGUI());
 
-        middlePanel.add(blackButton);
-
-        redButton = new JButton("RÃ¶tt");
-        //redButton.addActionListener(new NewGameListener());
-
-        middlePanel.add(redButton);
-
-        greenButton = new JButton("GrÃ¶nt");
-        //greenButton.addActionListener(new NewGameListener());
-
-        middlePanel.add(greenButton);
-        return middlePanel;
+        return gamePanel;
     }
-
-    private JPanel buildUpperPanel() {
-        JPanel upperPanel = new JPanel();
-        upperPanel.setBorder(BorderFactory.createTitledBorder("Exempel"));
-        upperPanel.setLayout(new BorderLayout());
-
-        textField = new JTextField("Byt fÃ¤rg pÃ¥ texten");
-        upperPanel.add(textField, BorderLayout.CENTER);
-        return upperPanel;
-    }
-
 
 }
