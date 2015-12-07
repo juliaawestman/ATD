@@ -10,7 +10,6 @@ package main.java.unit;
  * Date: 2015-11-26
  */
 import java.awt.image.BufferedImage;
-import main.java.Map;
 import main.java.Position;
 import main.java.tile.TileAction;
 
