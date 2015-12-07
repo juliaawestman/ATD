@@ -28,12 +28,10 @@ public class User {
         return credits;
     }
 
-    // vad ska denna göra?
     public void income(int incomeToAdd){
         income = income + incomeToAdd;
     }
 
-    //vad ska denna göra?
     public int getScore(){
         return  points;
     }
