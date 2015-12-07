@@ -30,7 +30,7 @@
     </map>
 
     <map>
-        <name>YourMap</name>
+        <name>MapWithOnlyOneTowerTile</name>
         <waves>3</waves>
         <winScore>3</winScore>
         <startingGold>3</startingGold>
@@ -39,14 +39,25 @@
         <tile tileType="TowerTile">
             <tilePos xAxis="1" yAxis="1" />
         </tile>
-        <tile tileType="TCross">
-            <tilePos xAxis="2" yAxis="2" />
-            <sendToPos xAxis="2" yAxis="3" />
-            <sendToPos xAxis="3" yAxis="2" />
+    </map>
+
+    <map>
+        <name>MapWithDifferentTileTypes</name>
+        <waves>7</waves>
+        <winScore>4</winScore>
+        <startingGold>150</startingGold>
+
+        <tile tileType="TowerTile">
+            <tilePos xAxis="1" yAxis="1" />
         </tile>
-        <tile tileType="RightTurn">
-            <tilePos xAxis="2" yAxis="3"/>
-            <sendToPos xAxis="3" yAxis="3"/>
+        <tile tileType="Straight">
+            <tilePos xAxis="1" yAxis="2"/>
+            <sendToPos xAxis="1" yAxis="3" />
+        </tile>
+        <tile tileType="TCross">
+            <tilePos xAxis="1" yAxis="3"/>
+            <sendToPos xAxis="2" yAxis="3" />
+            <sendToPos xAxis="1" yAxis="4" />
         </tile>
     </map>
 </mapList>

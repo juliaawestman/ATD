@@ -1,21 +1,22 @@
 package main.java.GUI;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by Joakim on 2015-12-07.
  */
 public class Block extends Rectangle {
-    public int groundId;
-    public int airId;
+    public int Id;
 
-    public Block(int x, int y, int width, int height, int groundId, int airId) {
+    public Block(int x, int y, int width, int height, int Id) {
         setBounds(x, y, width, height);
-        this.groundId = groundId;
-        this.airId = airId;
+        this.Id = Id;
     }
 
     public void draw(Graphics g) {
-        g.drawRect(x, y, width, height);
+        g.drawImage(new ImageIcon("main/resources/towerTile.png").getImage(), x, y, width, height, null);
+
     }
 }
