@@ -19,16 +19,14 @@ public class End extends PathTile implements TileAction {
      * the program will create a object of the class main.java.tile.tile.Default
      */
     public End(Position p) {
-
         super(p, "hejhej");
     }
 
     @Override
-    public void sendToPos(Position posToSend) {
+    public void sendToPos(Position posToSend) {}
 
-    }
     @Override
     public void landOn(Unit unit) {
-        // TODO Auto-generated method stub
+        unit.setHasReachedGoal(true);
     }
 }
