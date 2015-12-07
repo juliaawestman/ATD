@@ -17,9 +17,8 @@ public class TowerTile extends Tile {
     /**
      *  
      * @param p
-     * @param imgPath
      */
-    protected TowerTile(Position p, String imgPath) {
-	super(p, imgPath);
+    protected TowerTile(Position p) {
+	    super(p, "");
     }
 }

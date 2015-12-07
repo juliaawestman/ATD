@@ -21,4 +21,8 @@ public class Default extends PathTile {
         super(p,"hej");
     }
 
+    @Override
+    public void sendToPos(Position posToSend) {
+        setNextPos(posToSend);
+    }
 }

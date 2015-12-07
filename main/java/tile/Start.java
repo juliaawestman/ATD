@@ -30,11 +30,8 @@ public class Start extends PathTile implements TileAction {
     }
     @Override
     public void sendToPos(Position posToSend) {
-
-    }
-
-    public void setNextPos(Position posToSet){
-        nextPos = posToSet;
+        nextPos = posToSend;
+        setNextPos(posToSend);
     }
 
 }

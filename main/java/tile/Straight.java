@@ -25,18 +25,14 @@ public class Straight extends PathTile implements TileAction {
         super(p, "");
     }
 
-    public void setNextPos(Position posToSet){
-        nextPos = posToSet;
-    }
-
     @Override
     public void sendToPos(Position posToSend) {
+        nextPos = posToSend;
         setNextPos(posToSend);
     }
 
     @Override
     public void landOn(Unit unit) {
-
         unit.setNextPos(nextPos);
     }
 

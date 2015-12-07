@@ -20,21 +20,36 @@ import java.awt.image.BufferedImage;
  */
 public class Telepoter extends PathTile implements TileAction {
 
-    private Position teleporterPos;
+    private Position nextPos;
+    private Position nextTelPos = null;
     
     /**
      * main.java.tile.tile. Teleporter is the constructor that
      * will read in the image when the program will create a object
      * of the class main.java.tile.tile.Default
      */
-    protected Telepoter(Position p, String imgPath, Position nextPos, Position nextTelepoterPos) {
-	super(p, imgPath, nextPos);
-        teleporterPos = nextTelepoterPos;
+    protected Telepoter(Position p) {
+	super(p, "");
     }
 
     @Override
     public void landOn(Unit unit){
-        unit.setNextPos(teleporterPos);
-    } 	
+        if(nextPos!=null) {
+            unit.setNextPos(nextPos);
+        }
+        else {
+            unit.setNextPos(nextTelPos);
+        }
+    }
 
+    @Override
+    public void sendToPos(Position posToSend) {
+        nextPos = posToSend;
+        setNextPos(posToSend);
+    }
+
+    public void setTeleporterPos(Position nextTelepoterPos){
+        nextTelPos = nextTelepoterPos;
+        setNextPos(nextTelepoterPos);
+    }
 }

@@ -30,7 +30,11 @@ public class Turn extends PathTile implements TileAction {
         unit.setNextPos(nextPos);
 
     }
-     public void setNextPos(Position posToSet){
-         nextPos = posToSet;
-     }
+
+    @Override
+    public void sendToPos(Position posToSend) {
+        nextPos = posToSend;
+        setNextPos(posToSend);
+    }
+
 }
