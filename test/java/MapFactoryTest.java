@@ -25,8 +25,9 @@ public class MapFactoryTest {
 
     @Test
     public void shouldMakeMapWithOneTile() throws Exception {
-        MapFactory factory = new MapFactory("test/resources/testMap.xml");
+        MapFactory factory = new MapFactory("main/resources/test.xml");
         Map myMap = factory.makeMap("MyMap");
+        myMap.printMap();
         //Tile t = myMap.getTileAt(new Position(1, 1));
         //assertNotNull(t);
     }

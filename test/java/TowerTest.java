@@ -141,7 +141,7 @@ public class TowerTest {
     /* ********** Classes for testing ********** */
     protected static class TestUnit extends Unit {
         public TestUnit(Position pos){
-            super(pos, Direction.NORTH);
+            super(pos);
         }
     }
 

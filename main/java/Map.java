@@ -1,9 +1,11 @@
 package main.java;
 
+import main.java.tile.PathTile;
 import main.java.tile.Tile;
+import main.java.tile.TowerTile;
 
-import java.awt.*;
 import java.util.HashMap;
+import java.util.Hashtable;
 
 /**
  * Class:       Map
@@ -13,13 +15,15 @@ import java.util.HashMap;
  * Date:        12/2/15
  */
 public class Map {
-    private HashMap<Position, Tile> tiles;
+    private HashMap<Position, Tile> pathTiles;
+    private HashMap<Position, Tile> towerTiles;
     private String name;
     private int waves;
     private int winScore;
 
     protected Map(){
-        tiles = new HashMap<Position, Tile>();
+        pathTiles = new HashMap<Position, Tile>();
+        towerTiles = new HashMap<Position, Tile>();
     }
 
     /**
@@ -27,7 +31,11 @@ public class Map {
      * @param t TODO
      */
     protected void addTile(Tile t){
-        tiles.put(t.getPosition(), t);
+        if (PathTile.class.isAssignableFrom(t.getClass())) {
+            pathTiles.put(t.getPosition(), t);
+        } else if (TowerTile.class.isAssignableFrom(t.getClass())){
+            towerTiles.put(t.getPosition(), t);
+        }
     }
 
     /**
@@ -37,7 +45,27 @@ public class Map {
      * @return the Tile of the position
      */
     public Tile getTileAt(Position p){
-        return tiles.get(p);
+        Tile tile = pathTiles.get(p);
+
+        if (tile == null){
+            tile = towerTiles.get(p);
+        }
+
+        return tile;
+    }
+
+    public void printMap(){
+        String line = "";
+        for (int row = 1; row <= 10; row++){
+            for (int col = 1; col <= 10; col++){
+                if(getTileAt(new Position(row, col)) != null){
+                    line = line + "*";
+                }else {
+                    line = line + "0";
+                }
+            }
+            System.out.println(line);
+        }
     }
 
     /**
@@ -65,5 +93,32 @@ public class Map {
      */
     public int getWinScore() {
         return winScore;
+    }
+
+    /**
+     * Sets the name of the map.
+     *
+     * @param name the name of the map
+     */
+    protected void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Sets the number of waves the level will continue for.
+     *
+     * @param waves the number of waves the level will be
+     */
+    protected void setWaves(int waves) {
+        this.waves = waves;
+    }
+
+    /**
+     * Sets the score needed to be achieved for completing the level.
+     *
+     * @param winScore the score needed to win
+     */
+    protected void setWinScore(int winScore) {
+        this.winScore = winScore;
     }
 }
