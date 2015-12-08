@@ -21,6 +21,8 @@ public class GameGUI extends JPanel implements Runnable {
     public static int myWidth, myHeight;
     public static Board gameBoard;
 
+    public static Mob[] mobs = new Mob[100];
+
     public void paintComponent(Graphics g) {
         if(isFirst) {
             myWidth = getWidth();
@@ -30,15 +32,24 @@ public class GameGUI extends JPanel implements Runnable {
 
 
         }
-        g.clearRect(0, 0, getWidth(), getHeight());
+        //g.clearRect(0, 0, getWidth(), getHeight());
         gameBoard.draw(g);
+
+        for(int i=0;i<mobs.length;i++) {
+            if (mobs[i].inGame) {
+                mobs[i].draw(g);
+            }
+        }
 
     }
 
     public void define() {
         gameBoard = new Board();
 
-
+        for(int i=0;i<mobs.length;i++) {
+            mobs[i] = new Mob();
+            mobs[i].spawnMob(0);
+        }
     }
 
     public static int fpsFrame = 0, fps = 120;

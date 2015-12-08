@@ -16,7 +16,7 @@ public class UnitTest {
     @Before
     public void setUp() {
         Position pos = new Position(11, 22);
-        this.instance = new AirUnit(pos,null);
+        this.instance = new AirUnit(pos);
 
     }
 
@@ -55,7 +55,7 @@ public class UnitTest {
     public void testIsFlyingFalse() {
         System.out.println("isFlyingFalse");
         Position pos = new Position(1, 1);
-        Unit instanceGround = new GroundUnit(pos,null);
+        Unit instanceGround = new GroundUnit(pos);
 
         boolean expResult = false;
         boolean result = instanceGround.isFlying();
@@ -109,7 +109,7 @@ public class UnitTest {
     public void testTakeDamageZero() {
         System.out.println("takeDamageZero");
         Position pos = new Position(11, 22);
-        Unit testUnit = new UnitForTesting(pos,null);
+        Unit testUnit = new UnitForTesting(pos);
         int dmg = 0;
         testUnit.takeDamage(dmg);
         /*Should be alive after 0 dmg dealt*/
@@ -122,7 +122,7 @@ public class UnitTest {
     public void testTakeDamageOne() {
         System.out.println("takeDamageOne");
         Position pos = new Position(11, 22);
-        Unit testUnit = new UnitForTesting(pos,null);
+        Unit testUnit = new UnitForTesting(pos);
 
         int dmg = 1;
         testUnit.takeDamage(dmg);

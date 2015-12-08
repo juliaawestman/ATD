@@ -10,7 +10,6 @@ package main.java.unit;
  * Date: 2015-11-26
  */
 import java.awt.image.BufferedImage;
-import main.java.Map;
 import main.java.Position;
 import main.java.tile.TileAction;
 
@@ -28,17 +27,14 @@ public abstract class Unit {
     protected Boolean flying;
     private int timeLived = 0; 
     private boolean hasReachedGoal = false;
-    private Map map;
 
     /**
      * Initializes a new {@code Unit} which is being put on specified position.
      *
      * @param pos the position
-     * @param map the map where the unit is
      *
      */
-    public Unit(Position pos, Map map) {
-        this.map = map;
+    public Unit(Position pos) {
         this.pos = pos;
         this.nextPos = pos;
         this.health = 10;
@@ -55,16 +51,21 @@ public abstract class Unit {
     public void setFlying(boolean flying){
         this.flying = flying;
     }
-
-    public void move(){
+    /**
+     * Moves to the nextPos
+     * 
+     * @return returns true if unit moved this timetick false if not.
+     */
+    public boolean move(){
+        boolean ret = false;
         /*Move more frequently depending on the speed*/
         if (((timeLived) % ((MAXSPEED + 1) - speed)) == 0) {
             TileAction currentTile;
             this.pos = this.nextPos;
-            currentTile = (TileAction) map.getTileAt(pos);
-            currentTile.landOn(this);
+            ret = true;
         }
         timeLived++;
+        return ret;
     }
 
     public boolean isFlying() {
