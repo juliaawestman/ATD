@@ -54,18 +54,31 @@ public class Map {
         return tile;
     }
 
+    /**
+     * Method for troubleshooting maps.
+     */
     public void printMap(){
-        for (int row = 1; row <= 10; row++){
+        System.out.println("map name:\t" + name);
+        System.out.println("nr of waves:\t" + waves);
+        System.out.println("score to win:\t" + winScore);
+        System.out.println("starting gold:\t" + "ain't here!" + "\n");
+        for (int row = 1; row <= 12; row++){
             String line = "";
-            for (int col = 1; col <= 10; col++){
-                if(getTileAt(new Position(row, col)) != null){
-                    line = line + "*";
+            for (int col = 1; col <= 12; col++){
+                Tile t = getTileAt(new Position(col, row));
+                if(t == null){
+                    line = line + "  ";
+                }else if (TowerTile.class.isAssignableFrom(t.getClass())){
+                    line = line + "T ";
+                }else if (PathTile.class.isAssignableFrom(t.getClass())){
+                    line = line + "P ";
                 }else {
-                    line = line + "0";
+                    line = line + "? ";
                 }
             }
             System.out.println(line);
         }
+        System.out.println();
     }
 
     /**

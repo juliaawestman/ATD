@@ -16,11 +16,11 @@ import javax.imageio.ImageIO;
  * main.java.tile.tile is a class is a abctact class...
  */
 public abstract class Tile {
-    
-    private String path;   
+
+    private String path;
     private BufferedImage img = null;
     private Position pos;
-    
+
     /**
      * tile is the constructor that will set the values...
      * @param p
@@ -30,33 +30,33 @@ public abstract class Tile {
 	    pos = p;
 	    path = imgPath;
         readInImg();
-	
+
     }
 
     //next tile
-    
+
     /**
      * readInImg will read in the img that is given of the path
      */
     public void readInImg(){
-	try {
+	//try {
 	    File file = new File(path);
-	    img = ImageIO.read(file);
+	    /*img = ImageIO.read(file);
 
 	} catch (IOException e) {
 	    e.printStackTrace();
-	}
+	}*/
     }
-    
+
     /**
-     * getImage is a getter that will get the image of 
+     * getImage is a getter that will get the image of
      * the tile
-     * @return image 
+     * @return image
      */
     public BufferedImage getImg(){
 	return img;
     }
-    
+
     /**
      * getPostion is a getter that will get the position of the tile
      * @return
@@ -64,5 +64,5 @@ public abstract class Tile {
     public Position getPosition() {
 	return pos;
     }
-    
+
 }

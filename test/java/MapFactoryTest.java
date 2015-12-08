@@ -25,7 +25,7 @@ public class MapFactoryTest {
 
     @Test
     public void shouldMakeMapWithOneTile() throws Exception {
-        MapFactory factory = new MapFactory("main/resources/test.xml");
+        MapFactory factory = new MapFactory("test/resources/test.xml");
         Map myMap = factory.makeMap("MapWithOnlyOneTowerTile");
         myMap.printMap();
         Tile t = myMap.getTileAt(new Position(1, 1));
@@ -34,11 +34,18 @@ public class MapFactoryTest {
 
     @Test
     public void shouldMakeMapWithDifferentTileTypes() throws Exception {
-        MapFactory factory = new MapFactory("main/resources/test.xml");
+        MapFactory factory = new MapFactory("test/resources/test.xml");
         Map myMap = factory.makeMap("MapWithDifferentTileTypes");
         myMap.printMap();
         Tile t = myMap.getTileAt(new Position(1, 2));
         assertNotNull(t);
+    }
+
+    @Test
+    public void shouldAcceptDefaultMaps() throws Exception {
+        MapFactory factory = new MapFactory("main/resources/defaultMaps.xml");
+        Map myMap = factory.makeMap("ZiggZagg");
+        myMap.printMap();
     }
 
 }
