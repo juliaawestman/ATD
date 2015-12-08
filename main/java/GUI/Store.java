@@ -11,6 +11,8 @@ public class Store {
     private int cellSpace = 2;
     private int margin = 30;
     private int iconSize = 20;
+    private int iconSpace = 6;
+    private int iconTextY = 15;
 
     public Rectangle[] button = new Rectangle[shopWidth];
     public Rectangle buttonHealth;
@@ -37,6 +39,10 @@ public class Store {
         }
         g.fillRect(buttonHealth.x, buttonHealth.y, buttonHealth.width, buttonHealth.height);
         g.fillRect(buttonCoins.x, buttonCoins.y, buttonCoins.width, buttonCoins.height);
+        g.setFont(new Font("Courier New", Font.BOLD, 14));
+        g.setColor(new Color(255, 255, 255));
+        g.drawString("100", buttonHealth.x + buttonHealth.width + iconSpace, buttonHealth.y + iconTextY);
+        g.drawString("100", buttonCoins.x + buttonCoins.width + iconSpace, buttonCoins.y + iconTextY);
         //g.fillRect(buttonIncome.x, buttonIncome.y, buttonIncome.width, buttonIncome.height);
 
     }
