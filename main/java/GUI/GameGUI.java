@@ -22,6 +22,8 @@ public class GameGUI extends JPanel implements Runnable {
 
     public static Board gameBoard;
 
+    public static Store store;
+
     //public static boolean isFirst = true;
 
     public static Mob[] mobs = new Mob[100];
@@ -39,8 +41,15 @@ public class GameGUI extends JPanel implements Runnable {
 
 
         }
-        //g.clearRect(0, 0, getWidth(), getHeight());
+        g.setColor(new Color(50, 50, 50));
+
+        g.fillRect(0, 0, getWidth(), getHeight());
+        g.setColor(new Color(0, 0, 0));
+        g.drawLine(gameBoard.block[0][0].x-1, 0, gameBoard.block[0][0].x-1, gameBoard.block[gameBoard.worldHeight-1][0].y + gameBoard.blockSize);
+        g.drawLine(gameBoard.block[0][gameBoard.worldWidth-1].x + gameBoard.blockSize, 0, gameBoard.block[0][gameBoard.worldWidth-1].x + gameBoard.blockSize, gameBoard.block[gameBoard.worldHeight-1][0].y + gameBoard.blockSize);
+        g.drawLine(gameBoard.block[0][0].x, gameBoard.block[gameBoard.worldHeight-1][0].y + gameBoard.blockSize, gameBoard.block[0][gameBoard.worldWidth-1].x + gameBoard.blockSize, gameBoard.block[gameBoard.worldHeight-1][0].y + gameBoard.blockSize);
         gameBoard.draw(g);
+        store.draw(g);
 
         for(int i=0;i<mobs.length;i++) {
             if (mobs[i].inGame) {
@@ -52,6 +61,7 @@ public class GameGUI extends JPanel implements Runnable {
 
     public void define() {
         gameBoard = new Board();
+        store = new Store();
 
         for(int i=0;i<mobs.length;i++) {
             mobs[i] = new Mob();
