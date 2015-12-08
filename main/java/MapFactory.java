@@ -65,14 +65,14 @@ public class MapFactory {
      * @param mapName the name of the desired map
      * @return the map asked for, if it doesn't exist null will be returned
      */
-    public Map makeMap(String mapName) {
+    public Map loadMap(String mapName) {
         Map map = null;
         for (int i = 0; i < mapList.getLength(); i++) {
             Node node = mapList.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element element = (Element) node;
                 if (mapName.compareTo(getTagValue("name", element)) == 0) {
-                    map = loadMap(element);
+                    map = makeMap(element);
                 }
             }
         }
@@ -80,13 +80,15 @@ public class MapFactory {
     }
 
 
-    private Map loadMap(Element e) {
+    private Map makeMap(Element e) {
         Map map = new Map();
         NodeList mapInfo = e.getChildNodes();
 
         map.setName(getTagValue("name", e));
         map.setWaves(Integer.parseInt(getTagValue("waves", e)));
         map.setWinScore(Integer.parseInt(getTagValue("winScore", e)));
+        map.setStartingGold(Integer.parseInt(getTagValue("startingGold", e)));
+
 
         for (int i = 0; i < mapInfo.getLength(); i++) {
             Node node = mapInfo.item(i);
