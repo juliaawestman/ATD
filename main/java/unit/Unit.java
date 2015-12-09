@@ -10,6 +10,7 @@ package main.java.unit;
  * Date: 2015-11-26
  */
 import java.awt.image.BufferedImage;
+import java.net.URL;
 import main.java.Position;
 import main.java.tile.TileAction;
 
@@ -19,7 +20,7 @@ public abstract class Unit {
     protected String name;
     protected Position pos;
     private Position nextPos;
-    protected BufferedImage img;
+    protected URL imagePath;
     protected int health;
     protected int price;
     protected int speed;
