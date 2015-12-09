@@ -1,18 +1,19 @@
 package main.java.GUI;
 
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
- * Created by Zacke on 2015-11-26.
+ * Created by id12jzn on 2015-12-09.
  */
-class NewGameListener implements MouseListener {
+public class StartGameListener implements MouseListener {
 
     private JButton button;
 
     private CLayout c;
 
-    public NewGameListener(JButton button, CLayout c) {
+    public StartGameListener(JButton button, CLayout c) {
 
         this.button = button;
         this.c = c;
@@ -20,7 +21,7 @@ class NewGameListener implements MouseListener {
 
     public void mouseClicked(MouseEvent e) {
         button.setIcon(new ImageIcon("main/resources/newGameButtonPress.png"));
-        c.showCard("newGame");
+        c.showCard("game");
 
     }
 
@@ -42,6 +43,4 @@ class NewGameListener implements MouseListener {
         button.setIcon(new ImageIcon("main/resources/newGameButton.png"));
 
     }
-
-
 }
