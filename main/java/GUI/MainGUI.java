@@ -14,7 +14,7 @@ public class MainGUI extends JFrame {
 
     //private JLabel menuLabel, gameLabel;
 
-    private CLayout cLayout = new CLayout();
+    //private CLayout cLayout = new CLayout();
 
 
     public MainGUI() {

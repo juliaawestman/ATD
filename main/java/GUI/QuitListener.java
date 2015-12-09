@@ -3,6 +3,7 @@ package main.java.GUI;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
 
 /**
  * Created by Joakim on 2015-11-30.
@@ -10,13 +11,17 @@ import java.awt.event.MouseListener;
 public class QuitListener implements MouseListener{
 
     private JButton button;
+    private CLayout c;
 
-    public QuitListener(JButton button) {
+    public QuitListener(JButton button, CLayout c) {
+
         this.button = button;
+        this.c = c;
     }
 
     public void mouseClicked(MouseEvent e) {
         button.setIcon(new ImageIcon("main/resources/QuitPress.png"));
+        c.exit();
 
     }
 
