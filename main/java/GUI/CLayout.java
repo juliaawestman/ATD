@@ -19,6 +19,11 @@ public class CLayout {
 
     public MapInformation mapinfo;
 
+    GameGUI game;
+    MenuGUI menu;
+    NewGameGUI newGame;
+    HighScoreGUI highScore;
+
 
 
     public CLayout(MapInformation mapinfo) {
@@ -26,10 +31,10 @@ public class CLayout {
 
         panelCont.setLayout(cl);
 
-        MenuGUI menu = new MenuGUI(this);
-        NewGameGUI newGame = new NewGameGUI(this);
-        HighScoreGUI highScore = new HighScoreGUI();
-        GameGUI game = new GameGUI(this);
+        menu = new MenuGUI(this);
+        newGame = new NewGameGUI(this);
+        highScore = new HighScoreGUI();
+        game = new GameGUI(this);
 
         panelCont.add(menu.getPanel(), "menu");
         panelCont.add(highScore.getPanel(), "highScore");
@@ -66,12 +71,17 @@ public class CLayout {
 
     public void showCard(String s) {
 
-        if(s.equals("game")) {
-            frame.setSize(900, 900);
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-        }
         cl.show(panelCont, s);
+    }
+
+    public void showGame(String map) {
+
+        frame.setSize(900, 900);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        game.setChosenMap(map);
+
+        cl.show(panelCont, "game");
     }
 
     public void exit() {

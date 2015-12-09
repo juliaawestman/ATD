@@ -11,13 +11,15 @@ public class Mob extends Rectangle {
     public int mobSize = 54;
     public int Id = Value.groundUnit;
     public boolean inGame = false;
+    private Board gameBoard;
 
-    public Mob() {
+    public Mob(Board gameBoard) {
+        this.gameBoard = gameBoard;
         //if(GameGUI.gameBoard.block[y][x] == Value.start)
     }
 
     public void spawnMob(int Id) {
-        setBounds(GameGUI.gameBoard.block[0][0].x , GameGUI.gameBoard.block[0][0].y, mobSize, mobSize);
+        setBounds(gameBoard.block[0][0].x , gameBoard.block[0][0].y, mobSize, mobSize);
 
         xC = 0;
         yC = 0;

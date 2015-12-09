@@ -20,13 +20,15 @@ public class GameGUI extends JPanel implements Runnable {
     public static boolean isFirst =true;
     public static int myWidth, myHeight;
 
+    public String chosenMap;
+
 
     //private MapInformation mapinfo;
 
     private CLayout c;
 
 
-    public static Board gameBoard;
+    public Board gameBoard;
 
     public static Store store;
 
@@ -45,7 +47,6 @@ public class GameGUI extends JPanel implements Runnable {
             myHeight = getHeight();
             define();
             isFirst = false;
-
 
         }
         g.setColor(new Color(50, 50, 50));
@@ -69,11 +70,11 @@ public class GameGUI extends JPanel implements Runnable {
     }
 
     public void define() {
-        gameBoard = new Board();
-        store = new Store();
+        gameBoard = new Board(c, chosenMap);
+        store = new Store(gameBoard);
 
         for(int i=0;i<mobs.length;i++) {
-            mobs[i] = new Mob();
+            mobs[i] = new Mob(gameBoard);
             mobs[i].spawnMob(0);
         }
     }
@@ -130,6 +131,10 @@ public class GameGUI extends JPanel implements Runnable {
         gamePanel.add(this);
 
         return gamePanel;
+    }
+
+    public void setChosenMap(String s) {
+        chosenMap = s;
     }
 
 }

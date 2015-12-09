@@ -48,7 +48,7 @@ public class NewGameGUI {
         JPanel lowerPanel = new JPanel();
 
         newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
-        newGame.addMouseListener(new StartGameListener(newGame, c));
+        newGame.addMouseListener(new StartGameListener(newGame, c, levelList));
         newGame.setBorderPainted(false);
         newGame.setContentAreaFilled(false);
         newGame.setFocusPainted(false);

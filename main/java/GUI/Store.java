@@ -18,8 +18,10 @@ public class Store {
     public Rectangle buttonHealth;
     public Rectangle buttonCoins;
     public Rectangle buttonIncome;
+    Board gameBoard;
 
-    public Store() {
+    public Store(Board gameBoard) {
+        this.gameBoard = gameBoard;
         define();
     }
 
@@ -28,8 +30,8 @@ public class Store {
             button[i] = new Rectangle((GameGUI.myWidth/2) - ((shopWidth*(buttonSize+cellSpace))/2) + ((buttonSize+cellSpace)*i), 680, buttonSize, buttonSize);
         }
 
-        buttonHealth = new Rectangle(GameGUI.gameBoard.block[0][0].x-1, button[0].y, iconSize, iconSize);
-        buttonCoins = new Rectangle(GameGUI.gameBoard.block[0][0].x-1, button[0].y + button[0].height-iconSize, iconSize, iconSize);
+        buttonHealth = new Rectangle(gameBoard.block[0][0].x-1, button[0].y, iconSize, iconSize);
+        buttonCoins = new Rectangle(gameBoard.block[0][0].x-1, button[0].y + button[0].height-iconSize, iconSize, iconSize);
         //buttonIncome = new Rectangle(GameGUI.gameBoard.block[0][0].x-1, button[0].y + (button[0].height-iconSize*2), iconSize, iconSize);
     }
 

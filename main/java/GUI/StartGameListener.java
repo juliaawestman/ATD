@@ -13,16 +13,19 @@ public class StartGameListener implements MouseListener {
 
     private CLayout c;
 
-    public StartGameListener(JButton button, CLayout c) {
+    private JComboBox<String> jcb;
+
+
+    public StartGameListener(JButton button, CLayout c, JComboBox<String> jcb) {
 
         this.button = button;
         this.c = c;
+        this.jcb = jcb;
     }
 
     public void mouseClicked(MouseEvent e) {
         button.setIcon(new ImageIcon("main/resources/newGameButtonPress.png"));
-        c.showCard("game");
-
+        c.showGame(jcb.getSelectedItem().toString());
     }
 
     public void mousePressed(MouseEvent e) {
