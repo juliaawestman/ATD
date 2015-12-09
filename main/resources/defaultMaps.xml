@@ -578,22 +578,167 @@
     </map>
 
     <map>
-        <name>MapWithDifferentTileTypes</name>
-        <waves>7</waves>
-        <winScore>4</winScore>
-        <startingGold>150</startingGold>
+        <name>Joy</name>
+        <waves>10</waves>
+        <winScore>75</winScore>
+        <startingGold>75</startingGold>
+
+        <!-- Tower Tiles: -->
+        <tile tileType="TowerTile">
+            <tilePos column="9" row="3" />
+        </tile>
 
         <tile tileType="TowerTile">
-            <tilePos column="1" row="1" />
+            <tilePos column="5" row="5" />
         </tile>
-        <tile tileType="PathWay">
-            <tilePos column="1" row="2"/>
-            <sendToPos column="1" row="3" />
+        <tile tileType="TowerTile">
+            <tilePos column="6" row="5" />
         </tile>
-        <tile tileType="TCross">
-            <tilePos column="1" row="3"/>
-            <sendToPos column="2" row="3" />
-            <sendToPos column="1" row="4" />
+        <tile tileType="TowerTile">
+            <tilePos column="7" row="5" />
         </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="8" row="5" />
+        </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="9" row="5" />
+        </tile>
+
+        <tile tileType="TowerTile">
+            <tilePos column="8" row="6" />
+        </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="9" row="6" />
+        </tile>
+
+        <tile tileType="TowerTile">
+            <tilePos column="5" row="7" />
+        </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="6" row="7" />
+        </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="8" row="7" />
+        </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="9" row="7" />
+        </tile>
+
+        <tile tileType="TowerTile">
+            <tilePos column="8" row="8" />
+        </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="9" row="8" />
+        </tile>
+
+        <tile tileType="TowerTile">
+            <tilePos column="3" row="9" />
+        </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="4" row="9" />
+        </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="6" row="9" />
+        </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="8" row="9" />
+        </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="9" row="9" />
+        </tile>
+
+        <tile tileType="TowerTile">
+            <tilePos column="3" row="10" />
+        </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="4" row="10" />
+        </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="6" row="10" />
+        </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="8" row="10" />
+        </tile>
+        <tile tileType="TowerTile">
+            <tilePos column="9" row="10" />
+        </tile>
+
+        <!-- Path Tiles: -->
+        <tile tileType="Start">
+            <tilePos column="2" row="12"/>
+            <sendToPos column="2" row="11" />
+        </tile>
+        <tile tileType="TCross"> <!-- first T-cross -->
+            <tilePos column="2" row="11"/>
+            <sendToPos column="2" row="10" />
+            <sendToPos column="3" row="11" />
+        </tile>
+
+        <!-- continuing up after first T-cross -->
+        <tile tileType="PathWay" >
+            <tilePos column="2" row="10" />
+            <sendToPos column="2" row="9" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="2" row="9" />
+            <sendToPos column="2" row="8" />
+        </tile>
+        <tile tileType="PathWay" > <!-- turn right -->
+            <tilePos column="2" row="8" />
+            <sendToPos column="3" row="8" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="3" row="8" />
+            <sendToPos column="4" row="8" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="4" row="8" />
+            <sendToPos column="5" row="8" />
+        </tile>
+
+        <!-- turn right at first T-cross -->
+        <tile tileType="PathWay" >
+            <tilePos column="3" row="11" />
+            <sendToPos column="4" row="11" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="4" row="11" />
+            <sendToPos column="5" row="11" />
+        </tile>
+        <tile tileType="PathWay" > <!-- turn up -->
+            <tilePos column="5" row="11" />
+            <sendToPos column="5" row="10" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="5" row="10" />
+            <sendToPos column="5" row="9" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="5" row="9" />
+            <sendToPos column="5" row="8" />
+        </tile>
+
+        <!-- joining from first T-cross -->
+        <tile tileType="PathWay" >
+            <tilePos column="5" row="8" />
+            <sendToPos column="6" row="8" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="6" row="8" />
+            <sendToPos column="7" row="8" />
+        </tile>
+        <tile tileType="TCross" > <!-- Second T-cross -->
+            <tilePos column="7" row="8" />
+            <sendToPos column="7" row="7" />
+            <sendToPos column="7" row="9" />
+        </tile>
+
+        <!-- -->
+        <tile tileType="PathWay" >
+            <tilePos column="5" row="11" />
+            <sendToPos column="5" row="10" />
+        </tile>
+
+
     </map>
 </mapList>

@@ -2,6 +2,7 @@ package main.java.GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 
 /**
  * Created by Zacke on 2015-12-01.
@@ -79,4 +80,9 @@ public class CLayout {
         }
         cl.show(panelCont, s);
     }
+
+    public void exit() {
+        frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+    }
+
 }

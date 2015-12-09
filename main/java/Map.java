@@ -1,5 +1,6 @@
 package main.java;
 
+import javafx.geometry.Pos;
 import main.java.tile.PathTile;
 import main.java.tile.Tile;
 import main.java.tile.TowerTile;
@@ -17,6 +18,7 @@ import java.util.Hashtable;
 public class Map {
     private HashMap<Position, Tile> pathTiles;
     private HashMap<Position, Tile> towerTiles;
+    private HashMap<Position, Tile> completeMap;
     private String name;
     private int waves;
     private int winScore;
@@ -37,6 +39,7 @@ public class Map {
         } else if (TowerTile.class.isAssignableFrom(t.getClass())){
             towerTiles.put(t.getPosition(), t);
         }
+        completeMap.put(t.getPosition(), t);
     }
 
     /**
@@ -152,5 +155,9 @@ public class Map {
      */
     public void setStartingGold(int startingGold) {
         this.startingGold = startingGold;
+    }
+
+    public HashMap<Position, Tile> getCompleteMap() {
+        return completeMap;
     }
 }

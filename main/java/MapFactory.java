@@ -1,6 +1,7 @@
 package main.java;
 
-import main.java.tile.*;
+import main.java.tile.PathTile;
+import main.java.tile.Tile;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -21,6 +22,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 /**
@@ -31,8 +33,8 @@ import java.util.Hashtable;
  * Date:        2015-12-01
  */
 public class MapFactory {
-
     private NodeList mapList;
+    private ArrayList<String> mapNames;
 
     /*Will contain all types of tiles in order to save time when needing
     * the same class several times. */
@@ -41,6 +43,7 @@ public class MapFactory {
     public MapFactory(String mapFilePath) throws IOException, SAXException {
         validateMap(new StreamSource(mapFilePath));
         mapList = getMaps(new InputSource(mapFilePath));
+        mapNames = collectMapNames();
         tileTypes = new Hashtable<String, Class<?>>();
     }
 
@@ -57,6 +60,18 @@ public class MapFactory {
         } catch (SAXException e) {
             throw new IOException("Not correct format");
         }
+    }
+
+    private ArrayList<String> collectMapNames(){
+        ArrayList list = new ArrayList<String>();
+        for (int i = 0; i < mapList.getLength(); i++) {
+            Node node = mapList.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element = (Element) node;
+                list.add(getTagValue("name", element));
+            }
+        }
+        return list;
     }
 
     /**
@@ -241,4 +256,12 @@ public class MapFactory {
         return true;
     }
 
+    /**
+     * Returns an ArrayList with all the names of the map in the specified file.
+     *
+     * @return a list of all map names
+     */
+    public ArrayList<String> getMapNames() {
+        return mapNames;
+    }
 }
