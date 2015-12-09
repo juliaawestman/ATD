@@ -11,14 +11,17 @@ public class HighScoreListener implements MouseListener{
 
         private JButton button;
 
-        public HighScoreListener(JButton button) {
+        private CLayout c;
+
+        public HighScoreListener(JButton button, CLayout c) {
 
             this.button = button;
+            this.c = c;
         }
 
         public void mouseClicked(MouseEvent e) {
             button.setIcon(new ImageIcon("main/resources/highScorePressed.png"));
-            new CLayout().showCard("highScore");
+            c.showCard("highScore");
 
         }
 

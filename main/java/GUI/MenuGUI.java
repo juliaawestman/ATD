@@ -19,7 +19,10 @@ public class MenuGUI {
     private JPanel middlePanel;
     private JPanel lowerPanel;
 
-    public void MenuGUI() {
+    private CLayout c;
+
+    public MenuGUI(CLayout c) {
+        this.c = c;
 
 
         //frame = new JFrame(gameTitle);
@@ -91,19 +94,19 @@ public class MenuGUI {
         JPanel middlePanel = new JPanel();
 
         newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
-        newGame.addMouseListener(new NewGameListener(newGame));
+        newGame.addMouseListener(new NewGameListener(newGame, c));
         newGame.setBorderPainted(false);
         newGame.setContentAreaFilled(false);
         newGame.setFocusPainted(false);
 
         highScore = new JButton(new ImageIcon("main/resources/highScoreButton.png"));
-        highScore.addMouseListener(new HighScoreListener(highScore));
+        highScore.addMouseListener(new HighScoreListener(highScore,c ));
         highScore.setBorderPainted(false);
         highScore.setContentAreaFilled(false);
         highScore.setFocusPainted(false);
 
         quit = new JButton(new ImageIcon("main/resources/quitButton.png"));
-        quit.addMouseListener(new QuitListener(quit));
+        quit.addMouseListener(new QuitListener(quit, c));
         quit.setBorderPainted(false);
         quit.setContentAreaFilled(false);
         quit.setFocusPainted(false);

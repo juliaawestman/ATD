@@ -10,9 +10,12 @@ import java.awt.event.MouseListener;
 public class QuitListener implements MouseListener{
 
     private JButton button;
+    private CLayout c;
 
-    public QuitListener(JButton button) {
+    public QuitListener(JButton button, CLayout c) {
+
         this.button = button;
+        this.c = c;
     }
 
     public void mouseClicked(MouseEvent e) {

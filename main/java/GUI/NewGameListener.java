@@ -10,13 +10,17 @@ class NewGameListener implements MouseListener {
 
     private JButton button;
 
-    public NewGameListener(JButton button) {
+    private CLayout c;
+
+    public NewGameListener(JButton button, CLayout c) {
+
         this.button = button;
+        this.c = c;
     }
 
     public void mouseClicked(MouseEvent e) {
         button.setIcon(new ImageIcon("main/resources/newGameButtonPress.png"));
-        new CLayout().showCard("game");
+        c.showCard("game");
 
     }
 
