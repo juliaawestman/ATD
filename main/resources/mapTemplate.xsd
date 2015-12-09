@@ -1,45 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="mapList" type="mapListType"/>
 
-	<xsd:element name="mapList" type="mapListType" />
-	<xsd:complexType name="mapListType">
-		<xsd:sequence>
-			<xsd:element name="map" type="mapType" maxOccurs="unbounded"/>
-		</xsd:sequence>
-	</xsd:complexType>
+  <xs:complexType name="tileType" mixed="true">
+    <xs:sequence>
+      <xs:element type="positionType" name="tilePos" />
+      <xs:element type="positionType" name="sendToPos" maxOccurs="4" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="tileType" type="xs:string" />
+  </xs:complexType>
 
-	<xsd:complexType name="mapType">
+  <xs:complexType name="positionType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:int" name="column" use="optional"/>
+        <xs:attribute type="xs:int" name="row" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
 
-		<xsd:sequence>
-			<xsd:element name="name" type="xsd:string" />
-			<xsd:element name="waves" type="xsd:int" />
-			<xsd:element name="winScore" type="xsd:int" />
-			<xsd:element name="startingGold" type="xsd:int" />
+  <xs:complexType name="mapListType">
+    <xs:sequence>
+      <xs:element type="mapType" name="map" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>1 or more repetitions:</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
 
-			<xsd:element name="tile" type="tileType" maxOccurs="unbounded" />
-		</xsd:sequence>
-	</xsd:complexType>
+  <xs:complexType name="mapType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="waves"/>
+      <xs:element type="xs:string" name="winScore"/>
+      <xs:element type="xs:string" name="startingGold"/>
+      <xs:element type="tileType" name="tile" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>1 or more repetitions:</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
 
-	<xsd:complexType name="tileType2" >
-		<xsd:simpleContent>
-			<xsd:attribute name="tileType" type="xsd:string" />
-			<xsd:attribute name="tilePos" type="xsd:int" />
-		</xsd:simpleContent>
-	</xsd:complexType>
-
-	<xsd:simpleType name="timeValueType">
-		<xsd:restriction base="xsd:token">
-			<xsd:pattern value="\d{2}:\d{2}"/>
-		</xsd:restriction>
-	</xsd:simpleType>
-
-	<xsd:complexType name="tileType">
-		<xsd:attribute name="format">
-			<xsd:simpleType>
-				<xsd:restriction base="xsd:token">
-					<xsd:pattern value="\d,\d"/>
-				</xsd:restriction>
-			</xsd:simpleType>
-		</xsd:attribute>
-	</xsd:complexType>
-</xsd:schema>
+</xs:schema>

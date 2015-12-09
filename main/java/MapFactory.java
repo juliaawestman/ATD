@@ -65,14 +65,14 @@ public class MapFactory {
      * @param mapName the name of the desired map
      * @return the map asked for, if it doesn't exist null will be returned
      */
-    public Map makeMap(String mapName) {
+    public Map loadMap(String mapName) {
         Map map = null;
         for (int i = 0; i < mapList.getLength(); i++) {
             Node node = mapList.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element element = (Element) node;
                 if (mapName.compareTo(getTagValue("name", element)) == 0) {
-                    map = loadMap(element);
+                    map = makeMap(element);
                 }
             }
         }
@@ -80,18 +80,15 @@ public class MapFactory {
     }
 
 
-    private Map loadMap(Element e) {
+    private Map makeMap(Element e) {
         Map map = new Map();
         NodeList mapInfo = e.getChildNodes();
 
-        System.out.println(getTagValue("name", e));
         map.setName(getTagValue("name", e));
-
-        System.out.println(Integer.parseInt(getTagValue("waves", e)));
         map.setWaves(Integer.parseInt(getTagValue("waves", e)));
-
-        System.out.println(Integer.parseInt(getTagValue("winScore", e)));
         map.setWinScore(Integer.parseInt(getTagValue("winScore", e)));
+        map.setStartingGold(Integer.parseInt(getTagValue("startingGold", e)));
+
 
         for (int i = 0; i < mapInfo.getLength(); i++) {
             Node node = mapInfo.item(i);
@@ -144,9 +141,7 @@ public class MapFactory {
 
         /*Gets the position of the tile*/
         NodeList positionList = ((Element)node).getElementsByTagName("sendToPos");
-        /*for (int i = 1; i <= positionList.getLength()-3; i++){
-            System.out.println(positionList.item(i).getNodeName() + " : " + positionList.item(i).getNodeValue());
-        }*/
+
         Node tilePos = ((Element)node).getElementsByTagName("tilePos").item(0);
         Position p = extractPosition(tilePos);
 
@@ -155,9 +150,8 @@ public class MapFactory {
         try {
             Constructor constructor;
             constructor = tileType.getConstructor(Position.class);
-            //tile = (Tile) tileType.newInstance();
+
             tile = (Tile) constructor.newInstance(p);
-            System.out.println("x: " + p.getX() + ", y: " + p.getY());
 
             /* If the tile is a PathTile:
              * Add position(s) to which the tile will send units.
@@ -189,8 +183,8 @@ public class MapFactory {
      * @return an instance of Position.
      */
     private Position extractPosition(Node pos) {
-        int x = Integer.parseInt(pos.getAttributes().getNamedItem("xAxis").getNodeValue());
-        int y = Integer.parseInt(pos.getAttributes().getNamedItem("yAxis").getNodeValue());
+        int x = Integer.parseInt(pos.getAttributes().getNamedItem("column").getNodeValue());
+        int y = Integer.parseInt(pos.getAttributes().getNamedItem("row").getNodeValue());
         return new Position(x, y);
     }
 
@@ -236,7 +230,7 @@ public class MapFactory {
      * @return true if the map is valid, else false.
      */
     private boolean validateMap(StreamSource map) throws IOException, SAXException {
-        String schemaPath = "../resources/test2.xsd";
+        String schemaPath = "../resources/mapTemplate.xsd";
 
         String schemaLang = "http://www.w3.org/2001/XMLSchema";
         SchemaFactory factory = SchemaFactory.newInstance(schemaLang);

@@ -110,6 +110,6 @@ public class Game {
     }
 
     public void readMap(String mapName) {
-        this.map = mapFactory.makeMap(mapName);
+        this.map = mapFactory.loadMap(mapName);
     }
 }

@@ -19,9 +19,18 @@ public class GameGUI extends JPanel implements Runnable {
     public Thread thread = new Thread(this);
     public static boolean isFirst =true;
     public static int myWidth, myHeight;
+
     public static Board gameBoard;
 
+    public static Store store;
+
+    //public static boolean isFirst = true;
+
     public static Mob[] mobs = new Mob[100];
+
+    public GameGUI() {
+        thread.start();
+    }
 
     public void paintComponent(Graphics g) {
         if(isFirst) {
@@ -32,8 +41,15 @@ public class GameGUI extends JPanel implements Runnable {
 
 
         }
-        //g.clearRect(0, 0, getWidth(), getHeight());
+        g.setColor(new Color(50, 50, 50));
+
+        g.fillRect(0, 0, getWidth(), getHeight());
+        g.setColor(new Color(0, 0, 0));
+        g.drawLine(gameBoard.block[0][0].x-1, 0, gameBoard.block[0][0].x-1, gameBoard.block[gameBoard.worldHeight-1][0].y + gameBoard.blockSize);
+        g.drawLine(gameBoard.block[0][gameBoard.worldWidth-1].x + gameBoard.blockSize, 0, gameBoard.block[0][gameBoard.worldWidth-1].x + gameBoard.blockSize, gameBoard.block[gameBoard.worldHeight-1][0].y + gameBoard.blockSize);
+        g.drawLine(gameBoard.block[0][0].x, gameBoard.block[gameBoard.worldHeight-1][0].y + gameBoard.blockSize, gameBoard.block[0][gameBoard.worldWidth-1].x + gameBoard.blockSize, gameBoard.block[gameBoard.worldHeight-1][0].y + gameBoard.blockSize);
         gameBoard.draw(g);
+        store.draw(g);
 
         for(int i=0;i<mobs.length;i++) {
             if (mobs[i].inGame) {
@@ -45,6 +61,7 @@ public class GameGUI extends JPanel implements Runnable {
 
     public void define() {
         gameBoard = new Board();
+        store = new Store();
 
         for(int i=0;i<mobs.length;i++) {
             mobs[i] = new Mob();
@@ -52,12 +69,39 @@ public class GameGUI extends JPanel implements Runnable {
         }
     }
 
+    public int spawnTime = 2000, spawnFrame = 0;
+
+    public void mobSpawner() {
+        if (spawnFrame >= spawnTime) {
+            for (int i= 0; i<mobs.length; i++) {
+                if(!mobs[i].inGame) {
+                    mobs[i].spawnMob(0);
+                    break;
+                }
+            }
+
+            spawnFrame = 0;
+
+        } else {
+            spawnFrame += 1;
+        }
+
+    }
+
     public static int fpsFrame = 0, fps = 120;
     public void run() {
         while(true) {
             if(!isFirst) {
-                repaint();
+                gameBoard.physic();
+                mobSpawner();
+                for(int i=0;i<mobs.length;i++) {
+                    if(mobs[i].inGame) {
+                        mobs[i].physic();
+                    }
+                }
             }
+
+            repaint();
 
             try {
                 Thread.sleep(1);

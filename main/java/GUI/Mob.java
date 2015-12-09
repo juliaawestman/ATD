@@ -7,6 +7,7 @@ import java.awt.*;
  * Created by Joakim on 2015-12-07.
  */
 public class Mob extends Rectangle {
+    public int xC, yC;
     public int mobSize = 54;
     public int Id = Value.groundUnit;
     public boolean inGame = false;
@@ -20,10 +21,27 @@ public class Mob extends Rectangle {
     public void spawnMob(int Id) {
         setBounds(GameGUI.gameBoard.block[0][0].x , GameGUI.gameBoard.block[0][0].y, mobSize, mobSize);
 
+        xC = 0;
+        yC = 0;
+
         this.Id = Id;
 
         inGame = true;
     }
+
+    public int walkFrame = 0, walkSpeed = 40;
+    public void physic() {
+        if(walkFrame >= walkSpeed) {
+            x += 1;
+
+            walkFrame = 0;
+        } else {
+            walkFrame += 1;
+        }
+
+
+    }
+
 
     public void draw(Graphics g) {
         if(inGame) {
