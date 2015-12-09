@@ -55,4 +55,11 @@ public class MapFactoryTest {
         myMap.printMap();
     }
 
+    @Test
+    public void shouldAcceptDefaultMapJoy() throws Exception {
+        MapFactory factory = new MapFactory("main/resources/defaultMaps.xml");
+        Map myMap = factory.loadMap("Joy");
+        myMap.printMap();
+    }
+
 }

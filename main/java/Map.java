@@ -27,6 +27,7 @@ public class Map {
     protected Map(){
         pathTiles = new HashMap<Position, Tile>();
         towerTiles = new HashMap<Position, Tile>();
+        completeMap = new HashMap<Position, Tile>();
     }
 
     /**

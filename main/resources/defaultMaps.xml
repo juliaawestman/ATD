@@ -733,12 +733,124 @@
             <sendToPos column="7" row="9" />
         </tile>
 
-        <!-- -->
+        <!-- turning south at second T-cross -->
         <tile tileType="PathWay" >
-            <tilePos column="5" row="11" />
-            <sendToPos column="5" row="10" />
+            <tilePos column="7" row="9" />
+            <sendToPos column="7" row="10" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="7" row="10" />
+            <sendToPos column="7" row="11" />
+        </tile>
+        <tile tileType="PathWay" > <!-- turning east -->
+            <tilePos column="7" row="11" />
+            <sendToPos column="8" row="11" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="7" row="11" />
+            <sendToPos column="8" row="11" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="8" row="11" />
+            <sendToPos column="9" row="11" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="9" row="11" />
+            <sendToPos column="10" row="11" />
+        </tile>
+        <tile tileType="PathWay" > <!-- turning north -->
+            <tilePos column="10" row="11" />
+            <sendToPos column="10" row="10" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="10" row="10" />
+            <sendToPos column="10" row="9" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="10" row="9" />
+            <sendToPos column="10" row="8" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="10" row="8" />
+            <sendToPos column="10" row="7" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="10" row="7" />
+            <sendToPos column="10" row="6" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="10" row="6" />
+            <sendToPos column="10" row="5" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="10" row="5" />
+            <sendToPos column="10" row="4" />
         </tile>
 
+        <tile tileType="PathWay" > <!-- the path joins from second T-cross -->
+            <tilePos column="10" row="4" />
+            <sendToPos column="10" row="3" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="10" row="3" />
+            <sendToPos column="10" row="2" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="10" row="2" />
+            <sendToPos column="10" row="1" />
+        </tile>
+        <tile tileType="End" >
+            <tilePos column="10" row="1" />
+        </tile>
 
+        <!-- turning north at the second T-cross -->
+        <tile tileType="PathWay" >
+            <tilePos column="7" row="7" />
+            <sendToPos column="7" row="6" />
+        </tile>
+        <tile tileType="PathWay" > <!-- Turning west -->
+            <tilePos column="7" row="6" />
+            <sendToPos column="6" row="6" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="6" row="6" />
+            <sendToPos column="5" row="6" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="5" row="6" />
+            <sendToPos column="4" row="6" />
+        </tile>
+        <tile tileType="PathWay" > <!-- turning north -->
+            <tilePos column="4" row="6" />
+            <sendToPos column="4" row="5" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="4" row="5" />
+            <sendToPos column="4" row="4" />
+        </tile>
+        <tile tileType="PathWay" > <!-- turning east -->
+            <tilePos column="4" row="4" />
+            <sendToPos column="5" row="4" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="5" row="4" />
+            <sendToPos column="6" row="4" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="6" row="4" />
+            <sendToPos column="7" row="4" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="7" row="4" />
+            <sendToPos column="8" row="4" />
+        </tile>
+        <tile tileType="PathWay" >
+            <tilePos column="8" row="4" />
+            <sendToPos column="9" row="4" />
+        </tile>
+        <tile tileType="PathWay" > <!-- last before joining with other path -->
+            <tilePos column="9" row="4" />
+            <sendToPos column="10" row="4" />
+        </tile>
     </map>
 </mapList>
