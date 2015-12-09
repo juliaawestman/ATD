@@ -62,6 +62,7 @@ public class MapFactory {
         }
     }
 
+
     private ArrayList<String> collectMapNames(){
         ArrayList list = new ArrayList<String>();
         for (int i = 0; i < mapList.getLength(); i++) {
