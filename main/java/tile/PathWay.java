@@ -16,6 +16,7 @@ import main.java.unit.Unit;
 public class PathWay extends PathTile implements TileAction {
 
     private Position nextPos;
+    //hej
     /**
      * main.java.tile.tile.PathWay is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
