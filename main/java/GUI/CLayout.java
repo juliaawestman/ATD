@@ -16,9 +16,12 @@ public class CLayout {
 
     CardLayout cl = new CardLayout();
 
+    private MapInformation mapinfo;
 
 
-    public CLayout() {
+
+    public CLayout(MapInformation mapinfo) {
+        this.mapinfo = mapinfo;
 
 
 
@@ -28,16 +31,16 @@ public class CLayout {
 
                 //MenuGUI gui = new MenuGUI();
 
-        MenuGUI menu = new MenuGUI();
+        MenuGUI menu = new MenuGUI(this);
         NewGameGUI newGame = new NewGameGUI();
         HighScoreGUI highScore = new HighScoreGUI();
-        //GameGUI game = new GameGUI();
+        GameGUI game = new GameGUI(this);
 
 
         panelCont.add(menu.getPanel(), "menu");
         panelCont.add(highScore.getPanel(), "highScore");
         //panelCont.add(newGame.getPanel(), "newGame");
-        panelCont.add(new GameGUI().getPanel(), "game");
+        panelCont.add(game.getPanel(), "game");
 
 
         cl.show(panelCont, "menu");

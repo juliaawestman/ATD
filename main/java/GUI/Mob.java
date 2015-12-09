@@ -14,8 +14,6 @@ public class Mob extends Rectangle {
 
     public Mob() {
         //if(GameGUI.gameBoard.block[y][x] == Value.start)
-
-
     }
 
     public void spawnMob(int Id) {
@@ -45,7 +43,7 @@ public class Mob extends Rectangle {
 
     public void draw(Graphics g) {
         if(inGame) {
-            g.drawImage(new ImageIcon("main/resources/groundUnit.png").getImage(), x, y, width, height, null);
+            g.drawImage(new ImageIcon("main/resources/teleporterUnit.png").getImage(), x, y, width, height, null);
         }
 
     }
