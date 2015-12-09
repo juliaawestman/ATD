@@ -10,22 +10,17 @@ import java.util.ArrayList;
 public class NewGameGUI {
 
     private ArrayList<String> levels;
-    private JComboBox<String> levelList;
-    private JFrame frame;
+    private JComboBox levelList = new JComboBox<String>();
     private JPanel panel = new JPanel();
     private JButton newGame;
-    private JButton highScore;
     private JButton quit;
     private JButton sound;
-    private JButton start;
-    private JPanel upperPanel = null;
-    private JPanel middlePanel;
-    private JPanel lowerPanel;
-    private JPanel soundPanel;
-    private JTextArea textArea = new JTextArea("Använvdare 1 - 2000p", 20, 20);
-    private JScrollPane scrollPane = new JScrollPane(textArea,
-            JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-            JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    private CLayout c;
+
+    public NewGameGUI(CLayout c){
+        this.c = c;
+    }
+
 
     private JPanel buildUpperPanel() {
         JPanel upperPanel = new JPanel();
@@ -51,8 +46,21 @@ public class NewGameGUI {
 
     private JPanel buildLowerPanel() {
         JPanel lowerPanel = new JPanel();
-        //lowerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        //lowerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+        newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
+        newGame.addMouseListener(new StartGameListener(newGame, c));
+        newGame.setBorderPainted(false);
+        newGame.setContentAreaFilled(false);
+        newGame.setFocusPainted(false);
+
+        quit = new JButton(new ImageIcon("main/resources/quitButton.png"));
+        quit.addMouseListener(new QuitListener(quit, c));
+        quit.setBorderPainted(false);
+        quit.setContentAreaFilled(false);
+        quit.setFocusPainted(false);
+
+
+        lowerPanel.add(newGame);
         lowerPanel.add(quit);
 
         return lowerPanel;
@@ -76,28 +84,20 @@ public class NewGameGUI {
 
     public JPanel getPanel() {
 
-        upperPanel = buildUpperPanel();
-        middlePanel = buildMiddlePanel();
-        lowerPanel = buildLowerPanel();
-        soundPanel = buildSoundPanel();
-
         panel.setLayout(new BorderLayout());
 
         //Add panels to the frame
-        panel.add(upperPanel, BorderLayout.NORTH);
-        panel.add(middlePanel, BorderLayout.CENTER);
-        panel.add(lowerPanel, BorderLayout.SOUTH);
-        panel.add(soundPanel, BorderLayout.SOUTH);
+        panel.add(buildUpperPanel(), BorderLayout.NORTH);
+        panel.add(buildMiddlePanel(), BorderLayout.CENTER);
+        panel.add(buildLowerPanel(), BorderLayout.SOUTH);
+        //panel.add(buildSoundPanel(), BorderLayout.SOUTH);
 
         return panel;
     }
 
     private void updateLevels() {
 
-        levels.add("a");
-        levels.add("b");
-        levels.add("c");
+        levels = c.mapinfo.getLevelName();
+
     }
-
-
 }

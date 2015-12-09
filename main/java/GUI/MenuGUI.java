@@ -100,7 +100,7 @@ public class MenuGUI {
         newGame.setFocusPainted(false);
 
         highScore = new JButton(new ImageIcon("main/resources/highScoreButton.png"));
-        highScore.addMouseListener(new HighScoreListener(highScore,c ));
+        highScore.addMouseListener(new HighScoreListener(highScore, c));
         highScore.setBorderPainted(false);
         highScore.setContentAreaFilled(false);
         highScore.setFocusPainted(false);
