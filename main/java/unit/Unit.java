@@ -15,11 +15,12 @@ import main.java.Position;
 import main.java.tile.TileAction;
 
 public abstract class Unit {
-
+    /*Static variables*/
     protected static final int MAXSPEED = 50;
+    private static final int tileSize = 54 -1;
     protected String name;
     protected Position pos;
-    private Position nextPos;
+    private Position nextTilePos;
     protected URL imagePath;
     protected int health;
     protected int price;
@@ -37,7 +38,7 @@ public abstract class Unit {
      */
     public Unit(Position pos) {
         this.pos = pos;
-        this.nextPos = pos;
+        this.nextTilePos = pos;
         this.health = 10;
         this.price = 10;
         this.speed = 10;
@@ -55,18 +56,17 @@ public abstract class Unit {
     /**
      * Moves to the nextPos
      * 
-     * @return returns true if unit moved this timetick false if not.
+     * @return returns true if unit is on the middle position of the tile.
      */
     public boolean move(){
-        boolean ret = false;
         /*Move more frequently depending on the speed*/
         if (((timeLived) % ((MAXSPEED + 1) - speed)) == 0) {
             TileAction currentTile;
-            this.pos = this.nextPos;
-            ret = true;
+            this.pos = getNextPos();
+            return (isInMiddleOfTile());
         }
         timeLived++;
-        return ret;
+        return (isInMiddleOfTile());
     }
 
     public boolean isFlying() {
@@ -81,8 +81,8 @@ public abstract class Unit {
         this.pos = pos;
     }
 
-    public void setNextPos(Position nextPos) {
-        this.nextPos = nextPos;
+    public void setNextTilePos(Position nextTilePos) {
+        this.nextTilePos = nextTilePos;
     }
 
     public void takeDamage(int dmg) {
@@ -99,5 +99,44 @@ public abstract class Unit {
     
     public boolean hasReachedGoal(){
         return this.hasReachedGoal;
+    }
+    /**
+     * 
+     * @return the position one step closer to the middle of the next tile
+     */
+    private Position getNextPos(){
+        int currentX = this.pos.getX();
+        int currentY = this.pos.getY();
+        int tileX = this.nextTilePos.getX();
+        int tileY = this.nextTilePos.getY();
+        int tileMiddlePosX = (((tileX) * tileSize) + (tileSize/2)); 
+        int tileMiddlePosY = (((tileY) * tileSize) + (tileSize/2)); 
+             
+        if(currentX < tileMiddlePosX){
+            currentX++;
+        }else if(currentX > tileMiddlePosX){
+            currentX--;
+        }
+        if(currentY < tileMiddlePosY){
+            currentY++;
+        }else if(currentY > tileMiddlePosY){
+            currentY--;
+        }
+        return new Position(currentX, currentY);
+    }
+    /**
+     * 
+     * @return true if the unit is on the position in the middle of the tile, 
+     * false if not.
+     */
+    private boolean isInMiddleOfTile(){
+        int currentX = this.pos.getX();
+        int currentY = this.pos.getY();
+        int tileX = this.nextTilePos.getX();
+        int tileY = this.nextTilePos.getY();
+        int tileMiddlePosX = (((tileX) * tileSize) + (tileSize/2)); 
+        int tileMiddlePosY = (((tileY) * tileSize) + (tileSize/2)); 
+                
+        return (currentX == tileMiddlePosX) && (currentY == tileMiddlePosY);
     }
 }
