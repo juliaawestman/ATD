@@ -2,6 +2,8 @@ package main.java.GUI;
 
 import main.java.Map;
 import main.java.Position;
+import main.java.tile.PathTile;
+import main.java.tile.Start;
 import main.java.tile.Tile;
 
 import javax.swing.*;
@@ -46,13 +48,17 @@ public class Board {
 
         //Map map = new Map();
 
+
+        Tile t;
         for (int y=0;y<block.length;y++) {
             for(int x=0;x<block[0].length;x++) {
 
                 if(c.mapinfo.getMap(map).get(new Position(x+1, y+1)) != null) {
                     tile = c.mapinfo.getMap(map).get(new Position(x+1, y+1)).toString();
+                    t = c.mapinfo.getMap(map).get(new Position(x+1, y+1));
                 } else {
                     tile = "";
+                    t=null;
                 }
 
                 //if(c.mapinfo.getMap())
@@ -64,7 +70,11 @@ public class Board {
                 } else if(tile.contains("Tower")) {
                     block[y][x].draw(g,"main/resources/towerTile.png");
                 } else if(tile.contains("Cross")) {
-                    block[y][x].draw(g,"main/resources/TCross.jpg");
+                    block[y][x].draw(g, "main/resources/TCross.jpg");
+                }else if(t != null){ //added by Erik M
+                    if(PathTile.class.isAssignableFrom(t.getClass())) {
+                        block[y][x].draw(g, t.getImageURL());
+                    }
                 } else {
                     block[y][x].draw(g,"main/resources/defaultTile.png");
                 }

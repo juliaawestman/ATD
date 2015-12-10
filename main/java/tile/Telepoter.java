@@ -10,6 +10,7 @@ import main.java.Position;
 import main.java.unit.Unit;
 
 import java.awt.image.BufferedImage;
+import java.net.MalformedURLException;
 
 /**
  * main.java.tile.tile.
@@ -28,7 +29,7 @@ public class Telepoter extends PathTile implements TileAction {
      * will read in the image when the program will create a object
      * of the class main.java.tile.tile.Default
      */
-    public Telepoter(Position p) {
+    public Telepoter(Position p) throws MalformedURLException {
 	super(p, "");
     }
 

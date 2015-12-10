@@ -508,7 +508,7 @@
             <sendToPos column="10" row="3" />
         </tile>
 
-        <tile tileType="TCross"> <!-- where the path joins together again -->
+        <tile tileType="PathWay"> <!-- where the path joins together again -->
             <tilePos column="10" row="3" />
             <sendToPos column="10" row="2" />
         </tile>

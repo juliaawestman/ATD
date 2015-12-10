@@ -8,6 +8,8 @@ package main.java.tile;/*
 import main.java.Position;
 import main.java.unit.Unit;
 
+import java.net.MalformedURLException;
+
 /**
  * main.java.tile.tile.Start is a class that extends the main.java.tile.tile.PathTile class. The class
  * have a own image that will be used in the user interface.
@@ -19,8 +21,8 @@ public class Start extends PathTile implements TileAction {
      * main.java.tile.tile.Start is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
      */
-    public Start(Position p) {
-        super(p, "hej");
+    public Start(Position p) throws MalformedURLException {
+        super(p, "main/resources/pathTile.png");
     }
 
     @Override

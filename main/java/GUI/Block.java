@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.text.Position;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.util.HashMap;
 
 /**
@@ -20,6 +21,12 @@ public class Block extends Rectangle {
     public void draw(Graphics g, String tilepath) {
 
         g.drawImage(new ImageIcon(tilepath).getImage(), x, y, width, height, null);
+
+    }
+
+    public void draw(Graphics g, URL tilepath) {
+
+        g.drawImage(new ImageIcon(tilepath, "tile").getImage(), x, y, width, height, null);
 
     }
 }

@@ -10,6 +10,8 @@ import main.java.Position;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import javax.imageio.ImageIO;
 
 /**
@@ -17,7 +19,8 @@ import javax.imageio.ImageIO;
  */
 public abstract class Tile {
 
-    private String path;
+    private URL path;
+    //private String path;
     private BufferedImage img = null;
     private Position pos;
 
@@ -26,9 +29,9 @@ public abstract class Tile {
      * @param p
      * @param imgPath
      */
-    protected Tile(Position p, String imgPath) {
+    protected Tile(Position p, String imgPath) throws MalformedURLException {
 	    pos = p;
-	    path = imgPath;
+	    path = (new File(imgPath)).toURI().toURL();
         readInImg();
 
     }
@@ -39,13 +42,18 @@ public abstract class Tile {
      * readInImg will read in the img that is given of the path
      */
     public void readInImg(){
-	//try {
+	/*try {
 	    File file = new File(path);
-	    /*img = ImageIO.read(file);
+	    img = ImageIO.read(file);
 
 	} catch (IOException e) {
 	    e.printStackTrace();
 	}*/
+    }
+
+    /*added by Erik M*/
+    public URL getImageURL(){
+        return path;
     }
 
     /**

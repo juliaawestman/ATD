@@ -2,11 +2,13 @@ package main.java.tile;
 
 import main.java.Position;
 
+import java.net.MalformedURLException;
+
 public abstract class PathTile extends Tile {
 
     private Position nextPos;
 
-    protected PathTile(Position p, String imgPath) {
+    protected PathTile(Position p, String imgPath) throws MalformedURLException {
         super(p, imgPath);
 
     }
