@@ -17,11 +17,10 @@ public class HighscoreDB {
     private User u;
 
     final private String sqlCreateTable = "CREATE TABLE HIGHSCORE(id INTEGER IDENTITY, userName VARCHAR(30), wave integer, level VARCHAR(30), date VARCHAR(30))";
-    final private String sqlAddHighscore = "insert into highscore (userName, wave, level, date) values (?,?,?,?)";
 
     //private String url = "jdbc:hsqldb:hsql://localhost";
-    private String url = "jdbc:hsqldb:file:highscore";
-    // url jdbc:hsqldb:hsql://itchy.cs.umu.se:28282/highscore
+    //private String url = "jdbc:hsqldb:file:highscore";
+    private String url = "jdbc:hsqldb:hsql://itchy.cs.umu.se:28282/highscore";
 
     public HighscoreDB(User u) throws Exception {
 
@@ -40,9 +39,9 @@ public class HighscoreDB {
 
         st = conn.createStatement();
 
-        setup();
+        //setup();
 
-        addUser(u);
+        //addUser(u);
         getData();
 
     }
@@ -85,7 +84,7 @@ public class HighscoreDB {
         String map = u.getMap();
         String date = u.getCurrentDate();
 
-        String sql = "INSERT INTO HIGHSCORE " + "VALUES (5,"+"'"+userName+"'"+", "+ wave + ", "+ "'"+map+"'" + ", " + "'"+date+"')";
+        String sql = "INSERT INTO HIGHSCORE " + "VALUES (6,"+"'"+userName+"'"+", "+ wave + ", "+ "'"+map+"'" + ", " + "'"+date+"')";
         try {
             st.executeUpdate(sql);
         } catch (SQLException e) {
