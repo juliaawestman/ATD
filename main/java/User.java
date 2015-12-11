@@ -1,5 +1,8 @@
 package main.java;
-
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 /**
  * Created by juliawestman on 2015-12-06.
  */
@@ -7,6 +10,10 @@ public class User {
     private int points;
     private int credits;
     private int income;
+    private String userName;
+    private String mapPlayed;
+    private String currentDate;
+
 
     public User (int points, int credits, int income) {
         this.points = points;
@@ -15,38 +22,42 @@ public class User {
 
     }
 
-    public boolean useIncome(int useIncome){
-        if(income >= useIncome){
-            lessIncome(useIncome);
-            return true;
-        }
-        else {
-            return false;
-        }
+
+    public void setCurrentDate(){
+        currentDate =  new java.sql.Date(System.currentTimeMillis()).toString();
+    }
+
+    public void setCredits(int creditsToSet){
+        credits = creditsToSet;
     }
 
     public int getCredits(){
         return credits;
     }
 
-    public void income(int incomeToAdd){
-        income = income + incomeToAdd;
+    public void setIncome(int incomeToSet){
+        income = incomeToSet;
+    }
+
+    public int getIncome(){
+        return income;
     }
 
     public int getScore(){
         return  points;
     }
 
-    public void addPoints(int pointsToAdd){
-        points = points + pointsToAdd;
+    public void setPoints(int pointsToSet){
+        points = pointsToSet;
     }
 
-    public void lessIncome(int incomeToUse){
-        income = income - incomeToUse;
+
+    public void setUserName(String name){
+        userName = name;
+    }
+    public String getUserName(){
+        return userName;
     }
 
-    public int getIncome(){
-        return income;
-    }
 
 }
