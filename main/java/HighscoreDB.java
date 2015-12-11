@@ -10,18 +10,30 @@ public class HighscoreDB {
     private Connection conn;
     private Statement st = null;
 
-    private String user = "user";
+    private String user = "SA";
 
-    private String password = "password";
+    private String password = "";
 
-    final private String sqlCreateTable = "create table highscore(id integer identity, userName varchar(30), wave integer, level varchar(30), date varchar(30))";
+    private User u;
+
+    final private String sqlCreateTable = "CREATE TABLE HIGHSCORE(id INTEGER IDENTITY, userName VARCHAR(30), wave integer, level VARCHAR(30), date VARCHAR(30))";
     final private String sqlAddHighscore = "insert into highscore (userName, wave, level, date) values (?,?,?,?)";
 
-    private String url = "C:\\Users\\Joakim\\Desktop\\hsqldb-2.3.3\\hsqldb-2.3.3\\hsqldb\\lib";
+    //private String url = "jdbc:hsqldb:hsql://localhost";
+    private String url = "jdbc:hsqldb:file:highscore";
+    // url jdbc:hsqldb:hsql://itchy.cs.umu.se:28282/highscore
 
     public HighscoreDB(User u) throws Exception {
 
+        this.u = u;
+
+        try {
         Class.forName("org.hsqldb.jdbcDriver");
+    } catch (Exception e) {
+            System.out.println("ERROR: failed to load HSQLDB JDBC driver.");
+            e.printStackTrace();
+            return;
+        }
 
         conn = DriverManager.getConnection(url, user, password);
         //"jdbc:hsqldb:"
@@ -68,8 +80,12 @@ public class HighscoreDB {
             psAddUser.executeUpdate();
 
             */
+        String userName = u.getUserName();
+        int wave = u.getScore();
+        String map = u.getMap();
+        String date = u.getCurrentDate();
 
-        String sql = "INSERT INTO highscore " + "VALUES ('PELLE', 50, 'BANAN', 'DECEMBER')";
+        String sql = "INSERT INTO HIGHSCORE " + "VALUES (5,"+"'"+userName+"'"+", "+ wave + ", "+ "'"+map+"'" + ", " + "'"+date+"')";
         try {
             st.executeUpdate(sql);
         } catch (SQLException e) {
@@ -95,7 +111,7 @@ public class HighscoreDB {
                 System.out.print(", User: " + userName);
                 System.out.print(", Wave: " + wave);
                 System.out.print(", Level: " + level);
-                System.out.println("Date: " + date);
+                System.out.println(", Date: " + date);
 
             }
         }catch (SQLException e) {
