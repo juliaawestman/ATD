@@ -53,6 +53,6 @@ public class TCross extends PathTile implements TileAction {
             nextPos = tempPos;
         }
         setNextPos(tempPos);
-        unit.setNextPos(tempPos);
+        unit.setNextTilePos(tempPos);
     }
 }

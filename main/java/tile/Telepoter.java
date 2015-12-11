@@ -36,10 +36,10 @@ public class Telepoter extends PathTile implements TileAction {
     @Override
     public void landOn(Unit unit){
         if(nextPos!=null) {
-            unit.setNextPos(nextPos);
+            unit.setNextTilePos(nextPos);
         }
         else {
-            unit.setNextPos(nextTelPos);
+            unit.setNextTilePos(nextTelPos);
         }
     }
 

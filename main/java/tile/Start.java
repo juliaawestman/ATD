@@ -27,7 +27,7 @@ public class Start extends PathTile implements TileAction {
 
     @Override
     public void landOn(Unit unit) {
-        unit.setNextPos(nextPos);
+        unit.setNextTilePos(nextPos);
 
     }
     @Override
