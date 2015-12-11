@@ -15,6 +15,8 @@ public class CLayout {
     //JPanel gamePanel = new JPanel();
     //JPanel menuCard, newGameCard, highScoreCard, endGameCard;
 
+    MusicPlayer music = new MusicPlayer();
+
     CardLayout cl = new CardLayout();
 
     public MapInformation mapinfo;
@@ -28,6 +30,8 @@ public class CLayout {
 
     public CLayout(MapInformation mapinfo) {
         this.mapinfo = mapinfo;
+
+        music.play("main/resources/imperial.wav");
 
         panelCont.setLayout(cl);
 

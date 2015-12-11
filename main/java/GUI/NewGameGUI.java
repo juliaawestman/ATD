@@ -71,7 +71,7 @@ public class NewGameGUI {
         soundPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 
         sound = new JButton(new ImageIcon("main/resources/sound.png"));
-        sound.addMouseListener(new SoundListener(sound));
+        sound.addMouseListener(new SoundListener(sound, c));
 
         sound.setBorderPainted(false);
         sound.setContentAreaFilled(false);
