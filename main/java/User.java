@@ -11,7 +11,7 @@ public class User {
     private int credits;
     private int income;
     private String userName;
-    private String mapPlayed;
+    private String map;
     private String currentDate;
 
 
@@ -25,6 +25,10 @@ public class User {
 
     public void setCurrentDate(){
         currentDate =  new java.sql.Date(System.currentTimeMillis()).toString();
+    }
+
+    public String getCurrentDate() {
+        return currentDate;
     }
 
     public void setCredits(int creditsToSet){
@@ -51,12 +55,20 @@ public class User {
         points = pointsToSet;
     }
 
-
     public void setUserName(String name){
         userName = name;
     }
+
     public String getUserName(){
         return userName;
+    }
+
+    public void setMap(String map) {
+        this.map = map;
+    }
+
+    public String getMap() {
+        return map;
     }
 
 

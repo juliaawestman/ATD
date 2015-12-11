@@ -145,6 +145,8 @@ public class TowerTest {
         }
     }
 
+
+
     protected static class TestTower extends Tower {
         public TestTower(Position pos){
             super(10, 10, 10, true, true, pos);
