@@ -10,16 +10,21 @@ package main.java.unit;
  * Date: 2015-11-26
  */
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.net.URL;
+import javax.imageio.ImageIO;
+import main.java.GraphicEvent;
 import main.java.Position;
 import main.java.tile.TileAction;
 
 public abstract class Unit {
     /*Static variables*/
+
     protected static final int MAXSPEED = 50;
-    private static final int tileSize = 54 -1;
+    private static final int tileSize = 54 - 1;
     protected String name;
     protected Position pos;
+    protected int id;
     private Position nextTilePos;
     protected URL imagePath;
     protected int health;
@@ -27,7 +32,7 @@ public abstract class Unit {
     protected int speed;
     protected int income;
     protected Boolean flying;
-    private int timeLived = 0; 
+    private int timeLived = 0;
     private boolean hasReachedGoal = false;
 
     /**
@@ -36,7 +41,7 @@ public abstract class Unit {
      * @param pos the position
      *
      */
-    public Unit(Position pos) {
+    public Unit(Position pos, int id) {
         this.pos = pos;
         this.nextTilePos = pos;
         this.health = 10;
@@ -44,29 +49,33 @@ public abstract class Unit {
         this.speed = 10;
         this.name = "UnNamed";
         this.flying = false;
+        this.id = id;
+
     }
 
-    public void setHealth(int health){
+    public void setHealth(int health) {
         this.health = health;
     }
 
-    public void setFlying(boolean flying){
+    public void setFlying(boolean flying) {
         this.flying = flying;
     }
+
     /**
      * Moves to the nextPos
-     * 
-     * @return returns true if unit is on the middle position of the tile.
+     *
+     * @return returns true if the unit moved.
      */
-    public boolean move(){
+    public boolean move() {
+        boolean ret = false;
+
         /*Move more frequently depending on the speed*/
         if (((timeLived) % ((MAXSPEED + 1) - speed)) == 0) {
-            TileAction currentTile;
             this.pos = getNextPos();
-            return (isInMiddleOfTile());
+            ret = true;
         }
         timeLived++;
-        return (isInMiddleOfTile());
+        return ret;
     }
 
     public boolean isFlying() {
@@ -92,51 +101,65 @@ public abstract class Unit {
     public boolean isAlive() {
         return (this.health > 0);
     }
-    
-    public void setHasReachedGoal(boolean b){
+
+    public void setHasReachedGoal(boolean b) {
         this.hasReachedGoal = b;
     }
-    
-    public boolean hasReachedGoal(){
+
+    public boolean hasReachedGoal() {
         return this.hasReachedGoal;
     }
+
     /**
-     * 
+     *
      * @return the position one step closer to the middle of the next tile
      */
-    private Position getNextPos(){
+    private Position getNextPos() {
         int currentX = this.pos.getX();
         int currentY = this.pos.getY();
         int tileX = this.nextTilePos.getX();
         int tileY = this.nextTilePos.getY();
-        int tileMiddlePosX = (((tileX) * tileSize) + (tileSize/2)); 
-        int tileMiddlePosY = (((tileY) * tileSize) + (tileSize/2)); 
-             
-        if(currentX < tileMiddlePosX){
+        int tileMiddlePosX = (((tileX) * tileSize) + (tileSize / 2));
+        int tileMiddlePosY = (((tileY) * tileSize) + (tileSize / 2));
+
+        if (currentX < tileMiddlePosX) {
             currentX++;
-        }else if(currentX > tileMiddlePosX){
+        } else if (currentX > tileMiddlePosX) {
             currentX--;
         }
-        if(currentY < tileMiddlePosY){
+        if (currentY < tileMiddlePosY) {
             currentY++;
-        }else if(currentY > tileMiddlePosY){
+        } else if (currentY > tileMiddlePosY) {
             currentY--;
         }
         return new Position(currentX, currentY);
     }
+
     /**
-     * 
-     * @return true if the unit is on the position in the middle of the tile, 
+     *
+     * @return true if the unit is on the position in the middle of the tile,
      * false if not.
      */
-    private boolean isInMiddleOfTile(){
+    public boolean isInMiddleOfTile() {
         int currentX = this.pos.getX();
         int currentY = this.pos.getY();
         int tileX = this.nextTilePos.getX();
         int tileY = this.nextTilePos.getY();
-        int tileMiddlePosX = (((tileX) * tileSize) + (tileSize/2)); 
-        int tileMiddlePosY = (((tileY) * tileSize) + (tileSize/2)); 
-                
+        int tileMiddlePosX = (((tileX) * tileSize) + (tileSize / 2));
+        int tileMiddlePosY = (((tileY) * tileSize) + (tileSize / 2));
+
         return (currentX == tileMiddlePosX) && (currentY == tileMiddlePosY);
+    }
+
+    public GraphicEvent generateGraphicEvent() {
+        BufferedImage img = null;
+
+        try {
+            img = ImageIO.re.read(new File(this.imagePath));
+        } catch (IOException ex) {
+            System.err.println(ex.getCause().toString());
+        }
+
+        return (new GraphicEvent(this.id, this.pos, img));
     }
 }

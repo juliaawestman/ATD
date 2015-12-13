@@ -15,8 +15,8 @@ import main.java.*;
 
 public class TeleporterUnit extends Unit {
 
-    public TeleporterUnit(Position pos) {
-        super(pos);
+    public TeleporterUnit(Position pos, int id) {
+        super(pos, id);
         super.health = 20;
         super.price = 50;
         super.speed = 50;

@@ -9,32 +9,22 @@
  */
 package main.java;
 
-import java.net.URL;
+import java.awt.image.BufferedImage;
 
 public class GraphicEvent {
 
     private Position pos;
-    private Position pos1;
-    private Position pos2;
-    private URL imageURl = null;
+    private BufferedImage image = null;
     boolean isLaserEvent;
     private int id;
     private int timeStamp;
     private int visibilityTime = -1;
 
-    public GraphicEvent(int id, Position pos, URL imageURl) {
+    public GraphicEvent(int id, Position pos, BufferedImage img) {
         this.isLaserEvent = false;
         this.pos = pos;
         this.id = id;
-        this.imageURl = imageURl;
-    }
-
-    /*Make a laser event*/
-    public GraphicEvent(int id, Position pos1, Position pos2) {
-        this.isLaserEvent = true;
-        this.id = id;
-        this.pos1 = pos1;
-        this.pos2 = pos2;
+        this.image = img;
     }
     /*Set i a time the Graphic object will be visible. When the object has 
      lived for the specified time (measured in game ticks) it will be removed. If this time is not set 
@@ -63,16 +53,12 @@ public class GraphicEvent {
     public boolean isLaserEvent() {
         return isLaserEvent;
     }
-
-    public Position getLineStartPos() {
-        return this.pos1;
+    
+    public Position getPos(){
+        return this.pos;
     }
 
-    public Position getLineEndPos() {
-        return this.pos2;
-    }
-
-    public URL getImageUrl() {
-        return this.imageURl;
+    public BufferedImage getImage() {
+        return this.image;
     }
 }
