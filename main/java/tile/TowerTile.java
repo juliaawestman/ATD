@@ -21,6 +21,6 @@ public class TowerTile extends Tile {
      * @param p
      */
     public TowerTile(Position p) throws MalformedURLException {
-	    super(p, "");
+	    super(p, "main/resources/towerTile.png");
     }
 }

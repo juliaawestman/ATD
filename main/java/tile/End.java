@@ -21,7 +21,7 @@ public class End extends PathTile implements TileAction {
      * the program will create a object of the class main.java.tile.tile.Default
      */
     public End(Position p) throws MalformedURLException {
-        super(p, "");
+        super(p, "main/resources/pathTile.png");
     }
 
     @Override
