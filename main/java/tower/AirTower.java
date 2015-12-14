@@ -21,5 +21,6 @@ public class AirTower extends Tower {
      */
     public AirTower(Position position){
         super(range, speed, damage, true, false, position);
+        loadImage("/main/java/resources/AirTower.png");
     }
 }

@@ -21,5 +21,6 @@ public class GroundTower extends Tower {
      */
     public GroundTower(Position position){
         super(range, speed, damage, false, true, position);
+        loadImage("/main/java/resources/GroundTower.png");
     }
 }

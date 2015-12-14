@@ -30,6 +30,8 @@ public abstract class Tower {
     private Position pos;
     private int timeOfLastAttack;
 
+    private int id;
+
     /**
      * Constructor of a tower class
      *
@@ -91,8 +93,13 @@ public abstract class Tower {
         }
     }
 
-    protected void loadImage(URL imagePath){
-
+    protected void loadImage(String path){
+        try {
+            image = ImageIO.read(new File(path));
+        } catch (IOException e) {
+            //TODO exception handling
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -114,15 +121,8 @@ public abstract class Tower {
         return pos;
     }
 
-    /*public GraphicEvent generateGraphicEvent() {
-        BufferedImage img = null;
+    public GraphicEvent generateGraphicEvent() {
 
-        try {
-            img = ImageIO.read(new File(String.valueOf(this.imagePath)));
-        } catch (IOException ex) {
-            System.err.println(ex.getCause().toString());
-        }
-
-        return (new GraphicEvent(this.id, this.pos, img));
-    }*/
+        return (new GraphicEvent(this.id, this.pos, image));
+    }
 }
