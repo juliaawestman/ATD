@@ -24,6 +24,6 @@ public class AirUnit extends main.java.unit.Unit {
         super.name = "AirUnuit";
         super.pos = pos;
         super.flying = true;
-        super.imagePath = this.getClass().getResource("airUnit");
+        super.imagePath = this.getClass().getResource("airUnit.png");
     }
 }

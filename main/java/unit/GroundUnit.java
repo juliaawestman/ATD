@@ -25,7 +25,7 @@ public class GroundUnit extends main.java.unit.Unit {
         super.name = "GroundUnit";
         super.pos = pos;
         super.flying = false;
-        super.imagePath = this.getClass().getResource("groundUnit");
+        super.imagePath = this.getClass().getResource("groundUnit.png");
     }
 
 }

@@ -23,6 +23,6 @@ public class TeleporterUnit extends Unit {
         super.name = "GroundUnit";
         super.pos = pos;
         super.flying = false;
-        super.imagePath = this.getClass().getResource("teleporterUnit");
+        super.imagePath = this.getClass().getResource("teleporterUnit.png");
     }
 }
