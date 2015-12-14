@@ -67,8 +67,6 @@ public class HighScoreGUI {
 
 
 
-
-
         HighscoreDB dbs = new HighscoreDB();
         highscores = dbs.getData();
         //textArea.append(dbs.getData());
