@@ -28,13 +28,10 @@ public class Game {
     private final List<Unit> units = new LinkedList();
     private final List<Tower> towers = new LinkedList();
     private CurrentGraphicState graphicState = new CurrentGraphicState();
-    private int nrOfWaves = 0;
-    private int winCondition = 0;
-    //private Shop gameShop;
+    private int unitsReachedGoal=0;
+    //private Shop gameShop = new Shop();
 
-    public Game(int nrOfWaves, int winCondition) {
-        this.nrOfWaves = nrOfWaves;
-        this.winCondition = winCondition;
+    public Game() {
         try {
             mapFactory = new MapFactory("/main/resources");
         } catch (IOException | SAXException ex) {
@@ -60,9 +57,20 @@ public class Game {
 
         while (itrUnits.hasNext()) {
             currentUnit = (Unit) itrUnits.next();
+            /*Remove the unit if it has reached goal*/
+            if(currentUnit.hasReachedGoal()){
+                tempEvent = currentUnit.generateGraphicEvent();
+                this.graphicState.removeGraphicEvent(tempEvent);
+                itrUnits.remove();
+                this.unitsReachedGoal++;
+                continue;
+            }
             /*Remove the unit if it's dead*/
             if (!currentUnit.isAlive()) {
+                tempEvent = currentUnit.generateGraphicEvent();
+                this.graphicState.removeGraphicEvent(tempEvent);
                 itrUnits.remove();
+                continue;
             }
             if(currentUnit.move()){
                 tempEvent = currentUnit.generateGraphicEvent();
@@ -105,9 +113,14 @@ public class Game {
             }
         }
     }
+    public boolean isWon(){
+        return this.unitsReachedGoal == this.map.getWinScore();
+    }
+
     public void addUnit(Unit unit){
-        this.units.add(unit); 
-        this.graphicState.addGraphicEvent(unit.generateGraphicEvent());
+        /*Set the next position of the unit to the position of the start tile*/
+        unit.setNextTilePos(map.);
+        this.units.add(unit);
     }
     public void addTower(Tower tower){
         this.towers.add(tower);
