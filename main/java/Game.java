@@ -56,6 +56,7 @@ public class Game {
         ListIterator itrUnits = units.listIterator();
         Unit currentUnit;
         TileAction currentTile;
+        GraphicEvent tempEvent;
 
         while (itrUnits.hasNext()) {
             currentUnit = (Unit) itrUnits.next();
@@ -63,7 +64,11 @@ public class Game {
             if (!currentUnit.isAlive()) {
                 itrUnits.remove();
             }
-            if (currentUnit.move()){
+            if(currentUnit.move()){
+                tempEvent = currentUnit.generateGraphicEvent();
+                this.graphicState.addGraphicEvent(tempEvent);
+            }
+            if (currentUnit.isInMiddleOfTile()){
                 currentTile = (TileAction) map.getTileAt(currentUnit.getPosition());
                 currentTile.landOn(currentUnit);
             }
@@ -101,8 +106,8 @@ public class Game {
         }
     }
     public void addUnit(Unit unit){
-        this.units.add(unit);
-        //this.graphicState.addGraphicEvent(new GraphicEvent);
+        this.units.add(unit); 
+        this.graphicState.addGraphicEvent(unit.generateGraphicEvent());
     }
     public void addTower(Tower tower){
         this.towers.add(tower);

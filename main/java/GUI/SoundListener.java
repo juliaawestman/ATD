@@ -11,17 +11,23 @@ class SoundListener implements MouseListener {
 
         private JButton button;
 
-        public SoundListener(JButton button) {
+        private CLayout c;
+
+        public SoundListener(JButton button, CLayout c) {
+
             this.button = button;
+            this.c = c;
         }
 
     public void mouseClicked(MouseEvent e) {
 
         if(button.getIcon().toString().contains("Off")) {
             button.setIcon(new ImageIcon("main/resources/sound.png"));
+            c.music.play("main/resources/imperial.wav");
         }
         else {
             button.setIcon(new ImageIcon("main/resources/soundOff.png"));
+            c.music.stop();
         }
 
     }

@@ -16,9 +16,9 @@ import main.java.*;
 
 public class GroundUnit extends main.java.unit.Unit {
 
-    public GroundUnit(Position pos) {
+    public GroundUnit(Position pos, int id) {
 
-        super(pos);
+        super(pos, id);
         super.health = 30;
         super.price = 30;
         super.speed = 30;
