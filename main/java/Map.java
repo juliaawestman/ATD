@@ -1,13 +1,11 @@
 package main.java;
 
-import javafx.geometry.Pos;
 import main.java.tile.PathTile;
 import main.java.tile.Start;
 import main.java.tile.Tile;
 import main.java.tile.TowerTile;
 
-import java.util.HashMap;
-import java.util.Hashtable;
+import java.util.*;
 
 /**
  * Class:       Map
@@ -161,6 +159,10 @@ public class Map {
      */
     public void setStartingGold(int startingGold) {
         this.startingGold = startingGold;
+    }
+
+    public Collection<Tile> getTowerTiles(){
+        return towerTiles.values();
     }
 
     public HashMap<Position, Tile> getCompleteMap() {
