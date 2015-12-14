@@ -21,6 +21,7 @@ import main.java.tile.TileAction;
 public class Game {
 
     private int timeOfGame = 0;
+    private static final int incomeFreq = 100;
     private User user;
     private MapFactory mapFactory;
     private Map map;
@@ -31,22 +32,27 @@ public class Game {
     private int unitsReachedGoal=0;
     //private Shop gameShop = new Shop();
 
-    public Game() {
+    public Game(String mapName) {
         try {
             mapFactory = new MapFactory("/main/resources");
         } catch (IOException | SAXException ex) {
-           System.err.println(ex.getCause().toString());
+            System.err.println(ex.getCause().toString());
         }
+        readMap(mapName);
 
+        user = new User(this.map.getStartingGold(), 50);
     }
 
     public void update() {
-
         /*Update the units*/
         updateUnits();
         /*Update the Towers*/
         updateTowers();
         timeOfGame++;
+        /*Give the user more money if it should get more money this tick*/
+        if(this.timeOfGame % this.incomeFreq == 0){
+            this.user.increaseCredits(user.getIncome());
+        }
     }
 
     private void updateUnits() {
@@ -119,15 +125,18 @@ public class Game {
 
     public void addUnit(Unit unit){
         /*Set the next position of the unit to the position of the start tile*/
-        unit.setNextTilePos(map.);
+        unit.setNextTilePos(map.getStartTile().getPosition());
         this.units.add(unit);
     }
 
     public void addTower(Tower tower){
         this.towers.add(tower);
+        /*Generate a graphic event when the tower is added to the game*/
+        GraphicEvent tempEvent = tower.generateGraphicEvent();
+        this.graphicState.addGraphicEvent(tempEvent);
     }
 
-    public void readMap(String mapName) {
+    private void readMap(String mapName) {
         this.map = mapFactory.loadMap(mapName);
     }
 }

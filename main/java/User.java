@@ -15,8 +15,7 @@ public class User {
     private String currentDate;
 
 
-    public User (int points, int credits, int income) {
-        this.points = points;
+    public User (int credits, int income) {
         this.credits = credits;
         this.income = income;
 
@@ -69,6 +68,14 @@ public class User {
 
     public String getMap() {
         return map;
+    }
+
+    public void increaseCredits(int value){
+        this.credits = this.credits+credits;
+    }
+
+    public void decreaseCredits(int value){
+        this.credits = this.credits - value;
     }
 
 
