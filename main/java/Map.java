@@ -2,6 +2,7 @@ package main.java;
 
 import javafx.geometry.Pos;
 import main.java.tile.PathTile;
+import main.java.tile.Start;
 import main.java.tile.Tile;
 import main.java.tile.TowerTile;
 
@@ -19,6 +20,7 @@ public class Map {
     private HashMap<Position, Tile> pathTiles;
     private HashMap<Position, Tile> towerTiles;
     private HashMap<Position, Tile> completeMap;
+    private Tile startTile;
     private String name;
     private int waves;
     private int winScore;
@@ -37,6 +39,9 @@ public class Map {
     protected void addTile(Tile t){
         if (PathTile.class.isAssignableFrom(t.getClass())) {
             pathTiles.put(t.getPosition(), t);
+            if(Start.class.isAssignableFrom(t.getClass())){
+                startTile = t;
+            }
         } else if (TowerTile.class.isAssignableFrom(t.getClass())){
             towerTiles.put(t.getPosition(), t);
         }
@@ -160,5 +165,9 @@ public class Map {
 
     public HashMap<Position, Tile> getCompleteMap() {
         return completeMap;
+    }
+
+    public Tile getStartTile() {
+        return startTile;
     }
 }
