@@ -24,6 +24,7 @@ public class Block extends Rectangle {
 
     }
 
+    /*Added by Erik M*/
     public void draw(Graphics g, URL tilepath) {
 
         g.drawImage(new ImageIcon(tilepath, "tile").getImage(), x, y, width, height, null);

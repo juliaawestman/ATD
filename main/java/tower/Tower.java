@@ -8,11 +8,19 @@
 
 package main.java.tower;
 
+import main.java.GraphicEvent;
 import main.java.Position;
 import main.java.unit.Unit;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+
 public abstract class Tower {
 
+    private BufferedImage image;
     private int range;
     private int speed;
     private int damage;
@@ -83,6 +91,10 @@ public abstract class Tower {
         }
     }
 
+    protected void loadImage(URL imagePath){
+
+    }
+
     /**
      * Will check if the towers current target is valid. If the target is dead
      * or out of range the target is invalid since the tower cannot shoot at it.
@@ -101,4 +113,16 @@ public abstract class Tower {
     public Position getPosition() {
         return pos;
     }
+
+    /*public GraphicEvent generateGraphicEvent() {
+        BufferedImage img = null;
+
+        try {
+            img = ImageIO.read(new File(String.valueOf(this.imagePath)));
+        } catch (IOException ex) {
+            System.err.println(ex.getCause().toString());
+        }
+
+        return (new GraphicEvent(this.id, this.pos, img));
+    }*/
 }

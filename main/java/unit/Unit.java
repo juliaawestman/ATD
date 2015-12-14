@@ -11,6 +11,7 @@ package main.java.unit;
  */
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import main.java.GraphicEvent;
@@ -155,7 +156,7 @@ public abstract class Unit {
         BufferedImage img = null;
 
         try {
-            img = ImageIO.re.read(new File(this.imagePath));
+            img = ImageIO.read(new File(String.valueOf(this.imagePath)));
         } catch (IOException ex) {
             System.err.println(ex.getCause().toString());
         }

@@ -109,6 +109,7 @@ public class Game {
         this.units.add(unit); 
         this.graphicState.addGraphicEvent(unit.generateGraphicEvent());
     }
+
     public void addTower(Tower tower){
         this.towers.add(tower);
     }
