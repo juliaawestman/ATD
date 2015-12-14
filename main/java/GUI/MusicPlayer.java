@@ -16,6 +16,11 @@ public class MusicPlayer {
 
     }
 
+    /**
+     * Plays a specific sound file as background music
+     *
+     * @param filePath which is a String to which music file to play
+     */
     public void play(String filePath){
 
         try {
@@ -31,6 +36,9 @@ public class MusicPlayer {
 
     }
 
+    /**
+     * Stops the current music playing
+     */
     public void stop(){
 
         clip.stop();

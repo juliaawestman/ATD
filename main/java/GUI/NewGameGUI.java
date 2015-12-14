@@ -5,6 +5,9 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
+ * Class: NewGameGUI
+ * Class for creating the GUI for the new game menu
+ *
  * Created by Joakim on 2015-12-02.
  */
 public class NewGameGUI {
@@ -21,7 +24,10 @@ public class NewGameGUI {
         this.c = c;
     }
 
-
+    /**
+     *
+     * @return
+     */
     private JPanel buildUpperPanel() {
         JPanel upperPanel = new JPanel();
 
@@ -34,6 +40,10 @@ public class NewGameGUI {
         return upperPanel;
     }
 
+    /**
+     *
+     * @return
+     */
     private JPanel buildMiddlePanel() {
         JPanel middlePanel = new JPanel();
         //middlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -44,6 +54,10 @@ public class NewGameGUI {
         return middlePanel;
     }
 
+    /**
+     *
+     * @return
+     */
     private JPanel buildLowerPanel() {
         JPanel lowerPanel = new JPanel();
 
@@ -82,6 +96,10 @@ public class NewGameGUI {
         return soundPanel;
     }
 
+    /**
+     *
+     * @return A panel that shows the game menu after "New game" is pressed
+     */
     public JPanel getPanel() {
 
         panel.setLayout(new BorderLayout());
@@ -95,6 +113,9 @@ public class NewGameGUI {
         return panel;
     }
 
+    /**
+     * Updates the level name
+     */
     private void updateLevels() {
 
         levels = c.mapinfo.getLevelName();

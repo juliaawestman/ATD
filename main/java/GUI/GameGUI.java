@@ -10,30 +10,21 @@ import java.io.IOException;
 import java.util.Random;
 
 /**
+ * Class: GameGUI
+ * Builds the GUI for when a new game is starting
+ *
  * Created by Zacke on 2015-11-26.
  */
 public class GameGUI extends JPanel implements Runnable {
-    //JPanel gamePanel = new JPanel();
 
     JPanel gamePanel = new JPanel();
     public Thread thread = new Thread(this);
     public static boolean isFirst =true;
     public static int myWidth, myHeight;
-
     public String chosenMap;
-
-
-    //private MapInformation mapinfo;
-
     private CLayout c;
-
-
     public Board gameBoard;
-
     public static Store store;
-
-    //public static boolean isFirst = true;
-
     public static Mob[] mobs = new Mob[1];
 
     public GameGUI(CLayout c) {
@@ -41,6 +32,11 @@ public class GameGUI extends JPanel implements Runnable {
         thread.start();
     }
 
+    /**
+     * Paints the actual GUI for when a new game is starting, including the store and game board
+     *
+     * @param g
+     */
     public void paintComponent(Graphics g) {
         if(isFirst) {
             myWidth = getWidth();
@@ -50,7 +46,6 @@ public class GameGUI extends JPanel implements Runnable {
 
         }
         g.setColor(new Color(50, 50, 50));
-
         g.fillRect(0, 0, getWidth(), getHeight());
         g.setColor(new Color(255, 255, 0));
         ((Graphics2D)g).setStroke(new BasicStroke(3));
@@ -69,6 +64,9 @@ public class GameGUI extends JPanel implements Runnable {
 
     }
 
+    /**
+     * Defines the game board, store and units
+     */
     public void define() {
         gameBoard = new Board(c, chosenMap);
         store = new Store(gameBoard);
@@ -80,9 +78,6 @@ public class GameGUI extends JPanel implements Runnable {
     }
 
     public int spawnTime = 20000, spawnFrame = 0;
-
-
-
     public void mobSpawner() {
         if (spawnFrame >= spawnTime) {
             for (int i= 0; i<mobs.length; i++) {
@@ -100,6 +95,9 @@ public class GameGUI extends JPanel implements Runnable {
 
     }
 
+    /**
+     * A method that repaints the GUI every millisecond and is run by a new thread
+     */
     public static int fpsFrame = 0, fps = 120;
     public void run() {
         while(true) {
@@ -124,6 +122,9 @@ public class GameGUI extends JPanel implements Runnable {
         }
     }
 
+    /**
+     * @return The game panel as a panel with a grid layout
+     */
     public JPanel getPanel() {
 
         gamePanel.setLayout(new GridLayout(1, 1, 0, 0));
@@ -133,6 +134,11 @@ public class GameGUI extends JPanel implements Runnable {
         return gamePanel;
     }
 
+    /**
+     * Updates which map is chosen by the user
+     *
+     * @param s String of which map is chosen
+     */
     public void setChosenMap(String s) {
         chosenMap = s;
     }

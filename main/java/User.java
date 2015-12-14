@@ -22,7 +22,7 @@ public class User {
 
     }
 
-
+/* TODO create increase/decrease methods instead of get/set for certain values */
     public void setCurrentDate(){
         currentDate =  new java.sql.Date(System.currentTimeMillis()).toString();
     }

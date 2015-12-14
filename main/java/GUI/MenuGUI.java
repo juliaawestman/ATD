@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * Class: MenuGUI
+ * Builds the starting menu for when the application is starting
+ *
  * Created by Joakim on 2015-11-30.
  */
 public class MenuGUI {
@@ -136,10 +139,10 @@ public class MenuGUI {
         return lowerPanel;
     }
 
-    public void show() {
-        frame.setVisible(true);
-    }
-
+    /**
+     *
+     * @return The main menu GUI as a JPanel
+     */
     public JPanel getPanel() {
 
         upperPanel = buildUpperPanel();
