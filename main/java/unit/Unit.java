@@ -9,14 +9,9 @@ package main.java.unit;
  *
  * Date: 2015-11-26
  */
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import javax.imageio.ImageIO;
-import main.java.GraphicEvent;
 import main.java.Position;
-import main.java.tile.TileAction;
+
+import java.net.URL;
 
 public abstract class Unit {
     /*Static variables*/
@@ -152,15 +147,15 @@ public abstract class Unit {
         return (currentX == tileMiddlePosX) && (currentY == tileMiddlePosY);
     }
 
-    public GraphicEvent generateGraphicEvent() {
+    /*public GraphicEvent generateGraphicEvent() {
         BufferedImage img = null;
 
         try {
-            img = ImageIO.read(new File(String.valueOf(this.imagePath)));
+            img = ImageIO.re.read(new File(this.imagePath));
         } catch (IOException ex) {
             System.err.println(ex.getCause().toString());
         }
 
         return (new GraphicEvent(this.id, this.pos, img));
-    }
+    }*/
 }

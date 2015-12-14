@@ -9,14 +9,15 @@
  */
 package main.java;
 
+import main.java.tile.TileAction;
+import main.java.tower.Tower;
+import main.java.unit.Unit;
+import org.xml.sax.SAXException;
+
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-import main.java.tower.Tower;
-import main.java.unit.Unit;
-import org.xml.sax.SAXException;
-import main.java.tile.TileAction;
 
 public class Game {
 
@@ -65,8 +66,8 @@ public class Game {
                 itrUnits.remove();
             }
             if(currentUnit.move()){
-                tempEvent = currentUnit.generateGraphicEvent();
-                this.graphicState.addGraphicEvent(tempEvent);
+               // tempEvent = currentUnit.generateGraphicEvent();
+              //  this.graphicState.addGraphicEvent(tempEvent);
             }
             if (currentUnit.isInMiddleOfTile()){
                 currentTile = (TileAction) map.getTileAt(currentUnit.getPosition());
@@ -107,7 +108,7 @@ public class Game {
     }
     public void addUnit(Unit unit){
         this.units.add(unit); 
-        this.graphicState.addGraphicEvent(unit.generateGraphicEvent());
+        //this.graphicState.addGraphicEvent(unit.generateGraphicEvent());
     }
 
     public void addTower(Tower tower){
