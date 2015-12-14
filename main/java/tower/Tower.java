@@ -93,9 +93,9 @@ public abstract class Tower {
         }
     }
 
-    protected void loadImage(String path){
+    protected void loadImage(URL path){
         try {
-            image = ImageIO.read(new File(path));
+            image = ImageIO.read(path);
         } catch (IOException e) {
             //TODO exception handling
             e.printStackTrace();

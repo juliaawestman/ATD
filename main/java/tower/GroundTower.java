@@ -2,6 +2,10 @@ package main.java.tower;
 
 import main.java.Position;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Random;
+
 /**
  * Class:       GroundTower
  * <p/>
@@ -21,6 +25,6 @@ public class GroundTower extends Tower {
      */
     public GroundTower(Position position){
         super(range, speed, damage, false, true, position);
-        loadImage("/main/java/resources/GroundTower.png");
+        loadImage(this.getClass().getResource("../../resources/GroundTower.png"));
     }
 }

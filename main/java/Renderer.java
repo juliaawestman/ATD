@@ -1,8 +1,17 @@
 package main.java;
 
+import main.java.tower.GroundTower;
+import main.java.tower.Tower;
+import main.java.unit.AirUnit;
+import main.java.unit.GroundUnit;
+import main.java.unit.Unit;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.util.Stack;
+import java.util.logging.FileHandler;
 
 /**
  * Class:       Renderer
@@ -11,21 +20,86 @@ import java.awt.image.BufferedImage;
  * cs-user:     dv14emm
  * Date:        12/14/15
  */
-public class Renderer extends SwingWorker{
-    BufferedImage stuff;
-    Graphics2D g;
+public class Renderer {
+    private final int width;
+    private final int height;
+    private BufferedImage image;
+    private Graphics2D graphics;
 
     public Renderer(int height, int width){
-        stuff = new BufferedImage(height, width, Image.SCALE_DEFAULT);
-        g = stuff.createGraphics();
+        this.height = height;
+        this.width = width;
+    }
+
+    public void drawImage(Stack<GraphicEvent> s){
+        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        graphics = image.createGraphics();
+        graphics.setBackground(new Color(255, 255, 255, 0));
+
+        while (!s.isEmpty()){
+            GraphicEvent event = s.pop();
+
+            event.getPos();
+            graphics.drawImage(event.getImage(), event.getPos().getX(), event.getPos().getY(), 54, 54, null);
+
+        }
+        graphics.setColor(new Color(255, 0, 0));
+        graphics.drawLine(10, 10, 50, 50);
+    }
+
+    public BufferedImage getImage(){
+        if (image == null)
+            System.out.println("derp");
+        return image;
     }
 
     public static void main(String[] args) {
 
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Renderer renderer = new Renderer(648, 648);
+                Tower t = new GroundTower(new Position(20,20));
+                Unit u = new GroundUnit(new Position(10, 10), 1);
+                Stack<GraphicEvent> stack = new Stack<>();
+                stack.add(t.generateGraphicEvent());
+                stack.add(u.generateGraphicEvent());
+                renderer.drawImage(stack);
+
+                GUI gui = new GUI();
+                gui.setImage(renderer.getImage());
+            }
+        });
+
     }
 
-    @Override
-    protected Object doInBackground() throws Exception {
-        return null;
+    private static class GUI {
+        JFrame frame;
+        ImageIcon icon;
+
+        public GUI(){
+            frame = new JFrame();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            //frame.setSize(100, 100);
+            frame.setLocationRelativeTo(null);
+
+            icon = new ImageIcon();
+            //JPanel p = new JPanel();
+            //p.add(new JLabel(icon));
+            //p.setVisible(true);
+            //p.setSize(p.getPreferredSize());
+
+            //frame.add(p);
+            frame.add(new JLabel(icon));
+            frame.setVisible(true);
+            frame.pack();
+            frame.setResizable(false);
+            frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+
+        }
+
+        public void setImage(BufferedImage img){
+            icon.setImage(img);
+        }
     }
 }

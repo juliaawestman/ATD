@@ -23,10 +23,6 @@ public class TeleporterUnit extends Unit {
         super.name = "GroundUnit";
         super.pos = pos;
         super.flying = false;
-        try {
-            super.imagePath = new URL("/main/resources/teleporterUnit.png");
-        } catch (MalformedURLException ex) {
-            System.err.println(ex.getCause().toString());
-        }
+        super.imagePath = this.getClass().getResource("teleporterUnit.png");
     }
 }
