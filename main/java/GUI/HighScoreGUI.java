@@ -88,13 +88,13 @@ public class HighScoreGUI {
     public JPanel getPanel() {
 
         upperPanel = buildUpperPanel();
-        lowerPanel = buildLowerPanel();
+        //lowerPanel = buildLowerPanel();
 
         panel.setLayout(new BorderLayout());
 
         //Add panels to the frame
         panel.add(upperPanel, BorderLayout.NORTH);
-        panel.add(lowerPanel, BorderLayout.CENTER);
+        //panel.add(lowerPanel, BorderLayout.CENTER);
 
         return panel;
     }
