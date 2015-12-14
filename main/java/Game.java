@@ -10,9 +10,14 @@
 package main.java;
 
 import java.io.IOException;
+import java.text.CollationElementIterator;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+
+import main.java.tower.AirTower;
+import main.java.tower.GroundTower;
 import main.java.tower.Tower;
 import main.java.unit.Unit;
 import org.xml.sax.SAXException;
@@ -22,13 +27,13 @@ public class Game {
 
     private int timeOfGame = 0;
     private static final int incomeFreq = 100;
+    private static final int nrOfTowers = 5;
     private User user;
     private MapFactory mapFactory;
     private Map map;
-    private final int waveNr = 1;
-    private final List<Unit> units = new LinkedList();
-    private final List<Tower> towers = new LinkedList();
-    private CurrentGraphicState graphicState = new CurrentGraphicState();
+    private List<Unit> units;
+    private List<Tower> towers;
+    private CurrentGraphicState graphicState;
     private int unitsReachedGoal=0;
     //private Shop gameShop = new Shop();
 
@@ -40,7 +45,11 @@ public class Game {
         }
         readMap(mapName);
 
+        units = new LinkedList();
+        towers = new LinkedList();
+        graphicState = new CurrentGraphicState();
         user = new User(this.map.getStartingGold(), 50);
+        makeTowers();
     }
 
     public void update() {
@@ -129,11 +138,31 @@ public class Game {
         this.units.add(unit);
     }
 
-    public void addTower(Tower tower){
-        this.towers.add(tower);
-        /*Generate a graphic event when the tower is added to the game*/
-        GraphicEvent tempEvent = tower.generateGraphicEvent();
-        this.graphicState.addGraphicEvent(tempEvent);
+    private void makeTowers(){
+        int nrOfTowerTiles = map.getTowerTiles().size();
+        Iterator it = map.getTowerTiles().iterator();
+        LinkedList <Tower>towerList = new LinkedList();
+        int random;
+        Tower tower;
+
+        if(nrOfTowerTiles == 0){
+            throw new IllegalStateException("There are no towerTiles!");
+        }
+        /*place towers in a list*/
+        while(it.hasNext()){
+            towerList.add((Tower) it.next());
+        }
+
+        for(int i=0; this.nrOfTowers < i;i++){
+            random = (int)(Math.random() * nrOfTowerTiles + 1);
+            /*Add a tower and set the position of the tower to a random towerTile*/
+            tower = new GroundTower(towerList.get(random).getPosition());
+            this.towers.add(tower);
+
+            /*Generate a graphic event when the tower is added to the game*/
+            GraphicEvent tempEvent = tower.generateGraphicEvent();
+            this.graphicState.addGraphicEvent(tempEvent);
+        }
     }
 
     private void readMap(String mapName) {
