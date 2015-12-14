@@ -20,7 +20,7 @@ public class Default extends PathTile {
      * the program will create a object of the class main.java.tile.tile.Default
      */
     public Default(Position p) throws MalformedURLException {
-        super(p,"");
+        super(p, "main/resources/defaultTile.png");
     }
 
     @Override

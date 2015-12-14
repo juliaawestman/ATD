@@ -25,7 +25,7 @@ public class PathWay extends PathTile implements TileAction {
      */
 
     public PathWay(Position p) throws MalformedURLException {
-        super(p, "");
+        super(p, "pathTile.png");
     }
 
     @Override

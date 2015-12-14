@@ -33,7 +33,6 @@ public abstract class Tile {
 	    pos = p;
 	    path = (new File(imgPath)).toURI().toURL();
         readInImg();
-
     }
 
     //next tile
