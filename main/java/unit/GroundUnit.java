@@ -25,11 +25,7 @@ public class GroundUnit extends main.java.unit.Unit {
         super.name = "GroundUnit";
         super.pos = pos;
         super.flying = false;
-        try {
-            super.imagePath = new URL("/main/resources/groundUnit.png");
-        } catch (MalformedURLException ex) {
-            System.err.println(ex.getCause().toString());
-        }
+        super.imagePath = this.getClass().getResource("groundUnit");
     }
 
 }

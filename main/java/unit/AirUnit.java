@@ -24,10 +24,6 @@ public class AirUnit extends main.java.unit.Unit {
         super.name = "AirUnuit";
         super.pos = pos;
         super.flying = true;
-        try {
-            super.imagePath = new URL("/main/resources/airUnit.png");
-        } catch (MalformedURLException ex) {
-            System.err.println(ex.getCause().toString());
-        }
+        super.imagePath = this.getClass().getResource("airUnit");
     }
 }

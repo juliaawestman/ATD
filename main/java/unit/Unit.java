@@ -156,7 +156,7 @@ public abstract class Unit {
         BufferedImage img = null;
 
         try {
-            img = ImageIO.read(new File(String.valueOf(this.imagePath)));
+            img = ImageIO.read(this.imagePath);
         } catch (IOException ex) {
             System.err.println(ex.getCause().toString());
         }
