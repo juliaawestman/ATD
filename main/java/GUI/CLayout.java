@@ -109,4 +109,11 @@ public class CLayout {
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
 
+    /**
+     * @return The size of a tile in the game board
+     */
+    public int getTileSize() {
+        return game.gameBoard.blockSize;
+    }
+
 }
