@@ -44,7 +44,6 @@ public class MainController extends TimerTask implements MapInformation {
         renderer.drawImage(game.getGraphicState().getCurrentGraphicState());
         BufferedImage img = renderer.getImage();
         gui.setBoardImage(img);
-        System.out.println("erik");
     }
 
     /**
@@ -59,7 +58,7 @@ public class MainController extends TimerTask implements MapInformation {
      * Starts the game with an update interval of 1/10 of a second
      */
     public void start(){
-        startWithUpdateInterval(100);
+        startWithUpdateInterval(3);
     }
 
     /**
@@ -86,7 +85,10 @@ public class MainController extends TimerTask implements MapInformation {
         Map map = factory.loadMap(s);
         game = new Game(map);
         shop = game.getShop();
-        game.addUnit(new GroundUnit(new Position(27, 27), 1));
+        int Y = map.getStartTile().getPosition().getY()-1 *54 + 27;
+        int X = map.getStartTile().getPosition().getX()-1 *54 + 27;
+
+        game.addUnit(new GroundUnit(new Position(X, Y), 1));
         start();
         return map.getCompleteMap();
     }
