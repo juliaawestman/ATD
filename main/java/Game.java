@@ -113,11 +113,7 @@ public class Game {
                 /*Try to find a target for the tower*/
                 while (itrUnits.hasNext()) {
                     currentUnit = (Unit) itrUnits.next();
-                    /*Remove the unit if it's dead*/
-                    if (!currentUnit.isAlive()) {
-                        itrUnits.remove();
-                    /*Try to find new target for the tower*/
-                    }else if(currentTower.withinRange(currentUnit)){
+                    if(currentUnit.isAlive() && currentTower.withinRange(currentUnit)){
                         currentTower.setTarget(currentUnit);
                         currentTower.attack(timeOfGame);
                         break;

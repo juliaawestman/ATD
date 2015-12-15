@@ -105,6 +105,7 @@ public abstract class Unit {
 
     public void setHasReachedGoal(boolean b) {
         this.hasReachedGoal = b;
+        this.health = 0;
     }
 
     public boolean hasReachedGoal() {
