@@ -58,7 +58,7 @@ public class MainController extends TimerTask implements MapInformation {
      * Starts the game with an update interval of 1/10 of a second
      */
     public void start(){
-        startWithUpdateInterval(3);
+        startWithUpdateInterval(1);
     }
 
     /**
@@ -85,8 +85,8 @@ public class MainController extends TimerTask implements MapInformation {
         Map map = factory.loadMap(s);
         game = new Game(map);
         shop = game.getShop();
-        int Y = map.getStartTile().getPosition().getY()-1 *54 + 27;
-        int X = map.getStartTile().getPosition().getX()-1 *54 + 27;
+        int Y = (map.getStartTile().getPosition().getY() *53) + 27;
+        int X = (map.getStartTile().getPosition().getX() *53) + 27;
 
         game.addUnit(new GroundUnit(new Position(X, Y), 1));
         start();
@@ -95,6 +95,5 @@ public class MainController extends TimerTask implements MapInformation {
 
     public static void main(String[] args) {
         MainController c = new MainController();
-        //c.start();
     }
 }

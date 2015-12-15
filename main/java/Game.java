@@ -166,7 +166,7 @@ public class Game {
             towerTileList.add((TowerTile) it.next());
         }
 
-        for(int i=0; this.nrOfTowers < i;i++){
+        for(int i=0; i<this.nrOfTowers ;i++){
             random = (int)(Math.random() * nrOfTowerTiles + 1);
             /*Add a tower and set the position of the tower to a random towerTiles position*/
 
