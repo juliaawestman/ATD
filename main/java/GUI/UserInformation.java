@@ -17,4 +17,8 @@ public interface UserInformation {
 
     public void updateUsername(String s);
 
+    public boolean gameOver();
+
+    public void hasClicked(int x, int y);
+
 }

@@ -30,11 +30,11 @@ public class GameOverGUI {
         //BufferedImage myPicture = ImageIO.read(new File("loggo.png"));
         JLabel picLabel = new JLabel(new ImageIcon("main/resources/loggo.png"));
         JLabel victoryText = new JLabel();
-        victoryText.setText("VICTORY ! ! ! !");
+        victoryText.setText("<html>"+"VICTORY!!!"+"<br>"+"Score 123"+"<html>");
         victoryText.setFont(new Font("Arial", Font.ITALIC, 24));
         upperPanel.add(picLabel);
 
-        upperPanel.setOpaque(false);
+        //upperPanel.setOpaque(false);
 
         return upperPanel;
     }
@@ -107,7 +107,7 @@ public class GameOverGUI {
      * @return The main menu GUI as a JPanel
      */
     public JPanel getPanel() {
-        panel.setBackground(new Color(169,255,151));
+        //panel.setBackground(new Color(169,255,151));
         upperPanel = buildUpperPanel();
         middlePanel = buildMiddlePanel();
         lowerPanel = buildLowerPanel();
