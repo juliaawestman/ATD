@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -27,11 +29,10 @@ public class GameGUI extends JPanel implements Runnable {
     //private MapInformation mapinfo;
 
     private CLayout c;
-
-
     public Board gameBoard;
-
     public static Store store;
+
+    private Point mse = new Point(0, 0);
 
     //public static boolean isFirst = true;
 
@@ -128,7 +129,38 @@ public class GameGUI extends JPanel implements Runnable {
 
         gamePanel.setLayout(new GridLayout(1, 1, 0, 0));
         //gamePanel.add(new GameGUI(c));
+
         gamePanel.add(this);
+
+        gamePanel.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int x = e.getX() - ((myWidth / 2) - (gameBoard.blockSize*(gameBoard.worldWidth/2)));
+                int y = e.getY();
+                System.out.println(x+" "+y);
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
 
         return gamePanel;
     }
@@ -142,10 +174,6 @@ public class GameGUI extends JPanel implements Runnable {
 
 
 
-    }
-
-    public int getTileSize() {
-        return gameBoard.blockSize;
     }
 
 }

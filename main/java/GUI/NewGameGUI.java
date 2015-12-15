@@ -16,7 +16,7 @@ public class NewGameGUI {
     private JComboBox levelList = new JComboBox<String>();
     private JPanel panel = new JPanel();
     private JButton newGame;
-    private JButton quit;
+    private JButton back;
     private JButton sound;
     private CLayout c;
 
@@ -46,6 +46,7 @@ public class NewGameGUI {
      */
     private JPanel buildMiddlePanel() {
         JPanel middlePanel = new JPanel();
+        middlePanel.setBackground(new Color(169,255,151));
         //middlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         updateLevels();
         levelList = new JComboBox(levels.toArray());
@@ -60,6 +61,13 @@ public class NewGameGUI {
      */
     private JPanel buildLowerPanel() {
         JPanel lowerPanel = new JPanel();
+        lowerPanel.setBackground(new Color(169,255,151));
+
+        back = new JButton(new ImageIcon("main/resources/backButton.png"));
+        back.addMouseListener(new BackListener(back, c));
+        back.setBorderPainted(false);
+        back.setContentAreaFilled(false);
+        back.setFocusPainted(false);
 
         newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
         newGame.addMouseListener(new StartGameListener(newGame, c, levelList));
@@ -67,15 +75,8 @@ public class NewGameGUI {
         newGame.setContentAreaFilled(false);
         newGame.setFocusPainted(false);
 
-        quit = new JButton(new ImageIcon("main/resources/quitButton.png"));
-        quit.addMouseListener(new QuitListener(quit, c));
-        quit.setBorderPainted(false);
-        quit.setContentAreaFilled(false);
-        quit.setFocusPainted(false);
-
-
+        lowerPanel.add(back);
         lowerPanel.add(newGame);
-        lowerPanel.add(quit);
 
         return lowerPanel;
     }
@@ -102,6 +103,7 @@ public class NewGameGUI {
      */
     public JPanel getPanel() {
 
+        panel.setBackground(new Color(169,255,151));
         panel.setLayout(new BorderLayout());
 
         //Add panels to the frame
