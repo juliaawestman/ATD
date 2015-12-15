@@ -41,6 +41,7 @@ public class HighscoreDB {
         //setup();
         //addUser(u);
         //getData();
+        //testAddUser();
 
     }
 
@@ -125,7 +126,7 @@ public class HighscoreDB {
     }
 
     public void testAddUser() {
-        String sql = "INSERT INTO HIGHSCORE " + "VALUES (8,"+"'"+"Zacke"+"'"+", "+ "333" + ", "+ "'"+"banan"+"'" + ", " + "'"+"2015-12-14"+"')";
+        String sql = "INSERT INTO HIGHSCORE " + "VALUES (10,"+"'"+"Issemannen"+"'"+", "+ "222" + ", "+ "'"+"bana2"+"'" + ", " + "'"+"2015-12-15"+"')";
         try {
             st.executeUpdate(sql);
         } catch (SQLException e) {
@@ -139,7 +140,7 @@ public class HighscoreDB {
      * Gets the data from the highscore table on the sql server
      */
     public ArrayList getData() {
-        String sql = "SELECT * FROM highscore ORDER BY wave ASC";
+        String sql = "SELECT * FROM highscore ORDER BY wave DESC";
         //
         //String sql = "SELECT id, userName, wave, level, date FROM highscore";
         ResultSet rs = null;
@@ -161,7 +162,7 @@ public class HighscoreDB {
                 /* TODO pad strings with spaces until fixed length */
                 //userName = String.format("%1$-" + 10 + "s", userName)+"S";
 
-                highscores.add("User: "+userName+" Level: "+level+" Date: "+date);
+                highscores.add("User: "+userName+" Wave: "+wave+" Level: "+level+" Date: "+date);
 
 
                 //singleHighscore.clear();

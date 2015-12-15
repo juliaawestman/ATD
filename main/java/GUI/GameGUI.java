@@ -50,8 +50,7 @@ public class GameGUI extends JPanel implements Runnable {
             isFirst = false;
 
         }
-        g.setColor(new Color(50, 50, 50));T
-
+        g.setColor(new Color(50, 50, 50));
         g.fillRect(0, 0, getWidth(), getHeight());
         g.setColor(new Color(255, 255, 0));
         ((Graphics2D)g).setStroke(new BasicStroke(3));
