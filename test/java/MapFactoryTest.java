@@ -43,21 +43,21 @@ public class MapFactoryTest {
 
     @Test
     public void shouldAcceptDefaultMapZiggZagg() throws Exception {
-        MapFactory factory = new MapFactory("main/resources/defaultMaps.xml");
+        MapFactory factory = new MapFactory("main/resources/levels.xml");
         Map myMap = factory.loadMap("ZiggZagg");
         myMap.printMap();
     }
 
     @Test
     public void shouldAcceptDefaultMapSquare() throws Exception {
-        MapFactory factory = new MapFactory("main/resources/defaultMaps.xml");
+        MapFactory factory = new MapFactory("main/resources/levels.xml");
         Map myMap = factory.loadMap("Square");
         myMap.printMap();
     }
 
     @Test
     public void shouldAcceptDefaultMapJoy() throws Exception {
-        MapFactory factory = new MapFactory("main/resources/defaultMaps.xml");
+        MapFactory factory = new MapFactory("main/resources/levels.xml");
         Map myMap = factory.loadMap("Joy");
         myMap.printMap();
     }
