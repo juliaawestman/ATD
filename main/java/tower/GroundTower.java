@@ -22,9 +22,11 @@ public class GroundTower extends Tower {
      * Constructor of a tower only able to shoot at ground units.
      *
      * @param position the position of the tower.
+     * @param id the id of the tower.
      */
-    public GroundTower(Position position){
+    public GroundTower(Position position, int id){
         super(range, speed, damage, false, true, position);
+        super.id = id;
         loadImage(this.getClass().getResource("../../resources/GroundTower.png"));
     }
 }

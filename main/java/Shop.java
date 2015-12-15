@@ -28,10 +28,10 @@ public class Shop {
     /**
      * A method for buying units.
      *
-     * @param unitId the id of the unit to buy.
+     * @param unitTypeId the id of the unit to buy.
      */
-    public void buyUnit(int unitId){
-        switch (unitId){
+    public void buyUnit(int unitTypeId){
+        switch (unitTypeId){
             case 1: this.currentGame.addUnit(new AirUnit(new Position(0,0),nextId));
                 break;
             case 2: this.currentGame.addUnit(new GroundUnit(new Position(0,0),nextId));
@@ -41,6 +41,15 @@ public class Shop {
             default: throw new IllegalStateException("There is no unit with the id of " + nextId);
         }
         nextId++;
+    }
+
+    /**
+     * Places a tower at a random position on the map.
+     *
+     * @param towerTypeId the type of tower to buy.
+     */
+    public void buyTower(int towerTypeId){
+
     }
 
     /**

@@ -29,8 +29,7 @@ public abstract class Tower {
     private Unit target;
     private Position pos;
     private int timeOfLastAttack;
-
-    private int id;
+    protected int id;
 
     /**
      * Constructor of a tower class
