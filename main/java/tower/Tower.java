@@ -15,7 +15,6 @@ import main.java.unit.Unit;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -86,34 +85,82 @@ public abstract class Tower {
     /**
      * Will deal the towers damage to the towers current target.
      */
-    public void attack(int time) {
+    public GraphicEvent attack(int time) {
         if(time - timeOfLastAttack >= speed){
             target.takeDamage(damage);
             timeOfLastAttack = time;
-            System.out.println("shot fired by Tower: " + this.id);
 
-            /*BufferedImage laser = createLaserImage();
-            GraphicEvent event = new GraphicEvent(-id, , laser);
-            event.setVisibilityTime(time, (speed/3)*2);*/
+            BufferedImage laser = createLaserImage();
+            int laserID = (id+1)*-1;
+            GraphicEvent event = new GraphicEvent(laserID, getLaserPosition(), laser);
+            event.setVisibilityTime(time, (speed/3)*2);
+
+            System.out.println("shot fired by Tower: " + this.id + " shotID: " + laserID);
+            return event;
         }
+        return null;
     }
 
+    /**
+     * Calculate the center position of the laser image
+     *
+     * @return the center position of the image
+     */
+    private Position getLaserPosition() {
+        int towerX = this.getPosition().getX();
+        int towerY = this.getPosition().getY();
+        int targetX = target.getPosition().getX();
+        int targetY = target.getPosition().getY();
+
+        int x = towerX - ((towerX - targetX)/2 );
+        int y = towerY - ((towerY - targetY)/2 );
+
+        return new Position(x, y);
+    }
+
+    /**
+     * Creates a buffered image representing a laser
+     *
+     * @return a buffered image
+     */
     private BufferedImage createLaserImage() {
         Position towerPos = this.getPosition();
         Position targetPos = target.getPosition();
-        int width = towerPos.getX() - targetPos.getX();
-        int height = towerPos.getY() - targetPos.getY();
+
+        /*Calculate the width and height of the image*/
+        int width = (towerPos.getX() - targetPos.getX()) +1;
+        int height = (towerPos.getY() - targetPos.getY()) +1;
         if (width < 0){
             width = width * -1;
         }
         if (height < 0){
             height = height * -1;
         }
+
+        /*Calculate the coordinates for the lasers start and end point*/
+        int x, dx, y, dy;
+
+        if (towerPos.getX() >= targetPos.getX()){
+            x = width;
+            dx = 0;
+        } else {
+            x = 0;
+            dx = width;
+        }
+
+        if (towerPos.getY() >= targetPos.getY()){
+            y = height;
+            dy = 0;
+        } else {
+            y = 0;
+            dy = height;
+        }
+
+        /*Make the image*/
         BufferedImage laser = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = laser.createGraphics();
         g.setColor(new Color(255, 0, 0));
-        g.setStroke(new BasicStroke(5));
-        g.drawLine(towerPos.getX(), towerPos.getY(), targetPos.getX(), targetPos.getY());
+        g.drawLine(x, y, dx, dy);
 
         return laser;
     }
