@@ -31,15 +31,16 @@ public class Game {
     private List<Tower> towers;
     private CurrentGraphicState graphicState;
     private int unitsReachedGoal=0;
-    //private Shop gameShop = new Shop();
+    private Shop gameShop;
 
     public Game(Map mapName) {
 
         this.map = mapName;
         this.units = new LinkedList();
         this.towers = new LinkedList();
-        graphicState = new CurrentGraphicState();
-        user = new User(this.map.getStartingGold(), 50);
+        this.graphicState = new CurrentGraphicState();
+        this.user = new User(this.map.getStartingGold(), 50);
+        this.gameShop = new Shop(this.user, this);
         makeTowers();
     }
 
@@ -127,6 +128,10 @@ public class Game {
         /*Set the next position of the unit to the position of the start tile*/
         unit.setNextTilePos(map.getStartTile().getPosition());
         this.units.add(unit);
+    }
+
+    public Shop getShop(){
+        return this.gameShop;
     }
 
     private void makeTowers(){

@@ -46,7 +46,6 @@ public class Position {
 	 * @return the distance rounded up to the closest int.
 	 */
 	public int getDistance(Position p){
-		/*TODO see if there is a better way of calculating the distance*/
 
 		int xDistance = p.getX() - x;
 		if (xDistance < 0){
