@@ -18,6 +18,7 @@ public class NewGameGUI {
     private JButton newGame;
     private JButton back;
     private JButton sound;
+    private JButton help;
     private CLayout c;
 
     public NewGameGUI(CLayout c){
@@ -58,6 +59,9 @@ public class NewGameGUI {
         JPanel buttonPanelUnder = new JPanel();
         buttonPanelUnder.setBackground(new Color(169,255,151));
 
+        JPanel buttonPanelLast = new JPanel();
+        buttonPanelLast.setBackground(new Color(169,255,151));
+
         //middlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         updateLevels();
         levelList = new JComboBox(levels.toArray());
@@ -72,17 +76,23 @@ public class NewGameGUI {
         back.setFocusPainted(false);
         buttonPanelUnder.add(back);
 
-        newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
 
+        newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
         newGame.addMouseListener(new StartGameListener(newGame, c, levelList));
         newGame.setBorderPainted(false);
         newGame.setContentAreaFilled(false);
         newGame.setFocusPainted(false);
         buttonPanelOver.add(newGame);
 
-
+        help = new JButton(new ImageIcon("main/resources/helpButton.png"));
+        help.addMouseListener(new HelpListener(help, c));
+        help.setBorderPainted(false);
+        help.setContentAreaFilled(false);
+        help.setFocusPainted(false);
+        buttonPanelLast.add(help);
 
         middlePanel.add(buttonPanelOver, BorderLayout.CENTER);
+        middlePanel.add(buttonPanelLast, BorderLayout.SOUTH);
         middlePanel.add(buttonPanelUnder, BorderLayout.SOUTH);
 
         return middlePanel;

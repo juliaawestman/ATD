@@ -17,6 +17,7 @@ public class MenuGUI {
     private JButton highScore;
     private JButton quit;
     private JButton sound;
+    private JButton about;
     private String gameTitle = "Anti tower Defence";
     private JPanel upperPanel = null;
     private JPanel middlePanel = null;
@@ -100,13 +101,21 @@ public class MenuGUI {
         middlePanel.setBackground(new Color(169,255,151));
 
         JPanel buttonPanelOver = new JPanel();
+        buttonPanelOver.setPreferredSize(new Dimension(400, 45));
         buttonPanelOver.setBackground(new Color(169,255,151));
 
         JPanel buttonPanelMiddle = new JPanel();
+        buttonPanelMiddle.setPreferredSize(new Dimension(400, 45));
         buttonPanelMiddle.setBackground(new Color(169,255,151));
 
         JPanel buttonPanelUnder = new JPanel();
+        buttonPanelUnder.setPreferredSize(new Dimension(400, 45));
         buttonPanelUnder.setBackground(new Color(169,255,151));
+
+        JPanel buttonPanelLast = new JPanel();
+        buttonPanelLast.setPreferredSize(new Dimension(400, 45));
+        buttonPanelLast.setBackground(new Color(169,255,151));
+
 
         newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
         newGame.addMouseListener(new NewGameListener(newGame, c));
@@ -129,9 +138,17 @@ public class MenuGUI {
         quit.setFocusPainted(false);
         buttonPanelUnder.add(quit);
 
+        about = new JButton(new ImageIcon("main/resources/aboutButton.png"));
+        about.addMouseListener(new AboutListener(about, c));
+        about.setBorderPainted(false);
+        about.setContentAreaFilled(false);
+        about.setFocusPainted(false);
+        buttonPanelLast.add(about);
+
 
         middlePanel.add(buttonPanelOver, BorderLayout.NORTH);
         middlePanel.add(buttonPanelMiddle, BorderLayout.CENTER);
+        middlePanel.add(buttonPanelLast, BorderLayout.SOUTH);
         middlePanel.add(buttonPanelUnder, BorderLayout.SOUTH);
 
         return middlePanel;
@@ -150,7 +167,7 @@ public class MenuGUI {
         sound.setContentAreaFilled(false);
         sound.setFocusPainted(false);
 
-        lowerPanel.add(sound);
+        lowerPanel.add(sound, new FlowLayout(FlowLayout.RIGHT));
 
         return lowerPanel;
     }
