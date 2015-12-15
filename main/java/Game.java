@@ -76,24 +76,23 @@ public class Game {
                 this.graphicState.removeGraphicEvent(tempEvent);
                 itrUnits.remove();
                 this.unitsReachedGoal++;
-                continue;
             }
             /*Remove the unit if it's dead*/
-            if (!currentUnit.isAlive()) {
+            else if (!currentUnit.isAlive()) {
                 tempEvent = currentUnit.generateGraphicEvent();
                 this.graphicState.removeGraphicEvent(tempEvent);
                 itrUnits.remove();
-                continue;
             }
-            if(currentUnit.move()){
+            else if(currentUnit.move()){
                 tempEvent = currentUnit.generateGraphicEvent();
                 this.graphicState.addGraphicEvent(tempEvent);
+                if (currentUnit.isInMiddleOfTile()){
+                    tempTilePos = unitPosConverter(currentUnit.getPosition());
+                    currentTile = (TileAction) map.getTileAt(tempTilePos);
+                    currentTile.landOn(currentUnit);
+                }
             }
-            if (currentUnit.isInMiddleOfTile()){
-                tempTilePos = unitPosConverter(currentUnit.getPosition());
-                currentTile = (TileAction) map.getTileAt(tempTilePos);
-                currentTile.landOn(currentUnit);
-            }
+
         }
     }
 
