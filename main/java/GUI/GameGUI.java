@@ -66,7 +66,7 @@ public class GameGUI extends JPanel implements Runnable {
 
         if (b != null) {
             System.out.println("yay!");
-            g.drawImage(new ImageIcon(b).getImage(), 0, 0, null);
+            g.drawImage(new ImageIcon(b).getImage(), (myWidth / 2) - (gameBoard.blockSize*(gameBoard.worldWidth/2)), 0, null);
         }
 
         for(int i=0;i<mobs.length;i++) {
