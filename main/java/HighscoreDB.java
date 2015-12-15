@@ -144,7 +144,7 @@ public class HighscoreDB {
      * Gets the data from the highscore table on the sql server
      */
     public ArrayList getData() {
-        String sql = "SELECT * FROM highscore ORDER BY wave DESC";
+        String sql = "SELECT * FROM highscore ORDER BY wave DESC LIMIT 5";
         ResultSet rs = null;
         try {
             rs = st.executeQuery(sql);
@@ -156,9 +156,14 @@ public class HighscoreDB {
                 String level = rs.getString("level");
                 String date = rs.getString("date");
 
-                userName = padRight(userName, 10);
-                level = padRight(level, 10);
-                date = padRight(date, 10);
+                //userName = padRight(userName, 10);
+                //level = padRight(level, 10);
+                //date = padRight(date, 10);
+
+                //userName = String.format("%15d", userName);
+
+
+
 
                 System.out.print("ID " + id);
                 System.out.print(", User: " + userName);
@@ -172,7 +177,9 @@ public class HighscoreDB {
                 //userName = String.format("%1$-" + 10 + "s", userName)+"S";
 
 
-                highscores.add("User: "+userName+" Wave: "+wave+" Level: "+level+" Date: "+date);
+                //highscores.add("User: "+userName+" Wave: "+wave+" Level: "+level+" Date: "+date);
+
+                highscores.add(userName+"   "+wave+"   "+level+"   "+date);
 
 
                 //singleHighscore.clear();
@@ -182,5 +189,24 @@ public class HighscoreDB {
             e.printStackTrace();
         }
     return highscores;
+    }
+
+    public String formatString(String s, int score) {
+        String scoreString = null;
+
+        int size = s.length() + new Integer(score).toString().length();
+
+        if(size < 25){
+            int dots = 25 - (s.length() + new Integer(score).toString().length());
+            scoreString = new String(s);
+            for(int i = 0; i < dots; i++){
+                scoreString = new String(scoreString+".");
+
+            }
+            scoreString = new String(scoreString+new Integer(score).toString());
+        }
+
+
+        return scoreString;
     }
 }

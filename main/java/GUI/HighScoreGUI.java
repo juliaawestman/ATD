@@ -74,7 +74,7 @@ public class HighScoreGUI {
 
 
         highscores.forEach((temp) -> label.setText("<html>"+ label.getText() +"\t\t\t" +"<br>"+temp+"<html>"));
-        label.setFont(new Font("Arial", Font.ITALIC, 18));
+        label.setFont(new Font("Arial", Font.PLAIN, 18));
         label.setForeground(Color.white);
         middelPanel.add(label);
 
@@ -107,7 +107,6 @@ public class HighScoreGUI {
         back.setContentAreaFilled(false);
         back.setFocusPainted(false);
         buttonPanel.add(back);
-
 
 
         lowerPanel.add(buttonPanel, BorderLayout.WEST);
