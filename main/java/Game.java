@@ -160,4 +160,8 @@ public class Game {
             this.graphicState.addGraphicEvent(tempEvent);
         }
     }
+
+    public CurrentGraphicState getGraphicState(){
+        return this.graphicState;
+    }
 }
