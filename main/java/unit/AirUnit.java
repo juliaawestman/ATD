@@ -1,5 +1,6 @@
 package main.java.unit;
 
+
 /*
  * Class: AirUnit
 
@@ -27,7 +28,6 @@ public class AirUnit extends main.java.unit.Unit {
         super.flying = true;
         super.imagePath = this.getClass().getResource("airUnit.png");
     }
-
     public static int getPrice() {
         return price;
     }

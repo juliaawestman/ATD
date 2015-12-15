@@ -24,7 +24,7 @@ public class Controller implements MapInformation {
     }
 
     @Override
-    public ArrayList<String> getLevelName() {
+    public ArrayList<String> getLevelNames() {
         return factory.getMapNames();
     }
 
@@ -36,7 +36,7 @@ public class Controller implements MapInformation {
     public static void main(String[] args) {
         MapFactory f = null;
         try {
-            f = new MapFactory("main/resources/defaultMaps.xml");
+            f = new MapFactory("main/resources/levels.xml");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SAXException e) {

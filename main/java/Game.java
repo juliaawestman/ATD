@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import main.java.tile.TowerTile;
 import main.java.tower.AirTower;
 import main.java.tower.GroundTower;
 import main.java.tower.Tower;
@@ -22,6 +23,7 @@ import main.java.tile.TileAction;
 
 public class Game {
 
+    private static final int tileSize = 54 - 1;
     private int timeOfGame = 0;
     private static final int incomeFreq = 100;
     private static final int nrOfTowers = 5;
@@ -31,15 +33,16 @@ public class Game {
     private List<Tower> towers;
     private CurrentGraphicState graphicState;
     private int unitsReachedGoal=0;
-    //private Shop gameShop = new Shop();
+    private Shop gameShop;
 
     public Game(Map mapName) {
 
         this.map = mapName;
         this.units = new LinkedList();
         this.towers = new LinkedList();
-        graphicState = new CurrentGraphicState();
-        user = new User(this.map.getStartingGold(), 50);
+        this.graphicState = new CurrentGraphicState();
+        this.user = new User(this.map.getStartingGold(), 50);
+        this.gameShop = new Shop(this.user, this);
         makeTowers();
     }
 
@@ -129,10 +132,14 @@ public class Game {
         this.units.add(unit);
     }
 
+    public Shop getShop(){
+        return this.gameShop;
+    }
+
     private void makeTowers(){
         int nrOfTowerTiles = map.getTowerTiles().size();
         Iterator it = map.getTowerTiles().iterator();
-        LinkedList <Tower>towerList = new LinkedList();
+        LinkedList <TowerTile>towerTileList = new LinkedList();
         int random;
         Tower tower;
 
@@ -141,18 +148,38 @@ public class Game {
         }
         /*place towers in a list*/
         while(it.hasNext()){
-            towerList.add((Tower) it.next());
+            towerTileList.add((TowerTile) it.next());
         }
 
         for(int i=0; this.nrOfTowers < i;i++){
             random = (int)(Math.random() * nrOfTowerTiles + 1);
-            /*Add a tower and set the position of the tower to a random towerTile*/
-            tower = new GroundTower(towerList.get(random).getPosition());
+            /*Add a tower and set the position of the tower to a random towerTiles position*/
+
+            tower = new GroundTower(towerTileList.get(random).getPosition());
             this.towers.add(tower);
 
             /*Generate a graphic event when the tower is added to the game*/
             GraphicEvent tempEvent = tower.generateGraphicEvent();
             this.graphicState.addGraphicEvent(tempEvent);
         }
+    }
+
+    public CurrentGraphicState getGraphicState(){
+        return this.graphicState;
+    }
+
+    /**
+     * Translate a tileCoordinate to a graphic coordinate.
+     *
+     * @return the graphic coordinate.
+     */
+    private Position tilePosConverter(Position tilePos){
+        int tileX = tilePos.getX()-1;
+        int tileY = tilePos.getY()-1;
+
+        int tileMiddlePosX = (((tileX) * tileSize) + (tileSize / 2));
+        int tileMiddlePosY = (((tileY) * tileSize) + (tileSize / 2));
+
+        return new Position(tileMiddlePosX,tileMiddlePosY);
     }
 }

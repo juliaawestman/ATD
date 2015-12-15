@@ -39,28 +39,38 @@ public class Renderer {
         while (!s.isEmpty()){
             GraphicEvent event = s.pop();
 
-            event.getPos();
-            graphics.drawImage(event.getImage(), event.getPos().getX(), event.getPos().getY(), 54, 54, null);
+            Position corner = convertPosition(event);
+            graphics.drawImage(event.getImage(), corner.getX(), corner.getY(), 54, 54, null);
+            //graphics.drawImage(event.getImage(), event.getPos().getX(), event.getPos().getY(), 54, 54, null);
 
         }
         graphics.setColor(new Color(255, 0, 0));
         graphics.drawLine(10, 10, 50, 50);
     }
 
+    private Position convertPosition(GraphicEvent event) {
+
+        int cornerX = event.getPos().getX() - (27);
+        int cornerY = event.getPos().getY() - (27);
+
+        return new Position(cornerX, cornerY);
+    }
+
     public BufferedImage getImage(){
-        if (image == null)
-            System.out.println("derp");
         return image;
     }
 
+
+
+    /*BELOW THIS ALL SHOULD BE REMOVED*/
     public static void main(String[] args) {
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 Renderer renderer = new Renderer(648, 648);
-                Tower t = new GroundTower(new Position(20,20));
-                Unit u = new GroundUnit(new Position(10, 10), 1);
+                Tower t = new GroundTower(new Position(50, 50));
+                Unit u = new GroundUnit(new Position(50, 50), 1);
                 Stack<GraphicEvent> stack = new Stack<>();
                 stack.add(t.generateGraphicEvent());
                 stack.add(u.generateGraphicEvent());

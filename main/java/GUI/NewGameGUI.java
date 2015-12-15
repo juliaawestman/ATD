@@ -47,10 +47,43 @@ public class NewGameGUI {
     private JPanel buildMiddlePanel() {
         JPanel middlePanel = new JPanel();
         middlePanel.setBackground(new Color(169,255,151));
+        middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
+
+        JPanel levelListPanel = new JPanel();
+        levelListPanel.setBackground(new Color(169,255,151));
+
+        JPanel buttonPanelOver = new JPanel();
+        buttonPanelOver.setBackground(new Color(169,255,151));
+
+        JPanel buttonPanelUnder = new JPanel();
+        buttonPanelUnder.setBackground(new Color(169,255,151));
+
         //middlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         updateLevels();
         levelList = new JComboBox(levels.toArray());
-        middlePanel.add(levelList);
+
+        levelListPanel.add(levelList);
+        middlePanel.add(levelListPanel, BorderLayout.NORTH);
+
+        back = new JButton(new ImageIcon("main/resources/backButton.png"));
+        back.addMouseListener(new BackListener(back, c));
+        back.setBorderPainted(false);
+        back.setContentAreaFilled(false);
+        back.setFocusPainted(false);
+        buttonPanelUnder.add(back);
+
+        newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
+
+        newGame.addMouseListener(new StartGameListener(newGame, c, levelList));
+        newGame.setBorderPainted(false);
+        newGame.setContentAreaFilled(false);
+        newGame.setFocusPainted(false);
+        buttonPanelOver.add(newGame);
+
+
+
+        middlePanel.add(buttonPanelOver, BorderLayout.CENTER);
+        middlePanel.add(buttonPanelUnder, BorderLayout.SOUTH);
 
         return middlePanel;
     }
@@ -75,6 +108,7 @@ public class NewGameGUI {
         newGame.setContentAreaFilled(false);
         newGame.setFocusPainted(false);
 
+
         lowerPanel.add(back);
         lowerPanel.add(newGame);
 
@@ -83,6 +117,7 @@ public class NewGameGUI {
 
     private JPanel buildSoundPanel() {
         JPanel soundPanel = new JPanel();
+        soundPanel.setBackground(new Color(169,255,151));
         soundPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 
         sound = new JButton(new ImageIcon("main/resources/sound.png"));
@@ -109,8 +144,7 @@ public class NewGameGUI {
         //Add panels to the frame
         panel.add(buildUpperPanel(), BorderLayout.NORTH);
         panel.add(buildMiddlePanel(), BorderLayout.CENTER);
-        panel.add(buildLowerPanel(), BorderLayout.SOUTH);
-        //panel.add(buildSoundPanel(), BorderLayout.SOUTH);
+        panel.add(buildSoundPanel(), BorderLayout.SOUTH);
 
         return panel;
     }
@@ -120,7 +154,7 @@ public class NewGameGUI {
      */
     private void updateLevels() {
 
-        levels = c.mapinfo.getLevelName();
+        levels = c.mapinfo.getLevelNames();
 
     }
 }
