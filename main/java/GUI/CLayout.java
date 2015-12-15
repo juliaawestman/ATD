@@ -14,24 +14,25 @@ import java.awt.image.BufferedImage;
  */
 public class CLayout {
 
-    JFrame frame = new JFrame("Anti Tower Defence");
+    private JFrame frame = new JFrame("Anti Tower Defence");
 
-    JPanel panelCont = new JPanel();
+    private JPanel panelCont = new JPanel();
     //JPanel gamePanel = new JPanel();
     //JPanel menuCard, newGameCard, highScoreCard, endGameCard;
 
-    MusicPlayer music = new MusicPlayer();
+     MusicPlayer music = new MusicPlayer();
 
-    CardLayout cl = new CardLayout();
+    private CardLayout cl = new CardLayout();
 
     public MapInformation mapinfo;
     public UserInformation userinfo;
 
-    GameGUI game;
-    MenuGUI menu;
-    NewGameGUI newGame;
-    HighScoreGUI highScore;
-    GameOverGUI gameOver;
+    private GameGUI game;
+    private MenuGUI menu;
+    private NewGameGUI newGame;
+    private HighScoreGUI highScore;
+    private GameOverGUI gameOver;
+    private AboutGUI about;
 
 
 
@@ -48,12 +49,14 @@ public class CLayout {
         highScore = new HighScoreGUI(this);
         game = new GameGUI(this);
         gameOver = new GameOverGUI(this);
+        about = new AboutGUI(this);
 
         panelCont.add(menu.getPanel(), "menu");
         panelCont.add(highScore.getPanel(), "highScore");
         panelCont.add(newGame.getPanel(), "newGame");
         panelCont.add(game.getPanel(), "game");
         panelCont.add(gameOver.getPanel(), "gameOver");
+        panelCont.add(about.getPanel(), "about");
 
 
         cl.show(panelCont, "menu");

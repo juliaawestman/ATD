@@ -19,7 +19,7 @@ public class AboutListener implements MouseListener {
 
     public void mouseClicked(MouseEvent e) {
         button.setIcon(new ImageIcon("main/resources/aboutPress.png"));
-        c.showCard("menu");
+        c.showCard("about");
 
     }
 
