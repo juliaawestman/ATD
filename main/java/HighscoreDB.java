@@ -136,6 +136,10 @@ public class HighscoreDB {
 
     }
 
+    public static String padRight(String s, int n) {
+        return String.format("%1$-" + n + "s", s);
+    }
+
     /**
      * Gets the data from the highscore table on the sql server
      */
@@ -152,13 +156,21 @@ public class HighscoreDB {
                 String level = rs.getString("level");
                 String date = rs.getString("date");
 
+                userName = padRight(userName, 10);
+                level = padRight(level, 10);
+                date = padRight(date, 10);
+
                 System.out.print("ID " + id);
                 System.out.print(", User: " + userName);
                 System.out.print(", Wave: " + wave);
                 System.out.print(", Level: " + level);
                 System.out.println(", Date: " + date);
+
+
+
                 /* TODO pad strings with spaces until fixed length */
                 //userName = String.format("%1$-" + 10 + "s", userName)+"S";
+
 
                 highscores.add("User: "+userName+" Wave: "+wave+" Level: "+level+" Date: "+date);
 

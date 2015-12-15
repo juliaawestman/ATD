@@ -45,7 +45,7 @@ public class CLayout {
 
         menu = new MenuGUI(this);
         newGame = new NewGameGUI(this);
-        highScore = new HighScoreGUI();
+        highScore = new HighScoreGUI(this);
         game = new GameGUI(this);
         gameOver = new GameOverGUI(this);
 
