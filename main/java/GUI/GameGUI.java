@@ -72,7 +72,7 @@ public class GameGUI extends JPanel implements Runnable {
 
     public void define() {
         gameBoard = new Board(c, chosenMap);
-        store = new Store(gameBoard);
+        store = new Store(gameBoard, c);
 
         for(int i=0;i<mobs.length;i++) {
             mobs[i] = new Mob(gameBoard);

@@ -24,6 +24,8 @@ public class Store {
     private String unitpath = "";
     private String cost = "";
 
+    public CLayout c;
+
 
 
     public Rectangle[] button = new Rectangle[shopWidth];
@@ -32,8 +34,9 @@ public class Store {
     public Rectangle buttonIncome;
     Board gameBoard;
 
-    public Store(Board gameBoard) {
+    public Store(Board gameBoard, CLayout c) {
         this.gameBoard = gameBoard;
+        this.c = c;
         define();
     }
 

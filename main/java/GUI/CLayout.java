@@ -25,6 +25,7 @@ public class CLayout {
     CardLayout cl = new CardLayout();
 
     public MapInformation mapinfo;
+    public UserInformation userinfo;
 
     GameGUI game;
     MenuGUI menu;
@@ -33,8 +34,9 @@ public class CLayout {
 
 
 
-    public CLayout(MapInformation mapinfo) {
+    public CLayout(MapInformation mapinfo, UserInformation userinfo) {
         this.mapinfo = mapinfo;
+        this.userinfo = userinfo;
 
         music.play("main/resources/defaultMusic.wav");
 
