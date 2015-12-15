@@ -14,9 +14,9 @@ import java.util.Random;
  * Date:        2015-11-30
  */
 public class GroundTower extends Tower {
-    private static final int speed = 10;
-    private static final int damage = 5;
-    private static final int range = 10;
+    private static final int speed = 100;
+    private static final int damage = 1;
+    private static final int range = 90;
 
     /**
      * Constructor of a tower only able to shoot at ground units.

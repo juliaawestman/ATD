@@ -75,7 +75,6 @@ public abstract class Unit {
             this.pos = getNextPos();
             ret = true;
         }
-        System.out.println("Unit " + this.id + " " + this.pos.getX()+ " : " + this.pos.getY());
         timeLived++;
         return ret;
     }
