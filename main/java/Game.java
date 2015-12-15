@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import javafx.geometry.Pos;
 import main.java.tile.TowerTile;
 import main.java.tower.AirTower;
 import main.java.tower.GroundTower;
@@ -23,7 +24,7 @@ import main.java.tile.TileAction;
 
 public class Game {
 
-    private static final int tileSize = 54 - 1;
+    private static final int tileSize = 54;
     private int timeOfGame = 0;
     private static final int incomeFreq = 100;
     private static final int nrOfTowers = 5;
@@ -63,6 +64,7 @@ public class Game {
         Unit currentUnit;
         TileAction currentTile;
         GraphicEvent tempEvent;
+        Position tempTilePos;
 
         while (itrUnits.hasNext()) {
             currentUnit = (Unit) itrUnits.next();
@@ -86,7 +88,8 @@ public class Game {
                 this.graphicState.addGraphicEvent(tempEvent);
             }
             if (currentUnit.isInMiddleOfTile()){
-                currentTile = (TileAction) map.getTileAt(currentUnit.getPosition());
+                tempTilePos = unitPosConverter(currentUnit.getPosition());
+                currentTile = (TileAction) map.getTileAt(tempTilePos);
                 currentTile.landOn(currentUnit);
             }
         }
@@ -128,7 +131,9 @@ public class Game {
 
     public void addUnit(Unit unit){
         /*Set the next position of the unit to the position of the start tile*/
-        unit.setNextTilePos(map.getStartTile().getPosition());
+        Position posToSet = tilePosConverter(map.getStartTile().getPosition());
+        unit.setCurrentPosition(posToSet);
+        unit.setNextTilePos(posToSet);
         this.units.add(unit);
     }
 
@@ -171,17 +176,33 @@ public class Game {
     }
 
     /**
-     * Translate a tileCoordinate to a graphic coordinate.
+     * Translate a tileCoordinate to a graphic coordinate (the middle coordinate of the tile).
      *
+     * @param tilePos the position of the tile to get the middle position of.
      * @return the graphic coordinate.
      */
     private Position tilePosConverter(Position tilePos){
-        int tileX = tilePos.getX()-1;
-        int tileY = tilePos.getY()-1;
+        int tileX = tilePos.getX();
+        int tileY = tilePos.getY();
 
-        int tileMiddlePosX = (((tileX) * tileSize) + (tileSize / 2));
-        int tileMiddlePosY = (((tileY) * tileSize) + (tileSize / 2));
+        int middlePosX = (((tileX) * tileSize-1) + (tileSize-1 / 2));
+        int middlePosY = (((tileY) * tileSize-1) + (tileSize-1 / 2));
 
-        return new Position(tileMiddlePosX,tileMiddlePosY);
+        return new Position(middlePosX,middlePosY);
+    }
+
+    /**
+     *
+     * @param unitPos the position of the unit.
+     * @return the coordinate of the tile the unit is on.
+     */
+    private Position unitPosConverter(Position unitPos){
+        int tileX = unitPos.getX();
+        int tileY = unitPos.getY();
+
+        int tilePosX = (tileX / tileSize-1);
+        int tilePosY = (tileY / tileSize-1);
+
+        return new Position(tilePosX,tilePosY);
     }
 }
