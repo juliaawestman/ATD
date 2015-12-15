@@ -19,7 +19,7 @@ public class HelpListener implements MouseListener {
 
     public void mouseClicked(MouseEvent e) {
         button.setIcon(new ImageIcon("main/resources/helpPress.png"));
-        c.showCard("menu");
+        c.showCard("help");
 
     }
 

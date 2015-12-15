@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * Created by juliawestman on 2015-12-15.
  */
-public class AboutGUI extends JPanel {
+public class HelpGUI extends JPanel {
 
     private CLayout c;
     private JButton sound;
@@ -21,8 +21,9 @@ public class AboutGUI extends JPanel {
     private JLabel middelLabel3 = new JLabel();
     private JLabel middelLabel4 = new JLabel();
     private JLabel middelLabel5 = new JLabel();
+    private JLabel loverLabel = new JLabel();
 
-    public AboutGUI(CLayout c) {
+    public HelpGUI(CLayout c) {
         this.c = c;
     }
 
@@ -52,47 +53,47 @@ public class AboutGUI extends JPanel {
 
         overLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
         overPanel.setPreferredSize(new Dimension(400,25));
-        overLabel.setText("Who made this game:");
+        overLabel.setText("How to Play:");
         overLabel.setFont(new Font("Copperplate", Font.PLAIN, 30));
         overLabel.setForeground(Color.white);
         overPanel.add(overLabel, BorderLayout.CENTER);
 
-        middelLabel1.setPreferredSize(new Dimension(300,25));
-        middelLabel1.setText("Isak Hjelt");
-        middelLabel1.setFont(new Font("Copperplate", Font.PLAIN, 25));
+        middelLabel1.setPreferredSize(new Dimension(500,25));
+        middelLabel1.setText("Select and buy you'r unit's. Try to stay alive to the");
+        middelLabel1.setFont(new Font("Copperplate", Font.PLAIN, 18));
         middelLabel1.setForeground(Color.white);
-        middelLabel1.setHorizontalAlignment(JLabel.CENTER);
         underPanel.add(middelLabel1, BorderLayout.NORTH);
 
-        middelLabel2.setPreferredSize(new Dimension(300,25));
-        middelLabel2.setText("Erik Moström");
-        middelLabel2.setFont(new Font("Copperplate", Font.PLAIN, 25));
+        middelLabel2.setPreferredSize(new Dimension(500,25));
+        middelLabel2.setText("end of the pathWay. All the units has different ");
+        middelLabel2.setFont(new Font("Copperplate", Font.PLAIN, 18));
         middelLabel2.setForeground(Color.white);
-        middelLabel2.setHorizontalAlignment(JLabel.CENTER);
         underPanel.add(middelLabel2, BorderLayout.NORTH);
 
 
-        middelLabel3.setPreferredSize(new Dimension(300,25));
-        middelLabel3.setText("Julia Westman ");
-        middelLabel3.setFont(new Font("Copperplate", Font.PLAIN, 25));
-        middelLabel3.setLayout(new FlowLayout(FlowLayout.CENTER));
+        middelLabel3.setPreferredSize(new Dimension(500,25));
+        middelLabel3.setText("speed and different health. ");
+        middelLabel3.setFont(new Font("Copperplate", Font.PLAIN, 18));
         middelLabel3.setForeground(Color.white);
-        middelLabel3.setHorizontalAlignment(JLabel.CENTER);
         underPanel.add(middelLabel3, BorderLayout.CENTER);
 
-        middelLabel4.setPreferredSize(new Dimension(300,25));
-        middelLabel4.setText("Joakim Zakrisson");
-        middelLabel4.setFont(new Font("Copperplate", Font.PLAIN, 25));
+        middelLabel4.setPreferredSize(new Dimension(500,25));
+        middelLabel4.setText("You will win when you complete the maps number ");
+        middelLabel4.setFont(new Font("Copperplate", Font.PLAIN, 18));
         middelLabel4.setForeground(Color.white);
-        middelLabel4.setHorizontalAlignment(JLabel.CENTER);
         underPanel.add(middelLabel4, BorderLayout.CENTER);
 
+        middelLabel5.setPreferredSize(new Dimension(500,25));
+        middelLabel5.setText("of wave");
+        middelLabel5.setFont(new Font("Copperplate", Font.PLAIN, 18));
+        middelLabel5.setForeground(Color.white);
+        underPanel.add(middelLabel5, BorderLayout.CENTER);
 
         middlePanel.add(overPanel);
         middlePanel.add(underPanel);
 
-        return middlePanel;
 
+        return middlePanel;
 
     }
 
@@ -113,9 +114,9 @@ public class AboutGUI extends JPanel {
         back.setBorderPainted(false);
         back.setContentAreaFilled(false);
         back.setFocusPainted(false);
-        back.setHorizontalAlignment(JButton.CENTER);
+        back.setHorizontalAlignment(JLabel.CENTER);
 
-        lowerPanel.add(back );
+        lowerPanel.add(back);
         lowerPanel.add(sound, new FlowLayout(FlowLayout.RIGHT));
 
         return lowerPanel;
