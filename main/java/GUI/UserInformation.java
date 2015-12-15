@@ -5,6 +5,8 @@ package main.java.GUI;
  */
 public interface UserInformation {
 
+    public void buyUnit(int i);
+
     public boolean canBuyUnit(int i);
 
     public String getUnitName(int i);
