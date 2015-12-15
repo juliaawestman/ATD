@@ -21,6 +21,12 @@ import java.util.TimerTask;
  * Date:        12/15/15
  */
 
+/*  TODO image resizing
+ *  TODO Fix so that all towers show up in the image
+ *  TODO Fix so that all towers shoot
+ *  TODO Test the map Joy a lot: it generates a lot of exceptions
+ */
+
 public class MainController extends TimerTask implements MapInformation {
     private Renderer renderer;
     private CLayout gui;
