@@ -4,8 +4,7 @@ import main.java.HighscoreDB;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.List;
-import java.util.*;
+import java.util.ArrayList;
 /**
  * Class HighScoreGUI
  * Builds the GUI for the highscore panel
@@ -22,24 +21,20 @@ public class HighScoreGUI {
     private JButton sound;
     private JPanel upperPanel = null;
     private JPanel lowerPanel;
+    private JPanel middelPanel;
     private JTextArea textArea = new JTextArea("HIGHSCORES\n", 20, 20);
     private JScrollPane scrollPane = new JScrollPane(textArea,
             JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
             JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     //private java.util.List<java.util.List<String>> allHighscores = new ArrayList<>();
     ArrayList<String> highscores = new ArrayList<>();
+    private CLayout c;
 
     JLabel label = new JLabel();
 
 
-
-
-
-
-
     private JPanel buildUpperPanel() {
         JPanel upperPanel = new JPanel();
-
         //BufferedImage myPicture = ImageIO.read(new File("loggo.png"));
         JLabel picLabel = new JLabel(new ImageIcon("main/resources/loggo.png"));
         upperPanel.add(picLabel);
@@ -49,9 +44,10 @@ public class HighScoreGUI {
         return upperPanel;
     }
 
-    private JPanel buildLowerPanel() {
-        JPanel lowerPanel = new JPanel();
-        lowerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+    private JPanel buildMiddelPanel() {
+        JPanel middelPanel = new JPanel();
+        middelPanel.setBackground(new Color(169,255,151));
+        middelPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         //lowerPanel.setLayout(new BorderLayout());
 
 /*
@@ -74,11 +70,27 @@ public class HighScoreGUI {
         //highscores.forEach((temp) -> textArea.append("\n"+temp));
         highscores.forEach((temp) -> label.setText("<html>"+label.getText()+"<br>"+temp+"<html>"));
         label.setFont(new Font("Arial", Font.ITALIC, 18));
-        lowerPanel.add(label);
+        middelPanel.add(label);
+
+        return middelPanel;
+    }
+
+    private JPanel buildLowerPanel() {
+        JPanel lowerPanel = new JPanel();
+        lowerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        lowerPanel.setBackground(new Color(169,255,151));
+
+        sound = new JButton(new ImageIcon("main/resources/sound.png"));
+        sound.addMouseListener(new SoundListener(sound, c));
+
+        sound.setBorderPainted(false);
+        sound.setContentAreaFilled(false);
+        sound.setFocusPainted(false);
+
+        lowerPanel.add(sound);
 
         return lowerPanel;
     }
-
     /**
      *
      * @return The highscore GUI as a JPanel
@@ -86,13 +98,16 @@ public class HighScoreGUI {
     public JPanel getPanel() {
 
         upperPanel = buildUpperPanel();
-        //lowerPanel = buildLowerPanel();
+        //middelPanel = buildMiddelPanel();
+        lowerPanel = buildLowerPanel();
 
+        panel.setBackground(new Color(169,255,151));
         panel.setLayout(new BorderLayout());
 
         //Add panels to the frame
         panel.add(upperPanel, BorderLayout.NORTH);
         //panel.add(lowerPanel, BorderLayout.CENTER);
+        panel.add(lowerPanel, BorderLayout.EAST);
 
         return panel;
     }
