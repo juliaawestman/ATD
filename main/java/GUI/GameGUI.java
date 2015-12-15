@@ -25,6 +25,8 @@ public class GameGUI extends JPanel implements Runnable {
 
     public String chosenMap;
 
+    BufferedImage b;
+
 
     //private MapInformation mapinfo;
 
@@ -60,6 +62,12 @@ public class GameGUI extends JPanel implements Runnable {
         gameBoard.draw(g);
         g.setColor(new Color(0, 255, 255));
         store.draw(g);
+
+
+        if (b != null) {
+            System.out.println("yay!");
+            g.drawImage(new ImageIcon(b).getImage(), 0, 0, null);
+        }
 
         for(int i=0;i<mobs.length;i++) {
             if (mobs[i].inGame) {
@@ -168,10 +176,9 @@ public class GameGUI extends JPanel implements Runnable {
         chosenMap = s;
     }
 
-    public void setBoardImage(BufferedImage b) {
-
-
-
+    public void drawImage(BufferedImage b) {
+        this.b = b;
+        System.out.println("derp");
 
     }
 

@@ -44,6 +44,7 @@ public class MainController extends TimerTask implements MapInformation {
         renderer.drawImage(game.getGraphicState().getCurrentGraphicState());
         BufferedImage img = renderer.getImage();
         gui.setBoardImage(img);
+        System.out.println("erik");
     }
 
     /**
