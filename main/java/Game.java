@@ -29,6 +29,7 @@ public class Game {
     private int timeOfGame = 0;
     private static final int incomeFreq = 100;
     private static final int nrOfTowers = 5;
+    private int nextId = 0;
     private User user;
     private Map map;
     private List<Unit> units;
@@ -171,7 +172,7 @@ public class Game {
             /*Add a tower and set the position of the tower to a random towerTiles position*/
 
             tempTilePos = towerTileList.get(random).getPosition();
-            tower = new GroundTower(tilePosConverter(tempTilePos,));
+            tower = new GroundTower(tilePosConverter(tempTilePos),getNextObjectId());
             this.towers.add(tower);
 
             /*Generate a graphic event when the tower is added to the game*/
@@ -213,5 +214,16 @@ public class Game {
         int tilePosY = (posY / tileSize);
 
         return new Position(tilePosX,tilePosY);
+    }
+
+    /**
+     * Get the next id to give to a object in the game.
+     *
+     * @return
+     */
+    public int getNextObjectId(){
+        int ret = this.nextId;
+        this.nextId++;
+        return ret;
     }
 }
