@@ -7,7 +7,7 @@ public interface UserInformation {
 
     public boolean canBuyUnit(int i);
 
-    public String getUnitPath(int i);
+    public String getUnitName(int i);
 
     public int getUnitCost(int i);
 
