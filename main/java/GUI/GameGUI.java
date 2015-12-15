@@ -138,7 +138,7 @@ public class GameGUI extends JPanel implements Runnable {
                 int x = e.getX() - ((myWidth / 2) - (gameBoard.blockSize*(gameBoard.worldWidth/2)));
                 int y = e.getY();
                 System.out.println(x+" "+y);
-
+                c.userinfo.hasClicked(x, y);
             }
 
             @Override

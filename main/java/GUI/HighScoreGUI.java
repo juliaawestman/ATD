@@ -19,6 +19,7 @@ public class HighScoreGUI {
     private JButton highScore;
     private JButton quit;
     private JButton sound;
+    private JButton back;
     private JPanel upperPanel = null;
     private JPanel lowerPanel;
     private JPanel middelPanel;
@@ -26,16 +27,17 @@ public class HighScoreGUI {
     private JScrollPane scrollPane = new JScrollPane(textArea,
             JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
             JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    //private java.util.List<java.util.List<String>> allHighscores = new ArrayList<>();
     ArrayList<String> highscores = new ArrayList<>();
     private CLayout c;
 
+    public HighScoreGUI(CLayout c){
+        this.c = c;
+    }
     JLabel label = new JLabel();
 
 
     private JPanel buildUpperPanel() {
         JPanel upperPanel = new JPanel();
-        //BufferedImage myPicture = ImageIO.read(new File("loggo.png"));
         JLabel picLabel = new JLabel(new ImageIcon("main/resources/loggo.png"));
         upperPanel.add(picLabel);
 
@@ -47,7 +49,8 @@ public class HighScoreGUI {
     private JPanel buildMiddelPanel() {
         JPanel middelPanel = new JPanel();
         middelPanel.setBackground(new Color(169,255,151));
-        middelPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+
         //lowerPanel.setLayout(new BorderLayout());
 
 /*
@@ -68,8 +71,11 @@ public class HighScoreGUI {
         //textArea.append(dbs.getData());
         //String temp2;
         //highscores.forEach((temp) -> textArea.append("\n"+temp));
-        highscores.forEach((temp) -> label.setText("<html>"+label.getText()+"<br>"+temp+"<html>"));
+
+
+        highscores.forEach((temp) -> label.setText("<html>"+ label.getText() +"\t\t\t" +"<br>"+temp+"<html>"));
         label.setFont(new Font("Arial", Font.ITALIC, 18));
+        label.setForeground(Color.white);
         middelPanel.add(label);
 
         return middelPanel;
@@ -80,14 +86,32 @@ public class HighScoreGUI {
         lowerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         lowerPanel.setBackground(new Color(169,255,151));
 
+        JPanel soundPanel = new JPanel();
+        soundPanel.setBackground(new Color(169,255,151));
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(new Color(169,255,151));
+
+
         sound = new JButton(new ImageIcon("main/resources/sound.png"));
         sound.addMouseListener(new SoundListener(sound, c));
-
         sound.setBorderPainted(false);
         sound.setContentAreaFilled(false);
         sound.setFocusPainted(false);
+        soundPanel.add(sound);
 
-        lowerPanel.add(sound);
+        back = new JButton(new ImageIcon("main/resources/backButton.png"));
+        back.addMouseListener(new BackListener(back, c));
+        back.setLayout(new FlowLayout(FlowLayout.LEFT));
+        back.setBorderPainted(false);
+        back.setContentAreaFilled(false);
+        back.setFocusPainted(false);
+        buttonPanel.add(back);
+
+
+
+        lowerPanel.add(buttonPanel, BorderLayout.WEST);
+        lowerPanel.add(soundPanel, BorderLayout.SOUTH);
 
         return lowerPanel;
     }
@@ -98,7 +122,7 @@ public class HighScoreGUI {
     public JPanel getPanel() {
 
         upperPanel = buildUpperPanel();
-        //middelPanel = buildMiddelPanel();
+        middelPanel = buildMiddelPanel();
         lowerPanel = buildLowerPanel();
 
         panel.setBackground(new Color(169,255,151));
@@ -106,8 +130,8 @@ public class HighScoreGUI {
 
         //Add panels to the frame
         panel.add(upperPanel, BorderLayout.NORTH);
-        //panel.add(lowerPanel, BorderLayout.CENTER);
-        panel.add(lowerPanel, BorderLayout.EAST);
+        panel.add(middelPanel, BorderLayout.CENTER);
+        panel.add(lowerPanel, BorderLayout.SOUTH);
 
         return panel;
     }

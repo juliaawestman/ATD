@@ -18,6 +18,7 @@ public class GameOverGUI {
     private JPanel upperPanel = null;
     private JPanel middlePanel = null;
     private JPanel lowerPanel;
+    private JTextField textfield = new JTextField();
 
     public GameOverGUI(CLayout c) {
         this.c = c;
@@ -28,13 +29,13 @@ public class GameOverGUI {
         JPanel upperPanel = new JPanel();
 
         //BufferedImage myPicture = ImageIO.read(new File("loggo.png"));
-        JLabel picLabel = new JLabel(new ImageIcon("main/resources/loggo.png"));
+        //JLabel picLabel = new JLabel(new ImageIcon("main/resources/loggo.png"));
         JLabel victoryText = new JLabel();
-        victoryText.setText("VICTORY ! ! ! !");
+        victoryText.setText("<html>"+"VICTORY!!!"+"<br>"+"Score 123"+"<html>");
         victoryText.setFont(new Font("Arial", Font.ITALIC, 24));
-        upperPanel.add(picLabel);
+        upperPanel.add(victoryText);
 
-        upperPanel.setOpaque(false);
+        //upperPanel.setOpaque(false);
 
         return upperPanel;
     }
@@ -52,6 +53,11 @@ public class GameOverGUI {
 
         JPanel buttonPanelUnder = new JPanel();
         buttonPanelUnder.setBackground(new Color(169,255,151));
+
+        JPanel textfieldPanel = new JPanel();
+        textfieldPanel.setBackground(new Color(169,255,151));
+
+        textfieldPanel.add(textfield);
 
         newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
         newGame.addMouseListener(new NewGameListener(newGame, c));
@@ -74,10 +80,14 @@ public class GameOverGUI {
         quit.setFocusPainted(false);
         buttonPanelUnder.add(quit);
 
-
-        middlePanel.add(buttonPanelOver, BorderLayout.NORTH);
-        middlePanel.add(buttonPanelMiddle, BorderLayout.CENTER);
-        middlePanel.add(buttonPanelUnder, BorderLayout.SOUTH);
+        textfield.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        middlePanel.add(textfield);
+        newGame.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        middlePanel.add(newGame);
+        highScore.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        middlePanel.add(highScore);
+        quit.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        middlePanel.add(quit);
 
         return middlePanel;
 
@@ -107,7 +117,7 @@ public class GameOverGUI {
      * @return The main menu GUI as a JPanel
      */
     public JPanel getPanel() {
-        panel.setBackground(new Color(169,255,151));
+        //panel.setBackground(new Color(169,255,151));
         upperPanel = buildUpperPanel();
         middlePanel = buildMiddlePanel();
         lowerPanel = buildLowerPanel();

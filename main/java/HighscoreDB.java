@@ -115,8 +115,8 @@ public class HighscoreDB {
         String map = u.getMap();
         String date = u.getCurrentDate();
 
-/* TODO Make it add a unique ID each time it adds a user */
-        String sql = "INSERT INTO HIGHSCORE " + "VALUES (6,"+"'"+userName+"'"+", "+ wave + ", "+ "'"+map+"'" + ", " + "'"+date+"')";
+        String sql = "INSERT INTO HIGHSCORE(userName, wave, level, date) " + "VALUES ('"+"userName"+"'"+", "+ wave + ", "+ "'"+map+"'" + ", " + "'"+date+"')";
+
         try {
             st.executeUpdate(sql);
         } catch (SQLException e) {
@@ -126,7 +126,7 @@ public class HighscoreDB {
     }
 
     public void testAddUser() {
-        String sql = "INSERT INTO HIGHSCORE " + "VALUES (10,"+"'"+"Issemannen"+"'"+", "+ "222" + ", "+ "'"+"bana2"+"'" + ", " + "'"+"2015-12-15"+"')";
+        String sql = "INSERT INTO HIGHSCORE(userName, wave, level, date) " + "VALUES ('"+"ERKKA"+"'"+", "+ "100" + ", "+ "'"+"bana5"+"'" + ", " + "'"+"2015-12-15"+"')";
         try {
             st.executeUpdate(sql);
         } catch (SQLException e) {
@@ -134,6 +134,10 @@ public class HighscoreDB {
             e.printStackTrace();
         }
 
+    }
+
+    public static String padRight(String s, int n) {
+        return String.format("%1$-" + n + "s", s);
     }
 
     /**
@@ -152,13 +156,21 @@ public class HighscoreDB {
                 String level = rs.getString("level");
                 String date = rs.getString("date");
 
+                userName = padRight(userName, 10);
+                level = padRight(level, 10);
+                date = padRight(date, 10);
+
                 System.out.print("ID " + id);
                 System.out.print(", User: " + userName);
                 System.out.print(", Wave: " + wave);
                 System.out.print(", Level: " + level);
                 System.out.println(", Date: " + date);
+
+
+
                 /* TODO pad strings with spaces until fixed length */
                 //userName = String.format("%1$-" + 10 + "s", userName)+"S";
+
 
                 highscores.add("User: "+userName+" Wave: "+wave+" Level: "+level+" Date: "+date);
 
