@@ -142,6 +142,7 @@ public class Game {
         LinkedList <TowerTile>towerTileList = new LinkedList();
         int random;
         Tower tower;
+        Position tempTilePos;
 
         if(nrOfTowerTiles == 0){
             throw new IllegalStateException("There are no towerTiles!");
@@ -155,7 +156,8 @@ public class Game {
             random = (int)(Math.random() * nrOfTowerTiles + 1);
             /*Add a tower and set the position of the tower to a random towerTiles position*/
 
-            tower = new GroundTower(towerTileList.get(random).getPosition());
+            tempTilePos = towerTileList.get(random).getPosition();
+            tower = new GroundTower(tilePosConverter(tempTilePos));
             this.towers.add(tower);
 
             /*Generate a graphic event when the tower is added to the game*/
