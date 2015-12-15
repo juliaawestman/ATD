@@ -9,8 +9,6 @@
  */
 package main.java;
 
-import java.io.IOException;
-import java.text.CollationElementIterator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,7 +18,6 @@ import main.java.tower.AirTower;
 import main.java.tower.GroundTower;
 import main.java.tower.Tower;
 import main.java.unit.Unit;
-import org.xml.sax.SAXException;
 import main.java.tile.TileAction;
 
 public class Game {
@@ -29,7 +26,6 @@ public class Game {
     private static final int incomeFreq = 100;
     private static final int nrOfTowers = 5;
     private User user;
-    private MapFactory mapFactory;
     private Map map;
     private List<Unit> units;
     private List<Tower> towers;
@@ -37,16 +33,11 @@ public class Game {
     private int unitsReachedGoal=0;
     //private Shop gameShop = new Shop();
 
-    public Game(String mapName) {
-        try {
-            mapFactory = new MapFactory("/main/resources");
-        } catch (IOException | SAXException ex) {
-            System.err.println(ex.getCause().toString());
-        }
-        readMap(mapName);
+    public Game(Map mapName) {
 
-        units = new LinkedList();
-        towers = new LinkedList();
+        this.map = mapName;
+        this.units = new LinkedList();
+        this.towers = new LinkedList();
         graphicState = new CurrentGraphicState();
         user = new User(this.map.getStartingGold(), 50);
         makeTowers();
@@ -163,9 +154,5 @@ public class Game {
             GraphicEvent tempEvent = tower.generateGraphicEvent();
             this.graphicState.addGraphicEvent(tempEvent);
         }
-    }
-
-    private void readMap(String mapName) {
-        this.map = mapFactory.loadMap(mapName);
     }
 }
