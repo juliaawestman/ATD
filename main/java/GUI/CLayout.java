@@ -113,8 +113,7 @@ public class CLayout {
 
     public void setBoardImage(BufferedImage b) {
 
-
-
+        game.drawImage(b);
 
     }
 

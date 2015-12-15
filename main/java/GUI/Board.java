@@ -64,9 +64,9 @@ public class Board {
         for (int y=0;y<block.length;y++) {
             for(int x=0;x<block[0].length;x++) {
 
-                if(HM.get(new Position(x+1, y+1)) != null) {
-                    tile = HM.get(new Position(x+1, y+1)).toString();
-                    t = HM.get(new Position(x+1, y+1));
+                if(HM.get(new Position(x, y)) != null) {
+                    tile = HM.get(new Position(x, y)).toString();
+                    t = HM.get(new Position(x, y));
                 } else {
                     tile = "";
                     t=null;

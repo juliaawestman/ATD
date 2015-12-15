@@ -46,10 +46,10 @@ public class Store {
      */
     public void draw(Graphics g) {
         for(int i = 0; i<button.length;i++) {
-            /*
+
             g.fillRect(button[i].x, button[i].y, button[i].width, button[i].height);
-            button[i].
-            */
+            //button[i].
+
         }
         /*
         g.fillRect(buttonHealth.x, buttonHealth.y, buttonHealth.width, buttonHealth.height);
