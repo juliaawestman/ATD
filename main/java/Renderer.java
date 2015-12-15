@@ -40,18 +40,14 @@ public class Renderer {
             GraphicEvent event = s.pop();
 
             Position corner = convertPosition(event);
-            graphics.drawImage(event.getImage(), corner.getX(), corner.getY(), 54, 54, null);
-            //graphics.drawImage(event.getImage(), event.getPos().getX(), event.getPos().getY(), 54, 54, null);
-
+            graphics.drawImage(event.getImage(), corner.getX(), corner.getY(), null);
         }
-        graphics.setColor(new Color(255, 0, 0));
-        graphics.drawLine(10, 10, 50, 50);
     }
 
     private Position convertPosition(GraphicEvent event) {
 
-        int cornerX = event.getPos().getX() - (27);
-        int cornerY = event.getPos().getY() - (27);
+        int cornerX = event.getPos().getX() - event.getImage().getWidth()/2;
+        int cornerY = event.getPos().getY()- event.getImage().getHeight()/2;
 
         return new Position(cornerX, cornerY);
     }

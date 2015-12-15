@@ -28,7 +28,7 @@ public class Game {
     private static final int tileSize = 54;
     private int timeOfGame = 0;
     private static final int incomeFreq = 100;
-    private static final int nrOfTowers = 2;
+    private static final int nrOfTowers = 5;
     private int nextId = 0;
     private User user;
     private Map map;
@@ -54,6 +54,7 @@ public class Game {
         updateUnits();
         /*Update the Towers*/
         updateTowers();
+        graphicState.gameTick(timeOfGame);
         timeOfGame++;
         /*Give the user more money if it should get more money this tick*/
         if(this.timeOfGame % this.incomeFreq == 0){
@@ -104,10 +105,11 @@ public class Game {
 
         while (itrTowers.hasNext()) {
             currentTower = (Tower) itrTowers.next();
+            GraphicEvent e = null;
             /*Does the tower have a target?*/
             if (currentTower.hasValidTarget()) {
                 /*Call the attack mathod*/
-                currentTower.attack(timeOfGame);
+                e = currentTower.attack(timeOfGame);
 
             } else {
                 /*Try to find a target for the tower*/
@@ -115,10 +117,14 @@ public class Game {
                     currentUnit = (Unit) itrUnits.next();
                     if(currentUnit.isAlive() && currentTower.withinRange(currentUnit)){
                         currentTower.setTarget(currentUnit);
-                        currentTower.attack(timeOfGame);
+                        e = currentTower.attack(timeOfGame);
                         break;
                     }
                 }
+            }
+
+            if (e != null) {
+                graphicState.addGraphicEvent(e);
             }
         }
     }

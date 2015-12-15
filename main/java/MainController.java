@@ -21,6 +21,12 @@ import java.util.TimerTask;
  * Date:        12/15/15
  */
 
+/*  TODO image resizing
+ *  TODO Fix so that all towers show up in the image
+ *  TODO Fix so that all towers shoot
+ *  TODO Test the map Joy a lot: it generates a lot of exceptions
+ */
+
 public class MainController extends TimerTask implements MapInformation {
     private Renderer renderer;
     private CLayout gui;
@@ -28,6 +34,7 @@ public class MainController extends TimerTask implements MapInformation {
     private MapFactory factory;
     private Timer timer;
     private Shop shop;
+    private CurrentGraphicState graphicState;
 
     public MainController(){
         createFactory();
@@ -41,7 +48,7 @@ public class MainController extends TimerTask implements MapInformation {
     @Override
     public void run() {
         game.update();
-        renderer.drawImage(game.getGraphicState().getCurrentGraphicState());
+        renderer.drawImage(graphicState.getCurrentGraphicState());
         BufferedImage img = renderer.getImage();
         gui.setBoardImage(img);
     }
@@ -58,7 +65,7 @@ public class MainController extends TimerTask implements MapInformation {
      * Starts the game with an update interval of 1/10 of a second
      */
     public void start(){
-        startWithUpdateInterval(5);
+        startWithUpdateInterval(1);
     }
 
     /**
@@ -85,6 +92,7 @@ public class MainController extends TimerTask implements MapInformation {
         Map map = factory.loadMap(s);
         game = new Game(map);
         shop = game.getShop();
+        graphicState = game.getGraphicState();
         int Y = (map.getStartTile().getPosition().getY() *53) + 27;
         int X = (map.getStartTile().getPosition().getX() *53) + 27;
 
