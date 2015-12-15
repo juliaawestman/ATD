@@ -122,7 +122,8 @@ public class CLayout {
      * @return The size of a tile in the game board
      */
     public int getTileSize() {
-        return game.gameBoard.blockSize;
+        //return game.gameBoard.blockSize;
+        return Board.blockSize;
     }
 
 }

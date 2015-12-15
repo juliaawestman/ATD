@@ -15,9 +15,9 @@ import main.java.unit.TeleporterUnit;
  */
 public class Shop {
 
-    User shopUser;
-    Game currentGame;
-    int nextId;
+    private User shopUser;
+    private Game currentGame;
+    private int nextId;
 
     public Shop(User user, Game game) {
         this.shopUser = user;

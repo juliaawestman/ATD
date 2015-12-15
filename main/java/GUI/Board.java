@@ -22,7 +22,7 @@ import java.util.HashMap;
 public class Board {
     public int worldWidth = 12;
     public int worldHeight = 12;
-    public int blockSize = 54;
+    public static int blockSize = 54;
     public Block[][] block;
     private CLayout c;
     private String map;
