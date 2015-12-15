@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import javafx.geometry.Pos;
+import main.java.tile.Tile;
 import main.java.tile.TowerTile;
 import main.java.tower.AirTower;
 import main.java.tower.GroundTower;
@@ -130,10 +131,18 @@ public class Game {
     }
 
     public void addUnit(Unit unit){
+        TileAction currentTile;
+        Position tempTilePos;
+
         /*Set the next position of the unit to the position of the start tile*/
         Position posToSet = tilePosConverter(map.getStartTile().getPosition());
         unit.setCurrentPosition(posToSet);
         unit.setNextTilePos(posToSet);
+        /*Call landon for the first tile the unit spawns on*/
+        tempTilePos = unitPosConverter(unit.getPosition());
+        currentTile = (TileAction) map.getTileAt(tempTilePos);
+        currentTile.landOn(unit);
+
         this.units.add(unit);
     }
 
@@ -185,8 +194,8 @@ public class Game {
         int tileX = tilePos.getX();
         int tileY = tilePos.getY();
 
-        int middlePosX = (((tileX) * tileSize-1) + (tileSize-1 / 2));
-        int middlePosY = (((tileY) * tileSize-1) + (tileSize-1 / 2));
+        int middlePosX = (((tileX) * tileSize-1) + (tileSize / 2));
+        int middlePosY = (((tileY) * tileSize-1) + (tileSize / 2));
 
         return new Position(middlePosX,middlePosY);
     }
@@ -197,11 +206,11 @@ public class Game {
      * @return the coordinate of the tile the unit is on.
      */
     private Position unitPosConverter(Position unitPos){
-        int tileX = unitPos.getX();
-        int tileY = unitPos.getY();
+        int posX = unitPos.getX();
+        int posY = unitPos.getY();
 
-        int tilePosX = (tileX / tileSize-1);
-        int tilePosY = (tileY / tileSize-1);
+        int tilePosX = (posX / tileSize);
+        int tilePosY = (posY / tileSize);
 
         return new Position(tilePosX,tilePosY);
     }
