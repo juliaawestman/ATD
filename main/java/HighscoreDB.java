@@ -2,7 +2,6 @@ package main.java;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class: HighscoreDB
@@ -140,7 +139,8 @@ public class HighscoreDB {
      * Gets the data from the highscore table on the sql server
      */
     public ArrayList getData() {
-        String sql = "SELECT id, userName, wave, level, date FROM highscore";
+        String sql = "SELECT * FROM highscore ORDER BY wave ASC";
+        //String sql = "SELECT id, userName, wave, level, date FROM highscore";
         ResultSet rs = null;
         try {
             rs = st.executeQuery(sql);
