@@ -3,6 +3,7 @@ package main.java.GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 
 /**
  * Class: CLayout
@@ -107,6 +108,14 @@ public class CLayout {
      */
     public void exit() {
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+    }
+
+
+    public void setBoardImage(BufferedImage b) {
+
+
+
+
     }
 
     /**
