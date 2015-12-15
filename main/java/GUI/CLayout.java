@@ -31,6 +31,7 @@ public class CLayout {
     MenuGUI menu;
     NewGameGUI newGame;
     HighScoreGUI highScore;
+    GameOverGUI gameOver;
 
 
 
@@ -46,11 +47,13 @@ public class CLayout {
         newGame = new NewGameGUI(this);
         highScore = new HighScoreGUI();
         game = new GameGUI(this);
+        gameOver = new GameOverGUI(this);
 
         panelCont.add(menu.getPanel(), "menu");
         panelCont.add(highScore.getPanel(), "highScore");
         panelCont.add(newGame.getPanel(), "newGame");
         panelCont.add(game.getPanel(), "game");
+        panelCont.add(gameOver.getPanel(), "gameOver");
 
 
         cl.show(panelCont, "menu");
