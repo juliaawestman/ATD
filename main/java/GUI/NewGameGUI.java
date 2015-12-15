@@ -46,6 +46,7 @@ public class NewGameGUI {
      */
     private JPanel buildMiddlePanel() {
         JPanel middlePanel = new JPanel();
+        middlePanel.setBackground(new Color(169,255,151));
         //middlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         updateLevels();
         levelList = new JComboBox(levels.toArray());
@@ -60,6 +61,7 @@ public class NewGameGUI {
      */
     private JPanel buildLowerPanel() {
         JPanel lowerPanel = new JPanel();
+        lowerPanel.setBackground(new Color(169,255,151));
 
         newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
         newGame.addMouseListener(new StartGameListener(newGame, c, levelList));
@@ -102,6 +104,7 @@ public class NewGameGUI {
      */
     public JPanel getPanel() {
 
+        panel.setBackground(new Color(169,255,151));
         panel.setLayout(new BorderLayout());
 
         //Add panels to the frame
