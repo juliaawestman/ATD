@@ -115,8 +115,8 @@ public class HighscoreDB {
         String map = u.getMap();
         String date = u.getCurrentDate();
 
-/* TODO Make it add a unique ID each time it adds a user */
-        String sql = "INSERT INTO HIGHSCORE " + "VALUES (6,"+"'"+userName+"'"+", "+ wave + ", "+ "'"+map+"'" + ", " + "'"+date+"')";
+        String sql = "INSERT INTO HIGHSCORE(userName, wave, level, date) " + "VALUES ('"+"userName"+"'"+", "+ wave + ", "+ "'"+map+"'" + ", " + "'"+date+"')";
+
         try {
             st.executeUpdate(sql);
         } catch (SQLException e) {
@@ -126,7 +126,7 @@ public class HighscoreDB {
     }
 
     public void testAddUser() {
-        String sql = "INSERT INTO HIGHSCORE " + "VALUES (10,"+"'"+"Issemannen"+"'"+", "+ "222" + ", "+ "'"+"bana2"+"'" + ", " + "'"+"2015-12-15"+"')";
+        String sql = "INSERT INTO HIGHSCORE(userName, wave, level, date) " + "VALUES ('"+"ERKKA"+"'"+", "+ "100" + ", "+ "'"+"bana5"+"'" + ", " + "'"+"2015-12-15"+"')";
         try {
             st.executeUpdate(sql);
         } catch (SQLException e) {
