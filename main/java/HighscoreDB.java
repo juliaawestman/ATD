@@ -140,6 +140,7 @@ public class HighscoreDB {
      */
     public ArrayList getData() {
         String sql = "SELECT * FROM highscore ORDER BY wave ASC";
+        //
         //String sql = "SELECT id, userName, wave, level, date FROM highscore";
         ResultSet rs = null;
         try {
