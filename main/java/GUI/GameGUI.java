@@ -135,7 +135,7 @@ public class GameGUI extends JPanel implements Runnable {
         gamePanel.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int x = e.getX();
+                int x = e.getX() - ((myWidth / 2) - (gameBoard.blockSize*(gameBoard.worldWidth/2)));
                 int y = e.getY();
                 System.out.println(x+" "+y);
 

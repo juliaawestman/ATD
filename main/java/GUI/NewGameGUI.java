@@ -154,7 +154,7 @@ public class NewGameGUI {
      */
     private void updateLevels() {
 
-        levels = c.mapinfo.getLevelName();
+        levels = c.mapinfo.getLevelNames();
 
     }
 }
