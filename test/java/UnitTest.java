@@ -1,5 +1,9 @@
-package main.java.unit;
+package test.java;
 
+import main.java.unit.AirUnit;
+import main.java.unit.GroundUnit;
+import main.java.unit.Unit;
+import main.java.unit.UnitForTesting;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
