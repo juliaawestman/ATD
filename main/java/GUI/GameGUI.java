@@ -1,16 +1,10 @@
 package main.java.GUI;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.Random;
 
 /**
  * Created by Zacke on 2015-11-26.
@@ -54,8 +48,8 @@ public class GameGUI extends JPanel implements Runnable {
         }
         g.setColor(new Color(50, 50, 50));
         g.fillRect(0, 0, getWidth(), getHeight());
-        g.setColor(new Color(255, 255, 0));
-        ((Graphics2D)g).setStroke(new BasicStroke(3));
+        g.setColor(new Color(255, 255, 255));
+        ((Graphics2D)g).setStroke(new BasicStroke(2));
         g.drawLine(gameBoard.block[0][0].x-1, 0, gameBoard.block[0][0].x-1, gameBoard.block[gameBoard.worldHeight-1][0].y + gameBoard.blockSize);
         g.drawLine(gameBoard.block[0][gameBoard.worldWidth-1].x + gameBoard.blockSize, 0, gameBoard.block[0][gameBoard.worldWidth-1].x + gameBoard.blockSize, gameBoard.block[gameBoard.worldHeight-1][0].y + gameBoard.blockSize);
         g.drawLine(gameBoard.block[0][0].x, gameBoard.block[gameBoard.worldHeight-1][0].y + gameBoard.blockSize, gameBoard.block[0][gameBoard.worldWidth-1].x + gameBoard.blockSize, gameBoard.block[gameBoard.worldHeight-1][0].y + gameBoard.blockSize);

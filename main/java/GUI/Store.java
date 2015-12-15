@@ -1,5 +1,9 @@
 package main.java.GUI;
 
+import main.java.unit.AirUnit;
+import main.java.unit.GroundUnit;
+import main.java.unit.TeleporterUnit;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,13 +14,17 @@ import java.awt.*;
  * Created by Zacke on 2015-12-08.
  */
 public class Store {
-    private int shopWidth = 8;
+    private int shopWidth = 3;
     private int buttonSize = 54;
-    private int cellSpace = 2;
+    private int cellSpace = 20;
     private int margin = 30;
     private int iconSize = 20;
     private int iconSpace = 6;
     private int iconTextY = 15;
+    private String unitpath = "";
+    private String cost = "";
+
+
 
     public Rectangle[] button = new Rectangle[shopWidth];
     public Rectangle buttonHealth;
@@ -46,8 +54,26 @@ public class Store {
      */
     public void draw(Graphics g) {
         for(int i = 0; i<button.length;i++) {
+            if(i == 0) {
+                unitpath = "main/resources/groundUnitButton.png";
+                cost = "30";
+            }
+            if(i == 1) {
+                unitpath = "main/resources/airUnitButton.png";
+                cost = "30";
+            }
+            if(i == 2) {
+                unitpath = "main/resources/teleporterUnitButton.png";
+                cost = "50";
+            }
 
-            g.fillRect(button[i].x, button[i].y, button[i].width, button[i].height);
+            g.setFont(new Font("Courier New", Font.BOLD, 14));
+            g.setColor(new Color(255, 255, 255));
+            g.drawImage(new ImageIcon(unitpath).getImage(), button[i].x, button[i].y, button[i].width, button[i].height, null);
+            g.drawString(cost, button[i].x + buttonSize/2 - cellSpace/2, button[i].y - 4);
+
+            //g.fillRect(button[i].x, button[i].y, button[i].width, button[i].height);
+
             //button[i].
 
         }
