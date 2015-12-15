@@ -28,7 +28,7 @@ public class Game {
     private static final int tileSize = 54;
     private int timeOfGame = 0;
     private static final int incomeFreq = 100;
-    private static final int nrOfTowers = 5;
+    private static final int nrOfTowers = 2;
     private int nextId = 0;
     private User user;
     private Map map;
@@ -162,8 +162,8 @@ public class Game {
             towerTileList.add((TowerTile) it.next());
         }
 
-        for(int i=0; i < this.nrOfTowers ;i++){
-            random = (int)(Math.random() * (nrOfTowerTiles + 1));
+        for(int i=0; i < this.nrOfTowers; i++){
+            random = (int)(Math.random() * (nrOfTowerTiles));
             /*Add a tower and set the position of the tower to a random towerTiles position*/
 
             tempTilePos = towerTileList.get(random).getPosition();

@@ -13,6 +13,7 @@ import main.java.Position;
 import main.java.unit.Unit;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -89,8 +90,32 @@ public abstract class Tower {
         if(time - timeOfLastAttack >= speed){
             target.takeDamage(damage);
             timeOfLastAttack = time;
-            System.out.println("shot fired!");
+            System.out.println("shot fired by Tower: " + this.id);
+
+            /*BufferedImage laser = createLaserImage();
+            GraphicEvent event = new GraphicEvent(-id, , laser);
+            event.setVisibilityTime(time, (speed/3)*2);*/
         }
+    }
+
+    private BufferedImage createLaserImage() {
+        Position towerPos = this.getPosition();
+        Position targetPos = target.getPosition();
+        int width = towerPos.getX() - targetPos.getX();
+        int height = towerPos.getY() - targetPos.getY();
+        if (width < 0){
+            width = width * -1;
+        }
+        if (height < 0){
+            height = height * -1;
+        }
+        BufferedImage laser = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = laser.createGraphics();
+        g.setColor(new Color(255, 0, 0));
+        g.setStroke(new BasicStroke(5));
+        g.drawLine(towerPos.getX(), towerPos.getY(), targetPos.getX(), targetPos.getY());
+
+        return laser;
     }
 
     protected void loadImage(URL path){

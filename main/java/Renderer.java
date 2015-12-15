@@ -63,7 +63,7 @@ public class Renderer {
 
 
     /*BELOW THIS ALL SHOULD BE REMOVED*/
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -111,5 +111,5 @@ public class Renderer {
         public void setImage(BufferedImage img){
             icon.setImage(img);
         }
-    }
+    }*/
 }

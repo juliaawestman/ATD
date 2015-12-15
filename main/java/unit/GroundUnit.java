@@ -21,13 +21,14 @@ public class GroundUnit extends main.java.unit.Unit {
 
         super(pos, id);
         super.health = 30;
-        super.price = this.price;
-        super.speed = 30;
+        super.price = price;
+        super.speed = 50;
         super.name = "GroundUnit";
         super.pos = pos;
         super.flying = false;
         super.imagePath = this.getClass().getResource("../../resources/groundUnit.png");
     }
+
     public static int getPrice() {
         return price;
     }

@@ -31,7 +31,7 @@ public class MainController extends TimerTask implements MapInformation {
 
     public MainController(){
         createFactory();
-        gui = new CLayout(this);
+        gui = new CLayout(this, null);
         int dimension = gui.getTileSize()*12;
         renderer = new Renderer(dimension, dimension);
         game = null;
@@ -58,7 +58,7 @@ public class MainController extends TimerTask implements MapInformation {
      * Starts the game with an update interval of 1/10 of a second
      */
     public void start(){
-        startWithUpdateInterval(1);
+        startWithUpdateInterval(5);
     }
 
     /**
