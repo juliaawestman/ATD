@@ -30,6 +30,9 @@ public class HighScoreGUI {
     ArrayList<String> highscores = new ArrayList<>();
     private CLayout c;
 
+    public HighScoreGUI(CLayout c){
+        this.c = c;
+    }
     JLabel label = new JLabel();
 
 
@@ -47,7 +50,8 @@ public class HighScoreGUI {
     private JPanel buildMiddelPanel() {
         JPanel middelPanel = new JPanel();
         middelPanel.setBackground(new Color(169,255,151));
-        middelPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+
         //lowerPanel.setLayout(new BorderLayout());
 
 /*
@@ -68,8 +72,11 @@ public class HighScoreGUI {
         //textArea.append(dbs.getData());
         //String temp2;
         //highscores.forEach((temp) -> textArea.append("\n"+temp));
-        highscores.forEach((temp) -> label.setText("<html>"+label.getText()+"<br>"+temp+"<html>"));
+
+
+        highscores.forEach((temp) -> label.setText("<html>"+ label.getText() +"\t\t\t" +"<br>"+temp+"<html>"));
         label.setFont(new Font("Arial", Font.ITALIC, 18));
+        label.setForeground(Color.white);
         middelPanel.add(label);
 
         return middelPanel;
@@ -98,7 +105,7 @@ public class HighScoreGUI {
     public JPanel getPanel() {
 
         upperPanel = buildUpperPanel();
-        //middelPanel = buildMiddelPanel();
+        middelPanel = buildMiddelPanel();
         lowerPanel = buildLowerPanel();
 
         panel.setBackground(new Color(169,255,151));
@@ -106,8 +113,8 @@ public class HighScoreGUI {
 
         //Add panels to the frame
         panel.add(upperPanel, BorderLayout.NORTH);
-        //panel.add(lowerPanel, BorderLayout.CENTER);
-        panel.add(lowerPanel, BorderLayout.EAST);
+        panel.add(middelPanel, BorderLayout.CENTER);
+        panel.add(lowerPanel, BorderLayout.SOUTH);
 
         return panel;
     }
