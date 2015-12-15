@@ -14,6 +14,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import javafx.geometry.Pos;
+import main.java.tile.Tile;
 import main.java.tile.TowerTile;
 import main.java.tower.AirTower;
 import main.java.tower.GroundTower;
@@ -23,10 +25,11 @@ import main.java.tile.TileAction;
 
 public class Game {
 
-    private static final int tileSize = 54 - 1;
+    private static final int tileSize = 54;
     private int timeOfGame = 0;
     private static final int incomeFreq = 100;
-    private static final int nrOfTowers = 5;
+    private static final int nrOfTowers = 2;
+    private int nextId = 0;
     private User user;
     private Map map;
     private List<Unit> units;
@@ -63,6 +66,7 @@ public class Game {
         Unit currentUnit;
         TileAction currentTile;
         GraphicEvent tempEvent;
+        Position tempTilePos;
 
         while (itrUnits.hasNext()) {
             currentUnit = (Unit) itrUnits.next();
@@ -72,23 +76,23 @@ public class Game {
                 this.graphicState.removeGraphicEvent(tempEvent);
                 itrUnits.remove();
                 this.unitsReachedGoal++;
-                continue;
             }
             /*Remove the unit if it's dead*/
-            if (!currentUnit.isAlive()) {
+            else if (!currentUnit.isAlive()) {
                 tempEvent = currentUnit.generateGraphicEvent();
                 this.graphicState.removeGraphicEvent(tempEvent);
                 itrUnits.remove();
-                continue;
             }
-            if(currentUnit.move()){
+            else if(currentUnit.move()){
                 tempEvent = currentUnit.generateGraphicEvent();
                 this.graphicState.addGraphicEvent(tempEvent);
+                if (currentUnit.isInMiddleOfTile()){
+                    tempTilePos = unitPosConverter(currentUnit.getPosition());
+                    currentTile = (TileAction) map.getTileAt(tempTilePos);
+                    currentTile.landOn(currentUnit);
+                }
             }
-            if (currentUnit.isInMiddleOfTile()){
-                currentTile = (TileAction) map.getTileAt(currentUnit.getPosition());
-                currentTile.landOn(currentUnit);
-            }
+
         }
     }
 
@@ -109,11 +113,7 @@ public class Game {
                 /*Try to find a target for the tower*/
                 while (itrUnits.hasNext()) {
                     currentUnit = (Unit) itrUnits.next();
-                    /*Remove the unit if it's dead*/
-                    if (!currentUnit.isAlive()) {
-                        itrUnits.remove();
-                    /*Try to find new target for the tower*/
-                    }else if(currentTower.withinRange(currentUnit)){
+                    if(currentUnit.isAlive() && currentTower.withinRange(currentUnit)){
                         currentTower.setTarget(currentUnit);
                         currentTower.attack(timeOfGame);
                         break;
@@ -127,8 +127,18 @@ public class Game {
     }
 
     public void addUnit(Unit unit){
+        TileAction currentTile;
+        Position tempTilePos;
+
         /*Set the next position of the unit to the position of the start tile*/
-        unit.setNextTilePos(map.getStartTile().getPosition());
+        Position posToSet = tilePosConverter(map.getStartTile().getPosition());
+        unit.setCurrentPosition(posToSet);
+        unit.setNextTilePos(posToSet);
+        /*Call landon for the first tile the unit spawns on*/
+        tempTilePos = unitPosConverter(unit.getPosition());
+        currentTile = (TileAction) map.getTileAt(tempTilePos);
+        currentTile.landOn(unit);
+
         this.units.add(unit);
     }
 
@@ -142,6 +152,7 @@ public class Game {
         LinkedList <TowerTile>towerTileList = new LinkedList();
         int random;
         Tower tower;
+        Position tempTilePos;
 
         if(nrOfTowerTiles == 0){
             throw new IllegalStateException("There are no towerTiles!");
@@ -151,11 +162,12 @@ public class Game {
             towerTileList.add((TowerTile) it.next());
         }
 
-        for(int i=0; this.nrOfTowers < i;i++){
-            random = (int)(Math.random() * nrOfTowerTiles + 1);
+        for(int i=0; i < this.nrOfTowers; i++){
+            random = (int)(Math.random() * (nrOfTowerTiles));
             /*Add a tower and set the position of the tower to a random towerTiles position*/
 
-            tower = new GroundTower(towerTileList.get(random).getPosition());
+            tempTilePos = towerTileList.get(random).getPosition();
+            tower = new GroundTower(tilePosConverter(tempTilePos),getNextObjectId());
             this.towers.add(tower);
 
             /*Generate a graphic event when the tower is added to the game*/
@@ -169,17 +181,44 @@ public class Game {
     }
 
     /**
-     * Translate a tileCoordinate to a graphic coordinate.
+     * Translate a tileCoordinate to a graphic coordinate (the middle coordinate of the tile).
      *
+     * @param tilePos the position of the tile to get the middle position of.
      * @return the graphic coordinate.
      */
     private Position tilePosConverter(Position tilePos){
-        int tileX = tilePos.getX()-1;
-        int tileY = tilePos.getY()-1;
+        int tileX = tilePos.getX();
+        int tileY = tilePos.getY();
 
-        int tileMiddlePosX = (((tileX) * tileSize) + (tileSize / 2));
-        int tileMiddlePosY = (((tileY) * tileSize) + (tileSize / 2));
+        int middlePosX = (((tileX) * tileSize-1) + (tileSize / 2));
+        int middlePosY = (((tileY) * tileSize-1) + (tileSize / 2));
 
-        return new Position(tileMiddlePosX,tileMiddlePosY);
+        return new Position(middlePosX,middlePosY);
+    }
+
+    /**
+     *
+     * @param unitPos the position of the unit.
+     * @return the coordinate of the tile the unit is on.
+     */
+    private Position unitPosConverter(Position unitPos){
+        int posX = unitPos.getX();
+        int posY = unitPos.getY();
+
+        int tilePosX = (posX / tileSize);
+        int tilePosY = (posY / tileSize);
+
+        return new Position(tilePosX,tilePosY);
+    }
+
+    /**
+     * Get the next id to give to a object in the game.
+     *
+     * @return
+     */
+    public int getNextObjectId(){
+        int ret = this.nextId;
+        this.nextId++;
+        return ret;
     }
 }

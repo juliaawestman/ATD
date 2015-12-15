@@ -198,8 +198,8 @@ public class MapFactory {
      * @return an instance of Position.
      */
     private Position extractPosition(Node pos) {
-        int x = Integer.parseInt(pos.getAttributes().getNamedItem("column").getNodeValue());
-        int y = Integer.parseInt(pos.getAttributes().getNamedItem("row").getNodeValue());
+        int x = Integer.parseInt(pos.getAttributes().getNamedItem("column").getNodeValue())-1;
+        int y = Integer.parseInt(pos.getAttributes().getNamedItem("row").getNodeValue())-1;
         return new Position(x, y);
     }
 

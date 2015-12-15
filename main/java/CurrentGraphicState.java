@@ -60,7 +60,7 @@ public class CurrentGraphicState {
         Iterator itr;
         GraphicEvent currentEvent;
         GraphicEvent currentGraphicEvent;
-        itr = allGraphicEvents.entrySet().iterator();
+        itr = allGraphicEvents.values().iterator();
 
         while (itr.hasNext()) {
             currentEvent = (GraphicEvent) itr.next();

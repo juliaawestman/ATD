@@ -3,12 +3,15 @@ package main.java;
 import main.java.GUI.CLayout;
 import main.java.GUI.MapInformation;
 import main.java.tile.Tile;
+import main.java.unit.GroundUnit;
 import org.xml.sax.SAXException;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Class:       MainController
@@ -18,20 +21,29 @@ import java.util.Timer;
  * Date:        12/15/15
  */
 
-public class MainController implements MapInformation{
+public class MainController extends TimerTask implements MapInformation {
     private Renderer renderer;
     private CLayout gui;
     private Game game;
     private MapFactory factory;
     private Timer timer;
+    private Shop shop;
 
     public MainController(){
         createFactory();
-        gui = new CLayout(this);
+        gui = new CLayout(this, null);
         int dimension = gui.getTileSize()*12;
         renderer = new Renderer(dimension, dimension);
         game = null;
         timer = new Timer();
+    }
+
+    @Override
+    public void run() {
+        game.update();
+        renderer.drawImage(game.getGraphicState().getCurrentGraphicState());
+        BufferedImage img = renderer.getImage();
+        gui.setBoardImage(img);
     }
 
     /**
@@ -39,14 +51,14 @@ public class MainController implements MapInformation{
      * @param interval the update interval in milliseconds
      */
     public void startWithUpdateInterval(long interval){
-        timer.schedule(null, interval, interval);
+        timer.schedule(this, interval, interval);
     }
 
     /**
      * Starts the game with an update interval of 1/10 of a second
      */
     public void start(){
-        startWithUpdateInterval(100);
+        startWithUpdateInterval(5);
     }
 
     /**
@@ -72,7 +84,16 @@ public class MainController implements MapInformation{
     public HashMap<Position, Tile> getMap(String s) {
         Map map = factory.loadMap(s);
         game = new Game(map);
+        shop = game.getShop();
+        int Y = (map.getStartTile().getPosition().getY() *53) + 27;
+        int X = (map.getStartTile().getPosition().getX() *53) + 27;
+
+        game.addUnit(new GroundUnit(new Position(X, Y), 1));
         start();
         return map.getCompleteMap();
+    }
+
+    public static void main(String[] args) {
+        MainController c = new MainController();
     }
 }

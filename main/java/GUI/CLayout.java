@@ -25,16 +25,19 @@ public class CLayout {
     CardLayout cl = new CardLayout();
 
     public MapInformation mapinfo;
+    public UserInformation userinfo;
 
     GameGUI game;
     MenuGUI menu;
     NewGameGUI newGame;
     HighScoreGUI highScore;
+    GameOverGUI gameOver;
 
 
 
-    public CLayout(MapInformation mapinfo) {
+    public CLayout(MapInformation mapinfo, UserInformation userinfo) {
         this.mapinfo = mapinfo;
+        this.userinfo = userinfo;
 
         music.play("main/resources/defaultMusic.wav");
 
@@ -44,11 +47,13 @@ public class CLayout {
         newGame = new NewGameGUI(this);
         highScore = new HighScoreGUI(this);
         game = new GameGUI(this);
+        gameOver = new GameOverGUI(this);
 
         panelCont.add(menu.getPanel(), "menu");
         panelCont.add(highScore.getPanel(), "highScore");
         panelCont.add(newGame.getPanel(), "newGame");
         panelCont.add(game.getPanel(), "game");
+        panelCont.add(gameOver.getPanel(), "gameOver");
 
 
         cl.show(panelCont, "menu");
@@ -113,8 +118,7 @@ public class CLayout {
 
     public void setBoardImage(BufferedImage b) {
 
-
-
+        game.drawImage(b);
 
     }
 
@@ -122,7 +126,8 @@ public class CLayout {
      * @return The size of a tile in the game board
      */
     public int getTileSize() {
-        return game.gameBoard.blockSize;
+        //return game.gameBoard.blockSize;
+        return Board.blockSize;
     }
 
 }

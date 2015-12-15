@@ -21,7 +21,7 @@ public abstract class Unit {
     /*Static variables*/
 
     protected static final int MAXSPEED = 50;
-    private static final int tileSize = 54 - 1;
+    private static final int tileSize = 54;
     protected String name;
     protected Position pos;
     protected int id;
@@ -46,7 +46,7 @@ public abstract class Unit {
         this.nextTilePos = pos;
         this.health = 10;
         this.price = 10;
-        this.speed = 10;
+        this.speed = 45;
         this.name = "UnNamed";
         this.flying = false;
         this.id = id;
@@ -104,6 +104,7 @@ public abstract class Unit {
 
     public void setHasReachedGoal(boolean b) {
         this.hasReachedGoal = b;
+        this.health = 0;
     }
 
     public boolean hasReachedGoal() {
@@ -119,8 +120,8 @@ public abstract class Unit {
         int currentY = this.pos.getY();
         int tileX = this.nextTilePos.getX();
         int tileY = this.nextTilePos.getY();
-        int tileMiddlePosX = (((tileX) * tileSize) + (tileSize / 2));
-        int tileMiddlePosY = (((tileY) * tileSize) + (tileSize / 2));
+        int tileMiddlePosX = (((tileX) * tileSize-1) + (tileSize / 2));
+        int tileMiddlePosY = (((tileY) * tileSize-1) + (tileSize / 2));
 
         if (currentX < tileMiddlePosX) {
             currentX++;
@@ -143,10 +144,10 @@ public abstract class Unit {
     public boolean isInMiddleOfTile() {
         int currentX = this.pos.getX();
         int currentY = this.pos.getY();
-        int tileX = this.nextTilePos.getX()-1;
-        int tileY = this.nextTilePos.getY()-1;
-        int tileMiddlePosX = (((tileX) * tileSize) + (tileSize / 2));
-        int tileMiddlePosY = (((tileY) * tileSize) + (tileSize / 2));
+        int tileX = this.nextTilePos.getX();
+        int tileY = this.nextTilePos.getY();
+        int tileMiddlePosX = (((tileX) * tileSize-1) + (tileSize / 2));
+        int tileMiddlePosY = (((tileY) * tileSize-1) + (tileSize / 2));
 
         return (currentX == tileMiddlePosX) && (currentY == tileMiddlePosY);
     }
