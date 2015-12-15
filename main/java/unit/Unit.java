@@ -144,8 +144,8 @@ public abstract class Unit {
     public boolean isInMiddleOfTile() {
         int currentX = this.pos.getX();
         int currentY = this.pos.getY();
-        int tileX = this.nextTilePos.getX();
-        int tileY = this.nextTilePos.getY();
+        int tileX = this.nextTilePos.getX()-1;
+        int tileY = this.nextTilePos.getY()-1;
         int tileMiddlePosX = (((tileX) * tileSize) + (tileSize / 2));
         int tileMiddlePosY = (((tileY) * tileSize) + (tileSize / 2));
 
