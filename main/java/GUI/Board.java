@@ -27,6 +27,7 @@ public class Board {
     private CLayout c;
     private String map;
     private String tile;
+    HashMap<Position, Tile> HM;
 
     public Board(CLayout c, String map) {
         this.c = c;
@@ -36,6 +37,7 @@ public class Board {
 
     public void define() {
         block = new Block[worldHeight][worldWidth];
+        HM = c.mapinfo.getMap(map);
 
         for (int y=0;y<block.length;y++) {
             for (int x = 0; x < block[0].length; x++) {
@@ -58,7 +60,6 @@ public class Board {
 
         //Map map = new Map();
 
-        HashMap<Position, Tile> HM = c.mapinfo.getMap(map);
         Tile t;
         for (int y=0;y<block.length;y++) {
             for(int x=0;x<block[0].length;x++) {
