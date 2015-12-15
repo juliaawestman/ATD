@@ -46,7 +46,7 @@ public class Board {
     }
 
     /**
-     * Draws the blocks the game board consists of, it checks which tile is suppose to be in which positin and draws it
+     * Draws the blocks the game board consists of, it checks which tile is suppose to be in which position and draws it
      * there as a block
      *
      * @param g

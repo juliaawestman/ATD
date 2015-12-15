@@ -35,7 +35,7 @@ public class CLayout {
     public CLayout(MapInformation mapinfo) {
         this.mapinfo = mapinfo;
 
-        music.play("main/resources/imperial.wav");
+        music.play("main/resources/defaultMusic.wav");
 
         panelCont.setLayout(cl);
 

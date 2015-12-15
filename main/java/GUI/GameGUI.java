@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
@@ -141,6 +142,17 @@ public class GameGUI extends JPanel implements Runnable {
      */
     public void setChosenMap(String s) {
         chosenMap = s;
+    }
+
+    public void setBoardImage(BufferedImage b) {
+
+
+
+
+    }
+
+    public int getTileSize() {
+        return gameBoard.blockSize;
     }
 
 }
