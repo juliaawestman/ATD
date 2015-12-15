@@ -18,9 +18,11 @@ public class AirTower extends Tower {
      * Constructor of a tower only able to shoot at flying units.
      *
      * @param position the position of the tower.
+     * @param id the id of the tower.
      */
-    public AirTower(Position position){
+    public AirTower(Position position, int id){
         super(range, speed, damage, true, false, position);
+        super.id = id;
         loadImage(this.getClass().getResource("../../AirTower.png"));
     }
 }

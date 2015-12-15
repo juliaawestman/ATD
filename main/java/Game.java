@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import javafx.geometry.Pos;
+import main.java.tile.Tile;
 import main.java.tile.TowerTile;
 import main.java.tower.AirTower;
 import main.java.tower.GroundTower;
@@ -28,6 +29,7 @@ public class Game {
     private int timeOfGame = 0;
     private static final int incomeFreq = 100;
     private static final int nrOfTowers = 5;
+    private int nextId = 0;
     private User user;
     private Map map;
     private List<Unit> units;
@@ -130,10 +132,18 @@ public class Game {
     }
 
     public void addUnit(Unit unit){
+        TileAction currentTile;
+        Position tempTilePos;
+
         /*Set the next position of the unit to the position of the start tile*/
         Position posToSet = tilePosConverter(map.getStartTile().getPosition());
         unit.setCurrentPosition(posToSet);
         unit.setNextTilePos(posToSet);
+        /*Call landon for the first tile the unit spawns on*/
+        tempTilePos = unitPosConverter(unit.getPosition());
+        currentTile = (TileAction) map.getTileAt(tempTilePos);
+        currentTile.landOn(unit);
+
         this.units.add(unit);
     }
 
@@ -157,12 +167,12 @@ public class Game {
             towerTileList.add((TowerTile) it.next());
         }
 
-        for(int i=0; this.nrOfTowers < i;i++){
-            random = (int)(Math.random() * nrOfTowerTiles + 1);
+        for(int i=0; i < this.nrOfTowers ;i++){
+            random = (int)(Math.random() * (nrOfTowerTiles + 1));
             /*Add a tower and set the position of the tower to a random towerTiles position*/
 
             tempTilePos = towerTileList.get(random).getPosition();
-            tower = new GroundTower(tilePosConverter(tempTilePos));
+            tower = new GroundTower(tilePosConverter(tempTilePos),getNextObjectId());
             this.towers.add(tower);
 
             /*Generate a graphic event when the tower is added to the game*/
@@ -185,8 +195,8 @@ public class Game {
         int tileX = tilePos.getX();
         int tileY = tilePos.getY();
 
-        int middlePosX = (((tileX) * tileSize-1) + (tileSize-1 / 2));
-        int middlePosY = (((tileY) * tileSize-1) + (tileSize-1 / 2));
+        int middlePosX = (((tileX) * tileSize-1) + (tileSize / 2));
+        int middlePosY = (((tileY) * tileSize-1) + (tileSize / 2));
 
         return new Position(middlePosX,middlePosY);
     }
@@ -197,12 +207,23 @@ public class Game {
      * @return the coordinate of the tile the unit is on.
      */
     private Position unitPosConverter(Position unitPos){
-        int tileX = unitPos.getX();
-        int tileY = unitPos.getY();
+        int posX = unitPos.getX();
+        int posY = unitPos.getY();
 
-        int tilePosX = (tileX / tileSize-1);
-        int tilePosY = (tileY / tileSize-1);
+        int tilePosX = (posX / tileSize);
+        int tilePosY = (posY / tileSize);
 
         return new Position(tilePosX,tilePosY);
+    }
+
+    /**
+     * Get the next id to give to a object in the game.
+     *
+     * @return
+     */
+    public int getNextObjectId(){
+        int ret = this.nextId;
+        this.nextId++;
+        return ret;
     }
 }

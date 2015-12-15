@@ -17,40 +17,37 @@ public class Shop {
 
     private User shopUser;
     private Game currentGame;
-    private int nextId;
 
     public Shop(User user, Game game) {
         this.shopUser = user;
         this.currentGame = game;
-        this.nextId = 0;
     }
 
     /**
      * A method for buying units.
      *
-     * @param unitId the id of the unit to buy.
+     * @param unitTypeId the id of the unit to buy.
      */
-    public void buyUnit(int unitId){
-        switch (unitId){
-            case 1: this.currentGame.addUnit(new AirUnit(new Position(0,0),nextId));
+    public void buyUnit(int unitTypeId){
+        switch (unitTypeId){
+            case 1: this.currentGame.addUnit(new AirUnit(new Position(0,0),currentGame.getNextObjectId()));
                 break;
-            case 2: this.currentGame.addUnit(new GroundUnit(new Position(0,0),nextId));
+            case 2: this.currentGame.addUnit(new GroundUnit(new Position(0,0),currentGame.getNextObjectId()));
                 break;
-            case 3: this.currentGame.addUnit(new TeleporterUnit(new Position(0,0),nextId));
+            case 3: this.currentGame.addUnit(new TeleporterUnit(new Position(0,0),currentGame.getNextObjectId()));
                 break;
-            default: throw new IllegalStateException("There is no unit with the id of " + nextId);
+            default: throw new IllegalStateException("There is no unit with the id of "+ unitTypeId);
         }
-        nextId++;
     }
 
     /**
      *
-     * @param unitId the id of the unit.
+     * @param unitTypeId the id of the unit.
      *
      * @return returns true if the user has enough money to buy a unit and false if not.
      */
-    public boolean canBuyUnit(int unitId){
-        switch (unitId){
+    public boolean canBuyUnit(int unitTypeId){
+        switch (unitTypeId){
             case 1:
                 if(this.shopUser.getCredits() >= AirUnit.getPrice()){
                     return true;
@@ -66,7 +63,7 @@ public class Shop {
                     return true;
                 }
                 break;
-            default: throw new IllegalStateException("There is no unit with the id of " + nextId);
+            default: throw new IllegalStateException("There is no unit with the id of " + unitTypeId);
         }
         return false;
     }

@@ -75,7 +75,6 @@ public abstract class Unit {
             this.pos = getNextPos();
             ret = true;
         }
-        System.out.println("Unit " + this.id + " " + this.pos.getX()+ " : " + this.pos.getY());
         timeLived++;
         return ret;
     }
@@ -121,8 +120,8 @@ public abstract class Unit {
         int currentY = this.pos.getY();
         int tileX = this.nextTilePos.getX();
         int tileY = this.nextTilePos.getY();
-        int tileMiddlePosX = (((tileX) * tileSize-1) + (tileSize-1 / 2));
-        int tileMiddlePosY = (((tileY) * tileSize-1) + (tileSize-1 / 2));
+        int tileMiddlePosX = (((tileX) * tileSize-1) + (tileSize / 2));
+        int tileMiddlePosY = (((tileY) * tileSize-1) + (tileSize / 2));
 
         if (currentX < tileMiddlePosX) {
             currentX++;
@@ -147,8 +146,8 @@ public abstract class Unit {
         int currentY = this.pos.getY();
         int tileX = this.nextTilePos.getX();
         int tileY = this.nextTilePos.getY();
-        int tileMiddlePosX = (((tileX) * tileSize-1) + (tileSize-1 / 2));
-        int tileMiddlePosY = (((tileY) * tileSize-1) + (tileSize-1 / 2));
+        int tileMiddlePosX = (((tileX) * tileSize-1) + (tileSize / 2));
+        int tileMiddlePosY = (((tileY) * tileSize-1) + (tileSize / 2));
 
         return (currentX == tileMiddlePosX) && (currentY == tileMiddlePosY);
     }

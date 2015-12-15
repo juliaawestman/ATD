@@ -59,7 +59,6 @@ public class GameGUI extends JPanel implements Runnable {
 
 
         if (b != null) {
-            System.out.println("yay!");
             g.drawImage(new ImageIcon(b).getImage(), (myWidth / 2) - (gameBoard.blockSize*(gameBoard.worldWidth/2)), 0, null);
         }
 
@@ -172,8 +171,6 @@ public class GameGUI extends JPanel implements Runnable {
 
     public void drawImage(BufferedImage b) {
         this.b = b;
-        System.out.println("derp");
-
     }
 
 }

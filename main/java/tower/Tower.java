@@ -29,8 +29,7 @@ public abstract class Tower {
     private Unit target;
     private Position pos;
     private int timeOfLastAttack;
-
-    private int id;
+    protected int id;
 
     /**
      * Constructor of a tower class
@@ -90,6 +89,7 @@ public abstract class Tower {
         if(time - timeOfLastAttack >= speed){
             target.takeDamage(damage);
             timeOfLastAttack = time;
+            System.out.println("shot fired!");
         }
     }
 
@@ -109,7 +109,10 @@ public abstract class Tower {
      * @return true if current target is valid, else false.
      */
     public boolean hasValidTarget(){
-        return target.isAlive() && withinRange(target);
+        if (target != null) {
+            return target.isAlive() && withinRange(target);
+        }
+        return false;
     }
 
     /**
