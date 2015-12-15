@@ -1,5 +1,6 @@
 package main.java.GUI;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -45,15 +46,31 @@ public class Store {
      */
     public void draw(Graphics g) {
         for(int i = 0; i<button.length;i++) {
+            /*
             g.fillRect(button[i].x, button[i].y, button[i].width, button[i].height);
+            button[i].
+            */
         }
+        /*
         g.fillRect(buttonHealth.x, buttonHealth.y, buttonHealth.width, buttonHealth.height);
         g.fillRect(buttonCoins.x, buttonCoins.y, buttonCoins.width, buttonCoins.height);
         g.setFont(new Font("Courier New", Font.BOLD, 14));
         g.setColor(new Color(255, 255, 255));
         g.drawString("100", buttonHealth.x + buttonHealth.width + iconSpace, buttonHealth.y + iconTextY);
         g.drawString("100", buttonCoins.x + buttonCoins.width + iconSpace, buttonCoins.y + iconTextY);
+        */
         //g.fillRect(buttonIncome.x, buttonIncome.y, buttonIncome.width, buttonIncome.height);
 
     }
+
+/*
+    public void draw(Graphics g, String tilepath) {
+
+        g.drawImage(new ImageIcon(tilepath).getImage(), x, y, width, height, null);
+
+    }
+
+    */
+
+
 }

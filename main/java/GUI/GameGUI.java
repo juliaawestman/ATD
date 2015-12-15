@@ -49,7 +49,6 @@ public class GameGUI extends JPanel implements Runnable {
             myHeight = getHeight();
             define();
             isFirst = false;
-
         }
         g.setColor(new Color(50, 50, 50));
         g.fillRect(0, 0, getWidth(), getHeight());

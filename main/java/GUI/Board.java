@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
 
 /**
  * Class: Board
@@ -57,14 +58,14 @@ public class Board {
 
         //Map map = new Map();
 
-
+        HashMap<Position, Tile> HM = c.mapinfo.getMap(map);
         Tile t;
         for (int y=0;y<block.length;y++) {
             for(int x=0;x<block[0].length;x++) {
 
-                if(c.mapinfo.getMap(map).get(new Position(x+1, y+1)) != null) {
-                    tile = c.mapinfo.getMap(map).get(new Position(x+1, y+1)).toString();
-                    t = c.mapinfo.getMap(map).get(new Position(x+1, y+1));
+                if(HM.get(new Position(x+1, y+1)) != null) {
+                    tile = HM.get(new Position(x+1, y+1)).toString();
+                    t = HM.get(new Position(x+1, y+1));
                 } else {
                     tile = "";
                     t=null;
