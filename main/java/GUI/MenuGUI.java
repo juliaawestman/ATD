@@ -19,7 +19,7 @@ public class MenuGUI {
     private JButton sound;
     private String gameTitle = "Anti tower Defence";
     private JPanel upperPanel = null;
-    private JPanel middlePanel;
+    private JPanel middlePanel = null;
     private JPanel lowerPanel;
 
 
@@ -96,30 +96,43 @@ public class MenuGUI {
 
     private JPanel buildMiddlePanel() {
         JPanel middlePanel = new JPanel();
+        middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
         middlePanel.setBackground(new Color(169,255,151));
+
+        JPanel buttonPanelOver = new JPanel();
+        buttonPanelOver.setBackground(new Color(169,255,151));
+
+        JPanel buttonPanelMiddle = new JPanel();
+        buttonPanelMiddle.setBackground(new Color(169,255,151));
+
+        JPanel buttonPanelUnder = new JPanel();
+        buttonPanelUnder.setBackground(new Color(169,255,151));
 
         newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
         newGame.addMouseListener(new NewGameListener(newGame, c));
         newGame.setBorderPainted(false);
         newGame.setContentAreaFilled(false);
         newGame.setFocusPainted(false);
+        buttonPanelOver.add(newGame);
 
         highScore = new JButton(new ImageIcon("main/resources/highScoreButton.png"));
         highScore.addMouseListener(new HighScoreListener(highScore, c));
         highScore.setBorderPainted(false);
         highScore.setContentAreaFilled(false);
         highScore.setFocusPainted(false);
+        buttonPanelMiddle.add(highScore);
 
         quit = new JButton(new ImageIcon("main/resources/quitButton.png"));
         quit.addMouseListener(new QuitListener(quit, c));
         quit.setBorderPainted(false);
         quit.setContentAreaFilled(false);
         quit.setFocusPainted(false);
+        buttonPanelUnder.add(quit);
 
 
-        middlePanel.add(newGame);
-        middlePanel.add(highScore);
-        middlePanel.add(quit);
+        middlePanel.add(buttonPanelOver, BorderLayout.NORTH);
+        middlePanel.add(buttonPanelMiddle, BorderLayout.CENTER);
+        middlePanel.add(buttonPanelUnder, BorderLayout.SOUTH);
 
         return middlePanel;
 
