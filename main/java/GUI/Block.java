@@ -8,6 +8,9 @@ import java.net.URL;
 import java.util.HashMap;
 
 /**
+ * Class: Block
+ * Draws a certain block at a specified coordinate
+ *
  * Created by Joakim on 2015-12-07.
  */
 public class Block extends Rectangle {

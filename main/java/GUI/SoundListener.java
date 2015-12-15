@@ -10,11 +10,9 @@ import java.awt.event.MouseListener;
 class SoundListener implements MouseListener {
 
         private JButton button;
-
         private CLayout c;
 
         public SoundListener(JButton button, CLayout c) {
-
             this.button = button;
             this.c = c;
         }

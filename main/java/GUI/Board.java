@@ -11,15 +11,16 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
+ * Class: Board
+ * GUI class for drawing the game board for the selected level, which in turn consists of several blocks
+ *
  * Created by Joakim on 2015-12-07.
  */
 public class Board {
     public int worldWidth = 12;
     public int worldHeight = 12;
     public int blockSize = 54;
-
     public Block[][] block;
-
     private CLayout c;
     private String map;
     private String tile;
@@ -44,6 +45,12 @@ public class Board {
 
     }
 
+    /**
+     * Draws the blocks the game board consists of, it checks which tile is suppose to be in which positin and draws it
+     * there as a block
+     *
+     * @param g
+     */
     public void draw(Graphics g) {
 
         //Map map = new Map();
@@ -79,10 +86,6 @@ public class Board {
                     block[y][x].draw(g,"main/resources/defaultTile.png");
                 }
             }
-
             }
-
     }
-
-
 }

@@ -9,7 +9,6 @@ import java.awt.event.*;
 class NewGameListener implements MouseListener {
 
     private JButton button;
-
     private CLayout c;
 
     public NewGameListener(JButton button, CLayout c) {

@@ -10,11 +10,8 @@ import java.awt.event.MouseListener;
 public class StartGameListener implements MouseListener {
 
     private JButton button;
-
     private CLayout c;
-
     private JComboBox<String> jcb;
-
 
     public StartGameListener(JButton button, CLayout c, JComboBox<String> jcb) {
 

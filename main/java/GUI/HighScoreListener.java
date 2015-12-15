@@ -10,7 +10,6 @@ import java.awt.event.MouseListener;
 public class HighScoreListener implements MouseListener{
 
         private JButton button;
-
         private CLayout c;
 
         public HighScoreListener(JButton button, CLayout c) {
