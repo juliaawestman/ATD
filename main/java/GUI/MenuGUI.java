@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * Class: MenuGUI
+ * Builds the starting menu for when the application is starting
+ *
  * Created by Joakim on 2015-11-30.
  */
 public class MenuGUI {
@@ -18,6 +21,7 @@ public class MenuGUI {
     private JPanel upperPanel = null;
     private JPanel middlePanel;
     private JPanel lowerPanel;
+
 
     private CLayout c;
 
@@ -92,6 +96,7 @@ public class MenuGUI {
 
     private JPanel buildMiddlePanel() {
         JPanel middlePanel = new JPanel();
+        middlePanel.setBackground(new Color(169,255,151));
 
         newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
         newGame.addMouseListener(new NewGameListener(newGame, c));
@@ -123,6 +128,7 @@ public class MenuGUI {
     private JPanel buildLowerPanel() {
         JPanel lowerPanel = new JPanel();
         lowerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        lowerPanel.setBackground(new Color(169,255,151));
 
         sound = new JButton(new ImageIcon("main/resources/sound.png"));
         sound.addMouseListener(new SoundListener(sound, c));
@@ -136,17 +142,18 @@ public class MenuGUI {
         return lowerPanel;
     }
 
-    public void show() {
-        frame.setVisible(true);
-    }
-
+    /**
+     *
+     * @return The main menu GUI as a JPanel
+     */
     public JPanel getPanel() {
-
+        panel.setBackground(new Color(169,255,151));
         upperPanel = buildUpperPanel();
         middlePanel = buildMiddlePanel();
         lowerPanel = buildLowerPanel();
 
         panel.setLayout(new BorderLayout());
+
 
         //Add panels to the frame
         panel.add(upperPanel, BorderLayout.NORTH);

@@ -5,11 +5,9 @@ package main.java.tile;/*
  * @author id12jwn
  */
 
-import javafx.geometry.Pos;
 import main.java.Position;
 import main.java.unit.Unit;
 
-import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 
 /**
@@ -30,7 +28,7 @@ public class Telepoter extends PathTile implements TileAction {
      * of the class main.java.tile.tile.Default
      */
     public Telepoter(Position p) throws MalformedURLException {
-	super(p, "");
+	super(p, "main/resources/teleporterTile.png");
     }
 
     @Override

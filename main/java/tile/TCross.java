@@ -24,7 +24,7 @@ public class TCross extends PathTile implements TileAction {
      * the program will create a object of the class main.java.tile.tile.Default
      */
     public TCross(Position p) throws MalformedURLException {
-        super(p, "");
+        super(p, "main/resources/TCross.png");
     }
 
     public void setPosistions(Position posToSet){

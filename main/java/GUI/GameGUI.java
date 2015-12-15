@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
@@ -50,7 +51,6 @@ public class GameGUI extends JPanel implements Runnable {
 
         }
         g.setColor(new Color(50, 50, 50));
-
         g.fillRect(0, 0, getWidth(), getHeight());
         g.setColor(new Color(255, 255, 0));
         ((Graphics2D)g).setStroke(new BasicStroke(3));
@@ -135,6 +135,17 @@ public class GameGUI extends JPanel implements Runnable {
 
     public void setChosenMap(String s) {
         chosenMap = s;
+    }
+
+    public void setBoardImage(BufferedImage b) {
+
+
+
+
+    }
+
+    public int getTileSize() {
+        return gameBoard.blockSize;
     }
 
 }

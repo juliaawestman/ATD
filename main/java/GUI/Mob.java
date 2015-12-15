@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * Class for testing adding a mob and making it walk through the level
+ *
  * Created by Joakim on 2015-12-07.
  */
 public class Mob extends Rectangle {

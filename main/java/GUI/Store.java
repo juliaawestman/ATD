@@ -3,6 +3,9 @@ package main.java.GUI;
 import java.awt.*;
 
 /**
+ * Class: Store
+ * GUI class for drawing the store buttons
+ *
  * Created by Zacke on 2015-12-08.
  */
 public class Store {
@@ -35,6 +38,11 @@ public class Store {
         //buttonIncome = new Rectangle(GameGUI.gameBoard.block[0][0].x-1, button[0].y + (button[0].height-iconSize*2), iconSize, iconSize);
     }
 
+    /**
+     * Draws the components for the store
+     *
+     * @param g
+     */
     public void draw(Graphics g) {
         for(int i = 0; i<button.length;i++) {
             g.fillRect(button[i].x, button[i].y, button[i].width, button[i].height);

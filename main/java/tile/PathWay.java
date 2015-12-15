@@ -5,7 +5,6 @@ package main.java.tile;/*
  * @author id12jwn
  */
 
-import javafx.geometry.Pos;
 import main.java.Position;
 import main.java.unit.Unit;
 
@@ -25,7 +24,7 @@ public class PathWay extends PathTile implements TileAction {
      */
 
     public PathWay(Position p) throws MalformedURLException {
-        super(p, "pathTile.png");
+        super(p, "main/resources/pathTile.png");
     }
 
     @Override

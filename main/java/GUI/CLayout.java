@@ -5,6 +5,10 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 
 /**
+ * Class: CLayout
+ * This class builds the GUI for the game. This GUI is of type CardLayout in which this class i able to switch between
+ * different cards after it built them.
+ *
  * Created by Zacke on 2015-12-01.
  */
 public class CLayout {
@@ -31,7 +35,7 @@ public class CLayout {
     public CLayout(MapInformation mapinfo) {
         this.mapinfo = mapinfo;
 
-        music.play("main/resources/imperial.wav");
+        music.play("main/resources/defaultMusic.wav");
 
         panelCont.setLayout(cl);
 
@@ -73,11 +77,21 @@ public class CLayout {
 
     }
 
+    /**
+     * Shows a specific card in the GUI
+     *
+     * @param s String of which card to show
+     */
     public void showCard(String s) {
 
         cl.show(panelCont, s);
     }
 
+    /**
+     * Resizes the frame and shows the card containing the game including the map
+     *
+     * @param map String of which map is chosen
+     */
     public void showGame(String map) {
 
         frame.setSize(900, 900);
@@ -88,6 +102,9 @@ public class CLayout {
         cl.show(panelCont, "game");
     }
 
+    /**
+     * Closing the frame and program
+     */
     public void exit() {
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
