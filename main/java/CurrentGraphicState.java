@@ -28,7 +28,7 @@ public class CurrentGraphicState {
     public void gameTick(int currentTime){
          ListIterator itrUnits = this.eventsWithLifetime.listIterator();
          GraphicEvent currentEvent;
-         
+
          while(itrUnits.hasNext()){
              currentEvent = (GraphicEvent) itrUnits.next();
              /* If the lifetime of the object has run out remove 
@@ -59,7 +59,6 @@ public class CurrentGraphicState {
         Stack s = new Stack();
         Iterator itr;
         GraphicEvent currentEvent;
-        GraphicEvent currentGraphicEvent;
         itr = allGraphicEvents.values().iterator();
 
         while (itr.hasNext()) {
