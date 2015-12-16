@@ -17,6 +17,8 @@ public interface UserInformation {
 
     boolean gameOver();
 
+    boolean gameWon();
+
     User getUser();
 
     void hasClicked(int x, int y);
