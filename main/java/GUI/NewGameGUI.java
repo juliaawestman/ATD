@@ -15,6 +15,7 @@ public class NewGameGUI {
     private ArrayList<String> levels;
     private JComboBox levelList = new JComboBox<String>();
     private JPanel panel = new JPanel();
+    private JLabel overLabel = new JLabel();
     private JButton newGame;
     private JButton back;
     private JButton sound;
@@ -51,6 +52,7 @@ public class NewGameGUI {
         middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
 
         JPanel levelListPanel = new JPanel();
+        levelListPanel.setPreferredSize(new Dimension(55, 25));
         levelListPanel.setBackground(new Color(56, 134, 96));
 
         JPanel buttonPanelOver = new JPanel();
@@ -65,12 +67,20 @@ public class NewGameGUI {
         buttonPanelLast.setPreferredSize(new Dimension(400, 45));
         buttonPanelLast.setBackground(new Color(56, 134, 96));
 
+
+
+        overLabel.setText("Level:");
+        overLabel.setPreferredSize(new Dimension(55,25));
+        overLabel.setFont(new Font("arial", Font.PLAIN, 20));
+        overLabel.setForeground(Color.white);
+
+
         //middlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         updateLevels();
         levelList = new JComboBox(levels.toArray());
-
+        levelListPanel.add(overLabel);
         levelListPanel.add(levelList);
-        middlePanel.add(levelListPanel, BorderLayout.NORTH);
+        middlePanel.add(levelListPanel, BorderLayout.CENTER);
 
         back = new JButton(new ImageIcon("main/resources/backButton.png"));
         back.addMouseListener(new BackListener(back, c));
