@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class Board {
     public int worldWidth = 12;
     public int worldHeight = 12;
-    public static int blockSize = 54;
+    public int blockSize = 54;
     public Block[][] block;
     private CLayout c;
     private String map;
@@ -35,7 +35,7 @@ public class Board {
 
         for (int y=0;y<block.length;y++) {
             for (int x = 0; x < block[0].length; x++) {
-                block[y][x] = new Block((GameGUI.myWidth / 2) - ((worldWidth * blockSize) / 2) + (x * blockSize), (y * blockSize), blockSize, blockSize, 0);
+                block[y][x] = new Block((c.game.myWidth / 2) - ((worldWidth * blockSize) / 2) + (x * blockSize), (y * blockSize), blockSize, blockSize, 0);
             }
         }
     }

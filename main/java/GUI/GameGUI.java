@@ -14,8 +14,8 @@ public class GameGUI extends JPanel implements Runnable {
 
     JPanel gamePanel = new JPanel();
     public Thread thread = new Thread(this);
-    public static boolean isFirst =true;
-    public static int myWidth, myHeight;
+    public boolean isFirst =true;
+    public int myWidth, myHeight;
 
     boolean gameOver = false;
 
@@ -33,8 +33,6 @@ public class GameGUI extends JPanel implements Runnable {
     private Point mse = new Point(0, 0);
 
     //public static boolean isFirst = true;
-
-    public static Mob[] mobs = new Mob[1];
 
     public GameGUI(CLayout c) {
         this.c = c;
@@ -64,56 +62,23 @@ public class GameGUI extends JPanel implements Runnable {
             g.drawImage(new ImageIcon(b).getImage(), (myWidth / 2) - (gameBoard.blockSize*(gameBoard.worldWidth/2)), 0, null);
         }
 
-        for(int i=0;i<mobs.length;i++) {
-            if (mobs[i].inGame) {
-                mobs[i].draw(g);
-            }
-        }
-
     }
 
     public void define() {
         gameBoard = new Board(c, chosenMap);
         store = new Store(gameBoard, c);
-
-        for(int i=0;i<mobs.length;i++) {
-            mobs[i] = new Mob(gameBoard);
-            mobs[i].spawnMob(0);
-        }
     }
 
     public int spawnTime = 20000, spawnFrame = 0;
 
 
 
-    public void mobSpawner() {
-        if (spawnFrame >= spawnTime) {
-            for (int i= 0; i<mobs.length; i++) {
-                if(!mobs[i].inGame) {
-                    mobs[i].spawnMob(0);
-                    break;
-                }
-            }
-
-            spawnFrame = 0;
-
-        } else {
-            spawnFrame += 1;
-        }
-
-    }
 
     public static int fpsFrame = 0, fps = 120;
     public void run() {
         while(true) {
             if(!isFirst) {
                 gameBoard.physic();
-                mobSpawner();
-                for(int i=0;i<mobs.length;i++) {
-                    if(mobs[i].inGame) {
-                        mobs[i].physic();
-                    }
-                }
             }
 
             repaint();
