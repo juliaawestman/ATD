@@ -121,16 +121,6 @@ public class MainController extends TimerTask implements MapInformation, UserInf
     }
 
     @Override
-    public int getUnitCost(int i) {
-        return 0;
-    }
-
-    @Override
-    public void withdrawCredits(int i) {
-
-    }
-
-    @Override
     public void updateUsername(String s) {
 
     }
