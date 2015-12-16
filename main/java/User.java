@@ -1,4 +1,8 @@
 package main.java;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -71,7 +75,20 @@ public class User {
     }
 
     public void increaseCredits(int value){
-        this.credits = this.credits+credits;
+        this.credits = this.credits+value;
+    }
+
+    public GraphicEvent generateGraphicEvent() {
+        BufferedImage img = null;
+
+        /*Make the image*/
+        BufferedImage laser = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = laser.createGraphics();
+        g.setColor(new Color(255, 0, 3));
+        g.setStroke(new BasicStroke(2));
+        g.drawString(String.valueOf(this.credits),10,10);
+
+        return new GraphicEvent(999,new Position(70,70),laser);
     }
 
     public void decreaseCredits(int value){
