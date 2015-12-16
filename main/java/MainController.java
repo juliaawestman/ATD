@@ -4,7 +4,6 @@ import main.java.GUI.CLayout;
 import main.java.GUI.MapInformation;
 import main.java.GUI.UserInformation;
 import main.java.tile.Tile;
-import main.java.unit.GroundUnit;
 import org.xml.sax.SAXException;
 
 import java.awt.image.BufferedImage;
@@ -120,15 +119,6 @@ public class MainController extends TimerTask implements MapInformation, UserInf
         return null;
     }
 
-    @Override
-    public int getUnitCost(int i) {
-        return 0;
-    }
-
-    @Override
-    public void withdrawCredits(int i) {
-
-    }
 
     @Override
     public void updateUsername(String s) {
