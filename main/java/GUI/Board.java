@@ -1,16 +1,10 @@
 package main.java.GUI;
 
-import main.java.Map;
 import main.java.Position;
 import main.java.tile.PathTile;
-import main.java.tile.Start;
 import main.java.tile.Tile;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
 /**
@@ -81,7 +75,7 @@ public class Board {
                 } else if(tile.contains("Tower")) {
                     block[y][x].draw(g,"main/resources/towerTile.png");
                 } else if(tile.contains("Cross")) {
-                    block[y][x].draw(g, "main/resources/TCross.jpg");
+                    block[y][x].draw(g, "main/resources/TCross.png");
                 }else if(t != null){ //added by Erik M
                     if(PathTile.class.isAssignableFrom(t.getClass())) {
                         block[y][x].draw(g, t.getImageURL());
