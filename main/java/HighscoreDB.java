@@ -17,7 +17,7 @@ public class HighscoreDB {
     private String user = "SA";
     private String password = "";
     private User u;
-    final private String sqlCreateTable = "CREATE TABLE HIGHSCORE(id INTEGER IDENTITY, userName VARCHAR(30), wave integer, level VARCHAR(30), date VARCHAR(30))";
+    final private String sqlCreateTable = "CREATE TABLE HIGHSCORE(id INTEGER IDENTITY, userName VARCHAR(30), level VARCHAR(30), score integer)";
     //private String url = "jdbc:hsqldb:hsql://localhost";
     //private String url = "jdbc:hsqldb:file:highscore";
     private String url = "jdbc:hsqldb:hsql://itchy.cs.umu.se:28282/highscore";
@@ -115,7 +115,7 @@ public class HighscoreDB {
         String map = u.getMap();
         String date = u.getCurrentDate();
 
-        String sql = "INSERT INTO HIGHSCORE(userName, wave, level, date) " + "VALUES ('"+"userName"+"'"+", "+ wave + ", "+ "'"+map+"'" + ", " + "'"+date+"')";
+        String sql = "INSERT INTO HIGHSCORE(userName, wave, level, date) " + "VALUES ('"+userName+"'"+", "+wave+ ", "+ "'"+map+"'" + ", " + "'"+date+"')";
 
         try {
             st.executeUpdate(sql);
