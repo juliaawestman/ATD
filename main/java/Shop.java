@@ -4,6 +4,8 @@ import main.java.unit.AirUnit;
 import main.java.unit.GroundUnit;
 import main.java.unit.TeleporterUnit;
 
+import java.net.URL;
+
 /**
  * Class: Game
  *
@@ -76,5 +78,26 @@ public class Shop {
             default: throw new IllegalStateException("There is no unit with the id of " + unitTypeId);
         }
         return false;
+    }
+    /**
+     *
+     * @param unitTypeId the id of the unit.
+     *
+     * @return returns a URL for the specified unit type.
+     */
+    public URL getUnitImg(int unitTypeId){
+        switch (unitTypeId){
+            case 1:
+                AirUnit.getImg();
+                break;
+            case 2:
+                GroundUnit.getImg();
+                break;
+            case 3:
+                TeleporterUnit.getImg();
+                break;
+            default: throw new IllegalStateException("There is no unit with the id of " + unitTypeId);
+        }
+        return null;
     }
 }

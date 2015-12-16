@@ -16,18 +16,22 @@ import main.java.*;
 public class TeleporterUnit extends Unit {
 
     private static int price = 50;
+    private static URL imgUrl = Unit.class.getResource("../../resources/teleporterUnit.png");
 
     public TeleporterUnit(Position pos, int id) {
         super(pos, id);
         super.health = 20;
         super.price = this.price;
         super.speed = 50;
-        super.name = "GroundUnit";
+        super.name = "teleporterUnit";
         super.pos = pos;
         super.flying = false;
-        super.imagePath = this.getClass().getResource("../../resources/teleporterUnit.png");
+        super.imagePath = imgUrl;
     }
     public static int getPrice() {
         return price;
+    }
+    public static URL getImg(){
+        return imgUrl;
     }
 }
