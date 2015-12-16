@@ -64,6 +64,7 @@ public abstract class Tower {
      * @return true if the unit is within range, else false.
      */
     public boolean withinRange(Unit newTarget){
+        System.out.println("Tower: " + id);
         if(newTarget.isFlying() && !air){
             return false;
         } else if (!newTarget.isFlying() && !ground){
@@ -80,6 +81,7 @@ public abstract class Tower {
      */
     public void setTarget(Unit newTarget){
         target = newTarget;
+        System.out.println("targeted");
     }
 
     /**
@@ -95,7 +97,6 @@ public abstract class Tower {
             GraphicEvent event = new GraphicEvent(laserID, getLaserPosition(), laser);
             event.setVisibilityTime(time, (speed/3)*2);
 
-            System.out.println("shot fired by Tower: " + this.id + " shotID: " + laserID);
             return event;
         }
         return null;
@@ -128,8 +129,10 @@ public abstract class Tower {
         Position targetPos = target.getPosition();
 
         /*Calculate the width and height of the image*/
-        int width = (towerPos.getX() - targetPos.getX()) +1;
-        int height = (towerPos.getY() - targetPos.getY()) +1;
+        int width = (towerPos.getX() - targetPos.getX());
+        int height = (towerPos.getY() - targetPos.getY());
+        if (height == 0) height++;
+        if (width == 0) width ++;
         if (width < 0){
             width = width * -1;
         }
