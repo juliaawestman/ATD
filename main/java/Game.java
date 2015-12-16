@@ -25,7 +25,6 @@ import main.java.tile.TileAction;
 
 public class Game {
 
-    private static final int tileSize = 54;
     private int timeOfGame = 0;
     private static final int incomeFreq = 100;
     private static final int nrOfTowers = 10;
@@ -88,7 +87,7 @@ public class Game {
                 tempEvent = currentUnit.generateGraphicEvent();
                 this.graphicState.addGraphicEvent(tempEvent);
                 if (currentUnit.isInMiddleOfTile()){
-                    tempTilePos = unitPosConverter(currentUnit.getPosition());
+                    tempTilePos = positionConverter.unitPosConverter(currentUnit.getPosition());
                     currentTile = (TileAction) map.getTileAt(tempTilePos);
                     currentTile.landOn(currentUnit);
                 }
@@ -137,11 +136,11 @@ public class Game {
         Position tempTilePos;
 
         /*Set the next position of the unit to the position of the start tile*/
-        Position posToSet = tilePosConverter(map.getStartTile().getPosition());
+        Position posToSet = positionConverter.tilePosConverter(map.getStartTile().getPosition());
         unit.setCurrentPosition(posToSet);
         unit.setNextTilePos(posToSet);
         /*Call landon for the first tile the unit spawns on*/
-        tempTilePos = unitPosConverter(unit.getPosition());
+        tempTilePos = positionConverter.unitPosConverter(unit.getPosition());
         currentTile = (TileAction) map.getTileAt(tempTilePos);
         currentTile.landOn(unit);
 
@@ -183,7 +182,7 @@ public class Game {
             tempTilePos = towerTileList.get(random).getPosition();
             tempTowerTile = (TowerTile) map.getTileAt(tempTilePos);
             if(!tempTowerTile.isOccupied()){
-                tower = new GroundTower(tilePosConverter(tempTilePos),getNextObjectId());
+                tower = new GroundTower(positionConverter.tilePosConverter(tempTilePos),getNextObjectId());
                 this.towers.add(tower);
                 tempTowerTile.setOccupied(true);
                 placedTowers++;
@@ -198,37 +197,6 @@ public class Game {
 
     public CurrentGraphicState getGraphicState(){
         return this.graphicState;
-    }
-
-    /**
-     * Translate a tileCoordinate to a graphic coordinate (the middle coordinate of the tile).
-     *
-     * @param tilePos the position of the tile to get the middle position of.
-     * @return the graphic coordinate.
-     */
-    private Position tilePosConverter(Position tilePos){
-        int tileX = tilePos.getX();
-        int tileY = tilePos.getY();
-
-        int middlePosX = (((tileX) * tileSize-1) + (tileSize / 2));
-        int middlePosY = (((tileY) * tileSize-1) + (tileSize / 2));
-
-        return new Position(middlePosX,middlePosY);
-    }
-
-    /**
-     *
-     * @param unitPos the position of the unit.
-     * @return the coordinate of the tile the unit is on.
-     */
-    private Position unitPosConverter(Position unitPos){
-        int posX = unitPos.getX();
-        int posY = unitPos.getY();
-
-        int tilePosX = (posX / tileSize);
-        int tilePosY = (posY / tileSize);
-
-        return new Position(tilePosX,tilePosY);
     }
 
     /**
