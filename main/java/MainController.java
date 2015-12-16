@@ -2,6 +2,7 @@ package main.java;
 
 import main.java.GUI.CLayout;
 import main.java.GUI.MapInformation;
+import main.java.GUI.UserInformation;
 import main.java.tile.Tile;
 import main.java.unit.GroundUnit;
 import org.xml.sax.SAXException;
@@ -27,7 +28,7 @@ import java.util.TimerTask;
  *  TODO Test the map Joy a lot: it generates a lot of exceptions
  */
 
-public class MainController extends TimerTask implements MapInformation {
+public class MainController extends TimerTask implements MapInformation, UserInformation {
     private Renderer renderer;
     private CLayout gui;
     private Game game;
@@ -38,7 +39,7 @@ public class MainController extends TimerTask implements MapInformation {
 
     public MainController(){
         createFactory();
-        gui = new CLayout(this, null);
+        gui = new CLayout(this, this);
         int dimension = gui.getTileSize()*12;
         renderer = new Renderer(dimension, dimension);
         game = null;
@@ -65,7 +66,7 @@ public class MainController extends TimerTask implements MapInformation {
      * Starts the game with an update interval of 1/10 of a second
      */
     public void start(){
-        startWithUpdateInterval(1);
+        startWithUpdateInterval(5);
     }
 
     /**
@@ -102,5 +103,45 @@ public class MainController extends TimerTask implements MapInformation {
 
     public static void main(String[] args) {
         MainController c = new MainController();
+    }
+
+    @Override
+    public void buyUnit(int i) {
+        shop.buyUnit(i);
+    }
+
+    @Override
+    public boolean canBuyUnit(int i) {
+        return shop.canBuyUnit(i);
+    }
+
+    @Override
+    public String getUnitName(int i) {
+        return null;
+    }
+
+    @Override
+    public int getUnitCost(int i) {
+        return 0;
+    }
+
+    @Override
+    public void withdrawCredits(int i) {
+
+    }
+
+    @Override
+    public void updateUsername(String s) {
+
+    }
+
+    @Override
+    public boolean gameOver() {
+        return false;
+    }
+
+    @Override
+    public void hasClicked(int x, int y) {
+
     }
 }

@@ -28,7 +28,7 @@ public class Game {
     private static final int tileSize = 54;
     private int timeOfGame = 0;
     private static final int incomeFreq = 100;
-    private static final int nrOfTowers = 50;
+    private static final int nrOfTowers = 10;
     private int nextId = 0;
     private User user;
     private Map map;

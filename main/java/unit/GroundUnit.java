@@ -22,7 +22,7 @@ public class GroundUnit extends main.java.unit.Unit {
         super(pos, id);
         super.health = 100;
         super.price = price;
-        super.speed = 35;
+        super.speed = 50;
         super.name = "GroundUnit";
         super.pos = pos;
         super.flying = false;
