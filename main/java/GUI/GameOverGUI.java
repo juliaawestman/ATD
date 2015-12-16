@@ -18,7 +18,6 @@ public class GameOverGUI {
     private JPanel upperPanel = null;
     private JPanel middlePanel = null;
     private JPanel lowerPanel;
-    private JTextField textfield = new JTextField();
 
     public GameOverGUI(CLayout c) {
         this.c = c;
@@ -43,7 +42,9 @@ public class GameOverGUI {
     private JPanel buildMiddlePanel() {
         JPanel middlePanel = new JPanel();
         middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
-        middlePanel.setBackground(new Color(169,255,151));
+        middlePanel.setBackground(new Color(56, 134, 96));
+
+        /*
 
         JPanel buttonPanelOver = new JPanel();
         buttonPanelOver.setBackground(new Color(169,255,151));
@@ -59,29 +60,29 @@ public class GameOverGUI {
 
         textfieldPanel.add(textfield);
 
+        */
+
         newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
         newGame.addMouseListener(new NewGameListener(newGame, c));
         newGame.setBorderPainted(false);
         newGame.setContentAreaFilled(false);
         newGame.setFocusPainted(false);
-        buttonPanelOver.add(newGame);
+        //buttonPanelOver.add(newGame);
 
         highScore = new JButton(new ImageIcon("main/resources/highScoreButton.png"));
         highScore.addMouseListener(new HighScoreListener(highScore, c));
         highScore.setBorderPainted(false);
         highScore.setContentAreaFilled(false);
         highScore.setFocusPainted(false);
-        buttonPanelMiddle.add(highScore);
+        //buttonPanelMiddle.add(highScore);
 
-        quit = new JButton(new ImageIcon("main/resources/quitButton.png"));
+        quit = new JButton(new ImageIcon("main/resources/QuitButton.png"));
         quit.addMouseListener(new QuitListener(quit, c));
         quit.setBorderPainted(false);
         quit.setContentAreaFilled(false);
         quit.setFocusPainted(false);
-        buttonPanelUnder.add(quit);
+        //buttonPanelUnder.add(quit);
 
-        textfield.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-        middlePanel.add(textfield);
         newGame.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         middlePanel.add(newGame);
         highScore.setAlignmentX(JComponent.CENTER_ALIGNMENT);
@@ -96,7 +97,7 @@ public class GameOverGUI {
     private JPanel buildLowerPanel() {
         JPanel lowerPanel = new JPanel();
         lowerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        lowerPanel.setBackground(new Color(169,255,151));
+        lowerPanel.setBackground(new Color(56, 134, 96));
 
         sound = new JButton(new ImageIcon("main/resources/sound.png"));
         sound.addMouseListener(new SoundListener(sound, c));

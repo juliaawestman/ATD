@@ -40,15 +40,15 @@ public class AboutGUI extends JPanel {
     private JPanel buildMiddlePanel() {
         JPanel middlePanel = new JPanel();
         middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
-        middlePanel.setBackground(new Color(169  ,255,151));
+        middlePanel.setBackground(new Color(56, 134, 96));
 
         JPanel overPanel = new JPanel();
         overPanel.setPreferredSize(new Dimension(400, 30));
-        overPanel.setBackground(new Color(169,255,151));
+        overPanel.setBackground(new Color(56, 134, 96));
 
         JPanel underPanel = new JPanel();
         underPanel.setPreferredSize(new Dimension(4, 100));
-        underPanel.setBackground(new Color(169,255,151));
+        underPanel.setBackground(new Color(56, 134, 96));
 
         overLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
         overPanel.setPreferredSize(new Dimension(400,25));
@@ -99,7 +99,7 @@ public class AboutGUI extends JPanel {
     private JPanel buildLowerPanel() {
         JPanel lowerPanel = new JPanel();
         lowerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        lowerPanel.setBackground(new Color(169,255,151));
+        lowerPanel.setBackground(new Color(56, 134, 96));
 
         sound = new JButton(new ImageIcon("main/resources/sound.png"));
         sound.addMouseListener(new SoundListener(sound, c));
@@ -122,7 +122,7 @@ public class AboutGUI extends JPanel {
     }
 
     public JPanel getPanel() {
-        panel.setBackground(new Color(169,255,151));
+        panel.setBackground(new Color(56, 134, 96));
         upperPanel = buildUpperPanel();
         middlePanel = buildMiddlePanel();
         lowerPanel = buildLowerPanel();

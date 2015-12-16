@@ -48,7 +48,7 @@ public class HighScoreGUI {
 
     private JPanel buildMiddelPanel() {
         JPanel middelPanel = new JPanel();
-        middelPanel.setBackground(new Color(169,255,151));
+        middelPanel.setBackground(new Color(56, 134, 96));
 
 
         //lowerPanel.setLayout(new BorderLayout());
@@ -72,10 +72,9 @@ public class HighScoreGUI {
         //String temp2;
         //highscores.forEach((temp) -> textArea.append("\n"+temp));
 
-
-        highscores.forEach((temp) -> label.setText("<html>"+ label.getText() +"\t\t\t" +"<br>"+temp+"<html>"));
         label.setFont(new Font("Copperplate", Font.PLAIN, 25));
         label.setForeground(Color.white);
+        highscores.forEach((temp) -> label.setText("<html>"+ label.getText() +"\t\t\t" +"<br>"+temp+"<html>"));
         middelPanel.add(label);
 
         return middelPanel;
@@ -84,13 +83,13 @@ public class HighScoreGUI {
     private JPanel buildLowerPanel() {
         JPanel lowerPanel = new JPanel();
         lowerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        lowerPanel.setBackground(new Color(169,255,151));
+        lowerPanel.setBackground(new Color(56, 134, 96));
 
         JPanel soundPanel = new JPanel();
-        soundPanel.setBackground(new Color(169,255,151));
+        soundPanel.setBackground(new Color(56, 134, 96));
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(new Color(169,255,151));
+        buttonPanel.setBackground(new Color(56, 134, 96));
 
 
         sound = new JButton(new ImageIcon("main/resources/sound.png"));
@@ -124,7 +123,7 @@ public class HighScoreGUI {
         middelPanel = buildMiddelPanel();
         lowerPanel = buildLowerPanel();
 
-        panel.setBackground(new Color(169,255,151));
+        panel.setBackground(new Color(56, 134, 96));
         panel.setLayout(new BorderLayout());
 
         //Add panels to the frame
