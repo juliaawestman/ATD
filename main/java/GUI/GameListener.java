@@ -28,6 +28,7 @@ public class GameListener implements MouseListener {
         int y = e.getY();
         System.out.println(x+" "+y);
         c.userinfo.hasClicked(x, y);
+
         if(g.store.button[0].contains(e.getPoint())) {
             c.userinfo.buyUnit(1);
         }
@@ -36,6 +37,8 @@ public class GameListener implements MouseListener {
         }
         if(g.store.button[2].contains(e.getPoint())) {
             c.userinfo.buyUnit(3);
+            g.gameOver = true;
+            c.showGameOver();
         }
 
 
