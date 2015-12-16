@@ -26,7 +26,7 @@ import main.java.tile.TileAction;
 public class Game {
 
     private int timeOfGame = 0;
-    private static final int incomeFreq = 100;
+    private static final int incomeFreq = 1000;
     private static final int nrOfTowers = 10;
     private int nextId = 0;
     private User user;
@@ -53,12 +53,11 @@ public class Game {
         updateUnits();
         /*Update the Towers*/
         updateTowers();
+        /*Generate graphic info about the user*/
+        this.graphicState.addGraphicEvent(this.user.generateGraphicEvent());
+
         graphicState.gameTick(timeOfGame);
         timeOfGame++;
-        /*Give the user more money if it should get more money this tick*/
-        if(this.timeOfGame % this.incomeFreq == 0){
-            this.user.increaseCredits(user.getIncome());
-        }
     }
 
     private void updateUnits() {
@@ -91,6 +90,8 @@ public class Game {
                         tempTilePos = positionConverter.unitPosConverter(currentUnit.getPosition());
                         currentTile = (TileAction) map.getTileAt(tempTilePos);
                         currentTile.landOn(currentUnit);
+                        /*Give the user more*/
+                        this.user.increaseCredits(user.getIncome());
                     }
                 }
 
