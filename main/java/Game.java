@@ -159,6 +159,8 @@ public class Game {
         int random;
         Tower tower;
         Position tempTilePos;
+        TowerTile tempTowerTile;
+        int towersToPlace = this.nrOfTowers;
 
         if(nrOfTowerTiles == 0){
             throw new IllegalStateException("There are no towerTiles!");
@@ -167,18 +169,26 @@ public class Game {
         while(it.hasNext()){
             towerTileList.add((TowerTile) it.next());
         }
-
-        for(int i=0; i < this.nrOfTowers; i++){
+        /*Check to see if there are to few tiles for the towers*/
+        if(nrOfTowers > nrOfTowerTiles){
+            /*If there is to few tiles, place as many towers as possible*/
+            towersToPlace = nrOfTowerTiles;
+        }
+        /*Place all towers on random tiles*/
+        for(int i=0; i < towersToPlace; i++){
             random = (int)(Math.random() * (nrOfTowerTiles));
             /*Add a tower and set the position of the tower to a random towerTiles position*/
 
             tempTilePos = towerTileList.get(random).getPosition();
-            tower = new GroundTower(tilePosConverter(tempTilePos),getNextObjectId());
-            this.towers.add(tower);
+            tempTowerTile = (TowerTile) map.getTileAt(tempTilePos);
+            if(!tempTowerTile.isOccupied()){
+                tower = new GroundTower(tilePosConverter(tempTilePos),getNextObjectId());
+                this.towers.add(tower);
 
-            /*Generate a graphic event when the tower is added to the game*/
-            GraphicEvent tempEvent = tower.generateGraphicEvent();
-            this.graphicState.addGraphicEvent(tempEvent);
+                /*Generate a graphic event when the tower is added to the game*/
+                GraphicEvent tempEvent = tower.generateGraphicEvent();
+                this.graphicState.addGraphicEvent(tempEvent);
+            }
         }
     }
 

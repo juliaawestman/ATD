@@ -16,11 +16,18 @@ import java.net.MalformedURLException;
  */
 public class TowerTile extends Tile {
 
+    boolean isOccupied = false;
     /**
      *  
      * @param p
      */
     public TowerTile(Position p) throws MalformedURLException {
 	    super(p, "main/resources/towerTile.png");
+    }
+    public boolean isOccupied(){
+        return this.isOccupied;
+    }
+    public void setOccupied(Boolean isOccupied){
+        this.isOccupied = isOccupied;
     }
 }
