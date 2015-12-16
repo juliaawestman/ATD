@@ -39,9 +39,9 @@ public class TCross extends PathTile implements TileAction {
     private String getTCrossImg(){
         Position nextPos = getNextPos();
         Position pos = getPosition();
-        if(nextPos.getY() > pos.getY()){
+        if(nextPos.getY() < pos.getY()){
             TCrossImg = "main/resources/TCross.png";
-        } else if (nextPos.getY() < pos.getY()){
+        } else if (nextPos.getY() > pos.getY()){
             TCrossImg = "main/resources/TCrossDown.png";
         } else if(nextPos.getX()> pos.getX()){
             TCrossImg = "main/resources/TCrossRight.png";

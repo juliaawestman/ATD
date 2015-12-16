@@ -31,16 +31,16 @@ public class StartGameListener implements MouseListener {
     }
 
     public void mouseReleased(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/newGameButtonEnter.png"));
+        button.setIcon(new ImageIcon("main/resources/newGameHover.png"));
 
     }
 
     public void mouseEntered(java.awt.event.MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/newGameButtonEnter.png"));
+        button.setIcon(new ImageIcon("main/resources/newGameHover.png"));
     }
 
     public void mouseExited(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/newGameButton.png"));
+        button.setIcon(new ImageIcon("main/resources/newGameHover.png"));
 
     }
 }
