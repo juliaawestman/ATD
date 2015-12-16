@@ -26,12 +26,23 @@ public class GameOverGUI {
 
     private JPanel buildUpperPanel() {
         JPanel upperPanel = new JPanel();
-
+        JPanel space = new JPanel();
+        space.setBackground(new Color(56, 134, 96));
+        space.setPreferredSize(new Dimension(800,100));
+        upperPanel.setPreferredSize(new Dimension(400, 200));
         //BufferedImage myPicture = ImageIO.read(new File("loggo.png"));
         //JLabel picLabel = new JLabel(new ImageIcon("main/resources/loggo.png"));
         JLabel victoryText = new JLabel();
-        victoryText.setText("<html>"+"VICTORY!!!"+"<br>"+"Score 123"+"<html>");
-        victoryText.setFont(new Font("Arial", Font.ITALIC, 24));
+        if (c.userinfo.gameOver() == true){
+            victoryText.setText("<html>"+"YOU LOSE!!!"+"<br>"+"Score 123"+"<html>");
+        } else {
+            victoryText.setText("<html>"+"YOU WIN!!!"+"<br>"+"Score 123"+"<html>");
+        }
+
+        victoryText.setFont(new Font("Arial", Font.ITALIC, 35));
+        victoryText.setForeground(Color.white);
+        upperPanel.setBackground(new Color(56, 134, 96));
+        upperPanel.add(space);
         upperPanel.add(victoryText);
 
         //upperPanel.setOpaque(false);

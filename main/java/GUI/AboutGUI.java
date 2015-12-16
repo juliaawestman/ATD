@@ -53,20 +53,20 @@ public class AboutGUI extends JPanel {
         overLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
         overPanel.setPreferredSize(new Dimension(400,25));
         overLabel.setText("Who made this game:");
-        overLabel.setFont(new Font("Copperplate", Font.PLAIN, 30));
+        overLabel.setFont(new Font("arial", Font.PLAIN, 30));
         overLabel.setForeground(Color.white);
         overPanel.add(overLabel, BorderLayout.CENTER);
 
         middelLabel1.setPreferredSize(new Dimension(300,25));
         middelLabel1.setText("Isak Hjelt");
-        middelLabel1.setFont(new Font("Copperplate", Font.PLAIN, 25));
+        middelLabel1.setFont(new Font("arial", Font.PLAIN, 25));
         middelLabel1.setForeground(Color.white);
         middelLabel1.setHorizontalAlignment(JLabel.CENTER);
         underPanel.add(middelLabel1, BorderLayout.NORTH);
 
         middelLabel2.setPreferredSize(new Dimension(300,25));
         middelLabel2.setText("Erik Moström");
-        middelLabel2.setFont(new Font("Copperplate", Font.PLAIN, 25));
+        middelLabel2.setFont(new Font("arial", Font.PLAIN, 25));
         middelLabel2.setForeground(Color.white);
         middelLabel2.setHorizontalAlignment(JLabel.CENTER);
         underPanel.add(middelLabel2, BorderLayout.NORTH);
@@ -74,7 +74,7 @@ public class AboutGUI extends JPanel {
 
         middelLabel3.setPreferredSize(new Dimension(300,25));
         middelLabel3.setText("Julia Westman ");
-        middelLabel3.setFont(new Font("Copperplate", Font.PLAIN, 25));
+        middelLabel3.setFont(new Font("arial", Font.PLAIN, 25));
         middelLabel3.setLayout(new FlowLayout(FlowLayout.CENTER));
         middelLabel3.setForeground(Color.white);
         middelLabel3.setHorizontalAlignment(JLabel.CENTER);
@@ -82,7 +82,7 @@ public class AboutGUI extends JPanel {
 
         middelLabel4.setPreferredSize(new Dimension(300,25));
         middelLabel4.setText("Joakim Zakrisson");
-        middelLabel4.setFont(new Font("Copperplate", Font.PLAIN, 25));
+        middelLabel4.setFont(new Font("airal", Font.PLAIN, 25));
         middelLabel4.setForeground(Color.white);
         middelLabel4.setHorizontalAlignment(JLabel.CENTER);
         underPanel.add(middelLabel4, BorderLayout.CENTER);

@@ -128,6 +128,11 @@ public class MainController extends TimerTask implements MapInformation, UserInf
     }
 
     @Override
+    public boolean gameWon() {
+        return true;
+    }
+
+    @Override
     public User getUser() {
         return game.getUser();
     }
