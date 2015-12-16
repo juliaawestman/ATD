@@ -185,8 +185,13 @@ public class Game {
             tempTowerTile = (TowerTile) map.getTileAt(tempTilePos);
             if(!tempTowerTile.isOccupied()){
 
-
-                tower = new GroundTower(positionConverter.tilePosConverter(tempTilePos),getNextObjectId());
+                /*Place every other tower as Air tower and Ground tower*/
+                if(placedTowers % 2 == 0){
+                    tower = new GroundTower(positionConverter.tilePosConverter(tempTilePos),getNextObjectId());
+                }else{
+                    tower = new AirTower(positionConverter.tilePosConverter(tempTilePos),getNextObjectId());
+                    //tower = new GroundTower(positionConverter.tilePosConverter(tempTilePos),getNextObjectId());
+                }
 
                 this.towers.add(tower);
                 tempTowerTile.setOccupied(true);
