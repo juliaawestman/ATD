@@ -219,4 +219,8 @@ public class Game {
         this.nextId++;
         return ret;
     }
+
+    public User getUser(){
+        return user;
+    }
 }

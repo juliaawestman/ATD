@@ -1,5 +1,7 @@
 package main.java.GUI;
 
+import main.java.User;
+
 /**
  * Created by id12jzn on 2015-12-15.
  */
@@ -14,6 +16,8 @@ public interface UserInformation {
     void updateUsername(String s);
 
     boolean gameOver();
+
+    User getUser();
 
     void hasClicked(int x, int y);
 

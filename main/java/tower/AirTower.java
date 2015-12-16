@@ -12,7 +12,7 @@ import main.java.Position;
 public class AirTower extends Tower {
     private static final int speed = 10;
     private static final int damage = 5;
-    private static final int range = 10;
+    private static final int range = 120;
 
     /**
      * Constructor of a tower only able to shoot at flying units.

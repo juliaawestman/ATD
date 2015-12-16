@@ -163,6 +163,7 @@ public abstract class Tower {
         BufferedImage laser = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = laser.createGraphics();
         g.setColor(new Color(255, 0, 0));
+        g.setStroke(new BasicStroke(2));
         g.drawLine(x, y, dx, dy);
 
         return laser;

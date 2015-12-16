@@ -75,7 +75,10 @@ public class Board {
                 } else if(tile.contains("Tower")) {
                     block[y][x].draw(g,"main/resources/towerTile.png");
                 } else if(tile.contains("Cross")) {
-                    block[y][x].draw(g, "main/resources/TCross.png");
+                    //block[y][x].draw(g, "main/resources/TCross.png");
+                    if(PathTile.class.isAssignableFrom(t.getClass())) {
+                        block[y][x].draw(g, t.getImageURL());
+                    }
                 }else if(t != null){ //added by Erik M
                     if(PathTile.class.isAssignableFrom(t.getClass())) {
                         block[y][x].draw(g, t.getImageURL());

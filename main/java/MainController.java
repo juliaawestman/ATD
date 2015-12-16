@@ -119,12 +119,17 @@ public class MainController extends TimerTask implements MapInformation, UserInf
 
     @Override
     public void updateUsername(String s) {
-
+        game.getUser().setUserName(s);
     }
 
     @Override
     public boolean gameOver() {
         return false;
+    }
+
+    @Override
+    public User getUser() {
+        return game.getUser();
     }
 
     @Override
