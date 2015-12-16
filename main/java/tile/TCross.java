@@ -18,7 +18,6 @@ public class TCross extends PathTile implements TileAction {
 
     private Position nextPos;
     private Position defaultNextPos= null;
-    private Position pos;
     private String TCrossImg;
 
     /**
@@ -27,7 +26,6 @@ public class TCross extends PathTile implements TileAction {
      */
     public TCross(Position p) throws MalformedURLException {
         super(p, "main/resources/TCross.png");
-        pos =p;
     }
 
     public void setPosistions(Position posToSet){
@@ -39,7 +37,8 @@ public class TCross extends PathTile implements TileAction {
     }
 
     private String getTCrossImg(){
-        nextPos = getNextPos();
+        Position nextPos = getNextPos();
+        Position pos = getPosition();
         if(nextPos.getY() > pos.getY()){
             TCrossImg = "main/resources/TCross.png";
         } else if (nextPos.getY() < pos.getY()){
