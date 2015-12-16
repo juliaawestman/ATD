@@ -26,7 +26,7 @@ public class GameGUI extends JPanel implements Runnable {
 
     private CLayout c;
     public Board gameBoard;
-    public static Store store;
+    public Store store;
 
     private Point mse = new Point(0, 0);
 
@@ -132,36 +132,7 @@ public class GameGUI extends JPanel implements Runnable {
 
         gamePanel.add(this);
 
-        gamePanel.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                int x = e.getX() - ((myWidth / 2) - (gameBoard.blockSize*(gameBoard.worldWidth/2)));
-                int y = e.getY();
-                System.out.println(x+" "+y);
-                c.userinfo.hasClicked(x, y);
-                c.userinfo.buyUnit(2);
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
+        gamePanel.addMouseListener(new GameListener(c, this));
 
         return gamePanel;
     }
