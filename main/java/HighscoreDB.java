@@ -111,7 +111,7 @@ public class HighscoreDB {
      *
      * @param u User which is added to the table
      */
-    public void addUser(User u) {
+    public void addUser(String map) {
         /*
         try {
             if (psAddUser == null) {
@@ -126,9 +126,10 @@ public class HighscoreDB {
             */
         String userName = u.getUserName();
         int score = u.getScore();
-        String map = u.getMap();
+        // TODO get map from user instead
+        //String map = u.getMap();
 
-        String sql = "INSERT INTO HIGHSCORE(userName, level, score) " + "VALUES ('"+userName+"'"+", "+map+ ", "+ "'"+score+"')";
+        String sql = "INSERT INTO HIGHSCORE(userName, level, score) " + "VALUES ('"+userName+"', '"+map+"', '"+score+"')";
 
         try {
             st.executeUpdate(sql);

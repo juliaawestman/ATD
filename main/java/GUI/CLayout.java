@@ -1,5 +1,7 @@
 package main.java.GUI;
 
+import main.java.HighscoreDB;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
@@ -26,7 +28,7 @@ public class CLayout {
 
     public MapInformation mapinfo;
     public UserInformation userinfo;
-    public String userName ="";
+    public String userName;
 
     public GameGUI game;
     private MenuGUI menu;
@@ -126,10 +128,18 @@ public class CLayout {
 
         cl.show(panelCont, "gameOver");
 
-        final JFrame parent = new JFrame();
+        final JFrame popup = new JFrame();
 
-        userName = JOptionPane.showInputDialog(parent,
+        popup.setBackground(new Color(56, 134, 96));
+
+        userName = JOptionPane.showInputDialog(popup,
                 "Enter username:", null);
+        //while(!userName.equals(null)) {
+
+            userinfo.updateUsername(userName);
+            HighscoreDB db = new HighscoreDB(userinfo.getUser());
+            db.addUser(game.chosenMap);
+        //}
 
     }
 

@@ -54,20 +54,34 @@ public class Store {
     /**
      * Draws the components for the store
      *
+     * TODO Bort med hårdkodandet
+     *
      * @param g
      */
     public void draw(Graphics g) {
         for(int i = 0; i<button.length;i++) {
             if(i == 0) {
-                unitpath = "main/resources/airUnitButton.png";
+                if(c.userinfo.canBuyUnit(1)) {
+                    unitpath = "main/resources/airUnitButton.png";
+                } else {
+                    unitpath = "main/resources/airUnitCantBuy.png";
+                }
                 cost = "30";
             }
             if(i == 1) {
-                unitpath = "main/resources/groundUnitButton.png";
+                if(c.userinfo.canBuyUnit(2)) {
+                    unitpath = "main/resources/groundUnitButton.png";
+                } else {
+                    unitpath = "main/resources/groundUnitCantBuy.png";
+                }
                 cost = "30";
             }
             if(i == 2) {
-                unitpath = "main/resources/teleporterUnitButton.png";
+                if(c.userinfo.canBuyUnit(3)) {
+                    unitpath = "main/resources/teleporterUnitButton.png";
+                } else {
+                    unitpath = "main/resources/telepoterUnitCantBuy.png";
+                }
                 cost = "50";
             }
 

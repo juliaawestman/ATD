@@ -19,7 +19,7 @@ public class GameListener implements MouseListener {
         this.c = c;
         this.g = g;
     }
-
+// TODO Gårdkoda ikte köpandet
     public void mouseClicked(MouseEvent e) {
         //button.setIcon(new ImageIcon("main/resources/highScorePressed.png"));
         //c.showCard("highScore");
@@ -29,13 +29,13 @@ public class GameListener implements MouseListener {
         System.out.println(x+" "+y);
         c.userinfo.hasClicked(x, y);
 
-        if(g.store.button[0].contains(e.getPoint())) {
+        if(g.store.button[0].contains(e.getPoint()) && c.userinfo.canBuyUnit(1)) {
             c.userinfo.buyUnit(1);
         }
-        if(g.store.button[1].contains(e.getPoint())) {
+        if(g.store.button[1].contains(e.getPoint()) && c.userinfo.canBuyUnit(2)) {
             c.userinfo.buyUnit(2);
         }
-        if(g.store.button[2].contains(e.getPoint())) {
+        if(g.store.button[2].contains(e.getPoint()) && c.userinfo.canBuyUnit(3)) {
             c.userinfo.buyUnit(3);
             g.gameOver = true;
             c.showGameOver();
