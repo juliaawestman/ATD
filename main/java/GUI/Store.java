@@ -43,7 +43,7 @@ public class Store {
 
     public void define() {
         for(int i = 0; i<button.length;i++) {
-            button[i] = new Rectangle((GameGUI.myWidth/2) - ((shopWidth*(buttonSize*2+cellSpace))/2) + ((buttonSize*2+cellSpace)*i), 680, buttonSize * 2, buttonSize);
+            button[i] = new Rectangle((c.game.myWidth/2) - ((shopWidth*(buttonSize*2+cellSpace))/2) + ((buttonSize*2+cellSpace)*i), 680, buttonSize * 2, buttonSize);
         }
 
         buttonHealth = new Rectangle(gameBoard.block[0][0].x-1, button[0].y, iconSize, iconSize);

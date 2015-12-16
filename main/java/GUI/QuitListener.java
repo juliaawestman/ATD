@@ -20,19 +20,13 @@ public class QuitListener implements MouseListener{
     }
 
     public void mouseClicked(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/QuitPress.png"));
         c.exit();
-
     }
 
     public void mousePressed(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/QuitPress.png"));
-
     }
 
     public void mouseReleased(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/QuitHover.png"));
-
     }
 
     public void mouseEntered(java.awt.event.MouseEvent e) {

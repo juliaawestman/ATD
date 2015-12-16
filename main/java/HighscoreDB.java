@@ -18,6 +18,7 @@ public class HighscoreDB {
     private String password = "";
     private User u;
     final private String sqlCreateTable = "CREATE TABLE HIGHSCORE(id INTEGER IDENTITY, userName VARCHAR(30), level VARCHAR(30), score integer)";
+    final private String sqlDeleteTable = "DROP TABLE HIGHSCORE";
     //private String url = "jdbc:hsqldb:hsql://localhost";
     //private String url = "jdbc:hsqldb:file:highscore";
     private String url = "jdbc:hsqldb:hsql://itchy.cs.umu.se:28282/highscore";
@@ -37,6 +38,7 @@ public class HighscoreDB {
     public HighscoreDB() {
 
         connect();
+        //delete();
 
         //setup();
         //addUser(u);
@@ -70,6 +72,18 @@ public class HighscoreDB {
     public void setup() {
         try {
             st.execute(sqlCreateTable);
+        } catch (SQLException e) {
+            System.err.println("Something went horrible wrong during setup");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Creates the SQL table for the database, should only have to run this once and the table is created
+     */
+    public void delete() {
+        try {
+            st.execute(sqlDeleteTable);
         } catch (SQLException e) {
             System.err.println("Something went horrible wrong during setup");
             e.printStackTrace();
@@ -111,11 +125,10 @@ public class HighscoreDB {
 
             */
         String userName = u.getUserName();
-        int wave = u.getScore();
+        int score = u.getScore();
         String map = u.getMap();
-        String date = u.getCurrentDate();
 
-        String sql = "INSERT INTO HIGHSCORE(userName, wave, level, date) " + "VALUES ('"+userName+"'"+", "+wave+ ", "+ "'"+map+"'" + ", " + "'"+date+"')";
+        String sql = "INSERT INTO HIGHSCORE(userName, level, score) " + "VALUES ('"+userName+"'"+", "+map+ ", "+ "'"+score+"')";
 
         try {
             st.executeUpdate(sql);
@@ -126,7 +139,7 @@ public class HighscoreDB {
     }
 
     public void testAddUser() {
-        String sql = "INSERT INTO HIGHSCORE(userName, wave, level, date) " + "VALUES ('"+"ERKKA"+"'"+", "+ "100" + ", "+ "'"+"bana5"+"'" + ", " + "'"+"2015-12-15"+"')";
+        String sql = "INSERT INTO HIGHSCORE(userName, level, score) " + "VALUES ('"+"Guldsmurfen"+"', '"+"Joy"+"', '"+"18"+"')";
         try {
             st.executeUpdate(sql);
         } catch (SQLException e) {
@@ -144,7 +157,7 @@ public class HighscoreDB {
      * Gets the data from the highscore table on the sql server
      */
     public ArrayList getData() {
-        String sql = "SELECT * FROM highscore ORDER BY wave DESC LIMIT 5";
+        String sql = "SELECT * FROM HIGHSCORE ORDER BY score DESC LIMIT 5";
         ResultSet rs = null;
         try {
             rs = st.executeQuery(sql);
@@ -152,9 +165,9 @@ public class HighscoreDB {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String userName = rs.getString("userName");
-                int wave = rs.getInt("wave");
                 String level = rs.getString("level");
-                String date = rs.getString("date");
+                int score = rs.getInt("score");
+
 
                 //userName = padRight(userName, 10);
                 //level = padRight(level, 10);
@@ -167,9 +180,8 @@ public class HighscoreDB {
 
                 System.out.print("ID " + id);
                 System.out.print(", User: " + userName);
-                System.out.print(", Wave: " + wave);
                 System.out.print(", Level: " + level);
-                System.out.println(", Date: " + date);
+                System.out.print(", Score: " + score);
 
 
 
@@ -179,7 +191,7 @@ public class HighscoreDB {
 
                 //highscores.add("User: "+userName+" Wave: "+wave+" Level: "+level+" Date: "+date);
 
-                highscores.add(userName+"   "+wave+"   "+level+"   "+date);
+                highscores.add(userName+"   "+level+"   "+score+"   ");
 
 
                 //singleHighscore.clear();

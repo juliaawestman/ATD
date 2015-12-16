@@ -28,7 +28,7 @@ public class CLayout {
     public UserInformation userinfo;
     public String userName ="";
 
-    private GameGUI game;
+    public GameGUI game;
     private MenuGUI menu;
     private NewGameGUI newGame;
     private HighScoreGUI highScore;
@@ -149,10 +149,12 @@ public class CLayout {
 
     /**
      * @return The size of a tile in the game board
+     *
+     * TODO Hårdkoda inte detta!
      */
     public int getTileSize() {
         //return game.gameBoard.blockSize;
-        return Board.blockSize;
+        return 54;
     }
 
 }

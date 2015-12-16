@@ -18,22 +18,17 @@ class NewGameListener implements MouseListener {
     }
 
     public void mouseClicked(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/newGameButtonPress.png"));
         c.showCard("newGame");
 
     }
 
     public void mousePressed(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/newGameHover.png"));
-
     }
 
     public void mouseReleased(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/newGameHover.png"));
-
     }
 
-    public void mouseEntered(java.awt.event.MouseEvent e) {
+    public void mouseEntered(MouseEvent e) {
         button.setIcon(new ImageIcon("main/resources/newGameHover.png"));
     }
 
