@@ -15,7 +15,7 @@ import java.util.Random;
  */
 public class GroundTower extends Tower {
     private static final int speed = 200;
-    private static final int damage = 2;
+    private static final int damage = 0;
     private static final int range = 250;
 
     /**

@@ -28,7 +28,7 @@ public class Game {
     private static final int tileSize = 54;
     private int timeOfGame = 0;
     private static final int incomeFreq = 100;
-    private static final int nrOfTowers = 5;
+    private static final int nrOfTowers = 50;
     private int nextId = 0;
     private User user;
     private Map map;
@@ -54,7 +54,7 @@ public class Game {
         updateUnits();
         /*Update the Towers*/
         updateTowers();
-        //graphicState.gameTick(timeOfGame);
+        graphicState.gameTick(timeOfGame);
         timeOfGame++;
         /*Give the user more money if it should get more money this tick*/
         if(this.timeOfGame % this.incomeFreq == 0){
@@ -99,7 +99,6 @@ public class Game {
 
     private void updateTowers() {
         ListIterator itrTowers = towers.listIterator();
-        ListIterator itrUnits = units.listIterator();
         Tower currentTower;
         Unit currentUnit;
 
@@ -113,6 +112,7 @@ public class Game {
 
             } else {
                 /*Try to find a target for the tower*/
+                ListIterator itrUnits = units.listIterator();
                 while (itrUnits.hasNext()) {
                     currentUnit = (Unit) itrUnits.next();
                     if(currentUnit.isAlive() && currentTower.withinRange(currentUnit)){
@@ -161,6 +161,7 @@ public class Game {
         Position tempTilePos;
         TowerTile tempTowerTile;
         int towersToPlace = this.nrOfTowers;
+        int placedTowers=0;
 
         if(nrOfTowerTiles == 0){
             throw new IllegalStateException("There are no towerTiles!");
@@ -170,12 +171,12 @@ public class Game {
             towerTileList.add((TowerTile) it.next());
         }
         /*Check to see if there are to few tiles for the towers*/
-        if(nrOfTowers > nrOfTowerTiles){
+        if(towersToPlace > nrOfTowerTiles){
             /*If there is to few tiles, place as many towers as possible*/
             towersToPlace = nrOfTowerTiles;
         }
         /*Place all towers on random tiles*/
-        for(int i=0; i < towersToPlace; i++){
+        while(placedTowers < towersToPlace){
             random = (int)(Math.random() * (nrOfTowerTiles));
             /*Add a tower and set the position of the tower to a random towerTiles position*/
 
@@ -184,10 +185,13 @@ public class Game {
             if(!tempTowerTile.isOccupied()){
                 tower = new GroundTower(tilePosConverter(tempTilePos),getNextObjectId());
                 this.towers.add(tower);
+                tempTowerTile.setOccupied(true);
+                placedTowers++;
 
                 /*Generate a graphic event when the tower is added to the game*/
                 GraphicEvent tempEvent = tower.generateGraphicEvent();
                 this.graphicState.addGraphicEvent(tempEvent);
+
             }
         }
     }
