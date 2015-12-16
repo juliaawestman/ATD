@@ -40,7 +40,7 @@ public class AboutGUI extends JPanel {
     private JPanel buildMiddlePanel() {
         JPanel middlePanel = new JPanel();
         middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
-        middlePanel.setBackground(new Color(169,255,151));
+        middlePanel.setBackground(new Color(169  ,255,151));
 
         JPanel overPanel = new JPanel();
         overPanel.setPreferredSize(new Dimension(400, 30));
