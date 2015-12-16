@@ -19,16 +19,16 @@ class NewGameListener implements MouseListener {
 
     public void mouseClicked(MouseEvent e) {
         button.setIcon(new ImageIcon("main/resources/newGameButtonPress.png"));
-        c.showCard("gameOver");
+        c.showCard("newGame");
 
-        /*
+
 
         final JFrame parent = new JFrame();
 
         String name = JOptionPane.showInputDialog(parent,
                 "Enter username:", null);
 
-                */
+
 
     }
 
