@@ -35,7 +35,7 @@ public class StartGameListener implements MouseListener {
     }
 
     public void mouseExited(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/newGameHover.png"));
+        button.setIcon(new ImageIcon("main/resources/newGameButton.png"));
 
     }
 }
