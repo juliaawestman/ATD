@@ -9,10 +9,8 @@ import main.java.Position;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import javax.imageio.ImageIO;
 
 /**
  * main.java.tile.tile is a class is a abctact class...
@@ -35,8 +33,19 @@ public abstract class Tile {
         readInImg();
     }
 
-    //next tile
+    /**
+     *
+     * @param url
+     */
+    public void changeImgURL(String url){
+        try {
+            path = (new File(url).toURI().toURL());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
 
+    //
     /**
      * readInImg will read in the img that is given of the path
      */

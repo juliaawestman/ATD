@@ -3,8 +3,8 @@ package main.java;
 import main.java.GUI.CLayout;
 import main.java.GUI.MapInformation;
 import main.java.GUI.UserInformation;
+import main.java.tile.TCross;
 import main.java.tile.Tile;
-import main.java.unit.GroundUnit;
 import org.xml.sax.SAXException;
 
 import java.awt.image.BufferedImage;
@@ -22,9 +22,7 @@ import java.util.TimerTask;
  * Date:        12/15/15
  */
 
-/*  TODO image resizing
- *  TODO Fix so that all towers show up in the image
- *  TODO Fix so that all towers shoot
+/*
  *  TODO Test the map Joy a lot: it generates a lot of exceptions
  */
 
@@ -36,6 +34,7 @@ public class MainController extends TimerTask implements MapInformation, UserInf
     private Timer timer;
     private Shop shop;
     private CurrentGraphicState graphicState;
+    private Map map;
 
     public MainController(){
         createFactory();
@@ -90,13 +89,11 @@ public class MainController extends TimerTask implements MapInformation, UserInf
 
     @Override
     public HashMap<Position, Tile> getMap(String s) {
-        Map map = factory.loadMap(s);
+        map = factory.loadMap(s);
         game = new Game(map);
         shop = game.getShop();
         graphicState = game.getGraphicState();
 
-        shop.buyUnit(2);
-        //shop.buyUnit(1);
         start();
         return map.getCompleteMap();
     }
@@ -132,6 +129,11 @@ public class MainController extends TimerTask implements MapInformation, UserInf
 
     @Override
     public void hasClicked(int x, int y) {
-
+        Position p =  positionConverter.unitPosConverter(new Position(x, y));
+        Tile t = map.getTileAt(p);
+        if ( t!= null && TCross.class.isAssignableFrom(t.getClass()) ){
+            TCross tCross = (TCross) t;
+            tCross.changeDirection();
+        }
     }
 }
