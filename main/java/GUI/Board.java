@@ -1,16 +1,10 @@
 package main.java.GUI;
 
-import main.java.Map;
 import main.java.Position;
 import main.java.tile.PathTile;
-import main.java.tile.Start;
 import main.java.tile.Tile;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
 /**
