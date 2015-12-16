@@ -28,20 +28,27 @@ public class Shop {
      *
      * @param unitTypeId the id of the unit to buy.
      */
-    public void buyUnit(int unitTypeId){
-        switch (unitTypeId){
-            case 1: this.currentGame.addUnit(new AirUnit(new Position(0,0),currentGame.getNextObjectId()));
-                shopUser.decreaseCredits(AirUnit.getPrice());
-                break;
-            case 2: this.currentGame.addUnit(new GroundUnit(new Position(0,0),currentGame.getNextObjectId()));
-                shopUser.decreaseCredits(GroundUnit.getPrice());
-                break;
-            case 3: this.currentGame.addUnit(new TeleporterUnit(new Position(0,0),currentGame.getNextObjectId()));
-                shopUser.decreaseCredits(TeleporterUnit.getPrice());
-                break;
-            default: throw new IllegalStateException("There is no unit with the id of "+ unitTypeId);
+    public void buyUnit(int unitTypeId) {
+        synchronized (this) {
+            switch (unitTypeId) {
+                case 1:
+                    this.currentGame.addUnit(new AirUnit(new Position(0, 0), currentGame.getNextObjectId()));
+                    shopUser.decreaseCredits(AirUnit.getPrice());
+                    break;
+                case 2:
+                    this.currentGame.addUnit(new GroundUnit(new Position(0, 0), currentGame.getNextObjectId()));
+                    shopUser.decreaseCredits(GroundUnit.getPrice());
+                    break;
+                case 3:
+                    this.currentGame.addUnit(new TeleporterUnit(new Position(0, 0), currentGame.getNextObjectId()));
+                    shopUser.decreaseCredits(TeleporterUnit.getPrice());
+                    break;
+                default:
+                    throw new IllegalStateException("There is no unit with the id of " + unitTypeId);
+            }
         }
     }
+
 
     /**
      *

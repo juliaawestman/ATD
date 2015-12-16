@@ -6,6 +6,7 @@ import main.java.unit.TeleporterUnit;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
 /**
  * Class: Store
@@ -49,6 +50,12 @@ public class Store {
         buttonCoins = new Rectangle(gameBoard.block[0][0].x-1, button[0].y + button[0].height-iconSize, iconSize, iconSize);
         //buttonIncome = new Rectangle(GameGUI.gameBoard.block[0][0].x-1, button[0].y + (button[0].height-iconSize*2), iconSize, iconSize);
     }
+
+
+
+
+
+
 
     /**
      * Draws the components for the store

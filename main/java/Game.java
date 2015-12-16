@@ -62,37 +62,39 @@ public class Game {
     }
 
     private void updateUnits() {
-        ListIterator itrUnits = units.listIterator();
-        Unit currentUnit;
-        TileAction currentTile;
-        GraphicEvent tempEvent;
-        Position tempTilePos;
+        synchronized (gameShop) {
 
-        while (itrUnits.hasNext()) {
-            currentUnit = (Unit) itrUnits.next();
+            ListIterator itrUnits = units.listIterator();
+            Unit currentUnit;
+            TileAction currentTile;
+            GraphicEvent tempEvent;
+            Position tempTilePos;
+
+            while (itrUnits.hasNext()) {
+                currentUnit = (Unit) itrUnits.next();
             /*Remove the unit if it has reached goal*/
-            if(currentUnit.hasReachedGoal()){
-                tempEvent = currentUnit.generateGraphicEvent();
-                this.graphicState.removeGraphicEvent(tempEvent);
-                itrUnits.remove();
-                this.unitsReachedGoal++;
-            }
-            /*Remove the unit if it's dead*/
-            else if (!currentUnit.isAlive()) {
-                tempEvent = currentUnit.generateGraphicEvent();
-                this.graphicState.removeGraphicEvent(tempEvent);
-                itrUnits.remove();
-            }
-            else if(currentUnit.move()){
-                tempEvent = currentUnit.generateGraphicEvent();
-                this.graphicState.addGraphicEvent(tempEvent);
-                if (currentUnit.isInMiddleOfTile()){
-                    tempTilePos = positionConverter.unitPosConverter(currentUnit.getPosition());
-                    currentTile = (TileAction) map.getTileAt(tempTilePos);
-                    currentTile.landOn(currentUnit);
+                if (currentUnit.hasReachedGoal()) {
+                    tempEvent = currentUnit.generateGraphicEvent();
+                    this.graphicState.removeGraphicEvent(tempEvent);
+                    itrUnits.remove();
+                    this.unitsReachedGoal++;
                 }
-            }
+            /*Remove the unit if it's dead*/
+                else if (!currentUnit.isAlive()) {
+                    tempEvent = currentUnit.generateGraphicEvent();
+                    this.graphicState.removeGraphicEvent(tempEvent);
+                    itrUnits.remove();
+                } else if (currentUnit.move()) {
+                    tempEvent = currentUnit.generateGraphicEvent();
+                    this.graphicState.addGraphicEvent(tempEvent);
+                    if (currentUnit.isInMiddleOfTile()) {
+                        tempTilePos = positionConverter.unitPosConverter(currentUnit.getPosition());
+                        currentTile = (TileAction) map.getTileAt(tempTilePos);
+                        currentTile.landOn(currentUnit);
+                    }
+                }
 
+            }
         }
     }
 
@@ -182,7 +184,10 @@ public class Game {
             tempTilePos = towerTileList.get(random).getPosition();
             tempTowerTile = (TowerTile) map.getTileAt(tempTilePos);
             if(!tempTowerTile.isOccupied()){
+
+
                 tower = new GroundTower(positionConverter.tilePosConverter(tempTilePos),getNextObjectId());
+
                 this.towers.add(tower);
                 tempTowerTile.setOccupied(true);
                 placedTowers++;
