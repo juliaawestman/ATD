@@ -93,10 +93,9 @@ public class MainController extends TimerTask implements MapInformation {
         game = new Game(map);
         shop = game.getShop();
         graphicState = game.getGraphicState();
-        int Y = (map.getStartTile().getPosition().getY() *53) + 27;
-        int X = (map.getStartTile().getPosition().getX() *53) + 27;
 
-        game.addUnit(new GroundUnit(new Position(X, Y), 1));
+        shop.buyUnit(2);
+        //shop.buyUnit(1);
         start();
         return map.getCompleteMap();
     }

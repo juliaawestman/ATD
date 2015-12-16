@@ -5,20 +5,20 @@ package main.java.GUI;
  */
 public interface UserInformation {
 
-    public void buyUnit(int i);
+    void buyUnit(int i);
 
-    public boolean canBuyUnit(int i);
+    boolean canBuyUnit(int i);
 
-    public String getUnitName(int i);
+    String getUnitName(int i);
 
-    public int getUnitCost(int i);
+    int getUnitCost(int i);
 
-    public void withdrawCredits(int i);
+    void withdrawCredits(int i);
 
-    public void updateUsername(String s);
+    void updateUsername(String s);
 
-    public boolean gameOver();
+    boolean gameOver();
 
-    public void hasClicked(int x, int y);
+    void hasClicked(int x, int y);
 
 }

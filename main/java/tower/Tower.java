@@ -80,6 +80,7 @@ public abstract class Tower {
      */
     public void setTarget(Unit newTarget){
         target = newTarget;
+        System.out.println("targeted");
     }
 
     /**
@@ -95,7 +96,6 @@ public abstract class Tower {
             GraphicEvent event = new GraphicEvent(laserID, getLaserPosition(), laser);
             event.setVisibilityTime(time, (speed/3)*2);
 
-            System.out.println("shot fired by Tower: " + this.id + " shotID: " + laserID);
             return event;
         }
         return null;

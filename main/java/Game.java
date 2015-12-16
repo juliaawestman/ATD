@@ -54,7 +54,7 @@ public class Game {
         updateUnits();
         /*Update the Towers*/
         updateTowers();
-        graphicState.gameTick(timeOfGame);
+        //graphicState.gameTick(timeOfGame);
         timeOfGame++;
         /*Give the user more money if it should get more money this tick*/
         if(this.timeOfGame % this.incomeFreq == 0){
