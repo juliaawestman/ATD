@@ -16,6 +16,7 @@ import main.java.*;
 public class GroundUnit extends main.java.unit.Unit {
 
     private static int price = 30;
+    private static URL imgUrl = Unit.class.getResource("../../resources/groundUnit.png");
 
     public GroundUnit(Position pos, int id) {
 
@@ -26,11 +27,15 @@ public class GroundUnit extends main.java.unit.Unit {
         super.name = "GroundUnit";
         super.pos = pos;
         super.flying = false;
-        super.imagePath = this.getClass().getResource("../../resources/groundUnit.png");
+        super.imagePath = imgUrl;
     }
 
     public static int getPrice() {
         return price;
+    }
+
+    public static URL getImg(){
+        return imgUrl;
     }
 
 }

@@ -111,6 +111,7 @@ public abstract class Unit {
         return this.hasReachedGoal;
     }
 
+
     /**
      *
      * @return the position one step closer to the middle of the next tile
