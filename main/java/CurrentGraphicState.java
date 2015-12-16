@@ -34,7 +34,7 @@ public class CurrentGraphicState {
              /* If the lifetime of the object has run out remove 
              the object from the list and from the HashMap*/
              if(currentEvent.shouldBeRemoved(currentTime)){
-                 this.eventsWithLifetime.remove();
+                 itrUnits.remove();
                  this.allGraphicEvents.remove(currentEvent.getId());
              }
          }
