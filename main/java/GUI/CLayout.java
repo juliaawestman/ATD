@@ -26,6 +26,7 @@ public class CLayout {
 
     public MapInformation mapinfo;
     public UserInformation userinfo;
+    public String userName ="";
 
     private GameGUI game;
     private MenuGUI menu;
@@ -112,6 +113,24 @@ public class CLayout {
         game.setChosenMap(map);
 
         cl.show(panelCont, "game");
+    }
+
+    /**
+     * Resizes the frame and shows the card containing the gameOver
+     */
+    public void showGameOver() {
+
+        frame.setSize(600, 600);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
+        cl.show(panelCont, "gameOver");
+
+        final JFrame parent = new JFrame();
+
+        userName = JOptionPane.showInputDialog(parent,
+                "Enter username:", null);
+
     }
 
     /**

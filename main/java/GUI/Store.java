@@ -43,19 +43,13 @@ public class Store {
 
     public void define() {
         for(int i = 0; i<button.length;i++) {
-            button[i] = new Rectangle((GameGUI.myWidth/2) - ((shopWidth*(buttonSize+cellSpace))/2) + ((buttonSize+cellSpace)*i), 680, buttonSize, buttonSize);
+            button[i] = new Rectangle((GameGUI.myWidth/2) - ((shopWidth*(buttonSize*2+cellSpace))/2) + ((buttonSize*2+cellSpace)*i), 680, buttonSize * 2, buttonSize);
         }
 
         buttonHealth = new Rectangle(gameBoard.block[0][0].x-1, button[0].y, iconSize, iconSize);
         buttonCoins = new Rectangle(gameBoard.block[0][0].x-1, button[0].y + button[0].height-iconSize, iconSize, iconSize);
         //buttonIncome = new Rectangle(GameGUI.gameBoard.block[0][0].x-1, button[0].y + (button[0].height-iconSize*2), iconSize, iconSize);
     }
-
-
-
-
-
-
 
     /**
      * Draws the components for the store
@@ -65,11 +59,11 @@ public class Store {
     public void draw(Graphics g) {
         for(int i = 0; i<button.length;i++) {
             if(i == 0) {
-                unitpath = "main/resources/groundUnitButton.png";
+                unitpath = "main/resources/airUnitButton.png";
                 cost = "30";
             }
             if(i == 1) {
-                unitpath = "main/resources/airUnitButton.png";
+                unitpath = "main/resources/groundUnitButton.png";
                 cost = "30";
             }
             if(i == 2) {

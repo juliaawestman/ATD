@@ -21,7 +21,7 @@ class SoundListener implements MouseListener {
 
         if(button.getIcon().toString().contains("Off")) {
             button.setIcon(new ImageIcon("main/resources/sound.png"));
-            c.music.play("main/resources/imperial.wav");
+            c.music.play("main/resources/defaultMusic.wav");
         }
         else {
             button.setIcon(new ImageIcon("main/resources/soundOff.png"));

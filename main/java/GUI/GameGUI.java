@@ -17,6 +17,8 @@ public class GameGUI extends JPanel implements Runnable {
     public static boolean isFirst =true;
     public static int myWidth, myHeight;
 
+    boolean gameOver = false;
+
     public String chosenMap;
 
     BufferedImage b;
