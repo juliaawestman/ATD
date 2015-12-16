@@ -23,6 +23,6 @@ public class AirTower extends Tower {
     public AirTower(Position position, int id){
         super(range, speed, damage, true, false, position);
         super.id = id;
-        loadImage(this.getClass().getResource("../../AirTower.png"));
+        loadImage(this.getClass().getResource("../../resources/AirTower.png"));
     }
 }
