@@ -74,7 +74,7 @@ public class AboutGUI extends JPanel {
 
         middelLabel3.setPreferredSize(new Dimension(300,25));
         middelLabel3.setText("Julia Westman ");
-        middelLabel3.setFont(new Font("Copperplate", Font.PLAIN, 25));
+        middelLabel3.setFont(new Font("arial", Font.PLAIN, 25));
         middelLabel3.setLayout(new FlowLayout(FlowLayout.CENTER));
         middelLabel3.setForeground(Color.white);
         middelLabel3.setHorizontalAlignment(JLabel.CENTER);

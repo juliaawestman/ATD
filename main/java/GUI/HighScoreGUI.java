@@ -72,7 +72,7 @@ public class HighScoreGUI {
         //String temp2;
         //highscores.forEach((temp) -> textArea.append("\n"+temp));
 
-        label.setFont(new Font("Copperplate", Font.PLAIN, 25));
+        label.setFont(new Font("Arial", Font.PLAIN, 25));
         label.setForeground(Color.white);
         highscores.forEach((temp) -> label.setText("<html>"+ label.getText() +"\t\t\t" +"<br>"+temp+"<html>"));
         middelPanel.add(label);
