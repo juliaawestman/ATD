@@ -26,7 +26,6 @@ import main.java.tile.TileAction;
 public class Game {
 
     private int timeOfGame = 0;
-    private static final int incomeFreq = 1000;
     private static final int nrOfTowers = 10;
     private int nextId = 0;
     private User user;
@@ -43,7 +42,7 @@ public class Game {
         this.units = new LinkedList();
         this.towers = new LinkedList();
         this.graphicState = new CurrentGraphicState();
-        this.user = new User(this.map.getStartingGold(), 50);
+        this.user = new User(this.map.getStartingGold(), 1);
         this.gameShop = new Shop(this.user, this);
         makeTowers();
     }
@@ -77,6 +76,7 @@ public class Game {
                     this.graphicState.removeGraphicEvent(tempEvent);
                     itrUnits.remove();
                     this.unitsReachedGoal++;
+                    this.user.setPoints(this.user.getScore()+1);
                 }
             /*Remove the unit if it's dead*/
                 else if (!currentUnit.isAlive()) {
@@ -131,7 +131,7 @@ public class Game {
         }
     }
     public boolean isWon(){
-        return this.unitsReachedGoal == this.map.getWinScore();
+        return this.unitsReachedGoal >= this.map.getWinScore();
     }
 
     public void addUnit(Unit unit){
