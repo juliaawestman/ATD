@@ -2,7 +2,7 @@
     <map>
         <name>ZiggZagg</name>
         <waves>15</waves>
-        <winScore>100</winScore>
+        <winScore>10</winScore>
         <startingGold>100</startingGold>
 
         <!--
@@ -368,7 +368,7 @@
     <map>
         <name>Square</name>
         <waves>19</waves>
-        <winScore>150</winScore>
+        <winScore>10</winScore>
         <startingGold>80</startingGold>
 
         <!-- Tower Tiles: -->
@@ -580,7 +580,7 @@
     <map>
         <name>Joy</name>
         <waves>10</waves>
-        <winScore>75</winScore>
+        <winScore>10</winScore>
         <startingGold>75</startingGold>
 
         <!-- Tower Tiles: -->
