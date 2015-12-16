@@ -64,6 +64,7 @@ public abstract class Tower {
      * @return true if the unit is within range, else false.
      */
     public boolean withinRange(Unit newTarget){
+        System.out.println("Tower: " + id);
         if(newTarget.isFlying() && !air){
             return false;
         } else if (!newTarget.isFlying() && !ground){
@@ -128,8 +129,10 @@ public abstract class Tower {
         Position targetPos = target.getPosition();
 
         /*Calculate the width and height of the image*/
-        int width = (towerPos.getX() - targetPos.getX()) +1;
-        int height = (towerPos.getY() - targetPos.getY()) +1;
+        int width = (towerPos.getX() - targetPos.getX());
+        int height = (towerPos.getY() - targetPos.getY());
+        if (height == 0) height++;
+        if (width == 0) width ++;
         if (width < 0){
             width = width * -1;
         }
