@@ -12,8 +12,8 @@ import java.util.Stack;
  */
 public class CurrentGraphicState {
 
-    HashMap allGraphicEvents;
-    LinkedList <GraphicEvent>eventsWithLifetime;
+    private HashMap allGraphicEvents;
+    private LinkedList <GraphicEvent>eventsWithLifetime;
 
     public CurrentGraphicState() {
         this.allGraphicEvents = new HashMap();

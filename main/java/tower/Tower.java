@@ -64,7 +64,6 @@ public abstract class Tower {
      * @return true if the unit is within range, else false.
      */
     public boolean withinRange(Unit newTarget){
-        System.out.println("Tower: " + id);
         if(newTarget.isFlying() && !air){
             return false;
         } else if (!newTarget.isFlying() && !ground){
@@ -89,13 +88,14 @@ public abstract class Tower {
      */
     public GraphicEvent attack(int time) {
         if(time - timeOfLastAttack >= speed){
+            System.out.println("SHOOOOT (by tower: " + id + ")");
             target.takeDamage(damage);
             timeOfLastAttack = time;
 
             BufferedImage laser = createLaserImage();
             int laserID = (id+1)*-1;
             GraphicEvent event = new GraphicEvent(laserID, getLaserPosition(), laser);
-            event.setVisibilityTime(time, (speed/3)*2);
+            event.setVisibilityTime(time, (speed/3));
 
             return event;
         }
