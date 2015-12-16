@@ -19,22 +19,17 @@ public class HighScoreListener implements MouseListener{
         }
 
         public void mouseClicked(MouseEvent e) {
-            button.setIcon(new ImageIcon("main/resources/highScorePressed.png"));
             c.showCard("highScore");
 
         }
 
         public void mousePressed(MouseEvent e) {
-            button.setIcon(new ImageIcon("main/resources/highScorePressed.png"));
-
         }
 
         public void mouseReleased(MouseEvent e) {
-            button.setIcon(new ImageIcon("main/resources/highScoreHover.png"));
-
         }
 
-        public void mouseEntered(java.awt.event.MouseEvent e) {
+        public void mouseEntered(MouseEvent e) {
             button.setIcon(new ImageIcon("main/resources/highScoreHover.png"));
         }
 

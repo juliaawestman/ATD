@@ -18,22 +18,17 @@ public class BackListener implements MouseListener {
     }
 
     public void mouseClicked(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/backPress.png"));
         c.showCard("menu");
 
     }
 
     public void mousePressed(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/backPress.png"));
-
     }
 
     public void mouseReleased(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/backHover.png"));
-
     }
 
-    public void mouseEntered(java.awt.event.MouseEvent e) {
+    public void mouseEntered(MouseEvent e) {
         button.setIcon(new ImageIcon("main/resources/backHover.png"));
     }
 

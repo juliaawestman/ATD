@@ -18,22 +18,17 @@ public class HelpListener implements MouseListener {
     }
 
     public void mouseClicked(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/helpPress.png"));
         c.showCard("help");
 
     }
 
     public void mousePressed(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/helpPress.png"));
-
     }
 
     public void mouseReleased(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/helpHover.png"));
-
     }
 
-    public void mouseEntered(java.awt.event.MouseEvent e) {
+    public void mouseEntered(MouseEvent e) {
         button.setIcon(new ImageIcon("main/resources/helpHover.png"));
     }
 

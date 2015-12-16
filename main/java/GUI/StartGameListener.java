@@ -21,18 +21,13 @@ public class StartGameListener implements MouseListener {
     }
 
     public void mouseClicked(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/newGameButtonPress.png"));
         c.showGame(jcb.getSelectedItem().toString());
     }
 
     public void mousePressed(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/newGameButtonPress.png"));
-
     }
 
     public void mouseReleased(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/newGameHover.png"));
-
     }
 
     public void mouseEntered(java.awt.event.MouseEvent e) {

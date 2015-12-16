@@ -18,19 +18,14 @@ public class AboutListener implements MouseListener {
     }
 
     public void mouseClicked(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/aboutPress.png"));
         c.showCard("about");
 
     }
 
     public void mousePressed(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/aboutPress.png"));
-
     }
 
     public void mouseReleased(MouseEvent e) {
-        button.setIcon(new ImageIcon("main/resources/aboutHover.png"));
-
     }
 
     public void mouseEntered(java.awt.event.MouseEvent e) {
