@@ -133,6 +133,9 @@ public class Game {
     public boolean isWon(){
         return this.unitsReachedGoal >= this.map.getWinScore();
     }
+    public boolean isLoss(){
+        return (this.units.size() == 0 && this.user.getCredits()< 30);
+    }
 
     public void addUnit(Unit unit){
         TileAction currentTile;
