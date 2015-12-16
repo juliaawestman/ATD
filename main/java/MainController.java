@@ -124,7 +124,7 @@ public class MainController extends TimerTask implements MapInformation, UserInf
 
     @Override
     public boolean gameOver() {
-        return this.game.isLoss();
+        return false;
     }
 
     @Override

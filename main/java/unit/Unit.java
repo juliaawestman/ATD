@@ -32,6 +32,7 @@ public abstract class Unit {
     protected int speed;
     protected int income;
     protected Boolean flying;
+    protected Boolean teleporter=false;
     private int timeLived = 0;
     private boolean hasReachedGoal = false;
 
@@ -165,5 +166,8 @@ public abstract class Unit {
         }
 
         return (new GraphicEvent(this.id, this.pos, img));
+    }
+    public boolean isTeleporterUnit(){
+        return this.teleporter;
     }
 }

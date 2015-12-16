@@ -17,6 +17,8 @@ public class TeleporterUnit extends Unit {
 
     private static int price = 50;
     private static URL imgUrl = Unit.class.getResource("../../resources/teleporterUnit.png");
+    private boolean hasTeleStart;
+    private int telePlacedTime;
 
     public TeleporterUnit(Position pos, int id) {
         super(pos, id);
@@ -27,7 +29,26 @@ public class TeleporterUnit extends Unit {
         super.pos = pos;
         super.flying = false;
         super.imagePath = imgUrl;
+        super.teleporter = true;
     }
+
+    /**
+     * Has the unit placed a teleportation start?
+     */
+    public boolean hasTeleStart(){
+        return hasTeleStart;
+    }
+    public void setHasTeleStart(boolean hasTeleStart, int telePlacedTime){
+        this.hasTeleStart = hasTeleStart;
+        this.telePlacedTime = telePlacedTime;
+    }
+    public boolean shouldPlaceEndTele(int time){
+        if((time - this.telePlacedTime) > 120){
+            return true;
+        }
+        return false;
+    }
+
     public static int getPrice() {
         return price;
     }

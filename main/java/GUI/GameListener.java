@@ -38,7 +38,7 @@ public class GameListener implements MouseListener {
         if(g.store.button[2].contains(e.getPoint()) && c.userinfo.canBuyUnit(3)) {
             c.userinfo.buyUnit(3);
             g.gameOver = true;
-            c.showGameOver();
+            //c.showGameOver();
         }
 
 

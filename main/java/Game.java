@@ -20,6 +20,7 @@ import main.java.tile.TowerTile;
 import main.java.tower.AirTower;
 import main.java.tower.GroundTower;
 import main.java.tower.Tower;
+import main.java.unit.TeleporterUnit;
 import main.java.unit.Unit;
 import main.java.tile.TileAction;
 
@@ -90,8 +91,18 @@ public class Game {
                         tempTilePos = positionConverter.unitPosConverter(currentUnit.getPosition());
                         currentTile = (TileAction) map.getTileAt(tempTilePos);
                         currentTile.landOn(currentUnit);
-                        /*Give the user more*/
+                        /*Give the user more money*/
                         this.user.increaseCredits(user.getIncome());
+                        /*Maybe place teleport*/
+                        if(currentUnit.isTeleporterUnit()){
+                            TeleporterUnit tempTelePorter = (TeleporterUnit) currentUnit;
+                            if(!tempTelePorter.hasTeleStart()){
+                                tempTelePorter.setHasTeleStart(true,this.timeOfGame);
+                            }else if(tempTelePorter.shouldPlaceEndTele(this.timeOfGame)){
+                                tempTelePorter.setNextTilePos(map.getStartTile().getPosition());
+                            }
+                        }
+
                     }
                 }
 
