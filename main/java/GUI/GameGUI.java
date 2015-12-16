@@ -139,6 +139,7 @@ public class GameGUI extends JPanel implements Runnable {
                 int y = e.getY();
                 System.out.println(x+" "+y);
                 c.userinfo.hasClicked(x, y);
+                c.userinfo.buyUnit(2);
             }
 
             @Override

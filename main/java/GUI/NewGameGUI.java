@@ -47,23 +47,23 @@ public class NewGameGUI {
      */
     private JPanel buildMiddlePanel() {
         JPanel middlePanel = new JPanel();
-        middlePanel.setBackground(new Color(169,255,151));
+        middlePanel.setBackground(new Color(56, 134, 96));
         middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
 
         JPanel levelListPanel = new JPanel();
-        levelListPanel.setBackground(new Color(169,255,151));
+        levelListPanel.setBackground(new Color(56, 134, 96));
 
         JPanel buttonPanelOver = new JPanel();
         buttonPanelOver.setPreferredSize(new Dimension(400, 45));
-        buttonPanelOver.setBackground(new Color(169,255,151));
+        buttonPanelOver.setBackground(new Color(56, 134, 96));
 
         JPanel buttonPanelUnder = new JPanel();
         buttonPanelUnder.setPreferredSize(new Dimension(400, 45));
-        buttonPanelUnder.setBackground(new Color(169,255,151));
+        buttonPanelUnder.setBackground(new Color(56, 134, 96));
 
         JPanel buttonPanelLast = new JPanel();
         buttonPanelLast.setPreferredSize(new Dimension(400, 45));
-        buttonPanelLast.setBackground(new Color(169,255,151));
+        buttonPanelLast.setBackground(new Color(56, 134, 96));
 
         //middlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         updateLevels();
@@ -107,7 +107,7 @@ public class NewGameGUI {
      */
     private JPanel buildLowerPanel() {
         JPanel lowerPanel = new JPanel();
-        lowerPanel.setBackground(new Color(169,255,151));
+        lowerPanel.setBackground(new Color(56, 134, 96));
 
         back = new JButton(new ImageIcon("main/resources/backButton.png"));
         back.addMouseListener(new BackListener(back, c));
@@ -130,7 +130,7 @@ public class NewGameGUI {
 
     private JPanel buildSoundPanel() {
         JPanel soundPanel = new JPanel();
-        soundPanel.setBackground(new Color(169,255,151));
+        soundPanel.setBackground(new Color(56, 134, 96));
         soundPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 
         sound = new JButton(new ImageIcon("main/resources/sound.png"));
@@ -151,7 +151,7 @@ public class NewGameGUI {
      */
     public JPanel getPanel() {
 
-        panel.setBackground(new Color(169,255,151));
+        panel.setBackground(new Color(56, 134, 96));
         panel.setLayout(new BorderLayout());
 
         //Add panels to the frame

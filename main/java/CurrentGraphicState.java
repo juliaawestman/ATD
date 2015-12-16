@@ -12,8 +12,8 @@ import java.util.Stack;
  */
 public class CurrentGraphicState {
 
-    HashMap allGraphicEvents;
-    LinkedList <GraphicEvent>eventsWithLifetime;
+    private HashMap allGraphicEvents;
+    private LinkedList <GraphicEvent>eventsWithLifetime;
 
     public CurrentGraphicState() {
         this.allGraphicEvents = new HashMap();
@@ -34,7 +34,7 @@ public class CurrentGraphicState {
              /* If the lifetime of the object has run out remove 
              the object from the list and from the HashMap*/
              if(currentEvent.shouldBeRemoved(currentTime)){
-                 this.eventsWithLifetime.remove();
+                 itrUnits.remove();
                  this.allGraphicEvents.remove(currentEvent.getId());
              }
          }

@@ -11,10 +11,6 @@ public interface UserInformation {
 
     String getUnitName(int i);
 
-    int getUnitCost(int i);
-
-    void withdrawCredits(int i);
-
     void updateUsername(String s);
 
     boolean gameOver();

@@ -98,23 +98,23 @@ public class MenuGUI {
     private JPanel buildMiddlePanel() {
         JPanel middlePanel = new JPanel();
         middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
-        middlePanel.setBackground(new Color(169,255,151));
+        middlePanel.setBackground(new Color(56, 134, 96));
 
         JPanel buttonPanelOver = new JPanel();
         buttonPanelOver.setPreferredSize(new Dimension(400, 45));
-        buttonPanelOver.setBackground(new Color(169,255,151));
+        buttonPanelOver.setBackground(new Color(56, 134, 96));
 
         JPanel buttonPanelMiddle = new JPanel();
         buttonPanelMiddle.setPreferredSize(new Dimension(400, 45));
-        buttonPanelMiddle.setBackground(new Color(169,255,151));
+        buttonPanelMiddle.setBackground(new Color(56, 134, 96));
 
         JPanel buttonPanelUnder = new JPanel();
         buttonPanelUnder.setPreferredSize(new Dimension(400, 45));
-        buttonPanelUnder.setBackground(new Color(169,255,151));
+        buttonPanelUnder.setBackground(new Color(56, 134, 96));
 
         JPanel buttonPanelLast = new JPanel();
         buttonPanelLast.setPreferredSize(new Dimension(400, 45));
-        buttonPanelLast.setBackground(new Color(169,255,151));
+        buttonPanelLast.setBackground(new Color(56, 134, 96));
 
 
         newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
@@ -131,7 +131,7 @@ public class MenuGUI {
         highScore.setFocusPainted(false);
         buttonPanelMiddle.add(highScore);
 
-        quit = new JButton(new ImageIcon("main/resources/quitButton.png"));
+        quit = new JButton(new ImageIcon("main/resources/QuitButton.png"));
         quit.addMouseListener(new QuitListener(quit, c));
         quit.setBorderPainted(false);
         quit.setContentAreaFilled(false);
@@ -158,7 +158,7 @@ public class MenuGUI {
     private JPanel buildLowerPanel() {
         JPanel lowerPanel = new JPanel();
         lowerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        lowerPanel.setBackground(new Color(169,255,151));
+        lowerPanel.setBackground(new Color(56, 134, 96));
 
         sound = new JButton(new ImageIcon("main/resources/sound.png"));
         sound.addMouseListener(new SoundListener(sound, c));
@@ -177,7 +177,7 @@ public class MenuGUI {
      * @return The main menu GUI as a JPanel
      */
     public JPanel getPanel() {
-        panel.setBackground(new Color(169,255,151));
+        panel.setBackground(new Color(56, 134, 96));
         upperPanel = buildUpperPanel();
         middlePanel = buildMiddlePanel();
         lowerPanel = buildLowerPanel();
