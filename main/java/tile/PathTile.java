@@ -4,7 +4,7 @@ import main.java.Position;
 
 import java.net.MalformedURLException;
 
-public abstract class PathTile extends Tile {
+public abstract class PathTile extends Tile implements TileAction {
 
     private Position nextPos;
 

@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
  * main.java.tile.tile.PathWay is a class that extends the main.java.tile.tile.PathTile class. The class
  * have a own image that will be used in the user interface.
  */
-public class PathWay extends PathTile implements TileAction {
+public class PathWay extends PathTile {
 
     private Position nextPos;
     //hej

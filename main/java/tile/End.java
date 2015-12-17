@@ -14,9 +14,11 @@ import java.net.MalformedURLException;
  * main.java.tile.tile.End is a class that extends the main.java.tile.tile.PathTile class. The class
  * have a own image that will be used in the user interface.
  */
-public class End extends PathTile implements TileAction {
+public class End extends PathTile {
+
 
     /**
+     * Todo
      * main.java.tile.tile.End is the constructor that will read in the image when
      * the program will create a object of the class main.java.tile.tile.Default
      */

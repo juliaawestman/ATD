@@ -93,16 +93,6 @@ public class Game {
                         currentTile.landOn(currentUnit);
                         /*Give the user more money*/
                         this.user.increaseCredits(user.getIncome());
-                        /*Maybe place teleport*/
-                        if(currentUnit.isTeleporterUnit()){
-                            TeleporterUnit tempTelePorter = (TeleporterUnit) currentUnit;
-                            if(!tempTelePorter.hasTeleStart()){
-                                tempTelePorter.setHasTeleStart(true,this.timeOfGame);
-                            }else if(tempTelePorter.shouldPlaceEndTele(this.timeOfGame)){
-                                tempTelePorter.setNextTilePos(map.getStartTile().getPosition());
-                            }
-                        }
-
                     }
                 }
 

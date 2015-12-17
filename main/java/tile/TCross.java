@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
  * main.java.tile.tile.TCross a class that extends the main.java.tile.tile.PathTile class. The class
  * have a own image that will be used in the user interface.   
  */
-public class TCross extends PathTile implements TileAction {
+public class TCross extends PathTile {
 
     private Position nextPos;
     private Position defaultNextPos= null;

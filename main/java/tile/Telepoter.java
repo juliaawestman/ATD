@@ -17,10 +17,9 @@ import java.net.MalformedURLException;
  * image that will be used in the user interface. 
  *
  */
-public class Telepoter extends PathTile implements TileAction {
+public class Telepoter extends PathTile {
 
-    private Position nextPos;
-    private Position nextTelPos = null;
+    private Position endTelePos = null;
     
     /**
      * main.java.tile.tile. Teleporter is the constructor that
@@ -33,22 +32,20 @@ public class Telepoter extends PathTile implements TileAction {
 
     @Override
     public void landOn(Unit unit){
-        if(nextPos!=null) {
-            unit.setNextTilePos(nextPos);
-        }
-        else {
-            unit.setNextTilePos(nextTelPos);
+        if(this.endTelePos != null){
+            unit.setCurrentPosition(endTelePos);
+            unit.setNextTilePos(endTelePos);
+        }else{
+            unit.setNextTilePos(super.getNextPos());
         }
     }
 
     @Override
     public void sendToPos(Position posToSend) {
-        nextPos = posToSend;
         setNextPos(posToSend);
     }
 
-    public void setTeleporterPos(Position nextTelepoterPos){
-        nextTelPos = nextTelepoterPos;
-        setNextPos(nextTelepoterPos);
+    public void setEndTelePos(Position pos){
+        this.endTelePos = pos;
     }
 }
