@@ -17,6 +17,7 @@ public class GameGUI extends JPanel implements Runnable {
     public Thread thread = new Thread(this);
     public boolean isFirst =true;
     private JButton sound;
+    private JButton settings;
     public int myWidth, myHeight;
     JPanel lowerPanel = new JPanel();
     JLayeredPane LPane =new JLayeredPane();
@@ -111,12 +112,21 @@ public class GameGUI extends JPanel implements Runnable {
         sound.setBounds(830,700,70,70);
         LPane.add(sound, new Integer(5));
 
+        settings = new JButton(new ImageIcon("main/resources/settings.png"));
+        settings.addMouseListener(new SettingsListener(settings, c));
+
+        settings.setBorderPainted(false);
+        settings.setContentAreaFilled(false);
+        settings.setFocusPainted(false);
+
+        settings.setBounds(730,700,70,70);
+
         return lowerPanel;
     }
 
     public JLayeredPane getPanel() {
 
-        gamePanel.setLayout(new GridLayout(1, 1, 0, 0));
+
         //gamePanel.add(new GameGUI(c));
 
         lowerPanel = buildLowerPanel();
@@ -124,6 +134,8 @@ public class GameGUI extends JPanel implements Runnable {
         gamePanel.setLayout(null);
         this.setBounds(0,0,900,900);
         gamePanel.add(sound, new Integer(1));
+
+        gamePanel.add(settings, new Integer(2));
 
         gamePanel.add(this, new Integer(0));
 
