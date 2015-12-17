@@ -22,9 +22,6 @@ import java.util.TimerTask;
  * Date:        12/15/15
  */
 
-/*
- *  TODO Test the map Joy a lot: it generates a lot of exceptions
- */
 
 public class MainController extends TimerTask implements MapInformation, UserInformation {
     private Renderer renderer;
@@ -51,6 +48,9 @@ public class MainController extends TimerTask implements MapInformation, UserInf
         renderer.drawImage(graphicState.getCurrentGraphicState());
         BufferedImage img = renderer.getImage();
         gui.setBoardImage(img);
+        if (game.isWon()){
+            game = null;
+        }
     }
 
     /**
@@ -135,6 +135,21 @@ public class MainController extends TimerTask implements MapInformation, UserInf
     @Override
     public User getUser() {
         return game.getUser();
+    }
+
+    @Override
+    public void killGame() {
+
+    }
+
+    @Override
+    public void pauseGame() {
+
+    }
+
+    @Override
+    public void resumeGame() {
+
     }
 
     @Override
