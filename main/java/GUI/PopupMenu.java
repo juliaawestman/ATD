@@ -40,10 +40,15 @@ public class PopupMenu {
         }
         // Restart
         if(n == 1) {
+            c.userinfo.resumeGame();
+            c.userinfo.killGame();
+            c.game.restart();
             c.showGame(c.game.chosenMap);
         }
         // Menu
         if(n == 2) {
+            c.userinfo.killGame();
+
             c.showMainMenu();
         }
     }

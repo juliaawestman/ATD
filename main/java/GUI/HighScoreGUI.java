@@ -133,6 +133,7 @@ public class HighScoreGUI {
     public void updateHighscores() {
         highscores = dbs.getData();
 
+        label.setText("html"+"HEJ"+"<html>");
         highscores.forEach((temp) -> label.setText("<html>"+ label.getText() +"\t\t\t" +"<br>"+temp+"<html>"));
 
     }

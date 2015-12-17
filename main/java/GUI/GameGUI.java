@@ -75,7 +75,7 @@ public class GameGUI extends JPanel implements Runnable {
             // Wincondition
             if (u.getScore() >= 5 && firstWin) {
                 firstWin = false;
-                    c.showGameOver();
+                c.showGameOver();
                 isFirst = true;
             }
 
@@ -150,6 +150,10 @@ public class GameGUI extends JPanel implements Runnable {
 
     public void drawImage(BufferedImage b) {
         this.b = b;
+    }
+
+    public void restart() {
+        isFirst = false;
     }
 
 }

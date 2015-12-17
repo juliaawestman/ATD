@@ -3,6 +3,7 @@ package main.java.GUI;
 import main.java.Position;
 import main.java.tile.PathTile;
 import main.java.tile.Tile;
+import main.java.tile.TowerTile;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -52,8 +53,6 @@ public class Board {
      */
     public void draw(Graphics g) {
 
-        //Map map = new Map();
-
         Tile t;
         for (int y=0;y<block.length;y++) {
             for(int x=0;x<block[0].length;x++) {
@@ -66,23 +65,16 @@ public class Board {
                     t=null;
                 }
 
-                //if(c.mapinfo.getMap())
-                //System.out.println(c.mapinfo.getMap(map).get(new Position(x+1, y+1)));
-                //main/resources/towerTile.png
-
-                if(tile.contains("Path")) {
-                    block[y][x].draw(g,"main/resources/pathTile.png");
-                } else if(tile.contains("Tower")) {
-                    block[y][x].draw(g,"main/resources/towerTile.png");
-                } else if(tile.contains("Cross")) {
-                    //block[y][x].draw(g, "main/resources/TCross.png");
-                    if(PathTile.class.isAssignableFrom(t.getClass())) {
+                if(t != null){
+                    if(Tile.class.isAssignableFrom(t.getClass())) {
                         block[y][x].draw(g, t.getImageURL());
                     }
-                }else if(t != null){ //added by Erik M
+                    /*
                     if(PathTile.class.isAssignableFrom(t.getClass())) {
                         block[y][x].draw(g, t.getImageURL());
-                    }
+                    } else if(TowerTile.class.isAssignableFrom(t.getClass())) {
+                        block[y][x].draw(g, t.getImageURL());
+                    }*/
                 } else {
                     block[y][x].draw(g,"main/resources/defaultTile.png");
                 }
