@@ -48,9 +48,6 @@ public class MainController implements MapInformation, UserInformation {
         renderer.drawImage(graphicState.getCurrentGraphicState());
         BufferedImage img = renderer.getImage();
         gui.setBoardImage(img);
-        if (game.isWon()){
-            pauseGame();
-        }
     }
 
     /**

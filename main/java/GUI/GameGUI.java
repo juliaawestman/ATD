@@ -30,6 +30,7 @@ public class GameGUI extends JPanel implements Runnable {
     private CLayout c;
     public Board gameBoard;
     public Store store;
+    public boolean gameStarted = false;
 
     public GameGUI(CLayout c) {
         this.c = c;
@@ -38,12 +39,16 @@ public class GameGUI extends JPanel implements Runnable {
 
     public void paintComponent(Graphics g) {
         if(isFirst) {
+
             myWidth = getWidth();
             myHeight = getHeight();
             gameBoard = new Board(c, chosenMap);
             store = new Store(gameBoard, c);
             isFirst = false;
+            gameStarted = true;
+            firstWin = true;
         }
+
         g.setColor(new Color(50, 50, 50));
         g.fillRect(0, 0, getWidth(), getHeight());
         g.setColor(new Color(255, 255, 255));
@@ -68,23 +73,20 @@ public class GameGUI extends JPanel implements Runnable {
      *
      * TODO Fixa wincondition!
      */
-    public static int fpsFrame = 0, fps = 120;
     public void run() {
         while(true) {
 
-            // Wincondition
-            if (u.getScore() >= 5 && firstWin) {
-                firstWin = false;
-                c.showGameOver();
-                isFirst = true;
-            }
-
-
-            if(!isFirst) {
-                gameBoard.physic();
-            }
-
             repaint();
+
+            if(gameStarted && firstWin) {
+                // Wincondition
+                if (c.userinfo.gameWon() || c.userinfo.gameOver()) {
+                    c.userinfo.pauseGame();
+                    firstWin = false;
+                    c.showGameOver();
+                    isFirst = true;
+                }
+            }
 
             try {
                 Thread.sleep(1);
@@ -125,9 +127,6 @@ public class GameGUI extends JPanel implements Runnable {
     }
 
     public JLayeredPane getPanel() {
-
-
-        //gamePanel.add(new GameGUI(c));
 
         lowerPanel = buildLowerPanel();
 

@@ -41,10 +41,6 @@ public class Board {
         }
     }
 
-    public void physic() {
-
-    }
-
     /**
      * Draws the blocks the game board consists of, it checks which tile is suppose to be in which position and draws it
      * there as a block

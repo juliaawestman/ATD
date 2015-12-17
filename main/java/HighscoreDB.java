@@ -160,6 +160,7 @@ public class HighscoreDB {
     public ArrayList getData() {
         String sql = "SELECT * FROM HIGHSCORE ORDER BY score DESC LIMIT 5";
         ResultSet rs = null;
+        highscores.clear();
         try {
             rs = st.executeQuery(sql);
 
@@ -191,7 +192,6 @@ public class HighscoreDB {
 
 
                 //highscores.add("User: "+userName+" Wave: "+wave+" Level: "+level+" Date: "+date);
-
                 highscores.add(userName+"   "+level+"   "+score+"   ");
 
 

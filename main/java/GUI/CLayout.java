@@ -113,7 +113,6 @@ public class CLayout {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         game.setChosenMap(map);
-
         cl.show(panelCont, "game");
     }
 
