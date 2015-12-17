@@ -3,7 +3,6 @@ package main.java;
 import main.java.GUI.CLayout;
 import main.java.GUI.MapInformation;
 import main.java.GUI.UserInformation;
-import main.java.tile.TCross;
 import main.java.tile.Tile;
 import org.xml.sax.SAXException;
 
@@ -23,7 +22,7 @@ import java.util.TimerTask;
  */
 
 
-public class MainController /*extends TimerTask*/ implements MapInformation, UserInformation {
+public class MainController implements MapInformation, UserInformation {
     private Renderer renderer;
     private CLayout gui;
     private Game game;
@@ -39,9 +38,11 @@ public class MainController /*extends TimerTask*/ implements MapInformation, Use
         int dimension = gui.getTileSize()*12;
         renderer = new Renderer(dimension, dimension);
         game = null;
-        timer = new Timer();
     }
 
+    /**
+     * Makes one update step of the game.
+     */
     public void update() {
         game.update();
         renderer.drawImage(graphicState.getCurrentGraphicState());
@@ -57,7 +58,7 @@ public class MainController /*extends TimerTask*/ implements MapInformation, Use
      * @param interval the update interval in milliseconds
      */
     public void startWithUpdateInterval(long interval){
-
+        timer = new Timer();
         timer.schedule(new Task(this), interval, interval);
     }
 
@@ -82,6 +83,14 @@ public class MainController /*extends TimerTask*/ implements MapInformation, Use
         }
     }
 
+    /**
+     * This is
+     * @param args
+     */
+    public static void main(String[] args) {
+        MainController c = new MainController();
+    }
+
     @Override
     public ArrayList<String> getLevelNames() {
         return factory.getMapNames();
@@ -96,10 +105,6 @@ public class MainController /*extends TimerTask*/ implements MapInformation, Use
 
         start();
         return map.getCompleteMap();
-    }
-
-    public static void main(String[] args) {
-        MainController c = new MainController();
     }
 
     @Override
@@ -124,12 +129,12 @@ public class MainController /*extends TimerTask*/ implements MapInformation, Use
 
     @Override
     public boolean gameOver() {
-        return false;
+        return game.isLoss();
     }
 
     @Override
     public boolean gameWon() {
-        return this.game.isWon();
+        return game.isWon();
     }
 
     @Override
@@ -139,6 +144,11 @@ public class MainController /*extends TimerTask*/ implements MapInformation, Use
 
     @Override
     public void killGame() {
+        timer.cancel();
+        game = null;
+        shop = null;
+        graphicState = null;
+        map = null;
 
     }
 
@@ -149,8 +159,7 @@ public class MainController /*extends TimerTask*/ implements MapInformation, Use
 
     @Override
     public void resumeGame() {
-        timer = new Timer();
-        timer.schedule(new Task(this), 5, 5);
+        start();
     }
 
     @Override
