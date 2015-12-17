@@ -82,15 +82,18 @@ public class User {
         BufferedImage img = null;
 
         /*Make the image*/
-        BufferedImage laser = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g = laser.createGraphics();
+        img = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = img.createGraphics();
         g.setColor(new Color(255, 244, 61));
         g.setStroke(new BasicStroke(2));
         g.setFont(new Font("Arial",Font.BOLD,14));
         g.drawString(String.valueOf(this.credits),10,10);
         g.drawString(String.valueOf(this.points),10,24);
+        //coins = ImageIO.read(this.imagePath);
+        //g.drawImage(new BufferedImage());
 
-        return new GraphicEvent(999,new Position(70,70),laser);
+
+        return new GraphicEvent(999,new Position(70,70),img);
     }
 
     public void decreaseCredits(int value){
