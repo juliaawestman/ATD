@@ -83,6 +83,10 @@ public class MainController implements MapInformation, UserInformation {
         }
     }
 
+    /**
+     * This is
+     * @param args
+     */
     public static void main(String[] args) {
         MainController c = new MainController();
     }
@@ -155,8 +159,7 @@ public class MainController implements MapInformation, UserInformation {
 
     @Override
     public void resumeGame() {
-        timer = new Timer();
-        timer.schedule(new Task(this), 5, 5);
+        start();
     }
 
     @Override
