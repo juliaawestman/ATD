@@ -4,19 +4,22 @@ import javax.swing.*;
 
 /**
  * Created by id12jzn on 2015-12-17.
+ *
+ * The popup menu that shows when the user presses the menu button in game
+ * Does different things depending on users choise
  */
 public class PopupMenu {
 
         private CLayout c;
         final JFrame popup = new JFrame();
-
         public PopupMenu(CLayout c) {
         this.c = c;
-
         }
 
-
     public void openPopup() {
+
+        c.userinfo.pauseGame();
+
         Object[] options = {"Resume",
                 "Restart",
                 "Main menu"};
@@ -30,20 +33,19 @@ public class PopupMenu {
                 null,
                 options,
                 options[2]);
+
         // Resume
         if(n == 0) {
-            //Hej
+            c.userinfo.resumeGame();
         }
         // Restart
         if(n == 1) {
-
+            c.showGame(c.game.chosenMap);
         }
         // Menu
         if(n == 2) {
             c.showMainMenu();
         }
-
-        System.out.println(n);
     }
 
 }

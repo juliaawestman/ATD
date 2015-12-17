@@ -33,7 +33,7 @@ public class CLayout {
     public GameGUI game;
     private MenuGUI menu;
     private NewGameGUI newGame;
-    private HighScoreGUI highScore;
+    public HighScoreGUI highScore;
     private GameOverGUI gameOver;
     private AboutGUI about;
     private HelpGUI help;

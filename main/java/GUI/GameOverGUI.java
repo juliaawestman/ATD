@@ -68,6 +68,12 @@ public class GameOverGUI {
         newGame.setContentAreaFilled(false);
         newGame.setFocusPainted(false);
 
+        highScore = new JButton(new ImageIcon("main/resources/highScoreButton.png"));
+        highScore.addMouseListener(new HighScoreListener(highScore, c));
+        highScore.setBorderPainted(false);
+        highScore.setContentAreaFilled(false);
+        highScore.setFocusPainted(false);
+
         quit = new JButton(new ImageIcon("main/resources/QuitButton.png"));
         quit.addMouseListener(new QuitListener(quit, c));
         quit.setBorderPainted(false);
@@ -76,6 +82,8 @@ public class GameOverGUI {
 
         newGame.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         middlePanel.add(newGame);
+        highScore.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        middlePanel.add(highScore);
         quit.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         middlePanel.add(quit);
 

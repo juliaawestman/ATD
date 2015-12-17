@@ -29,6 +29,7 @@ public class HighScoreGUI {
             JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     ArrayList<String> highscores = new ArrayList<>();
     private CLayout c;
+    HighscoreDB dbs = new HighscoreDB();
 
     public HighScoreGUI(CLayout c){
         this.c = c;
@@ -64,18 +65,13 @@ public class HighScoreGUI {
         textArea.setBackground(new Color(0, 0, 0, 155));
         */
 
-
-
-        HighscoreDB dbs = new HighscoreDB();
-        highscores = dbs.getData();
-        //textArea.append(dbs.getData());
-        //String temp2;
-        //highscores.forEach((temp) -> textArea.append("\n"+temp));
+        updateHighscores();
 
         label.setFont(new Font("Arial", Font.PLAIN, 25));
         label.setForeground(Color.white);
-        highscores.forEach((temp) -> label.setText("<html>"+ label.getText() +"\t\t\t" +"<br>"+temp+"<html>"));
+
         middelPanel.add(label);
+
 
         return middelPanel;
     }
@@ -132,6 +128,13 @@ public class HighScoreGUI {
         panel.add(lowerPanel, BorderLayout.SOUTH);
 
         return panel;
+    }
+
+    public void updateHighscores() {
+        highscores = dbs.getData();
+
+        highscores.forEach((temp) -> label.setText("<html>"+ label.getText() +"\t\t\t" +"<br>"+temp+"<html>"));
+
     }
 
 

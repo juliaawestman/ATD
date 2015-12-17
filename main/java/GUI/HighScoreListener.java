@@ -19,6 +19,7 @@ public class HighScoreListener implements MouseListener{
         }
 
         public void mouseClicked(MouseEvent e) {
+            c.highScore.updateHighscores();
             c.showCard("highScore");
 
         }
