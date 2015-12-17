@@ -1,11 +1,8 @@
 package main.java.GUI;
 
 import javax.swing.*;
-import javax.swing.text.Position;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.net.URL;
-import java.util.HashMap;
 
 /**
  * Class: Block

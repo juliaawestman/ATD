@@ -1,12 +1,7 @@
 package main.java;
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
 /**
  * Created by juliawestman on 2015-12-06.
  */

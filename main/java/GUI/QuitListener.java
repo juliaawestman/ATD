@@ -3,7 +3,6 @@ package main.java.GUI;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
 
 /**
  * Created by Joakim on 2015-11-30.
