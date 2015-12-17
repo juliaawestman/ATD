@@ -183,6 +183,11 @@ public abstract class Unit {
             g.setStroke(new BasicStroke(2));
             g.setFont(new Font("Arial",Font.ITALIC | Font.BOLD,12));
             g.drawString(String.valueOf("-"+String.valueOf(this.lastDmg)), (sprite.getWidth()/3), (sprite.getHeight()/4));
+            g.fillRect(0,40,40,4);
+            g.setColor(new Color(59, 255, 0));
+            g.fillRect(0,40,health,4);
+
+
         }
         return (new GraphicEvent(this.id, this.pos, whole));
     }
