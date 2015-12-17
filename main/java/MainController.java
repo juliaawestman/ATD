@@ -155,12 +155,7 @@ public class MainController /*extends TimerTask*/ implements MapInformation, Use
 
     @Override
     public void hasClicked(int x, int y) {
-        Position p =  positionConverter.unitPosConverter(new Position(x, y));
-        Tile t = map.getTileAt(p);
-        if ( t!= null && TCross.class.isAssignableFrom(t.getClass()) ){
-            TCross tCross = (TCross) t;
-            tCross.changeDirection();
-        }
+        game.clickAtPos(new Position(x,y));
     }
 
     /**

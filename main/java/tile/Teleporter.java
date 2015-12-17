@@ -27,7 +27,7 @@ public class Teleporter extends PathTile {
      * of the class main.java.tile.tile.Default
      */
     public Teleporter(Position p) throws MalformedURLException {
-	super(p, "main/resources/teleporterTile.png");
+	    super(p, "main/resources/teleporterTile.png");
     }
 
     @Override

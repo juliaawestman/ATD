@@ -11,6 +11,8 @@ package main.java.unit;
  */
 import main.java.GraphicEvent;
 import main.java.Position;
+import main.java.PositionConverter;
+import main.java.tile.Tile;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -30,7 +32,7 @@ public abstract class Unit {
     protected int health;
     protected int price;
     protected int speed;
-    protected int income;
+    protected boolean isClickableUnit = false;
     protected Boolean flying;
     protected Boolean teleporter=false;
     private int timeLived = 0;
@@ -88,7 +90,7 @@ public abstract class Unit {
     }
 
     public void setCurrentPosition(Position pos) {
-        this.pos = pos;
+        this.pos = PositionConverter.tilePosConverter(pos);
     }
 
     public void setNextTilePos(Position nextTilePos) {
@@ -167,7 +169,10 @@ public abstract class Unit {
 
         return (new GraphicEvent(this.id, this.pos, img));
     }
-    public boolean isTeleporterUnit(){
-        return this.teleporter;
+    public Tile click(){
+        return null;
+    }
+    public boolean isClickable(){
+        return this.isClickableUnit;
     }
 }

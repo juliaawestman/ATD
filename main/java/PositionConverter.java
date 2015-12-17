@@ -3,7 +3,7 @@ package main.java;
 /**
  * Created by dv14iht on 2015-12-16.
  */
-public class positionConverter {
+public class PositionConverter {
     private static final int tileSize = 54;
 
     /**

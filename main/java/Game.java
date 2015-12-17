@@ -14,13 +14,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-import javafx.geometry.Pos;
+import main.java.tile.TCross;
 import main.java.tile.Tile;
 import main.java.tile.TowerTile;
 import main.java.tower.AirTower;
 import main.java.tower.GroundTower;
 import main.java.tower.Tower;
-import main.java.unit.TeleporterUnit;
 import main.java.unit.Unit;
 import main.java.tile.TileAction;
 
@@ -33,6 +32,7 @@ public class Game {
     private Map map;
     private List<Unit> units;
     private List<Tower> towers;
+    private List<Unit> clickUnits;
     private CurrentGraphicState graphicState;
     private int unitsReachedGoal=0;
     private Shop gameShop;
@@ -42,6 +42,7 @@ public class Game {
         this.map = mapName;
         this.units = new LinkedList();
         this.towers = new LinkedList();
+        this.clickUnits = new LinkedList();
         this.graphicState = new CurrentGraphicState();
         this.user = new User(this.map.getStartingGold(), 1);
         this.gameShop = new Shop(this.user, this);
@@ -88,7 +89,7 @@ public class Game {
                     tempEvent = currentUnit.generateGraphicEvent();
                     this.graphicState.addGraphicEvent(tempEvent);
                     if (currentUnit.isInMiddleOfTile()) {
-                        tempTilePos = positionConverter.unitPosConverter(currentUnit.getPosition());
+                        tempTilePos = PositionConverter.unitPosConverter(currentUnit.getPosition());
                         currentTile = (TileAction) map.getTileAt(tempTilePos);
                         currentTile.landOn(currentUnit);
                         /*Give the user more money*/
@@ -134,6 +135,36 @@ public class Game {
     public boolean isWon(){
         return this.unitsReachedGoal >= this.map.getWinScore();
     }
+    public void clickAtPos(Position clickPos){
+        Position p = PositionConverter.unitPosConverter(clickPos);
+        Tile newTile = null;
+
+        Iterator unitItr = clickUnits.listIterator();
+        Unit currentUnit;
+        while(unitItr.hasNext()){
+            currentUnit = (Unit)unitItr.next();
+            /*Remove if dead*/
+            if(!currentUnit.isAlive()){
+                unitItr.remove();
+            }else{
+                newTile = currentUnit.click();
+                if(newTile == null){
+                    unitItr.remove();
+                }else{
+                    map.swapTile(newTile);
+                }
+                return;
+            }
+        }
+        /*Else see if user clicked on TCross*/
+        Tile t = map.getTileAt(p);
+
+        if ( t!= null && TCross.class.isAssignableFrom(t.getClass()) ){
+            TCross tCross = (TCross) t;
+            tCross.changeDirection();
+        }
+    }
+
     public boolean isLoss(){
         return (this.units.size() == 0 && this.user.getCredits()< 30);
     }
@@ -143,15 +174,17 @@ public class Game {
         Position tempTilePos;
 
         /*Set the next position of the unit to the position of the start tile*/
-        Position posToSet = positionConverter.tilePosConverter(map.getStartTile().getPosition());
+        Position posToSet = (map.getStartTile().getPosition());
         unit.setCurrentPosition(posToSet);
         unit.setNextTilePos(posToSet);
         /*Call landon for the first tile the unit spawns on*/
-        tempTilePos = positionConverter.unitPosConverter(unit.getPosition());
+        tempTilePos = PositionConverter.unitPosConverter(unit.getPosition());
         currentTile = (TileAction) map.getTileAt(tempTilePos);
         currentTile.landOn(unit);
 
         this.units.add(unit);
+        /*If the unit it clickable add it to the clickable list*/
+        this.clickUnits.add(unit);
     }
 
     public Shop getShop(){
@@ -192,10 +225,10 @@ public class Game {
 
                 /*Place every other tower as Air tower and Ground tower*/
                 if(placedTowers % 2 == 0){
-                    tower = new GroundTower(positionConverter.tilePosConverter(tempTilePos),getNextObjectId());
+                    tower = new GroundTower(PositionConverter.tilePosConverter(tempTilePos),getNextObjectId());
                 }else{
-                    tower = new AirTower(positionConverter.tilePosConverter(tempTilePos),getNextObjectId());
-                    //tower = new GroundTower(positionConverter.tilePosConverter(tempTilePos),getNextObjectId());
+                    tower = new AirTower(PositionConverter.tilePosConverter(tempTilePos),getNextObjectId());
+                    //tower = new GroundTower(PositionConverter.tilePosConverter(tempTilePos),getNextObjectId());
                 }
 
                 this.towers.add(tower);
