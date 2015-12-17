@@ -5,7 +5,8 @@ import main.java.tile.Start;
 import main.java.tile.Tile;
 import main.java.tile.TowerTile;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
 
 /**
  * Class:       Map
@@ -25,9 +26,9 @@ public class Map {
     private int startingGold;
 
     protected Map(){
-        pathTiles = new HashMap<Position, Tile>();
-        towerTiles = new HashMap<Position, Tile>();
-        completeMap = new HashMap<Position, Tile>();
+        pathTiles = new HashMap<>();
+        towerTiles = new HashMap<>();
+        completeMap = new HashMap<>();
     }
 
     /**
@@ -171,5 +172,37 @@ public class Map {
 
     public Tile getStartTile() {
         return startTile;
+    }
+
+    public void swapTile(Tile t){
+        Position tilePos = t.getPosition();
+        Tile oldTile = getTileAt(tilePos);
+
+        if (oldTile == null){
+            return;
+        }
+
+        if(PathTile.class.isAssignableFrom(t.getClass()) &&
+                PathTile.class.isAssignableFrom(oldTile.getClass())){
+
+            PathTile path = (PathTile) t;
+            PathTile oldpath = (PathTile) oldTile;
+
+            path.sendToPos(oldpath.getNextPos());
+
+            pathTiles.remove(tilePos);
+            pathTiles.put(tilePos, t);
+        }
+
+        if (TowerTile.class.isAssignableFrom(t.getClass())
+                && PathTile.class.isAssignableFrom(oldTile.getClass())){
+
+            towerTiles.remove(tilePos);
+            towerTiles.put(tilePos, t);
+        }
+
+        completeMap.remove(tilePos);
+        completeMap.put(tilePos, t);
+
     }
 }

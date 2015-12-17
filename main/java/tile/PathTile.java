@@ -17,7 +17,7 @@ public abstract class PathTile extends Tile implements TileAction {
         nextPos = posToSet;
     }
 
-    protected Position getNextPos(){
+    public Position getNextPos(){
         return nextPos;
     }
 

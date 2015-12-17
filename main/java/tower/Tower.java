@@ -80,7 +80,6 @@ public abstract class Tower {
      */
     public void setTarget(Unit newTarget){
         target = newTarget;
-        System.out.println("targeted");
     }
 
     /**
@@ -88,7 +87,6 @@ public abstract class Tower {
      */
     public GraphicEvent attack(int time) {
         if(time - timeOfLastAttack >= speed){
-            System.out.println("SHOOOOT (by tower: " + id + ")");
             target.takeDamage(damage);
             timeOfLastAttack = time;
 

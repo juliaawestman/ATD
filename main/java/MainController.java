@@ -23,7 +23,7 @@ import java.util.TimerTask;
  */
 
 
-public class MainController extends TimerTask implements MapInformation, UserInformation {
+public class MainController /*extends TimerTask*/ implements MapInformation, UserInformation {
     private Renderer renderer;
     private CLayout gui;
     private Game game;
@@ -42,14 +42,13 @@ public class MainController extends TimerTask implements MapInformation, UserInf
         timer = new Timer();
     }
 
-    @Override
-    public void run() {
+    public void update() {
         game.update();
         renderer.drawImage(graphicState.getCurrentGraphicState());
         BufferedImage img = renderer.getImage();
         gui.setBoardImage(img);
         if (game.isWon()){
-            game = null;
+            pauseGame();
         }
     }
 
@@ -58,7 +57,8 @@ public class MainController extends TimerTask implements MapInformation, UserInf
      * @param interval the update interval in milliseconds
      */
     public void startWithUpdateInterval(long interval){
-        timer.schedule(this, interval, interval);
+
+        timer.schedule(new Task(this), interval, interval);
     }
 
     /**
@@ -144,12 +144,13 @@ public class MainController extends TimerTask implements MapInformation, UserInf
 
     @Override
     public void pauseGame() {
-
+        timer.cancel();
     }
 
     @Override
     public void resumeGame() {
-
+        timer = new Timer();
+        timer.schedule(new Task(this), 5, 5);
     }
 
     @Override
@@ -159,6 +160,23 @@ public class MainController extends TimerTask implements MapInformation, UserInf
         if ( t!= null && TCross.class.isAssignableFrom(t.getClass()) ){
             TCross tCross = (TCross) t;
             tCross.changeDirection();
+        }
+    }
+
+    /**
+     * A task to send to the timer. It will only call the update of the main
+     * controller.
+     */
+    private class Task extends TimerTask {
+        private MainController controller;
+
+        public Task(MainController c){
+            controller = c;
+        }
+
+        @Override
+        public void run() {
+            controller.update();
         }
     }
 }
