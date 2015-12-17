@@ -153,7 +153,7 @@ public class GameGUI extends JPanel implements Runnable {
     }
 
     public void restart() {
-        isFirst = false;
+        isFirst = true;
     }
 
 }
