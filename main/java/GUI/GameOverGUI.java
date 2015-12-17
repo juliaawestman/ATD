@@ -18,9 +18,21 @@ public class GameOverGUI {
     private JPanel upperPanel = null;
     private JPanel middlePanel = null;
     private JPanel lowerPanel;
+    private JLabel victoryText = new JLabel();
 
     public GameOverGUI(CLayout c) {
         this.c = c;
+
+    }
+
+    public void setEndText() {
+
+        if (c.userinfo.gameWon()){
+            victoryText.setText("<html>"+"YOU LOSE !"+"<br>"+"Score: "+c.userinfo.getUser().getScore()+"<html>");
+        } else {
+            victoryText.setText("<html>"+"YOU WIN !"+"<br>"+"Score: "+c.userinfo.getUser().getScore()+"<html>");
+        }
+
 
     }
 
@@ -32,12 +44,6 @@ public class GameOverGUI {
         upperPanel.setPreferredSize(new Dimension(400, 200));
         //BufferedImage myPicture = ImageIO.read(new File("loggo.png"));
         //JLabel picLabel = new JLabel(new ImageIcon("main/resources/loggo.png"));
-        JLabel victoryText = new JLabel();
-        if (c.userinfo.gameOver() == true){
-            victoryText.setText("<html>"+"YOU LOSE !"+"<br>"+"Score: 123"+"<html>");
-        } else {
-            victoryText.setText("<html>"+"YOU WIN !"+"<br>"+"Score: 5"+"<html>");
-        }
 
         victoryText.setFont(new Font("Arial", Font.ITALIC, 35));
         victoryText.setForeground(Color.white);
@@ -80,13 +86,6 @@ public class GameOverGUI {
         newGame.setFocusPainted(false);
         //buttonPanelOver.add(newGame);
 
-        highScore = new JButton(new ImageIcon("main/resources/highScoreButton.png"));
-        highScore.addMouseListener(new HighScoreListener(highScore, c));
-        highScore.setBorderPainted(false);
-        highScore.setContentAreaFilled(false);
-        highScore.setFocusPainted(false);
-        //buttonPanelMiddle.add(highScore);
-
         quit = new JButton(new ImageIcon("main/resources/QuitButton.png"));
         quit.addMouseListener(new QuitListener(quit, c));
         quit.setBorderPainted(false);
@@ -96,8 +95,6 @@ public class GameOverGUI {
 
         newGame.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         middlePanel.add(newGame);
-        highScore.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-        middlePanel.add(highScore);
         quit.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         middlePanel.add(quit);
 

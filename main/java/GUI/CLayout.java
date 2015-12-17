@@ -127,6 +127,7 @@ public class CLayout {
         frame.setVisible(true);
 
         cl.show(panelCont, "gameOver");
+        gameOver.setEndText();
 
         final JFrame popup = new JFrame();
 
@@ -134,12 +135,12 @@ public class CLayout {
 
         userName = JOptionPane.showInputDialog(popup,
                 "Enter username:", null);
-        //while(!userName.equals(null)) {
 
+        if(userName != null) {
             userinfo.updateUsername(userName);
             HighscoreDB db = new HighscoreDB(userinfo.getUser());
             db.addUser(game.chosenMap);
-        //}
+        }
 
     }
 

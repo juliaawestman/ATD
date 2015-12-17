@@ -22,25 +22,13 @@ public class GameGUI extends JPanel implements Runnable {
     JLayeredPane LPane =new JLayeredPane();
 
     User u = new User(0,0);
-
     boolean gameOver = false;
-
     public String chosenMap;
-
     BufferedImage b;
-
     boolean firstWin = true;
-
-
-    //private MapInformation mapinfo;
-
     private CLayout c;
     public Board gameBoard;
     public Store store;
-
-    private Point mse = new Point(0, 0);
-
-    //public static boolean isFirst = true;
 
     public GameGUI(CLayout c) {
         this.c = c;
@@ -51,7 +39,8 @@ public class GameGUI extends JPanel implements Runnable {
         if(isFirst) {
             myWidth = getWidth();
             myHeight = getHeight();
-            define();
+            gameBoard = new Board(c, chosenMap);
+            store = new Store(gameBoard, c);
             isFirst = false;
         }
         g.setColor(new Color(50, 50, 50));
@@ -71,13 +60,6 @@ public class GameGUI extends JPanel implements Runnable {
         }
 
     }
-
-    public void define() {
-        gameBoard = new Board(c, chosenMap);
-        store = new Store(gameBoard, c);
-    }
-
-    public int spawnTime = 20000, spawnFrame = 0;
 
 
     /**
