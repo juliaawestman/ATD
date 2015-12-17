@@ -17,7 +17,7 @@ import java.net.MalformedURLException;
  * image that will be used in the user interface. 
  *
  */
-public class Telepoter extends PathTile implements TileAction {
+public class Teleporter extends PathTile implements TileAction {
 
     private Position nextTelPos = null;
     
@@ -26,7 +26,7 @@ public class Telepoter extends PathTile implements TileAction {
      * will read in the image when the program will create a object
      * of the class main.java.tile.tile.Default
      */
-    public Telepoter(Position p) throws MalformedURLException {
+    public Teleporter(Position p) throws MalformedURLException {
 	super(p, "main/resources/teleporterTile.png");
     }
 

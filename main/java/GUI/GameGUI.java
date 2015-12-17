@@ -93,6 +93,7 @@ public class GameGUI extends JPanel implements Runnable {
             if (u.getScore() >= 5 && firstWin) {
                 firstWin = false;
                     c.showGameOver();
+                isFirst = true;
             }
 
 
