@@ -4,8 +4,6 @@ import main.java.User;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 /**
@@ -14,10 +12,14 @@ import java.awt.image.BufferedImage;
 public class GameGUI extends JPanel implements Runnable {
     //JPanel gamePanel = new JPanel();
 
-    JPanel gamePanel = new JPanel();
+ //   JPanel gamePanel = new JPanel();
+    JLayeredPane gamePanel = new JLayeredPane();
     public Thread thread = new Thread(this);
     public boolean isFirst =true;
+    private JButton sound;
     public int myWidth, myHeight;
+    JPanel lowerPanel = new JPanel();
+    JLayeredPane LPane =new JLayeredPane();
 
     User u = new User(0,0);
 
@@ -109,12 +111,38 @@ public class GameGUI extends JPanel implements Runnable {
         }
     }
 
-    public JPanel getPanel() {
+
+    private JPanel buildLowerPanel() {
+        JPanel lowerPanel = new JPanel();
+        lowerPanel.setPreferredSize(new Dimension(55,25));
+        lowerPanel.setBackground(new Color(56, 134, 96));
+
+        sound = new JButton(new ImageIcon("main/resources/sound.png"));
+        sound.addMouseListener(new SoundListener(sound, c));
+
+        sound.setBorderPainted(false);
+        sound.setContentAreaFilled(false);
+        sound.setFocusPainted(false);
+
+        lowerPanel.add(sound, new FlowLayout(FlowLayout.RIGHT));
+        sound.setBounds(830,700,70,70);
+        LPane.add(sound, new Integer(5));
+
+        return lowerPanel;
+    }
+
+    public JLayeredPane getPanel() {
 
         gamePanel.setLayout(new GridLayout(1, 1, 0, 0));
         //gamePanel.add(new GameGUI(c));
 
-        gamePanel.add(this);
+        lowerPanel = buildLowerPanel();
+
+        gamePanel.setLayout(null);
+        this.setBounds(0,0,900,900);
+        gamePanel.add(sound, new Integer(1));
+
+        gamePanel.add(this, new Integer(0));
 
         gamePanel.addMouseListener(new GameListener(c, this));
 

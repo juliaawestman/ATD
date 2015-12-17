@@ -19,7 +19,6 @@ import java.net.MalformedURLException;
  */
 public class Telepoter extends PathTile implements TileAction {
 
-    private Position nextPos;
     private Position nextTelPos = null;
     
     /**
@@ -33,17 +32,14 @@ public class Telepoter extends PathTile implements TileAction {
 
     @Override
     public void landOn(Unit unit){
-        if(nextPos!=null) {
-            unit.setNextTilePos(nextPos);
-        }
-        else {
-            unit.setNextTilePos(nextTelPos);
-        }
+        Position nextPos = getNextPos();
+        setNextPos(nextPos);
+
     }
 
     @Override
     public void sendToPos(Position posToSend) {
-        nextPos = posToSend;
+        Position nextPos = posToSend;
         setNextPos(posToSend);
     }
 
