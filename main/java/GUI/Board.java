@@ -1,9 +1,7 @@
 package main.java.GUI;
 
 import main.java.Position;
-import main.java.tile.PathTile;
 import main.java.tile.Tile;
-import main.java.tile.TowerTile;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -72,7 +70,7 @@ public class Board {
                         block[y][x].draw(g, t.getImageURL());
                     }*/
                 } else {
-                    block[y][x].draw(g,"main/resources/defaultTile.png");
+                    block[y][x].draw(g, "main/resources/defaultTile.png");
                 }
             }
             }

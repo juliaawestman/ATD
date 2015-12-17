@@ -2,10 +2,6 @@ package main.java.tower;
 
 import main.java.Position;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Random;
-
 /**
  * Class:       GroundTower
  * <p/>

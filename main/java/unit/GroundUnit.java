@@ -9,7 +9,6 @@ package main.java.unit;
 
  * Date: 2015-11-26
  */
-import java.net.MalformedURLException;
 import java.net.URL;
 import main.java.*;
 

@@ -1,12 +1,7 @@
 package main.java.GUI;
 
-import main.java.unit.AirUnit;
-import main.java.unit.GroundUnit;
-import main.java.unit.TeleporterUnit;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
 
 /**
  * Class: Store

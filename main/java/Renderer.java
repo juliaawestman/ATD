@@ -1,17 +1,8 @@
 package main.java;
 
-import main.java.tower.GroundTower;
-import main.java.tower.Tower;
-import main.java.unit.AirUnit;
-import main.java.unit.GroundUnit;
-import main.java.unit.Unit;
-
-import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.Stack;
-import java.util.logging.FileHandler;
 
 /**
  * Class:       Renderer
