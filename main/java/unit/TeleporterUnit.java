@@ -26,9 +26,9 @@ public class TeleporterUnit extends Unit {
 
     public TeleporterUnit(Position pos, int id) {
         super(pos, id);
-        super.health = 20;
+        super.health = 40;
         super.price = this.price;
-        super.speed = 50;
+        super.speed = 48;
         super.name = "teleporterUnit";
         super.pos = pos;
         super.flying = false;

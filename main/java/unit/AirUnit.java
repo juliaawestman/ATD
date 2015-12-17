@@ -21,7 +21,7 @@ public class AirUnit extends main.java.unit.Unit {
 
     public AirUnit(Position pos, int id) {
         super(pos, id);
-        super.health = 60;
+        super.health = 120;
         super.price = this.price;
         super.speed = 48;
         super.name = "AirUnuit";

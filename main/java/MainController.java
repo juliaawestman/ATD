@@ -63,7 +63,7 @@ public class MainController implements MapInformation, UserInformation {
      * Starts the game with an update interval of 1/10 of a second
      */
     public void start(){
-        startWithUpdateInterval(5);
+        startWithUpdateInterval(2);
     }
 
     /**

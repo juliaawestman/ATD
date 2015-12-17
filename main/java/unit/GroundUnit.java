@@ -21,9 +21,9 @@ public class GroundUnit extends main.java.unit.Unit {
     public GroundUnit(Position pos, int id) {
 
         super(pos, id);
-        super.health = 140;
+        super.health = 150;
         super.price = price;
-        super.speed = 45;
+        super.speed = 47;
         super.name = "GroundUnit";
         super.pos = pos;
         super.flying = false;

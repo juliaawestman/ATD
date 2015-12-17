@@ -47,8 +47,9 @@ public class PopupMenu {
         }
         // Menu
         if(n == 2) {
+            c.game.gameStarted = false;
             c.userinfo.killGame();
-
+            c.game.restart();
             c.showMainMenu();
         }
     }
