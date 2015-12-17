@@ -60,6 +60,7 @@ public class Game {
 
         graphicState.gameTick(timeOfGame);
         timeOfGame++;
+        System.out.println(String.valueOf(isLoss()));
     }
 
     private void updateUnits() {
@@ -167,7 +168,7 @@ public class Game {
     }
 
     public boolean isLoss(){
-        return (this.units.size() == 0 && this.user.getCredits()< 30);
+        return ((this.units.size() == 0) && (this.user.getCredits() < 30));
     }
 
     public void addUnit(Unit unit){
