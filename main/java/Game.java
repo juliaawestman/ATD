@@ -27,6 +27,7 @@ public class Game {
 
     private int timeOfGame = 0;
     private static final int nrOfTowers = 10;
+    private static final int tileSize = 54;
     private int nextId = 0;
     private User user;
     private Map map;
@@ -146,14 +147,14 @@ public class Game {
             /*Remove if dead*/
             if(!currentUnit.isAlive()){
                 unitItr.remove();
-            }else{
+            }else if((clickPos.getDistance(currentUnit.getPosition()) <= this.tileSize)){
                 newTile = currentUnit.click();
                 if(newTile == null){
                     unitItr.remove();
                 }else{
                     map.swapTile(newTile);
+                    return;
                 }
-                return;
             }
         }
         /*Else see if user clicked on TCross*/
