@@ -15,15 +15,18 @@ import main.java.PositionConverter;
 import main.java.tile.Tile;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.Buffer;
 
 public abstract class Unit {
     /*Static variables*/
 
     protected static final int MAXSPEED = 50;
     private static final int tileSize = 54;
+    private static final int dmgGraphicDelay = 500;
     protected String name;
     protected Position pos;
     protected int id;
@@ -37,6 +40,8 @@ public abstract class Unit {
     protected Boolean teleporter=false;
     private int timeLived = 0;
     private boolean hasReachedGoal = false;
+    private int lastDmg = 0;
+    private long lastTimeDmg = 0;
 
     /**
      * Initializes a new {@code Unit} which is being put on specified position.
@@ -99,6 +104,8 @@ public abstract class Unit {
 
     public void takeDamage(int dmg) {
         this.health -= dmg;
+        this.lastDmg = dmg;
+        this.lastTimeDmg = System.currentTimeMillis();
     }
 
     public boolean isAlive() {
@@ -159,15 +166,25 @@ public abstract class Unit {
 
 
     public GraphicEvent generateGraphicEvent() {
-        BufferedImage img = null;
+        BufferedImage whole = new BufferedImage(50, 50, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage sprite = null;
 
         try {
-            img = ImageIO.read(this.imagePath);
+            sprite = ImageIO.read(this.imagePath);
         } catch (IOException ex) {
             System.err.println(ex.getCause().toString());
         }
 
-        return (new GraphicEvent(this.id, this.pos, img));
+        Graphics2D g = whole.createGraphics();
+        g.drawImage(sprite,0,0,null);
+
+        if((System.currentTimeMillis() - lastTimeDmg) < dmgGraphicDelay) {
+            g.setColor(new Color(255, 0, 27));
+            g.setStroke(new BasicStroke(2));
+            g.setFont(new Font("Arial",Font.ITALIC | Font.BOLD,12));
+            g.drawString(String.valueOf("-"+String.valueOf(this.lastDmg)), (sprite.getWidth()/3), (sprite.getHeight()/4));
+        }
+        return (new GraphicEvent(this.id, this.pos, whole));
     }
     public Tile click(){
         return null;

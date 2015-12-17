@@ -1,8 +1,11 @@
 package main.java;
+import main.java.unit.Unit;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -17,7 +20,8 @@ public class User {
     private String userName;
     private String map;
     private String currentDate;
-
+    private static URL coinImgUrl = Unit.class.getResource("../../resources/coins.png");
+    private static URL healthImgUrl = Unit.class.getResource("../../resources/health.png");
 
     public User (int credits, int income) {
         this.credits = credits;
@@ -80,20 +84,27 @@ public class User {
 
     public GraphicEvent generateGraphicEvent() {
         BufferedImage img = null;
+        BufferedImage coins = null;
+        BufferedImage health = null;
+        try {
+            coins = ImageIO.read(this.coinImgUrl);
+            health = ImageIO.read(this.healthImgUrl);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         /*Make the image*/
-        img = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+        img = new BufferedImage(50, 50, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = img.createGraphics();
         g.setColor(new Color(255, 244, 61));
         g.setStroke(new BasicStroke(2));
-        g.setFont(new Font("Arial",Font.BOLD,14));
-        g.drawString(String.valueOf(this.credits),10,10);
-        g.drawString(String.valueOf(this.points),10,24);
-        //coins = ImageIO.read(this.imagePath);
-        //g.drawImage(new BufferedImage());
+        g.setFont(new Font("Arial",Font.BOLD,18));
+        g.drawString(String.valueOf(this.credits),20,14);
+        g.drawString(String.valueOf(this.points),20,32);
+        g.drawImage(coins,0,0,18,18,null);
+        g.drawImage(health,0,18,18,18,null);
 
-
-        return new GraphicEvent(999,new Position(70,70),img);
+        return new GraphicEvent(999,new Position(25,25),img);
     }
 
     public void decreaseCredits(int value){

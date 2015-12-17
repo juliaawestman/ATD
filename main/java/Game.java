@@ -186,7 +186,9 @@ public class Game {
 
         this.units.add(unit);
         /*If the unit it clickable add it to the clickable list*/
-        this.clickUnits.add(unit);
+        if(unit.isClickable()){
+            this.clickUnits.add(unit);
+        }
     }
 
     public Shop getShop(){
