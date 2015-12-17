@@ -110,7 +110,7 @@ public class HelpGUI extends JPanel {
         sound.setFocusPainted(false);
 
         back = new JButton(new ImageIcon("main/resources/backButton.png"));
-        back.addMouseListener(new BackListener(back, c));
+        back.addMouseListener(new BackToGameMenuListener(back, c));
         back.setBorderPainted(false);
         back.setContentAreaFilled(false);
         back.setFocusPainted(false);

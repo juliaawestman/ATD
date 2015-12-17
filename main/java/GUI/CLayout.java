@@ -33,7 +33,7 @@ public class CLayout {
     public GameGUI game;
     private MenuGUI menu;
     private NewGameGUI newGame;
-    private HighScoreGUI highScore;
+    public HighScoreGUI highScore;
     private GameOverGUI gameOver;
     private AboutGUI about;
     private HelpGUI help;
@@ -127,6 +127,7 @@ public class CLayout {
         frame.setVisible(true);
 
         cl.show(panelCont, "gameOver");
+        gameOver.setEndText();
 
         final JFrame popup = new JFrame();
 
@@ -134,13 +135,21 @@ public class CLayout {
 
         userName = JOptionPane.showInputDialog(popup,
                 "Enter username:", null);
-        //while(!userName.equals(null)) {
 
+        if(userName != null) {
             userinfo.updateUsername(userName);
             HighscoreDB db = new HighscoreDB(userinfo.getUser());
             db.addUser(game.chosenMap);
-        //}
+        }
 
+    }
+
+    public void showMainMenu() {
+        frame.setSize(600, 600);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
+        cl.show(panelCont, "menu");
     }
 
     /**

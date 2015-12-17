@@ -21,6 +21,12 @@ public interface UserInformation {
 
     User getUser();
 
+    void killGame();
+
+    void pauseGame();
+
+    void resumeGame();
+
     void hasClicked(int x, int y);
 
 }

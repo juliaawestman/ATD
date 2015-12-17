@@ -5,22 +5,20 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * Created by Joakim on 2015-11-30.
+ * Created by juliawestman on 2015-12-17.
  */
-public class HighScoreListener implements MouseListener{
-
+public class BackToGameMenuListener implements MouseListener{
         private JButton button;
         private CLayout c;
 
-        public HighScoreListener(JButton button, CLayout c) {
+        public BackToGameMenuListener(JButton button, CLayout c) {
 
             this.button = button;
             this.c = c;
         }
 
         public void mouseClicked(MouseEvent e) {
-            c.highScore.updateHighscores();
-            c.showCard("highScore");
+            c.showCard("newGame");
 
         }
 
@@ -31,13 +29,13 @@ public class HighScoreListener implements MouseListener{
         }
 
         public void mouseEntered(MouseEvent e) {
-            button.setIcon(new ImageIcon("main/resources/highScoreHover.png"));
+            button.setIcon(new ImageIcon("main/resources/backHover.png"));
         }
 
         public void mouseExited(MouseEvent e) {
-            button.setIcon(new ImageIcon("main/resources/highScoreButton.png"));
+            button.setIcon(new ImageIcon("main/resources/backButton.png"));
 
         }
 
 
-    }
+}

@@ -5,6 +5,8 @@ import java.awt.*;
 
 /**
  * Created by id12jzn on 2015-12-15.
+ *
+ * Creates the GUI for when a game is ended as a JPanel
  */
 public class GameOverGUI {
 
@@ -18,9 +20,24 @@ public class GameOverGUI {
     private JPanel upperPanel = null;
     private JPanel middlePanel = null;
     private JPanel lowerPanel;
+    private JLabel victoryText = new JLabel();
 
     public GameOverGUI(CLayout c) {
         this.c = c;
+
+    }
+
+    /**
+     * Changes the text in the upper panel based on if the user wins or looses
+     */
+    public void setEndText() {
+
+        if (c.userinfo.gameWon()){
+            victoryText.setText("<html>"+"YOU WIN !"+"<br>"+"Score: "+c.userinfo.getUser().getScore()+"<html>");
+        } else {
+            victoryText.setText("<html>"+"YOU LOSE !"+"<br>"+"Score: "+c.userinfo.getUser().getScore()+"<html>");
+        }
+
 
     }
 
@@ -30,22 +47,12 @@ public class GameOverGUI {
         space.setBackground(new Color(56, 134, 96));
         space.setPreferredSize(new Dimension(800,100));
         upperPanel.setPreferredSize(new Dimension(400, 200));
-        //BufferedImage myPicture = ImageIO.read(new File("loggo.png"));
-        //JLabel picLabel = new JLabel(new ImageIcon("main/resources/loggo.png"));
-        JLabel victoryText = new JLabel();
-        if (c.userinfo.gameOver() == true){
-            victoryText.setText("<html>"+"YOU LOSE!!!"+"<br>"+"Score 123"+"<html>");
-        } else {
-            victoryText.setText("<html>"+"YOU WIN!!!"+"<br>"+"Score 123"+"<html>");
-        }
 
         victoryText.setFont(new Font("Arial", Font.ITALIC, 35));
         victoryText.setForeground(Color.white);
         upperPanel.setBackground(new Color(56, 134, 96));
         upperPanel.add(space);
         upperPanel.add(victoryText);
-
-        //upperPanel.setOpaque(false);
 
         return upperPanel;
     }
@@ -55,44 +62,23 @@ public class GameOverGUI {
         middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
         middlePanel.setBackground(new Color(56, 134, 96));
 
-        /*
-
-        JPanel buttonPanelOver = new JPanel();
-        buttonPanelOver.setBackground(new Color(169,255,151));
-
-        JPanel buttonPanelMiddle = new JPanel();
-        buttonPanelMiddle.setBackground(new Color(169,255,151));
-
-        JPanel buttonPanelUnder = new JPanel();
-        buttonPanelUnder.setBackground(new Color(169,255,151));
-
-        JPanel textfieldPanel = new JPanel();
-        textfieldPanel.setBackground(new Color(169,255,151));
-
-        textfieldPanel.add(textfield);
-
-        */
-
         newGame = new JButton(new ImageIcon("main/resources/newGameButton.png"));
         newGame.addMouseListener(new NewGameListener(newGame, c));
         newGame.setBorderPainted(false);
         newGame.setContentAreaFilled(false);
         newGame.setFocusPainted(false);
-        //buttonPanelOver.add(newGame);
 
         highScore = new JButton(new ImageIcon("main/resources/highScoreButton.png"));
         highScore.addMouseListener(new HighScoreListener(highScore, c));
         highScore.setBorderPainted(false);
         highScore.setContentAreaFilled(false);
         highScore.setFocusPainted(false);
-        //buttonPanelMiddle.add(highScore);
 
         quit = new JButton(new ImageIcon("main/resources/QuitButton.png"));
         quit.addMouseListener(new QuitListener(quit, c));
         quit.setBorderPainted(false);
         quit.setContentAreaFilled(false);
         quit.setFocusPainted(false);
-        //buttonPanelUnder.add(quit);
 
         newGame.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         middlePanel.add(newGame);

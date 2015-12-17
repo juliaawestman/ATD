@@ -41,6 +41,7 @@ public class HighscoreDB {
         //delete();
 
         //setup();
+
         //addUser(u);
         //getData();
         //testAddUser();
@@ -79,7 +80,7 @@ public class HighscoreDB {
     }
 
     /**
-     * Creates the SQL table for the database, should only have to run this once and the table is created
+     * Deletes the SQL table for the database, only run this when you want to clear databasse
      */
     public void delete() {
         try {
@@ -109,7 +110,6 @@ public class HighscoreDB {
     /**
      * Adds a new user with a score to the highscore table
      *
-     * @param u User which is added to the table
      */
     public void addUser(String map) {
         /*
@@ -140,7 +140,7 @@ public class HighscoreDB {
     }
 
     public void testAddUser() {
-        String sql = "INSERT INTO HIGHSCORE(userName, level, score) " + "VALUES ('"+"Guldsmurfen"+"', '"+"Joy"+"', '"+"18"+"')";
+        String sql = "INSERT INTO HIGHSCORE(userName, level, score) " + "VALUES ('"+"Pekka"+"', '"+"Joy"+"', '"+"2"+"')";
         try {
             st.executeUpdate(sql);
         } catch (SQLException e) {
