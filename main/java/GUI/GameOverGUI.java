@@ -34,9 +34,9 @@ public class GameOverGUI {
         //JLabel picLabel = new JLabel(new ImageIcon("main/resources/loggo.png"));
         JLabel victoryText = new JLabel();
         if (c.userinfo.gameOver() == true){
-            victoryText.setText("<html>"+"YOU LOSE!!!"+"<br>"+"Score 123"+"<html>");
+            victoryText.setText("<html>"+"YOU LOSE !"+"<br>"+"Score: 123"+"<html>");
         } else {
-            victoryText.setText("<html>"+"YOU WIN!!!"+"<br>"+"Score 123"+"<html>");
+            victoryText.setText("<html>"+"YOU WIN !"+"<br>"+"Score: 5"+"<html>");
         }
 
         victoryText.setFont(new Font("Arial", Font.ITALIC, 35));

@@ -1,5 +1,7 @@
 package main.java.GUI;
 
+import main.java.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -17,11 +19,15 @@ public class GameGUI extends JPanel implements Runnable {
     public boolean isFirst =true;
     public int myWidth, myHeight;
 
+    User u = new User(0,0);
+
     boolean gameOver = false;
 
     public String chosenMap;
 
     BufferedImage b;
+
+    boolean firstWin = true;
 
 
     //private MapInformation mapinfo;
@@ -72,11 +78,22 @@ public class GameGUI extends JPanel implements Runnable {
     public int spawnTime = 20000, spawnFrame = 0;
 
 
-
-
+    /**
+     * Metod som kör gui tråden och målar om guit varje millisekund
+     *
+     * TODO Fixa wincondition!
+     */
     public static int fpsFrame = 0, fps = 120;
     public void run() {
         while(true) {
+
+            // Wincondition
+            if (u.getScore() >= 5 && firstWin) {
+                firstWin = false;
+                    c.showGameOver();
+            }
+
+
             if(!isFirst) {
                 gameBoard.physic();
             }

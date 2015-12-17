@@ -40,6 +40,7 @@ public class GameListener implements MouseListener {
             g.gameOver = true;
             //c.showGameOver();
         }
+        c.game.u = c.userinfo.getUser();
 
 
     }
