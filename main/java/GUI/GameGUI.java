@@ -113,7 +113,7 @@ public class GameGUI extends JPanel implements Runnable {
         LPane.add(sound, new Integer(5));
 
         settings = new JButton(new ImageIcon("main/resources/settings.png"));
-        settings.addMouseListener(new SettingsListener(settings, c));
+        settings.addMouseListener(new SettingListener(settings, c));
 
         settings.setBorderPainted(false);
         settings.setContentAreaFilled(false);

@@ -144,6 +144,14 @@ public class CLayout {
 
     }
 
+    public void showMainMenu() {
+        frame.setSize(600, 600);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
+        cl.show(panelCont, "menu");
+    }
+
     /**
      * Closing the frame and program
      */
